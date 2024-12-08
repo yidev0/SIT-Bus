@@ -57,22 +57,24 @@ struct SBReferenceData: Decodable {
         return dates
     }
     
-    public func getNextBus(for type: BusLineType.SchoolBus, date: Date) -> (hour: Int, minute: Int)? {
+    public func getNextBus(for type: BusLineType.SchoolBus, date: Date) -> Date? {
         let currentHour = date.get(component: .hour)
         let currentMinute = date.get(component: .minute)
         
         if let timetable = getTimesheet(for: date)?.makeTimetable(for: type) {
             for timetable in timetable {
                 if timetable.hour == currentHour {
-                    for minute in timetable.times where minute > currentMinute {
-                        return (timetable.hour, minute)
+                    for minute in timetable.times where minute >= currentMinute {
+                        let date = Calendar.current.date(bySettingHour: timetable.hour, minute: minute, second: 0, of: date)
+                        return date
                     }
                 }
                 
                 // If the hour is in the future, return the first minute of that hour
-                if timetable.hour > currentHour {
+                if timetable.hour >= currentHour {
                     if let firstMinute = timetable.times.first {
-                        return (timetable.hour, firstMinute)
+                        let date = Calendar.current.date(bySettingHour: timetable.hour, minute: firstMinute, second: 0, of: date)
+                        return date
                     }
                 }
             }
