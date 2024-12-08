@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct School_BusApp: App {
+struct SITBusApp: App {
     
     @State var timetableManager = TimetableManager()
 

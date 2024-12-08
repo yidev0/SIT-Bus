@@ -19,10 +19,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1AF68EA2C6A0F1700630B5A"
-               BuildableName = "School BusUITests.xctest"
-               BlueprintName = "School BusUITests"
-               ReferencedContainer = "container:School Bus.xcodeproj">
+               BlueprintIdentifier = "D1AF68E02C6A0F1700630B5A"
+               BuildableName = "SIT BusTests.xctest"
+               BlueprintName = "SIT BusTests"
+               ReferencedContainer = "container:SIT Bus.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
