@@ -385,7 +385,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "東大宮駅発着場所"
           }
         }
@@ -401,7 +401,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "岩槻駅発着場所"
           }
         }
@@ -417,7 +417,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "大学側発着場所"
           }
         }
@@ -433,7 +433,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "大学側発着場所"
           }
         }
@@ -705,7 +705,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "消費生活協同組合（生協）"
           }
         }
