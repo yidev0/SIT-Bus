@@ -6,13 +6,6 @@
 	objectVersion = 70;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		D1DE09EB2CBFD5340019CCA2 /* GuidelineMeasurement in Frameworks */ = {isa = PBXBuildFile; productRef = D1DE09EA2CBFD5340019CCA2 /* GuidelineMeasurement */; };
-		D1E1202F2D059826003F9548 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E1202E2D059826003F9548 /* WidgetKit.framework */; };
-		D1E120312D059826003F9548 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E120302D059826003F9548 /* SwiftUI.framework */; };
-		D1E1203E2D059827003F9548 /* Widget ExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		D1AF68E22C6A0F1700630B5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -44,7 +37,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D1E1203E2D059827003F9548 /* Widget ExtensionExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,13 +44,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget ExtensionExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1E1202E2D059826003F9548 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		D1E120302D059826003F9548 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "SIT Bus.app"; path = "/Users/yuto/Documents/App/School Bus/build/Debug-iphoneos/SIT Bus.app"; sourceTree = "<absolute>"; };
+		D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "SIT BusTests.xctest"; path = "/Users/yuto/Documents/App/School Bus/build/Debug-iphoneos/SIT Bus.app/PlugIns/SIT BusTests.xctest"; sourceTree = "<absolute>"; };
+		D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "SIT BusUITests.xctest"; path = "/Users/yuto/Documents/App/School Bus/build/Debug-iphoneos/SIT BusUITests-Runner.app/PlugIns/SIT BusUITests.xctest"; sourceTree = "<absolute>"; };
 		D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SIT-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; name = "Widget ExtensionExtension.appex"; path = "/Users/yuto/Documents/App/School Bus/build/Debug-iphoneos/Widget ExtensionExtension.appex"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -72,10 +62,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D1E120322D059826003F9548 /* Widget Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D1E120422D059827003F9548 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Widget Extension"; sourceTree = "<group>"; };
 		D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus UITests"; sourceTree = "<group>"; };
 		D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus Tests"; sourceTree = "<group>"; };
 		D1DF34E92CB7C16500627AE1 /* SIT Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus"; sourceTree = "<group>"; };
+		D1E120322D059826003F9548 /* Widget Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D1E120422D059827003F9548 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Widget Extension"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1E120312D059826003F9548 /* SwiftUI.framework in Frameworks */,
-				D1E1202F2D059826003F9548 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,34 +103,12 @@
 		D1AF68C62C6A0F1500630B5A = {
 			isa = PBXGroup;
 			children = (
-				D1E120322D059826003F9548 /* Widget Extension */,
-				D1E1202D2D059826003F9548 /* Frameworks */,
 				D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */,
 				D1DF34E92CB7C16500627AE1 /* SIT Bus */,
 				D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */,
 				D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */,
-				D1AF68D02C6A0F1500630B5A /* Products */,
+				D1E120322D059826003F9548 /* Widget Extension */,
 			);
-			sourceTree = "<group>";
-		};
-		D1AF68D02C6A0F1500630B5A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */,
-				D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */,
-				D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */,
-				D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D1E1202D2D059826003F9548 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D1E1202E2D059826003F9548 /* WidgetKit.framework */,
-				D1E120302D059826003F9548 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +238,7 @@
 			mainGroup = D1AF68C62C6A0F1500630B5A;
 			packageReferences = (
 			);
-			productRefGroup = D1AF68D02C6A0F1500630B5A /* Products */;
+			productRefGroup = D1AF68C62C6A0F1500630B5A;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
