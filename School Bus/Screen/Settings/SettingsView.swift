@@ -68,7 +68,7 @@ struct SettingsView: View {
                     
                     Link(
                         destination: .init(
-                            string: "http://github.com"
+                            string: "https://github.com/yidev0/School-Bus"
                         )!
                     ) {
                         Label {
