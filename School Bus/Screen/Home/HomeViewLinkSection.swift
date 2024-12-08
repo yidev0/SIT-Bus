@@ -7,23 +7,63 @@
 
 import SwiftUI
 
+fileprivate enum LinkType: Int, CaseIterable {
+    case univCoop
+    case boardingLocation
+    
+    var title: LocalizedStringKey {
+        switch self {
+        case .univCoop:
+            "Label.UnivCoop"
+        case .boardingLocation:
+            "Label.BoardingLocation"
+        }
+    }
+    
+    var symbol: String {
+        switch self {
+        case .univCoop:
+            "fork.knife"
+        case .boardingLocation:
+            "map.fill"
+        }
+    }
+}
+
 struct HomeViewLinkSection: View {
     
     @Environment(HomeViewModel.self) private var model
+    @ScaledMetric var iconSize = 17
     
     var body: some View {
         Section {
             VStack(spacing: 8) {
-                NavigationLink {
-                    CoopServiceView()
-                } label: {
-                    makeLabel("Label.UnivCoop")
-                }
-                
-                NavigationLink {
-                    BusMapView()
-                } label: {
-                    makeLabel("Label.BoardingLocation")
+                ForEach(LinkType.allCases, id: \.self) { type in
+                    NavigationLink {
+                        switch type {
+                        case .univCoop:
+                            CoopServiceView()
+                        case .boardingLocation:
+                            BusMapView()
+                        }
+                    } label: {
+                        HStack(spacing: 12) {
+                            ZStack {
+                                Image(systemName: type.symbol)
+                                    .foregroundStyle(.accent)
+                            }
+                            .frame(width: iconSize)
+                            
+                            Text(type.title)
+                                
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(.secondary)
+                        }
+                        .fontWeight(.medium)
+                        .padding()
+                        .background()
+                    }
                 }
             }
         } header: {
@@ -34,18 +74,6 @@ struct HomeViewLinkSection: View {
             .font(.headline)
         }
         .buttonStyle(.home)
-    }
-    
-    func makeLabel(_ key: LocalizedStringKey) -> some View {
-        HStack {
-            Text(key)
-                .fontWeight(.medium)
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.secondary)
-        }
-        .padding()
-        .background()
     }
 }
 

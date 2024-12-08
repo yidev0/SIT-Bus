@@ -210,7 +210,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "乗車場所"
+            "value" : "バス乗車場所"
           }
         }
       }
@@ -700,13 +700,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NFUCA"
+            "value" : "NFUCA(University Co-op)"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "芝浦工業大学消費生活協同組合"
+            "state" : "needs_review",
+            "value" : "消費生活協同組合（生協）"
           }
         }
       }

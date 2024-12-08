@@ -54,10 +54,11 @@ struct HomeSchoolBusCell: View {
                 }
             }
         } label: {
-            Label(
-                type.localizedTitle,
-                systemImage: "bus.fill"
-            )
+            Label {
+                Text(type.localizedTitle)
+            } icon: {
+                Image(systemName: "bus.fill")
+            }
         }
         .foregroundStyle(Color.primary)
         .onAppear {
