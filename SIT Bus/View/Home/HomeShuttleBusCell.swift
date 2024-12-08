@@ -54,10 +54,11 @@ struct HomeShuttleBusCell: View {
                 Text("Label.NoBusService")
             }
         } label: {
-            Label(
-                type.localizedTitle,
-                systemImage: type.symbol
-            )
+            Label {
+                Text(type.localizedTitle)
+            } icon: {
+                Image(systemName: type.symbol)
+            }
         }
         .foregroundStyle(Color.primary)
         .onAppear {

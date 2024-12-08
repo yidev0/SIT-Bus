@@ -14,8 +14,7 @@ struct HomeSchoolBusCell: View {
     var type: BusLineType.SchoolBus
     var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
-    @State var nextBusHour: Int? = nil
-    @State var nextBusMinute: Int? = nil
+    @State var nextBusDate: Date? = nil
     @State var note: LocalizedStringKey? = nil
     @State var nextBusText: LocalizedStringKey = ""
     
@@ -23,12 +22,12 @@ struct HomeSchoolBusCell: View {
     
     var body: some View {
         GroupBox {
-            if let nextBusHour, let nextBusMinute {
+            if let nextBusDate {
                 HStack(alignment: .lastTextBaseline) {
-                    Text("\(String(format: "%02d", nextBusHour)):\(String(format: "%02d", nextBusMinute))")
+                    Text(nextBusDate, format: .dateTime.hour().minute())
                         .monospacedDigit()
                         .font(.title)
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                         .padding(.top, 8)
                         .padding(.bottom, 4)
                     
@@ -38,8 +37,7 @@ struct HomeSchoolBusCell: View {
                 }
                 .contentTransition(.numericText())
                 .accessibilityElement(children: .combine)
-                .animation(.default, value: nextBusHour)
-                .animation(.default, value: nextBusMinute)
+                .animation(.default, value: nextBusDate)
                 .animation(.default, value: nextBusText)
                 
                 if let note {
@@ -56,10 +54,11 @@ struct HomeSchoolBusCell: View {
                 }
             }
         } label: {
-            Label(
-                type.localizedTitle,
-                systemImage: "bus.fill"
-            )
+            Label {
+                Text(type.localizedTitle)
+            } icon: {
+                Image(systemName: "bus.fill")
+            }
         }
         .foregroundStyle(Color.primary)
         .onAppear {
@@ -71,11 +70,13 @@ struct HomeSchoolBusCell: View {
     }
     
     func loadNextBus() {
-        if let (hour, minute) = data?.getNextBus(for: type, date: .now) {
-            self.nextBusHour = hour
-            self.nextBusMinute = minute
+        if let nextBusDate = data?.getNextBus(for: type, date: .now) {
+            self.nextBusDate = nextBusDate
+            self.note = data?.getBusNote(for: type, date: .now)
             
-            let nextBusTime = hour * 60 + minute
+            let nextBusHour = nextBusDate.get(component: .hour)
+            let nextBusMinute = nextBusDate.get(component: .minute)
+            let nextBusTime = nextBusHour * 60 + nextBusMinute
             let currentTime = Date.now.get(component: .hour) * 60 + Date.now.get(component: .minute)
             
             let minutesRemaining = (nextBusTime - currentTime)
@@ -84,11 +85,8 @@ struct HomeSchoolBusCell: View {
             } else {
                 self.nextBusText = "Label.DepartsIn\(minutesRemaining)Minutes"
             }
-            
-            self.note = data?.getBusNote(for: type, date: .now)
         } else {
-            self.nextBusHour = nil
-            self.nextBusMinute = nil
+            self.nextBusDate = nil
             self.note = nil
             self.nextBusText = "Label.FinalBus"
         }
