@@ -24,16 +24,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D1AF68CF2C6A0F1500630B5A /* School Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "School Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF68E12C6A0F1700630B5A /* School BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "School BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF68EB2C6A0F1700630B5A /* School BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "School BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF69032C6A1BA400630B5A /* School-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "School-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SIT-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D1BEDD862CBFCB5F0012EF65 /* School BusUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School BusUITests"; sourceTree = "<group>"; };
-		D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School BusTests"; sourceTree = "<group>"; };
-		D1DF34E92CB7C16500627AE1 /* School Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School Bus"; sourceTree = "<group>"; };
+		D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus UITests"; sourceTree = "<group>"; };
+		D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus Tests"; sourceTree = "<group>"; };
+		D1DF34E92CB7C16500627AE1 /* SIT Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +64,10 @@
 		D1AF68C62C6A0F1500630B5A = {
 			isa = PBXGroup;
 			children = (
-				D1AF69032C6A1BA400630B5A /* School-Bus-Info.plist */,
-				D1DF34E92CB7C16500627AE1 /* School Bus */,
-				D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */,
-				D1BEDD862CBFCB5F0012EF65 /* School BusUITests */,
+				D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */,
+				D1DF34E92CB7C16500627AE1 /* SIT Bus */,
+				D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */,
+				D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */,
 				D1AF68D02C6A0F1500630B5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,9 +75,9 @@
 		D1AF68D02C6A0F1500630B5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D1AF68CF2C6A0F1500630B5A /* School Bus.app */,
-				D1AF68E12C6A0F1700630B5A /* School BusTests.xctest */,
-				D1AF68EB2C6A0F1700630B5A /* School BusUITests.xctest */,
+				D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */,
+				D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */,
+				D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D1AF68CE2C6A0F1500630B5A /* School Bus */ = {
+		D1AF68CE2C6A0F1500630B5A /* SIT Bus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "School Bus" */;
+			buildConfigurationList = D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT Bus" */;
 			buildPhases = (
 				D1AF68CB2C6A0F1500630B5A /* Sources */,
 				D1AF68CC2C6A0F1500630B5A /* Frameworks */,
@@ -98,16 +98,16 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D1DF34E92CB7C16500627AE1 /* School Bus */,
+				D1DF34E92CB7C16500627AE1 /* SIT Bus */,
 			);
-			name = "School Bus";
+			name = "SIT Bus";
 			productName = "School Bus";
-			productReference = D1AF68CF2C6A0F1500630B5A /* School Bus.app */;
+			productReference = D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D1AF68E02C6A0F1700630B5A /* School BusTests */ = {
+		D1AF68E02C6A0F1700630B5A /* SIT BusTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1AF68F82C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "School BusTests" */;
+			buildConfigurationList = D1AF68F82C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusTests" */;
 			buildPhases = (
 				D1AF68DD2C6A0F1700630B5A /* Sources */,
 				D1AF68DE2C6A0F1700630B5A /* Frameworks */,
@@ -119,16 +119,16 @@
 				D1AF68E32C6A0F1700630B5A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */,
+				D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */,
 			);
-			name = "School BusTests";
+			name = "SIT BusTests";
 			productName = "School BusTests";
-			productReference = D1AF68E12C6A0F1700630B5A /* School BusTests.xctest */;
+			productReference = D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D1AF68EA2C6A0F1700630B5A /* School BusUITests */ = {
+		D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1AF68FB2C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "School BusUITests" */;
+			buildConfigurationList = D1AF68FB2C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusUITests" */;
 			buildPhases = (
 				D1AF68E72C6A0F1700630B5A /* Sources */,
 				D1AF68E82C6A0F1700630B5A /* Frameworks */,
@@ -140,11 +140,11 @@
 				D1AF68ED2C6A0F1700630B5A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				D1BEDD862CBFCB5F0012EF65 /* School BusUITests */,
+				D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */,
 			);
-			name = "School BusUITests";
+			name = "SIT BusUITests";
 			productName = "School BusUITests";
-			productReference = D1AF68EB2C6A0F1700630B5A /* School BusUITests.xctest */;
+			productReference = D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "School Bus" */;
+			buildConfigurationList = D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "SIT Bus" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -186,9 +186,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D1AF68CE2C6A0F1500630B5A /* School Bus */,
-				D1AF68E02C6A0F1700630B5A /* School BusTests */,
-				D1AF68EA2C6A0F1700630B5A /* School BusUITests */,
+				D1AF68CE2C6A0F1500630B5A /* SIT Bus */,
+				D1AF68E02C6A0F1700630B5A /* SIT BusTests */,
+				D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,12 +244,12 @@
 /* Begin PBXTargetDependency section */
 		D1AF68E32C6A0F1700630B5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D1AF68CE2C6A0F1500630B5A /* School Bus */;
+			target = D1AF68CE2C6A0F1500630B5A /* SIT Bus */;
 			targetProxy = D1AF68E22C6A0F1700630B5A /* PBXContainerItemProxy */;
 		};
 		D1AF68ED2C6A0F1700630B5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D1AF68CE2C6A0F1500630B5A /* School Bus */;
+			target = D1AF68CE2C6A0F1500630B5A /* SIT Bus */;
 			targetProxy = D1AF68EC2C6A0F1700630B5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -457,7 +457,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/School Bus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/School Bus";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIT Bus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SIT Bus";
 			};
 			name = Debug;
 		};
@@ -476,7 +476,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/School Bus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/School Bus";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIT Bus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SIT Bus";
 			};
 			name = Release;
 		};
@@ -517,7 +517,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "School Bus" */ = {
+		D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "SIT Bus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1AF68F32C6A0F1700630B5A /* Debug */,
@@ -526,7 +526,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "School Bus" */ = {
+		D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT Bus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1AF68F62C6A0F1700630B5A /* Debug */,
@@ -535,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1AF68F82C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "School BusTests" */ = {
+		D1AF68F82C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1AF68F92C6A0F1700630B5A /* Debug */,
@@ -544,7 +544,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1AF68FB2C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "School BusUITests" */ = {
+		D1AF68FB2C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1AF68FC2C6A0F1700630B5A /* Debug */,

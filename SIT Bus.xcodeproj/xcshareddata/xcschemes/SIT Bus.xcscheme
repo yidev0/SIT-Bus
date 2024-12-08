@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1AF68CE2C6A0F1500630B5A"
-               BuildableName = "School Bus.app"
-               BlueprintName = "School Bus"
-               ReferencedContainer = "container:School Bus.xcodeproj">
+               BuildableName = "SIT Bus.app"
+               BlueprintName = "SIT Bus"
+               ReferencedContainer = "container:SIT Bus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1AF68E02C6A0F1700630B5A"
-               BuildableName = "School BusTests.xctest"
-               BlueprintName = "School BusTests"
-               ReferencedContainer = "container:School Bus.xcodeproj">
+               BuildableName = "SIT BusTests.xctest"
+               BlueprintName = "SIT BusTests"
+               ReferencedContainer = "container:SIT Bus.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1AF68EA2C6A0F1700630B5A"
-               BuildableName = "School BusUITests.xctest"
-               BlueprintName = "School BusUITests"
-               ReferencedContainer = "container:School Bus.xcodeproj">
+               BuildableName = "SIT BusUITests.xctest"
+               BlueprintName = "SIT BusUITests"
+               ReferencedContainer = "container:SIT Bus.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1AF68CE2C6A0F1500630B5A"
-            BuildableName = "School Bus.app"
-            BlueprintName = "School Bus"
-            ReferencedContainer = "container:School Bus.xcodeproj">
+            BuildableName = "SIT Bus.app"
+            BlueprintName = "SIT Bus"
+            ReferencedContainer = "container:SIT Bus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1AF68CE2C6A0F1500630B5A"
-            BuildableName = "School Bus.app"
-            BlueprintName = "School Bus"
-            ReferencedContainer = "container:School Bus.xcodeproj">
+            BuildableName = "SIT Bus.app"
+            BlueprintName = "SIT Bus"
+            ReferencedContainer = "container:SIT Bus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
