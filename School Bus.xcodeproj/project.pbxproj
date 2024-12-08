@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D1DE09EB2CBFD5340019CCA2 /* GuidelineMeasurement in Frameworks */ = {isa = PBXBuildFile; productRef = D1DE09EA2CBFD5340019CCA2 /* GuidelineMeasurement */; };
+		D1E1202F2D059826003F9548 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E1202E2D059826003F9548 /* WidgetKit.framework */; };
+		D1E120312D059826003F9548 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E120302D059826003F9548 /* SwiftUI.framework */; };
+		D1E1203E2D059827003F9548 /* Widget ExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,19 +28,54 @@
 			remoteGlobalIDString = D1AF68CE2C6A0F1500630B5A;
 			remoteInfo = "School Bus";
 		};
+		D1E1203C2D059827003F9548 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1E1202B2D059826003F9548;
+			remoteInfo = "Widget ExtensionExtension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D1E1203F2D059827003F9548 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D1E1203E2D059827003F9548 /* Widget ExtensionExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D1AF68CF2C6A0F1500630B5A /* School Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "School Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AF68E12C6A0F1700630B5A /* School BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "School BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AF68EB2C6A0F1700630B5A /* School BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "School BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AF69032C6A1BA400630B5A /* School-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "School-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget ExtensionExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1E1202E2D059826003F9548 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D1E120302D059826003F9548 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D1E120422D059827003F9548 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D1E1202B2D059826003F9548 /* Widget ExtensionExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D1BEDD862CBFCB5F0012EF65 /* School BusUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School BusUITests"; sourceTree = "<group>"; };
 		D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School BusTests"; sourceTree = "<group>"; };
 		D1DF34E92CB7C16500627AE1 /* School Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School Bus"; sourceTree = "<group>"; };
+		D1E120322D059826003F9548 /* Widget Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D1E120422D059827003F9548 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Widget Extension"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +101,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1E120292D059826003F9548 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1E120312D059826003F9548 /* SwiftUI.framework in Frameworks */,
+				D1E1202F2D059826003F9548 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,6 +120,8 @@
 				D1DF34E92CB7C16500627AE1 /* School Bus */,
 				D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */,
 				D1BEDD862CBFCB5F0012EF65 /* School BusUITests */,
+				D1E120322D059826003F9548 /* Widget Extension */,
+				D1E1202D2D059826003F9548 /* Frameworks */,
 				D1AF68D02C6A0F1500630B5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,8 +132,18 @@
 				D1AF68CF2C6A0F1500630B5A /* School Bus.app */,
 				D1AF68E12C6A0F1700630B5A /* School BusTests.xctest */,
 				D1AF68EB2C6A0F1700630B5A /* School BusUITests.xctest */,
+				D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D1E1202D2D059826003F9548 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1E1202E2D059826003F9548 /* WidgetKit.framework */,
+				D1E120302D059826003F9548 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,10 +156,12 @@
 				D1AF68CB2C6A0F1500630B5A /* Sources */,
 				D1AF68CC2C6A0F1500630B5A /* Frameworks */,
 				D1AF68CD2C6A0F1500630B5A /* Resources */,
+				D1E1203F2D059827003F9548 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D1E1203D2D059827003F9548 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D1DF34E92CB7C16500627AE1 /* School Bus */,
@@ -152,6 +213,28 @@
 			productReference = D1AF68EB2C6A0F1700630B5A /* School BusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D1E1202B2D059826003F9548 /* Widget ExtensionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1E120432D059827003F9548 /* Build configuration list for PBXNativeTarget "Widget ExtensionExtension" */;
+			buildPhases = (
+				D1E120282D059826003F9548 /* Sources */,
+				D1E120292D059826003F9548 /* Frameworks */,
+				D1E1202A2D059826003F9548 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D1E120322D059826003F9548 /* Widget Extension */,
+			);
+			name = "Widget ExtensionExtension";
+			packageProductDependencies = (
+			);
+			productName = "Widget ExtensionExtension";
+			productReference = D1E1202C2D059826003F9548 /* Widget ExtensionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -159,7 +242,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					D1AF68CE2C6A0F1500630B5A = {
@@ -172,6 +255,9 @@
 					D1AF68EA2C6A0F1700630B5A = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = D1AF68CE2C6A0F1500630B5A;
+					};
+					D1E1202B2D059826003F9548 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
@@ -194,6 +280,7 @@
 				D1AF68CE2C6A0F1500630B5A /* School Bus */,
 				D1AF68E02C6A0F1700630B5A /* School BusTests */,
 				D1AF68EA2C6A0F1700630B5A /* School BusUITests */,
+				D1E1202B2D059826003F9548 /* Widget ExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -214,6 +301,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D1AF68E92C6A0F1700630B5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1E1202A2D059826003F9548 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,6 +338,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1E120282D059826003F9548 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -256,6 +357,11 @@
 			isa = PBXTargetDependency;
 			target = D1AF68CE2C6A0F1500630B5A /* School Bus */;
 			targetProxy = D1AF68EC2C6A0F1700630B5A /* PBXContainerItemProxy */;
+		};
+		D1E1203D2D059827003F9548 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1E1202B2D059826003F9548 /* Widget ExtensionExtension */;
+			targetProxy = D1E1203C2D059827003F9548 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -517,6 +623,62 @@
 			};
 			name = Release;
 		};
+		D1E120402D059827003F9548 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Widget-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1E120412D059827003F9548 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Widget-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -552,6 +714,15 @@
 			buildConfigurations = (
 				D1AF68FC2C6A0F1700630B5A /* Debug */,
 				D1AF68FD2C6A0F1700630B5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1E120432D059827003F9548 /* Build configuration list for PBXNativeTarget "Widget ExtensionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1E120402D059827003F9548 /* Debug */,
+				D1E120412D059827003F9548 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
