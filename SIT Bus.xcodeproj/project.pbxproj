@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D1DE09EB2CBFD5340019CCA2 /* GuidelineMeasurement in Frameworks */ = {isa = PBXBuildFile; productRef = D1DE09EA2CBFD5340019CCA2 /* GuidelineMeasurement */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1AF68E22C6A0F1700630B5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1AF68CE2C6A0F1500630B5A;
+			remoteInfo = "School Bus";
+		};
+		D1AF68EC2C6A0F1700630B5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1AF68CE2C6A0F1500630B5A;
+			remoteInfo = "School Bus";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF69032C6A1BA400630B5A /* School-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "School-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D1BEDD862CBFCB5F0012EF65 /* School BusUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School BusUITests"; sourceTree = "<group>"; };
+		D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School BusTests"; sourceTree = "<group>"; };
+		D1DF34E92CB7C16500627AE1 /* School Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "School Bus"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1AF68CC2C6A0F1500630B5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1DE09EB2CBFD5340019CCA2 /* GuidelineMeasurement in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AF68DE2C6A0F1700630B5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AF68E82C6A0F1700630B5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D1AF68C62C6A0F1500630B5A = {
+			isa = PBXGroup;
+			children = (
+				D1AF69032C6A1BA400630B5A /* School-Bus-Info.plist */,
+				D1DF34E92CB7C16500627AE1 /* School Bus */,
+				D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */,
+				D1BEDD862CBFCB5F0012EF65 /* School BusUITests */,
+				D1AF68D02C6A0F1500630B5A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D1AF68D02C6A0F1500630B5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */,
+				D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */,
+				D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D1AF68CE2C6A0F1500630B5A /* SIT Bus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT Bus" */;
+			buildPhases = (
+				D1AF68CB2C6A0F1500630B5A /* Sources */,
+				D1AF68CC2C6A0F1500630B5A /* Frameworks */,
+				D1AF68CD2C6A0F1500630B5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D1DF34E92CB7C16500627AE1 /* School Bus */,
+			);
+			name = "SIT Bus";
+			productName = "School Bus";
+			productReference = D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D1AF68E02C6A0F1700630B5A /* SIT BusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1AF68F82C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusTests" */;
+			buildPhases = (
+				D1AF68DD2C6A0F1700630B5A /* Sources */,
+				D1AF68DE2C6A0F1700630B5A /* Frameworks */,
+				D1AF68DF2C6A0F1700630B5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1AF68E32C6A0F1700630B5A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D1BEDD8C2CBFCB5F0012EF65 /* School BusTests */,
+			);
+			name = "SIT BusTests";
+			productName = "School BusTests";
+			productReference = D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1AF68FB2C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusUITests" */;
+			buildPhases = (
+				D1AF68E72C6A0F1700630B5A /* Sources */,
+				D1AF68E82C6A0F1700630B5A /* Frameworks */,
+				D1AF68E92C6A0F1700630B5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1AF68ED2C6A0F1700630B5A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D1BEDD862CBFCB5F0012EF65 /* School BusUITests */,
+			);
+			name = "SIT BusUITests";
+			productName = "School BusUITests";
+			productReference = D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1AF68C72C6A0F1500630B5A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					D1AF68CE2C6A0F1500630B5A = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					D1AF68E02C6A0F1700630B5A = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D1AF68CE2C6A0F1500630B5A;
+					};
+					D1AF68EA2C6A0F1700630B5A = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D1AF68CE2C6A0F1500630B5A;
+					};
+				};
+			};
+			buildConfigurationList = D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "SIT Bus" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = D1AF68C62C6A0F1500630B5A;
+			packageReferences = (
+			);
+			productRefGroup = D1AF68D02C6A0F1500630B5A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1AF68CE2C6A0F1500630B5A /* SIT Bus */,
+				D1AF68E02C6A0F1700630B5A /* SIT BusTests */,
+				D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D1AF68CD2C6A0F1500630B5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AF68DF2C6A0F1700630B5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AF68E92C6A0F1700630B5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D1AF68CB2C6A0F1500630B5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AF68DD2C6A0F1700630B5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AF68E72C6A0F1700630B5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1AF68E32C6A0F1700630B5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1AF68CE2C6A0F1500630B5A /* SIT Bus */;
+			targetProxy = D1AF68E22C6A0F1700630B5A /* PBXContainerItemProxy */;
+		};
+		D1AF68ED2C6A0F1700630B5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1AF68CE2C6A0F1500630B5A /* SIT Bus */;
+			targetProxy = D1AF68EC2C6A0F1700630B5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D1AF68F32C6A0F1700630B5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D1AF68F42C6A0F1700630B5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1AF68F62C6A0F1700630B5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"School Bus/Preview Content\"";
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "School-Bus-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1AF68F72C6A0F1700630B5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"School Bus/Preview Content\"";
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "School-Bus-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D1AF68F92C6A0F1700630B5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.School-BusTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIT Bus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SIT Bus";
+			};
+			name = Debug;
+		};
+		D1AF68FA2C6A0F1700630B5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.School-BusTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIT Bus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SIT Bus";
+			};
+			name = Release;
+		};
+		D1AF68FC2C6A0F1700630B5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.School-BusUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "School Bus";
+			};
+			name = Debug;
+		};
+		D1AF68FD2C6A0F1700630B5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.School-BusUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "School Bus";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "SIT Bus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AF68F32C6A0F1700630B5A /* Debug */,
+				D1AF68F42C6A0F1700630B5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT Bus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AF68F62C6A0F1700630B5A /* Debug */,
+				D1AF68F72C6A0F1700630B5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1AF68F82C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AF68F92C6A0F1700630B5A /* Debug */,
+				D1AF68FA2C6A0F1700630B5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1AF68FB2C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT BusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AF68FC2C6A0F1700630B5A /* Debug */,
+				D1AF68FD2C6A0F1700630B5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1DE09EA2CBFD5340019CCA2 /* GuidelineMeasurement */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GuidelineMeasurement;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D1AF68C72C6A0F1500630B5A /* Project object */;
+}
