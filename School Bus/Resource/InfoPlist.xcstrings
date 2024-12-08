@@ -1,8 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "CFBundleName" : {
-      "comment" : "Bundle name",
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -10,10 +10,22 @@
             "state" : "new",
             "value" : "SIT Bus"
           }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "School Bus"
+          }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "SITバス時刻表"
           }
         }

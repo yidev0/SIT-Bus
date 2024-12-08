@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import GuidelineMeasurement
 
 struct HomeViewLinkSection: View {
     

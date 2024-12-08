@@ -83,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1DE09EB2CBFD5340019CCA2 /* GuidelineMeasurement in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +500,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "School-Bus-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -532,6 +532,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "School-Bus-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -728,13 +729,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D1DE09EA2CBFD5340019CCA2 /* GuidelineMeasurement */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GuidelineMeasurement;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1AF68C72C6A0F1500630B5A /* Project object */;
 }
