@@ -14,7 +14,7 @@ class TimetableManager {
     public var urlTask: URLSessionTask?
     public var lastUpdatedDate: Date = .now
     
-    private let dataStoreURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("bus_data", conformingTo: .json)
+    private let dataStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
     
     init() {
 #if DEBUG
@@ -69,7 +69,7 @@ class TimetableManager {
             let (data, _) = try await URLSession.shared.data(from: fetchURL)
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
             
-            if let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus") {
                 try data.write(to: url.appendingPathComponent("bus_data", conformingTo: .json))
                 UserDefaults.standard.set(Date.now.timeIntervalSince1970, forKey: "LastUpdate")
             }

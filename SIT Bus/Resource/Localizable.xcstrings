@@ -23,6 +23,9 @@
         }
       }
     },
+    "Bottom %@" : {
+
+    },
     "Button.Done" : {
       "localizations" : {
         "en" : {
@@ -102,6 +105,12 @@
           }
         }
       }
+    },
+    "Hello %@" : {
+
+    },
+    "L" : {
+
     },
     "Label.%@to%@Service" : {
       "localizations" : {
@@ -214,6 +223,9 @@
           }
         }
       }
+    },
+    "Label.BusType" : {
+
     },
     "Label.CampusToStation" : {
       "localizations" : {
@@ -435,6 +447,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大学側発着場所"
+          }
+        }
+      }
+    },
+    "Label.NextBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Bus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のバス"
           }
         }
       }
@@ -710,6 +738,21 @@
           }
         }
       }
+    },
+    "Leading" : {
+
+    },
+    "My Widget" : {
+
+    },
+    "T %@" : {
+
+    },
+    "This is an example widget." : {
+
+    },
+    "Trailing" : {
+
     }
   },
   "version" : "1.0"
