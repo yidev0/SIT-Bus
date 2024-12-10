@@ -9,11 +9,20 @@ import WidgetKit
 import AppIntents
 import SwiftUI
 
+extension SchoolBusType {
+    var busLineType: BusLineType.SchoolBus {
+        switch self {
+        case .campusToOmiya: return .campusToStation
+        case .omiyaToCampus: return .stationToCampus
+        }
+    }
+}
+
 struct SITBusWidgetIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = "Label.BusType"
+    static var title: LocalizedStringResource = .init("Label.BusType", table: "Widget")
     
-    @Parameter(title: "Label.BusType", default: nil)
-    var busType: String?
+    @Parameter(title: .init("Label.BusType", table: "Widget"), default: .omiyaToCampus)
+    var busType: SchoolBusType
 }
 
 struct SITBusWidgetEntry: TimelineEntry {
@@ -25,32 +34,86 @@ struct SITBusWidgetEntry: TimelineEntry {
 
 struct SITBusTimelineProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SITBusWidgetEntry {
-        .init(date: .now, lineType: .stationToCampus)
+        .init(
+            date: .now,
+            lineType: .stationToCampus
+        )
     }
+    
     func snapshot(
         for configuration: SITBusWidgetIntent,
         in context: Context
     ) async -> SITBusWidgetEntry {
-        return .init(date: .now, lineType: .stationToCampus)
+        return .init(
+            date: .now,
+            lineType: configuration.busType.busLineType
+        )
     }
+    
     func timeline(
         for configuration: SITBusWidgetIntent,
         in context: Context
     ) async -> Timeline<SITBusWidgetEntry> {
+        let timeline: Timeline<SITBusWidgetEntry> = makeTimeline(busType: configuration.busType)
+        return timeline
+    }
+    
+    func makeTimeline(busType: SchoolBusType) -> Timeline<SITBusWidgetEntry> {
         let timetableloader = TimetableLoader.shared
         timetableloader.loadTimetable()
         
-        let time = timetableloader.data?.getNextBus(for: .campusToStation, date: .now)
-        let note = timetableloader.data?.getBusNote(for: .campusToStation, date: .now)
-        return .init(
-            entries: [.init(
-                date: .now,
-                lineType: .stationToCampus,
-                time: time,
-                note: note
-            )],
-            policy: .atEnd
-        )
+        var entries: [SITBusWidgetEntry] = []
+        var baseTime: Date = .now
+        var time: Date?
+        var note: (start: Date, end: Date)?
+        
+        while entries.count < 20 {
+            print(baseTime)
+            time = timetableloader.data?.getNextBus(
+                for: busType.busLineType,
+                date: baseTime
+            )
+            note = timetableloader.data?.getBusNote(
+                for: busType.busLineType,
+                date: baseTime
+            )
+            
+            if let note {
+                entries.append(
+                    .init(
+                        date: note.end,
+                        lineType: busType.busLineType,
+                        time: time,
+                        note: "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
+                    )
+                )
+                baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: note.end) ?? .now
+            } else if let time = time {
+                entries.append(
+                    .init(
+                        date: time,
+                        lineType: busType.busLineType,
+                        time: time
+                    )
+                )
+                baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: time) ?? .now
+            } else {
+                entries.append(.init(date: baseTime, lineType: busType.busLineType))
+                break
+            }
+        }
+        
+        if entries.count == 1 {
+            var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: .now)!
+            tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? .now
+            
+            return .init(
+                entries: entries,
+                policy: .after(tomorrow)
+            )
+        }
+        
+        return .init(entries: entries, policy: .atEnd)
     }
 }
 
@@ -64,19 +127,24 @@ struct SITBusWidgetEntryView : View {
                 switch family {
                 case .systemSmall:
                     Text(entry.lineType.localizedShortTitle)
-                        .fontWeight(.semibold)
                 default:
                     Text(entry.lineType.localizedTitle)
-                        .fontWeight(.medium)
                 }
                 
                 Spacer()
             }
+            .fontWeight(.bold)
             
             Spacer()
             
-            if let time = entry.time {
-                Text("Label.NextBus")
+            if let note = entry.note {
+                Text("Label.TimelyOperation", tableName: "Widget")
+                    .font(family == .systemSmall ? .footnote : .body)
+                Text(note, tableName: "Widget")
+                    .font(family == .systemSmall ? .body : .title2)
+                    .fontWeight(family == .systemSmall ? .regular : .medium)
+            } else if let time = entry.time {
+                Text("Label.NextBus", tableName: "Widget")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Text(time, style: .time)
@@ -84,6 +152,7 @@ struct SITBusWidgetEntryView : View {
                     .fontWeight(.medium)
             } else {
                 Text("Label.NoBusService")
+                    .font(family == .systemSmall ? .body : .title)
             }
         }
         .containerBackground(for: .widget) {
@@ -102,8 +171,8 @@ struct SITBusWidget: Widget {
         ) { entry in
             SITBusWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName(Text("Label.SITBusWidget", tableName: "Widget"))
+        .description(Text("Detail.SITBusWidget", tableName: "Widget"))
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
@@ -120,5 +189,34 @@ struct SITBusWidget: Widget {
     SITBusWidgetEntry(
         date: .distantFuture,
         lineType: .stationToCampus
+    )
+    
+    SITBusWidgetEntry(
+        date: .now,
+        lineType: .stationToCampus,
+        time: .now,
+        note: "Label.\(Text(Date.distantPast, format: .dateTime.hour().minute()))to\(Text(Date.distantFuture, format: .dateTime.hour().minute()))Service"
+    )
+}
+
+#Preview(as: .systemMedium) {
+    SITBusWidget()
+} timeline: {
+    SITBusWidgetEntry(
+        date: .now,
+        lineType: .stationToCampus,
+        time: .now
+    )
+    
+    SITBusWidgetEntry(
+        date: .distantFuture,
+        lineType: .stationToCampus
+    )
+    
+    SITBusWidgetEntry(
+        date: .now,
+        lineType: .stationToCampus,
+        time: .now,
+        note: "Label.\(Text(Date.distantPast, format: .dateTime.hour().minute()))to\(Text(Date.distantFuture, format: .dateTime.hour().minute()))Service"
     )
 }

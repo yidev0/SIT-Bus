@@ -53,18 +53,18 @@ enum BusLineType: CaseIterable, Hashable {
         var localizedTitle: LocalizedStringKey {
             switch self {
             case .campusToStation:
-                "Label.CampusToStation"
+                "Label.CampusToOmiyaStation"
             case .stationToCampus:
-                "Label.StationToCampus"
+                "Label.OmiyaStationToCampus"
             }
         }
         
         var localizedShortTitle: LocalizedStringKey {
             switch self {
             case .campusToStation:
-                "Label.Short.CampusToStation"
+                "Label.Short.CampusToOmiyaStation"
             case .stationToCampus:
-                "Label.Short.StationToCampus"
+                "Label.Short.OmiyaStationToCampus"
             }
         }
         

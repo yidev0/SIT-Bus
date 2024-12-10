@@ -224,21 +224,18 @@
         }
       }
     },
-    "Label.BusType" : {
-
-    },
-    "Label.CampusToStation" : {
+    "Label.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Omiya Campus to Station"
+            "value" : "Campus to Higashi-Omiya Station"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "大宮キャンパスから東大宮駅"
+            "value" : "キャンパスから東大宮駅"
           }
         }
       }
@@ -451,22 +448,6 @@
         }
       }
     },
-    "Label.NextBus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next Bus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "次のバス"
-          }
-        }
-      }
-    },
     "Label.NoBuses" : {
       "localizations" : {
         "en" : {
@@ -495,6 +476,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "本日のバスの運行は終了しました"
+          }
+        }
+      }
+    },
+    "Label.OmiyaStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Station to Omiya Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "東大宮駅からキャンパス"
           }
         }
       }
@@ -595,7 +592,7 @@
         }
       }
     },
-    "Label.Short.CampusToStation" : {
+    "Label.Short.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -605,8 +602,24 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "東大宮駅行き"
+          }
+        }
+      }
+    },
+    "Label.Short.OmiyaStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "キャンパス行き"
           }
         }
       }
@@ -623,22 +636,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "豊洲校舎行き"
-          }
-        }
-      }
-    },
-    "Label.Short.StationToCampus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Campus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャンパス行き"
           }
         }
       }
@@ -671,22 +668,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "シャトルバス"
-          }
-        }
-      }
-    },
-    "Label.StationToCampus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Station to Omiya Campus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "東大宮駅から大宮キャンパス"
           }
         }
       }
@@ -742,13 +723,7 @@
     "Leading" : {
 
     },
-    "My Widget" : {
-
-    },
     "T %@" : {
-
-    },
-    "This is an example widget." : {
 
     },
     "Trailing" : {
