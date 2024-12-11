@@ -72,9 +72,8 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
             if let note {
                 entries.append(
                     .init(
-                        date: note.end,
+                        date: baseTime,
                         lineType: busType,
-                        time: time,
                         note: "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
                     )
                 )
@@ -82,7 +81,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
             } else if let time = time {
                 entries.append(
                     .init(
-                        date: time,
+                        date: baseTime,
                         lineType: busType,
                         time: time
                     )
