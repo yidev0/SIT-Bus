@@ -135,7 +135,13 @@ struct SBTimeSheet: Decodable {
                             if let range = Range(match.range, in: note) {
                                 let time = String(note[range])
                                 if let date = dateFormatter.date(from: time) {
-                                    dateRange.append(date)
+                                    let newDate = Calendar.current.date(
+                                        bySettingHour: date.get(component: .hour),
+                                        minute: date.get(component: .minute),
+                                        second: 0,
+                                        of: .now
+                                    )
+                                    dateRange.append(newDate ?? date)
                                 }
                             }
                         }

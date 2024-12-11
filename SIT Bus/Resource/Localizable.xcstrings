@@ -215,18 +215,21 @@
         }
       }
     },
-    "Label.CampusToStation" : {
+    "Label.BusType" : {
+
+    },
+    "Label.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Omiya Campus to Station"
+            "value" : "Campus to Higashi-Omiya Station"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "大宮キャンパスから東大宮駅"
+            "value" : "キャンパスから東大宮駅"
           }
         }
       }
@@ -385,7 +388,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "東大宮駅発着場所"
           }
         }
@@ -401,7 +404,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "岩槻駅発着場所"
           }
         }
@@ -417,7 +420,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "大学側発着場所"
           }
         }
@@ -433,7 +436,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "大学側発着場所"
           }
         }
@@ -467,6 +470,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "本日のバスの運行は終了しました"
+          }
+        }
+      }
+    },
+    "Label.OmiyaStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Station to Omiya Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "東大宮駅からキャンパス"
           }
         }
       }
@@ -567,7 +586,7 @@
         }
       }
     },
-    "Label.Short.CampusToStation" : {
+    "Label.Short.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -577,8 +596,24 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "東大宮駅行き"
+          }
+        }
+      }
+    },
+    "Label.Short.OmiyaStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "キャンパス行き"
           }
         }
       }
@@ -595,22 +630,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "豊洲校舎行き"
-          }
-        }
-      }
-    },
-    "Label.Short.StationToCampus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Campus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャンパス行き"
           }
         }
       }
@@ -643,22 +662,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "シャトルバス"
-          }
-        }
-      }
-    },
-    "Label.StationToCampus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Station to Omiya Campus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "東大宮駅から大宮キャンパス"
           }
         }
       }
@@ -705,7 +708,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "消費生活協同組合（生協）"
           }
         }

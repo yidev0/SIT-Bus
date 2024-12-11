@@ -6,6 +6,10 @@
 	objectVersion = 70;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D1C5D8872D06D3FD009DAB6B /* Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D1AF68E22C6A0F1700630B5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,19 +25,91 @@
 			remoteGlobalIDString = D1AF68CE2C6A0F1500630B5A;
 			remoteInfo = "School Bus";
 		};
+		D1C5D8882D06D3FD009DAB6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1E1202B2D059826003F9548;
+			remoteInfo = "Widget Extension";
+		};
+		D1E1203C2D059827003F9548 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1E1202B2D059826003F9548;
+			remoteInfo = "Widget ExtensionExtension";
+		};
+		D1E17F7E2D06CB9300DBFB45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1E1202B2D059826003F9548;
+			remoteInfo = "Widget Extension";
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D1E1203F2D059827003F9548 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D1C5D8872D06D3FD009DAB6B /* Widget Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SIT-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1C5D7DD2D06D38B009DAB6B /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1C5D7DE2D06D38B009DAB6B /* SIT BusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1C5D7DF2D06D38B009DAB6B /* SIT BusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIT BusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D1DA62722D06BCD1000FB5BD /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extension/Bundle +.swift",
+				"Extension/CLLocationCoordinate2D +.swift",
+				"Extension/Color +.swift",
+				"Extension/Date +.swift",
+				"Extension/GroupBox +.swift",
+				"Extension/String +.swift",
+				"Extension/View +.swift",
+				Model/Bus/BusLineType.swift,
+				Model/Data/ShuttleBusData.swift,
+				Model/Data/SITBusActivityAttributes.swift,
+				Model/Decodable/SBCalendar.swift,
+				Model/Decodable/SBReferenceData.swift,
+				Model/Decodable/SBSiteInfo.swift,
+				Model/Decodable/SBTimeSheet.swift,
+				Model/ListType.swift,
+				Model/TimetableManager.swift,
+				Model/TimetableValue.swift,
+				Resource/Localizable.xcstrings,
+			);
+			target = D1E1202B2D059826003F9548 /* Widget Extension */;
+		};
+		D1E120422D059827003F9548 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D1E1202B2D059826003F9548 /* Widget Extension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus UITests"; sourceTree = "<group>"; };
 		D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus Tests"; sourceTree = "<group>"; };
-		D1DF34E92CB7C16500627AE1 /* SIT Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus"; sourceTree = "<group>"; };
+		D1DA62672D06B807000FB5BD /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
+		D1DF34E92CB7C16500627AE1 /* SIT Bus */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D1DA62722D06BCD1000FB5BD /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus"; sourceTree = "<group>"; };
+		D1E120322D059826003F9548 /* Widget Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D1E120422D059827003F9548 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Widget Extension"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,28 +134,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1E120292D059826003F9548 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		D1AF68C62C6A0F1500630B5A = {
 			isa = PBXGroup;
 			children = (
+				D1DA62672D06B807000FB5BD /* Shared */,
 				D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */,
 				D1DF34E92CB7C16500627AE1 /* SIT Bus */,
 				D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */,
 				D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */,
-				D1AF68D02C6A0F1500630B5A /* Products */,
+				D1E120322D059826003F9548 /* Widget Extension */,
+				D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */,
+				D1C5D7DD2D06D38B009DAB6B /* SIT Bus.app */,
+				D1C5D7DE2D06D38B009DAB6B /* SIT BusTests.xctest */,
+				D1C5D7DF2D06D38B009DAB6B /* SIT BusUITests.xctest */,
+				D1C5D8862D06D3FD009DAB6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		D1AF68D02C6A0F1500630B5A /* Products */ = {
+		D1C5D8862D06D3FD009DAB6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */,
-				D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */,
-				D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,17 +178,21 @@
 				D1AF68CB2C6A0F1500630B5A /* Sources */,
 				D1AF68CC2C6A0F1500630B5A /* Frameworks */,
 				D1AF68CD2C6A0F1500630B5A /* Resources */,
+				D1E1203F2D059827003F9548 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D1E1203D2D059827003F9548 /* PBXTargetDependency */,
+				D1E17F7F2D06CB9300DBFB45 /* PBXTargetDependency */,
+				D1C5D8892D06D3FD009DAB6B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D1DF34E92CB7C16500627AE1 /* SIT Bus */,
 			);
 			name = "SIT Bus";
 			productName = "School Bus";
-			productReference = D1AF68CF2C6A0F1500630B5A /* SIT Bus.app */;
+			productReference = D1C5D7DD2D06D38B009DAB6B /* SIT Bus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D1AF68E02C6A0F1700630B5A /* SIT BusTests */ = {
@@ -123,7 +213,7 @@
 			);
 			name = "SIT BusTests";
 			productName = "School BusTests";
-			productReference = D1AF68E12C6A0F1700630B5A /* SIT BusTests.xctest */;
+			productReference = D1C5D7DE2D06D38B009DAB6B /* SIT BusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */ = {
@@ -144,8 +234,30 @@
 			);
 			name = "SIT BusUITests";
 			productName = "School BusUITests";
-			productReference = D1AF68EB2C6A0F1700630B5A /* SIT BusUITests.xctest */;
+			productReference = D1C5D7DF2D06D38B009DAB6B /* SIT BusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		D1E1202B2D059826003F9548 /* Widget Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1E120432D059827003F9548 /* Build configuration list for PBXNativeTarget "Widget Extension" */;
+			buildPhases = (
+				D1E120282D059826003F9548 /* Sources */,
+				D1E120292D059826003F9548 /* Frameworks */,
+				D1E1202A2D059826003F9548 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D1E120322D059826003F9548 /* Widget Extension */,
+			);
+			name = "Widget Extension";
+			packageProductDependencies = (
+			);
+			productName = "Widget ExtensionExtension";
+			productReference = D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -154,7 +266,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					D1AF68CE2C6A0F1500630B5A = {
@@ -167,6 +279,9 @@
 					D1AF68EA2C6A0F1700630B5A = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = D1AF68CE2C6A0F1500630B5A;
+					};
+					D1E1202B2D059826003F9548 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
@@ -182,10 +297,11 @@
 			mainGroup = D1AF68C62C6A0F1500630B5A;
 			packageReferences = (
 			);
-			productRefGroup = D1AF68D02C6A0F1500630B5A /* Products */;
+			productRefGroup = D1AF68C62C6A0F1500630B5A;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D1E1202B2D059826003F9548 /* Widget Extension */,
 				D1AF68CE2C6A0F1500630B5A /* SIT Bus */,
 				D1AF68E02C6A0F1700630B5A /* SIT BusTests */,
 				D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */,
@@ -209,6 +325,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D1AF68E92C6A0F1700630B5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1E1202A2D059826003F9548 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,6 +362,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1E120282D059826003F9548 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -251,6 +381,21 @@
 			isa = PBXTargetDependency;
 			target = D1AF68CE2C6A0F1500630B5A /* SIT Bus */;
 			targetProxy = D1AF68EC2C6A0F1700630B5A /* PBXContainerItemProxy */;
+		};
+		D1C5D8892D06D3FD009DAB6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1E1202B2D059826003F9548 /* Widget Extension */;
+			targetProxy = D1C5D8882D06D3FD009DAB6B /* PBXContainerItemProxy */;
+		};
+		D1E1203D2D059827003F9548 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1E1202B2D059826003F9548 /* Widget Extension */;
+			targetProxy = D1E1203C2D059827003F9548 /* PBXContainerItemProxy */;
+		};
+		D1E17F7F2D06CB9300DBFB45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1E1202B2D059826003F9548 /* Widget Extension */;
+			targetProxy = D1E17F7E2D06CB9300DBFB45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -383,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SIT Bus/SIT Bus.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SIT Bus/Preview Content\"";
@@ -391,6 +537,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SIT-Bus-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -415,6 +563,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SIT Bus/SIT Bus.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SIT Bus/Preview Content\"";
@@ -423,6 +572,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SIT-Bus-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,6 +665,64 @@
 			};
 			name = Release;
 		};
+		D1E120402D059827003F9548 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Widget Extension/Widget Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Widget-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1E120412D059827003F9548 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Widget Extension/Widget Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5U8W3XYWRU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Widget-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -549,6 +758,15 @@
 			buildConfigurations = (
 				D1AF68FC2C6A0F1700630B5A /* Debug */,
 				D1AF68FD2C6A0F1700630B5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1E120432D059827003F9548 /* Build configuration list for PBXNativeTarget "Widget Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1E120402D059827003F9548 /* Debug */,
+				D1E120412D059827003F9548 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

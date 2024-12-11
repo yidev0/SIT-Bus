@@ -72,7 +72,9 @@ struct HomeSchoolBusCell: View {
     func loadNextBus() {
         if let nextBusDate = data?.getNextBus(for: type, date: .now) {
             self.nextBusDate = nextBusDate
-            self.note = data?.getBusNote(for: type, date: .now)
+            if note == nil, let note = data?.getBusNote(for: type, date: .now) {
+                self.note = "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
+            }
             
             let nextBusHour = nextBusDate.get(component: .hour)
             let nextBusMinute = nextBusDate.get(component: .minute)

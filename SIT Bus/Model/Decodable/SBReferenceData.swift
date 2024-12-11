@@ -71,7 +71,7 @@ struct SBReferenceData: Decodable {
                 }
                 
                 // If the hour is in the future, return the first minute of that hour
-                if timetable.hour >= currentHour {
+                if timetable.hour > currentHour {
                     if let firstMinute = timetable.times.first {
                         let date = Calendar.current.date(bySettingHour: timetable.hour, minute: firstMinute, second: 0, of: date)
                         return date
@@ -83,7 +83,7 @@ struct SBReferenceData: Decodable {
         return nil
     }
     
-    public func getBusNote(for type: BusLineType.SchoolBus, date: Date) -> LocalizedStringKey? {
+    public func getBusNote(for type: BusLineType.SchoolBus, date: Date) -> (start: Date, end: Date)? {
         if let timetable = getTimesheet(for: date)?.makeTimetable(for: type) {
             let noteRanges: [(Date, Date, String)] = timetable.compactMap { value in
                 if let range1 = value.dateRange1, let range2 = value.dateRange2, let note = value.note {
@@ -105,7 +105,8 @@ struct SBReferenceData: Decodable {
                 let currentTotalMinutes = currentHour * 60 + currentMinute
                 
                 if currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes {
-                    return "Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service"
+                    return (start, end)
+//                    return "Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service"
                 }
             }
         }

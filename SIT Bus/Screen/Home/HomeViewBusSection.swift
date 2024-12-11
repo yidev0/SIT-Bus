@@ -76,6 +76,13 @@ struct HomeViewBusSection: View {
         }
         .id(type)
         .buttonStyle(.home)
+//        .contextMenu {
+//            Button {
+//                model.startLiveActivity(for: type)
+//            } label: {
+//                Text(verbatim: "Start Live Activity")
+//            }
+//        }
     }
     
     func makeShuttleBusCell(for type: BusLineType.ShuttleBus) -> some View {
