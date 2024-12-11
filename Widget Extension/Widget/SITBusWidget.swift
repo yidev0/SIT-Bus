@@ -145,6 +145,7 @@ struct SITBusWidgetEntryView : View {
                     .font(family == .systemSmall ? .body : .title)
             }
         }
+        .contentTransition(.numericText())
         .containerBackground(for: .widget) {
             Color(.systemBackground)
         }
@@ -174,6 +175,12 @@ struct SITBusWidget: Widget {
         date: .now,
         lineType: .stationToCampus,
         time: .now
+    )
+    
+    SITBusWidgetEntry(
+        date: .now,
+        lineType: .stationToCampus,
+        time: .distantFuture
     )
     
     SITBusWidgetEntry(
