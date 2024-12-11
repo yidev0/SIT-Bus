@@ -12,6 +12,6 @@ import SwiftUI
 struct SITBusWidgetBundle: WidgetBundle {
     var body: some Widget {
         SITBusWidget()
-        Widget_ExtensionLiveActivity()
+        SITBusLiveActivity()
     }
 }

@@ -9,20 +9,11 @@ import WidgetKit
 import AppIntents
 import SwiftUI
 
-extension SchoolBusType {
-    var busLineType: BusLineType.SchoolBus {
-        switch self {
-        case .campusToOmiya: return .campusToStation
-        case .omiyaToCampus: return .stationToCampus
-        }
-    }
-}
-
 struct SITBusWidgetIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = .init("Label.BusType", table: "Widget")
     
-    @Parameter(title: .init("Label.BusType", table: "Widget"), default: .omiyaToCampus)
-    var busType: SchoolBusType
+    @Parameter(title: .init("Label.BusType", table: "Widget"), default: .stationToCampus)
+    var busType: BusLineType.SchoolBus
 }
 
 struct SITBusWidgetEntry: TimelineEntry {
@@ -46,7 +37,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
     ) async -> SITBusWidgetEntry {
         return .init(
             date: .now,
-            lineType: configuration.busType.busLineType
+            lineType: configuration.busType
         )
     }
     
@@ -58,7 +49,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         return timeline
     }
     
-    func makeTimeline(busType: SchoolBusType) -> Timeline<SITBusWidgetEntry> {
+    func makeTimeline(busType: BusLineType.SchoolBus) -> Timeline<SITBusWidgetEntry> {
         let timetableloader = TimetableLoader.shared
         timetableloader.loadTimetable()
         
@@ -70,11 +61,11 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         while entries.count < 20 {
             print(baseTime)
             time = timetableloader.data?.getNextBus(
-                for: busType.busLineType,
+                for: busType,
                 date: baseTime
             )
             note = timetableloader.data?.getBusNote(
-                for: busType.busLineType,
+                for: busType,
                 date: baseTime
             )
             
@@ -82,7 +73,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                 entries.append(
                     .init(
                         date: note.end,
-                        lineType: busType.busLineType,
+                        lineType: busType,
                         time: time,
                         note: "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
                     )
@@ -92,13 +83,13 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                 entries.append(
                     .init(
                         date: time,
-                        lineType: busType.busLineType,
+                        lineType: busType,
                         time: time
                     )
                 )
                 baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: time) ?? .now
             } else {
-                entries.append(.init(date: baseTime, lineType: busType.busLineType))
+                entries.append(.init(date: baseTime, lineType: busType))
                 break
             }
         }

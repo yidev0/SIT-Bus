@@ -81,12 +81,13 @@
 				"Extension/GroupBox +.swift",
 				"Extension/String +.swift",
 				"Extension/View +.swift",
-				Model/BusLineType.swift,
-				Model/Data/SBCalendar.swift,
-				Model/Data/SBReferenceData.swift,
-				Model/Data/SBSiteInfo.swift,
-				Model/Data/SBTimeSheet.swift,
+				Model/Bus/BusLineType.swift,
 				Model/Data/ShuttleBusData.swift,
+				Model/Data/SITBusActivityAttributes.swift,
+				Model/Decodable/SBCalendar.swift,
+				Model/Decodable/SBReferenceData.swift,
+				Model/Decodable/SBSiteInfo.swift,
+				Model/Decodable/SBTimeSheet.swift,
 				Model/ListType.swift,
 				Model/TimetableManager.swift,
 				Model/TimetableValue.swift,
@@ -536,6 +537,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SIT-Bus-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -569,6 +572,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SIT-Bus-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

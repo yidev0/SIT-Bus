@@ -23,9 +23,6 @@
         }
       }
     },
-    "Bottom %@" : {
-
-    },
     "Button.Done" : {
       "localizations" : {
         "en" : {
@@ -105,12 +102,6 @@
           }
         }
       }
-    },
-    "Hello %@" : {
-
-    },
-    "L" : {
-
     },
     "Label.%@to%@Service" : {
       "localizations" : {
@@ -223,6 +214,9 @@
           }
         }
       }
+    },
+    "Label.BusType" : {
+
     },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
@@ -719,15 +713,6 @@
           }
         }
       }
-    },
-    "Leading" : {
-
-    },
-    "T %@" : {
-
-    },
-    "Trailing" : {
-
     }
   },
   "version" : "1.0"

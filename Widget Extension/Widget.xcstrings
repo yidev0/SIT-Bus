@@ -66,6 +66,22 @@
         }
       }
     },
+    "Label.ShortMinutes%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld分"
+          }
+        }
+      }
+    },
     "Label.SITBusWidget" : {
       "localizations" : {
         "en" : {

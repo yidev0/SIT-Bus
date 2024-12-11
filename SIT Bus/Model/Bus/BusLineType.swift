@@ -5,9 +5,10 @@
 //  Created by Yuto on 2024/08/18.
 //
 
-import SwiftUICore
+import SwiftUI
+import AppIntents
 
-protocol BusType {
+protocol BusType: Codable {
     var localizedTitle: LocalizedStringKey { get }
     var localizedShortTitle: LocalizedStringKey { get }
     var symbol: String { get }
@@ -42,7 +43,7 @@ enum BusLineType: CaseIterable, Hashable {
         }
     }
     
-    enum SchoolBus: String, CaseIterable, BusType {
+    enum SchoolBus: String, CaseIterable, BusType, AppEnum {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
         
@@ -76,6 +77,15 @@ enum BusLineType: CaseIterable, Hashable {
                 "tram.fill"
             }
         }
+        
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = .init(
+            name: .init("Label.BusType")
+        )
+        
+        static var caseDisplayRepresentations: [SchoolBus : DisplayRepresentation] = [
+            .stationToCampus: .init(title: .init("Label.Short.OmiyaStationToCampus")),
+            .campusToStation: .init(title: .init("Label.Short.CampusToOmiyaStation")),
+        ]
     }
     
     enum ShuttleBus: String, CaseIterable, BusType {
