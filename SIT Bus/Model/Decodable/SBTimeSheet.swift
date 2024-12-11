@@ -137,7 +137,7 @@ struct SBTimeSheet: Decodable {
                                 if let date = dateFormatter.date(from: time) {
                                     let newDate = Calendar.current.date(
                                         bySettingHour: date.get(component: .hour),
-                                        minute: date.get(component: .hour),
+                                        minute: date.get(component: .minute),
                                         second: 0,
                                         of: .now
                                     )
