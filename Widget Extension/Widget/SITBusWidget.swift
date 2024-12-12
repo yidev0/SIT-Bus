@@ -108,7 +108,9 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
 }
 
 struct SITBusWidgetEntryView : View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.widgetFamily) var family
+    
     var entry: SITBusTimelineProvider.Entry
 
     var body: some View {
@@ -147,7 +149,14 @@ struct SITBusWidgetEntryView : View {
         }
         .contentTransition(.numericText())
         .containerBackground(for: .widget) {
-            Color(.systemBackground)
+            LinearGradient(
+                colors: [
+                    Color.widgetBackground,
+                    Color.accent.opacity(0.13),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
         }
     }
 }
