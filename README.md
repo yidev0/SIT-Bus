@@ -18,6 +18,16 @@ SITのバス時刻表アプリ<br>
  - [ ] 通知
  - [ ] ライブアクティビティ
  - [ ] ショートカット
+#### 言語
+ - [x] 日本語
+ - [x] 英語
+ - [ ] 中国語（簡体）
+ - [ ] フランス語
+#### デバイス
+ - [x] iPhone
+ - [ ] Apple Watch
+ - [ ] Android（未定・skip.toolsを利用予定）
+ 
 
 ## リンク
 - [バス時刻表カレンダー](http://bus.shibaura-it.ac.jp/developer.html)
