@@ -16,29 +16,13 @@ struct ShuttleBusTimeListCell: View {
     var body: some View {
         GroupBox {
             HStack(alignment: .firstTextBaseline) {
-                Text(date, format: .dateTime.month().day().weekday())
+                Text(date, style: .date)
                     .fontWeight(.semibold)
                 Spacer()
-                Text(makeDate(), format: .dateTime.hour().minute())
+                Text(date, style: .time)
                     .monospacedDigit()
             }
         }
-    }
-    
-    func makeDate() -> Date {
-        let shuttleBusData = ShuttleBusData()
-        let (hour, minute) = shuttleBusData.getDepartureTime(
-            for: date,
-            type: shuttleType
-        )
-        
-        return Date.createDate(
-            year: date.get(component: .year),
-            month: date.get(component: .month),
-            day: date.get(component: .day),
-            hour: hour,
-            minute: minute
-        )!
     }
 }
 

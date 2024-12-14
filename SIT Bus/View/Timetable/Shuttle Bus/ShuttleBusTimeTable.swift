@@ -151,8 +151,7 @@ struct ShuttleBusTimeTable: View {
     
     private func getNextBus() -> Date? {
         let shuttleBusData = ShuttleBusData()
-        print("scroll", shuttleBusData.getNextDate(for: shuttleType))
-        return shuttleBusData.getNextDate(for: shuttleType)
+        return shuttleBusData.getNextDate(for: shuttleType, from: .now)
     }
     
     private func showHeader(date: Date) -> Bool {

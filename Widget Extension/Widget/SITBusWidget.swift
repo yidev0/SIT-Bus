@@ -143,7 +143,7 @@ struct SITBusWidgetEntryView : View {
                     .font(family == .systemSmall ? .title2 : .largeTitle)
                     .fontWeight(.medium)
             } else {
-                Text("Label.NoBusService")
+                Text("Label.BusServiceEnded")
                     .font(family == .systemSmall ? .body : .title)
             }
         }

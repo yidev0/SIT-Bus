@@ -212,6 +212,16 @@
         }
       }
     },
+    "Label.BusServiceEnded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s service has ended."
+          }
+        }
+      }
+    },
     "Label.BusType" : {
 
     },
@@ -247,18 +257,58 @@
         }
       }
     },
+    "Label.DepartsIn%lldHours" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld hour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld hours"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "Label.DepartsIn%lldMinutes" : {
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In %lld minutes"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld minute"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld minutes"
+                }
+              }
+            }
           }
         },
         "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "発車まで%lld分"
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "発車まで%lld分"
+                }
+              }
+            }
           }
         }
       }
@@ -312,6 +362,7 @@
       }
     },
     "Label.FinalBus" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -460,12 +511,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Today’s service has ended."
+            "value" : "No bus service today."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "本日のバスの運行は終了しました"
           }
         }

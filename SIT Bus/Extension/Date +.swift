@@ -41,4 +41,8 @@ extension Date {
     var keyYearMonth: String {
         return "\(get(component: .year)).\(getMonthText())"
     }
+    
+    public func convertToMinutes() -> Int {
+        self.get(component: .hour) * 60 + self.get(component: .minute)
+    }
 }

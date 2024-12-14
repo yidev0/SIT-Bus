@@ -22,11 +22,15 @@ struct HomeSchoolBusCell: View {
     
     var body: some View {
         GroupBox {
-            if let nextBusDate {
+            if let note {
+                Text(note)
+                    .padding(.top, 8)
+                    .padding(.bottom, 4)
+            } else if let nextBusDate {
                 HStack(alignment: .lastTextBaseline) {
                     Text(nextBusDate, format: .dateTime.hour().minute())
                         .monospacedDigit()
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 8)
                         .padding(.bottom, 4)
@@ -39,12 +43,6 @@ struct HomeSchoolBusCell: View {
                 .accessibilityElement(children: .combine)
                 .animation(.default, value: nextBusDate)
                 .animation(.default, value: nextBusText)
-                
-                if let note {
-                    Divider()
-                    Text(note)
-                        .padding(.top, 4)
-                }
             } else {
                 HStack {
                     Text("Label.NoBusService")
@@ -76,12 +74,8 @@ struct HomeSchoolBusCell: View {
                 self.note = "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
             }
             
-            let nextBusHour = nextBusDate.get(component: .hour)
-            let nextBusMinute = nextBusDate.get(component: .minute)
-            let nextBusTime = nextBusHour * 60 + nextBusMinute
-            let currentTime = Date.now.get(component: .hour) * 60 + Date.now.get(component: .minute)
+            let minutesRemaining = nextBusDate.convertToMinutes() - Date.now.convertToMinutes()
             
-            let minutesRemaining = (nextBusTime - currentTime)
             if minutesRemaining < 0 {
                 self.nextBusText = "Label.DepartsIn0Minutes"
             } else {
@@ -90,7 +84,6 @@ struct HomeSchoolBusCell: View {
         } else {
             self.nextBusDate = nil
             self.note = nil
-            self.nextBusText = "Label.FinalBus"
         }
     }
 }

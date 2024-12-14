@@ -30,7 +30,7 @@ struct SITBusLiveActivity: Widget {
                         Spacer()
                         Text("Label.DepartsIn\(context.state.remainingMinutes)Minutes")
                     } else {
-                        Text("Label.NoBusService")
+                        Text("Label.BusServiceEnded")
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
@@ -67,7 +67,7 @@ struct SITBusLiveActivity: Widget {
                                     .font(.subheadline)
                             }
                         } else {
-                            Text("Label.NoBusService")
+                            Text("Label.BusServiceEnded")
                                 .font(.body)
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.trailing)
