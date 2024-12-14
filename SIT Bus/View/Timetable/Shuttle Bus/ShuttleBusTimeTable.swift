@@ -48,7 +48,6 @@ struct ShuttleBusTimeTable: View {
             }
             .padding(.horizontal)
             .padding(.vertical, 8)
-            .padding(.bottom, 60)
         }
         .scrollPosition(id: $scrollPosition)
         .onAppear {
