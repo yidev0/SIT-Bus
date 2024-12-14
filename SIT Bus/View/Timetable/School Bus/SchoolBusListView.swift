@@ -14,35 +14,47 @@ struct SchoolBusListView: View {
     var body: some View {
         if let timesheet {
             ScrollView {
-                VStack(spacing: 8) {
+                LazyVStack(spacing: 8, pinnedViews: .sectionHeaders) {
                     ForEach(timesheet, id: \.hour) { sheet in
-                        if sheet.times.isEmpty == false {
+                        if sheet.times.isEmpty == false || sheet.note != nil {
                             Section {
-                                if let note = sheet.note {
-                                    Text(note)
-                                }
-                                
-                                ForEach(sheet.times, id: \.self) { minute in
-                                    GroupBox {
-                                        HStack {
-                                            Text("\(sheet.hour):\(minute)")
-                                            Spacer()
+                                VStack(spacing: 8) {
+                                    if let date1 = sheet.dateRange1, let date2 = sheet.dateRange2 {
+                                        Text("Label.\(Text(date1, format: .dateTime.hour().minute()))to\(Text(date2, format: .dateTime.hour().minute()))Service")
+                                            .padding(.vertical, 2)
+                                    }
+                                    
+                                    ForEach(sheet.times, id: \.self) { time in
+                                        GroupBox {
+                                            HStack {
+                                                Text(time, style: .time)
+                                                    .monospacedDigit()
+                                                Spacer()
+                                            }
                                         }
                                     }
                                 }
+                                .padding(.horizontal, 16)
                             } header: {
-                                HStack {
-                                    Text("\(sheet.hour)")
-                                        .font(.headline)
-                                    
-                                    Spacer()
+                                if let hour = formatHour(hour: sheet.hour) {
+                                    HStack {
+                                        Text(hour, format: .dateTime.hour())
+                                            .font(.headline)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 20)
+                                    .background(.regularMaterial)
+                                    .clipShape(RoundedRectangle(cornerRadius: 2))
                                 }
                             }
                         }
                     }
                 }
-                .padding()
             }
+            .contentMargins(.top, 8)
+            .contentMargins(.bottom, 16)
         } else {
             ContentUnavailableView(
                 "Label.NoBuses",
@@ -50,6 +62,14 @@ struct SchoolBusListView: View {
             )
         }
     }
+    
+    private func formatHour(hour: Int) -> Date? {
+        var components = DateComponents()
+        components.hour = hour
+        let calendar = Calendar.current
+        return calendar.date(from: components)
+    }
+    
 }
 
 #Preview {

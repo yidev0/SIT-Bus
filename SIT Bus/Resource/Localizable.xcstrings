@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "%lld" : {
-
-    },
     "%lld:%lld" : {
       "localizations" : {
         "en" : {

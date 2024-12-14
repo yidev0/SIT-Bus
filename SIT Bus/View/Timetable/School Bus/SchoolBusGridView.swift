@@ -24,7 +24,7 @@ struct SchoolBusGridView: View {
                         )
                         .accessibilityLabel(Text("Label.Accessibility.\(timetable.hour)Time"))
                         .frame(width: 52)
-                        
+//                        
                         LazyVGrid(
                             columns: [.init(
                                 .adaptive(minimum: 48, maximum: 80),
@@ -35,7 +35,7 @@ struct SchoolBusGridView: View {
                             ForEach(timetable.times, id: \.self) { time in
                                 SchoolBusGridCell(
                                     hour: timetable.hour,
-                                    minute: time
+                                    minute: time.get(component: .minute)
                                 )
                             }
                         }
