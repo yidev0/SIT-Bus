@@ -19,26 +19,10 @@ struct ShuttleBusTimeListCell: View {
                 Text(date, format: .dateTime.month().day().weekday())
                     .fontWeight(.semibold)
                 Spacer()
-                Text(makeDate(), format: .dateTime.hour().minute())
+                Text(date, style: .time)
                     .monospacedDigit()
             }
         }
-    }
-    
-    func makeDate() -> Date {
-        let shuttleBusData = ShuttleBusData()
-        let (hour, minute) = shuttleBusData.getDepartureTime(
-            for: date,
-            type: shuttleType
-        )
-        
-        return Date.createDate(
-            year: date.get(component: .year),
-            month: date.get(component: .month),
-            day: date.get(component: .day),
-            hour: hour,
-            minute: minute
-        )!
     }
 }
 

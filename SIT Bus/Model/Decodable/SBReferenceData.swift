@@ -59,22 +59,19 @@ struct SBReferenceData: Decodable {
     
     public func getNextBus(for type: BusLineType.SchoolBus, date: Date) -> Date? {
         let currentHour = date.get(component: .hour)
-        let currentMinute = date.get(component: .minute)
         
         if let timetable = getTimesheet(for: date)?.makeTimetable(for: type) {
             for timetable in timetable {
                 if timetable.hour == currentHour {
-                    for minute in timetable.times where minute >= currentMinute {
-                        let date = Calendar.current.date(bySettingHour: timetable.hour, minute: minute, second: 0, of: date)
-                        return date
+                    for time in timetable.times where time >= .now {
+                        return time
                     }
                 }
                 
                 // If the hour is in the future, return the first minute of that hour
                 if timetable.hour > currentHour {
-                    if let firstMinute = timetable.times.first {
-                        let date = Calendar.current.date(bySettingHour: timetable.hour, minute: firstMinute, second: 0, of: date)
-                        return date
+                    if let firstTime = timetable.times.first {
+                        return firstTime
                     }
                 }
             }
@@ -83,7 +80,7 @@ struct SBReferenceData: Decodable {
         return nil
     }
     
-    public func getBusNote(for type: BusLineType.SchoolBus, date: Date) -> (start: Date, end: Date)? {
+    public func getNextBusNote(for type: BusLineType.SchoolBus, date: Date) -> (start: Date, end: Date)? {
         if let timetable = getTimesheet(for: date)?.makeTimetable(for: type) {
             let noteRanges: [(Date, Date, String)] = timetable.compactMap { value in
                 if let range1 = value.dateRange1, let range2 = value.dateRange2, let note = value.note {
@@ -92,46 +89,11 @@ struct SBReferenceData: Decodable {
                 return nil
             }
             
-            let currentHour = date.get(component: .hour)
-            let currentMinute = date.get(component: .minute)
-            
-            for range in noteRanges {
-                let (start, end, _) = range
-                let (startHour, startMinute) = (start.get(component: .hour), start.get(component: .minute))
-                let (endHour, endMinute) = (end.get(component: .hour), end.get(component: .minute))
-                
-                let startTotalMinutes = startHour * 60 + startMinute - 10
-                let endTotalMinutes = endHour * 60 + endMinute
-                let currentTotalMinutes = currentHour * 60 + currentMinute
-                
-                if currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes {
-                    return (start, end)
-//                    return "Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service"
-                }
+            if let range = noteRanges.first(where: { $0.0 <= date && date <= $0.1 }) {
+                return (range.0, range.1)
             }
         }
         return nil
     }
     
-    public func getPreviousBus(for type: BusLineType.SchoolBus, date: Date) -> (hour: Int, minute: Int)? {
-        let currentHour = date.get(component: .hour)
-        let currentMinute = date.get(component: .minute)
-        var previousBus: (hour: Int, minute: Int)? = nil
-        
-        if let timetable = getTimesheet(for: date)?.makeTimetable(for: type) {
-            for timetable in timetable {
-                if timetable.hour < currentHour {
-                    if let lastMinute = timetable.times.last {
-                        previousBus = (timetable.hour, lastMinute)
-                    }
-                } else if timetable.hour == currentHour {
-                    for minute in timetable.times where minute < currentMinute {
-                        previousBus = (timetable.hour, minute)
-                    }
-                }
-            }
-        }
-        
-        return previousBus
-    }
 }

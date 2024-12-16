@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "%lld" : {
-
-    },
     "%lld:%lld" : {
       "localizations" : {
         "en" : {
@@ -215,8 +212,37 @@
         }
       }
     },
+    "Label.BusServiceEnded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s service has ended."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本日のバスの運行は終了しました"
+          }
+        }
+      }
+    },
     "Label.BusType" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus type"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バスの種類"
+          }
+        }
+      }
     },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
@@ -250,18 +276,70 @@
         }
       }
     },
-    "Label.DepartsIn%lldMinutes" : {
+    "Label.DepartsIn%lldHours" : {
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In %lld minutes"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld hour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld hours"
+                }
+              }
+            }
           }
         },
         "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "発車まで%lld分"
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "発車まで%lld時間"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Label.DepartsIn%lldMinutes" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld minute"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld minutes"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "発車まで%lld分"
+                }
+              }
+            }
           }
         }
       }
@@ -315,6 +393,7 @@
       }
     },
     "Label.FinalBus" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -463,13 +542,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Today’s service has ended."
+            "value" : "No bus service today."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本日のバスの運行は終了しました"
+            "value" : "本日のバスの運行はありません"
           }
         }
       }

@@ -25,27 +25,11 @@ struct ShuttleBusTimeGridCell: View {
             showPopover = true
         }
         .popover(isPresented: $showPopover) {
-            Text(makeDate(), format: .dateTime.hour().minute())
+            Text(date, style: .time)
                 .presentationCompactAdaptation(.popover)
         }
         .accessibilityElement(children: .combine)
         .padding(.horizontal, 4)
         .padding(.vertical, 6)
-    }
-    
-    func makeDate() -> Date {
-        let shuttleBusData = ShuttleBusData()
-        let (hour, minute) = shuttleBusData.getDepartureTime(
-            for: date,
-            type: shuttleType
-        )
-        
-        return Date.createDate(
-            year: date.get(component: .year),
-            month: date.get(component: .month),
-            day: date.get(component: .day),
-            hour: hour,
-            minute: minute
-        )!
     }
 }
