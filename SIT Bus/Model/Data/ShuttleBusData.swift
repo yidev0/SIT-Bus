@@ -180,8 +180,17 @@ struct ShuttleBusData {
         return dates.sorted()
     }
     
-    public func getTimesFor(year: Int, month: Int) -> [Date] {
-        return activeDates.filter { $0.get(component: .year) == year && $0.get(component: .month) == month }
+    public func getTimesFor(year: Int, month: Int, type: BusLineType.ShuttleBus) -> [Date] {
+        var departureDates: [Date] {
+            switch type {
+            case .toToyosu:
+                toToyosuDepartureDates
+            case .toOmiya:
+                makeToOmiyaDepartureDates()
+            }
+        }
+        
+        return departureDates.filter { $0.get(component: .year) == year && $0.get(component: .month) == month }
     }
     
     public func getDepartureTime(for weekday: Int, date: Date, type: BusLineType.ShuttleBus) -> Date {

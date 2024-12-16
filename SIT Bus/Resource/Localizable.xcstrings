@@ -295,6 +295,18 @@
               }
             }
           }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "発車まで%lld時間"
+                }
+              }
+            }
+          }
         }
       }
     },

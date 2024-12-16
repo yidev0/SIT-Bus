@@ -64,7 +64,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                 for: busType,
                 date: baseTime
             )
-            note = timetableloader.data?.getBusNote(
+            note = timetableloader.data?.getNextBusNote(
                 for: busType,
                 date: baseTime
             )

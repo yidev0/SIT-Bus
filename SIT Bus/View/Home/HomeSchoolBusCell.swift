@@ -18,7 +18,7 @@ struct HomeSchoolBusCell: View {
     @State var note: LocalizedStringKey? = nil
     @State var nextBusText: LocalizedStringKey = ""
     
-    @State var busArray: [Date] = []
+    @ScaledMetric var busFontSize = 24
     
     var body: some View {
         GroupBox {
@@ -30,8 +30,7 @@ struct HomeSchoolBusCell: View {
                 HStack(alignment: .lastTextBaseline) {
                     Text(nextBusDate, format: .dateTime.hour().minute())
                         .monospacedDigit()
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .font(.system(size: busFontSize, weight: .semibold))
                         .padding(.top, 8)
                         .padding(.bottom, 4)
                     
@@ -70,16 +69,18 @@ struct HomeSchoolBusCell: View {
     func loadNextBus() {
         if let nextBusDate = data?.getNextBus(for: type, date: .now) {
             self.nextBusDate = nextBusDate
-            if note == nil, let note = data?.getBusNote(for: type, date: .now) {
+            let note = data?.getNextBusNote(for: type, date: .now)
+            
+            if let note, nextBusDate > note.start {
                 self.note = "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
-            }
-            
-            let minutesRemaining = nextBusDate.convertToMinutes() - Date.now.convertToMinutes()
-            
-            if minutesRemaining < 0 {
-                self.nextBusText = "Label.DepartsIn0Minutes"
-            } else {
-                self.nextBusText = "Label.DepartsIn\(minutesRemaining)Minutes"
+            } else {   
+                let minutesRemaining = nextBusDate.convertToMinutes() - Date.now.convertToMinutes()
+                
+                if minutesRemaining < 0 {
+                    self.nextBusText = "Label.DepartsIn0Minutes"
+                } else {
+                    self.nextBusText = "Label.DepartsIn\(minutesRemaining)Minutes"
+                }
             }
         } else {
             self.nextBusDate = nil

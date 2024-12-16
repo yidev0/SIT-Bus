@@ -20,6 +20,8 @@ struct HomeShuttleBusCell: View {
     @State var nextBusText: LocalizedStringKey = ""
     @State var noBusText: LocalizedStringKey = ""
     
+    @ScaledMetric var busFontSize = 24
+    
     init(type: BusLineType.ShuttleBus) {
         self.type = type
         self.shuttleBusData = ShuttleBusData()
@@ -30,8 +32,8 @@ struct HomeShuttleBusCell: View {
             if let date {
                 HStack(alignment: .firstTextBaseline) {
                     Text(date, style: .time)
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .monospacedDigit()
+                        .font(.system(size: busFontSize, weight: .semibold))
                         .padding(.top, 8)
                         .padding(.top, 4)
                     
@@ -70,7 +72,7 @@ struct HomeShuttleBusCell: View {
             self.date = date
             
             if Date.now <= date {
-                let remainingMinutes = Date.now.convertToMinutes() - date.convertToMinutes()
+                let remainingMinutes = date.convertToMinutes() - Date.now.convertToMinutes() 
                 if remainingMinutes >= 60 {
                     nextBusText = "Label.DepartsIn\(remainingMinutes/60)Hours"
                 } else if remainingMinutes == 0 {

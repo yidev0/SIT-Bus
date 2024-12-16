@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SchoolBusListView: View {
     
+    @State var scrollPosition: Int?
     var timesheet: [TimetableValue]?
     
     var body: some View {
@@ -34,27 +35,29 @@ struct SchoolBusListView: View {
                                         }
                                     }
                                 }
-                                .padding(.horizontal, 16)
                             } header: {
                                 if let hour = formatHour(hour: sheet.hour) {
                                     HStack {
                                         Text(hour, format: .dateTime.hour())
                                             .font(.headline)
-                                        
+                                            .font(.headline)
+                                            .padding(.vertical, 4)
+                                            .padding(.horizontal, 8)
+                                            .background(.regularMaterial)
+                                            .clipShape(RoundedRectangle(cornerRadius: 8))
                                         Spacer()
                                     }
-                                    .padding(.vertical, 6)
-                                    .padding(.horizontal, 20)
-                                    .background(.regularMaterial)
-                                    .clipShape(RoundedRectangle(cornerRadius: 2))
                                 }
                             }
                         }
                     }
                 }
             }
-            .contentMargins(.top, 8)
-            .contentMargins(.bottom, 16)
+            .scrollPosition(id: $scrollPosition, anchor: .top)
+            .contentMargins(16)
+            .onAppear {
+                self.scrollPosition = Date.now.get(component: .hour)
+            }
         } else {
             ContentUnavailableView(
                 "Label.NoBuses",

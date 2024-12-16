@@ -49,7 +49,7 @@ struct ShuttleBusTimeTable: View {
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
-        .scrollPosition(id: $scrollPosition)
+        .scrollPosition(id: $scrollPosition, anchor: .top)
         .onAppear {
             loadData()
         }
@@ -106,20 +106,14 @@ struct ShuttleBusTimeTable: View {
                 }
             } header: {
                 HStack {
-                    if showHeader(date: key) {
-                        Text(key, format: .dateTime.year().month())
-                            .font(.headline)
-                    } else {
-                        Text(key, format: .dateTime.month())
-                            .font(.headline)
-                    }
-                    
+                    Text(key, format: showHeader(date: key) ? .dateTime.year().month() : .dateTime.month())
+                        .font(.headline)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(.regularMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                     Spacer()
                 }
-                .padding(.vertical, 6)
-                .padding(.horizontal, 4)
-                .background(.regularMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 2))
                 .padding(.top, 4)
             }
         }
@@ -141,7 +135,8 @@ struct ShuttleBusTimeTable: View {
         for month in months {
             let dates = shuttleBusData.getTimesFor(
                 year: month.get(component: .year),
-                month: month.get(component: .month)
+                month: month.get(component: .month),
+                type: shuttleType
             )
             data[month] = dates
         }

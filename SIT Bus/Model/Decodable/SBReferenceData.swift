@@ -80,7 +80,7 @@ struct SBReferenceData: Decodable {
         return nil
     }
     
-    public func getBusNote(for type: BusLineType.SchoolBus, date: Date) -> (start: Date, end: Date)? {
+    public func getNextBusNote(for type: BusLineType.SchoolBus, date: Date) -> (start: Date, end: Date)? {
         if let timetable = getTimesheet(for: date)?.makeTimetable(for: type) {
             let noteRanges: [(Date, Date, String)] = timetable.compactMap { value in
                 if let range1 = value.dateRange1, let range2 = value.dateRange2, let note = value.note {
@@ -89,21 +89,8 @@ struct SBReferenceData: Decodable {
                 return nil
             }
             
-            let currentHour = date.get(component: .hour)
-            let currentMinute = date.get(component: .minute)
-            
-            for range in noteRanges {
-                let (start, end, _) = range
-                let (startHour, startMinute) = (start.get(component: .hour), start.get(component: .minute))
-                let (endHour, endMinute) = (end.get(component: .hour), end.get(component: .minute))
-                
-                let startTotalMinutes = startHour * 60 + startMinute - 10
-                let endTotalMinutes = endHour * 60 + endMinute
-                let currentTotalMinutes = currentHour * 60 + currentMinute
-                
-                if currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes {
-                    return (start, end)
-                }
+            if let range = noteRanges.first(where: { $0.0 <= date && date <= $0.1 }) {
+                return (range.0, range.1)
             }
         }
         return nil

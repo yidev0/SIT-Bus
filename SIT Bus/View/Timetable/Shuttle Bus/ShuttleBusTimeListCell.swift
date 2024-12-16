@@ -16,7 +16,7 @@ struct ShuttleBusTimeListCell: View {
     var body: some View {
         GroupBox {
             HStack(alignment: .firstTextBaseline) {
-                Text(date, style: .date)
+                Text(date, format: .dateTime.month().day().weekday())
                     .fontWeight(.semibold)
                 Spacer()
                 Text(date, style: .time)

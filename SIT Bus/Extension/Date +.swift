@@ -17,6 +17,8 @@ extension Date {
         dateComponents.hour = hour
         dateComponents.minute = minute
         dateComponents.second = second
+        
+        dateComponents.timeZone = TimeZone(identifier: "Asia/Tokyo")
 
         return calendar.date(from: dateComponents)
     }
