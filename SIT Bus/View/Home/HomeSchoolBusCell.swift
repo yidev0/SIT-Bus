@@ -45,7 +45,7 @@ struct HomeSchoolBusCell: View {
                 .animation(.default, value: nextBusText)
             } else {
                 HStack {
-                    Text("Label.NoBusService")
+                    Text("Label.BusServiceEnded")
                         .padding(.top, 8)
                         .padding(.bottom, 4)
                     Spacer()

@@ -18,6 +18,7 @@ struct HomeShuttleBusCell: View {
     
     @State var date: Date?
     @State var nextBusText: LocalizedStringKey = ""
+    @State var noBusText: LocalizedStringKey = ""
     
     init(type: BusLineType.ShuttleBus) {
         self.type = type
@@ -41,9 +42,12 @@ struct HomeShuttleBusCell: View {
                 .contentTransition(.numericText())
                 .accessibilityElement(children: .combine)
             } else {
-                Text("Label.NoBusService")
-                    .padding(.top, 8)
-                    .padding(.top, 4)
+                HStack(spacing: 0) {
+                    Text("Label.NoBusService")
+                        .padding(.top, 8)
+                        .padding(.top, 4)
+                    Spacer()
+                }
             }
         } label: {
             Label {
@@ -65,7 +69,7 @@ struct HomeShuttleBusCell: View {
         if let date = shuttleBusData.getDepartureDate(for: .now, type: type) {
             self.date = date
             
-            if Date.now >= date {
+            if Date.now <= date {
                 let remainingMinutes = Date.now.convertToMinutes() - date.convertToMinutes()
                 if remainingMinutes >= 60 {
                     nextBusText = "Label.DepartsIn\(remainingMinutes/60)Hours"
@@ -75,10 +79,16 @@ struct HomeShuttleBusCell: View {
                     nextBusText = "Label.DepartsIn\(remainingMinutes)Minutes"
                 }
             } else {
-                nextBusText = "Label.BusServiceEnded"
+                nextBusText = ""
+                noBusText = "Label.BusServiceEnded"
             }
         } else {
             self.date = nil
+            if shuttleBusData.isActive(.now) {
+                noBusText = "Label.BusServiceEnded"
+            } else {
+                noBusText = "Label.NoBusService"
+            }
         }
     }
     

@@ -44,6 +44,9 @@ struct HomeView: View {
             )
             .presentationDetents([.medium, .large])
         }
+        .onAppear {
+            model.timetable = timetableManager.data?.getTimesheet(for: .now)?
+        }
     }
 }
 

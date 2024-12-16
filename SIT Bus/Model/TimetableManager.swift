@@ -13,6 +13,7 @@ class TimetableManager {
     public var data: SBReferenceData? = nil
     public var urlTask: URLSessionTask?
     public var lastUpdatedDate: Date = .now
+    public var isLoading: Bool = false
     
     private let dataStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
     
@@ -41,24 +42,33 @@ class TimetableManager {
         let lastUpdateDate = Date(timeIntervalSince1970: lastUpdate)
         self.lastUpdatedDate = lastUpdateDate
         
-        if Calendar.current.isDateInToday(lastUpdateDate) == true || forceFetch,
-           let url = dataStoreURL, FileManager.default.fileExists(atPath: url.path()) {
-            do {
-                let data = try Data(contentsOf: url)
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                self.data = result
-            } catch {
-                print(error)
-            }
-        } else {
-            Task {
+        isLoading = true
+        Task {
+            if Calendar.current.isDateInToday(lastUpdateDate) == true || forceFetch {
+                self.data = await fetchLocalData()
+            } else {
                 do {
                     self.data = try await fetchData()
+                    isLoading = false
                 } catch {
-                    print(error)
+                    self.data = await fetchLocalData()
+                    isLoading = false
                 }
             }
         }
+    }
+    
+    private func fetchLocalData() async -> SBReferenceData? {
+        if let url = dataStoreURL, FileManager.default.fileExists(atPath: url.path()) {
+            do {
+                let data = try Data(contentsOf: url)
+                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
+                return result
+            } catch {
+                print(error)
+            }
+        }
+        return nil
     }
     
     private func fetchData() async throws -> SBReferenceData? {

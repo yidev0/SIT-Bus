@@ -103,7 +103,6 @@ struct SBReferenceData: Decodable {
                 
                 if currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes {
                     return (start, end)
-//                    return "Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service"
                 }
             }
         }

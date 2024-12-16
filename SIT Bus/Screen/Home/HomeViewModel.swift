@@ -12,6 +12,7 @@ import ActivityKit
 class HomeViewModel {
     
     var showBusSelection = false
+    var timetable: [TimetableValue]? = nil
 //    var busActivity: Activity<SITBusActivityAttributes>?
     
     func makeTimeTable(for type: BusLineType.SchoolBus, with data: SBReferenceData?) -> [TimetableValue]? {

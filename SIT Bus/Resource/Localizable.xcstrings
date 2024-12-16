@@ -219,11 +219,30 @@
             "state" : "translated",
             "value" : "Today’s service has ended."
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本日のバスの運行は終了しました"
+          }
         }
       }
     },
     "Label.BusType" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus type"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バスの種類"
+          }
+        }
+      }
     },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
@@ -516,8 +535,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "本日のバスの運行は終了しました"
+            "state" : "translated",
+            "value" : "本日のバスの運行はありません"
           }
         }
       }

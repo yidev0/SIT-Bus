@@ -210,7 +210,6 @@ struct ShuttleBusData {
         }
         
         let calendar = Calendar.current
-        
         if let date = departureDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return date
         } else {
@@ -236,6 +235,11 @@ struct ShuttleBusData {
                 false
             }
         }
+    }
+    
+    public func isActive(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        return activeDates.contains(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     
 }
