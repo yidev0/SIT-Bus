@@ -58,19 +58,17 @@ struct HomeViewBusSection: View {
         }
     }
     
+    @ViewBuilder
     func makeSchoolBusCell(for type: BusLineType.SchoolBus) -> some View {
         NavigationLink {
             SchoolBusListView(
-                timesheet: model.makeTimeTable(
-                    for: type,
-                    with: timetableManager.data
-                )
+                timetable: model.getTimetable(for: type)
             )
             .backgroundStyle(Color(.secondarySystemGroupedBackground))
             .background(Color(.systemGroupedBackground))
         } label: {
             HomeSchoolBusCell(
-                data: timetableManager.data,
+                timetable: model.getTimetable(for: type),
                 type: type
             )
         }

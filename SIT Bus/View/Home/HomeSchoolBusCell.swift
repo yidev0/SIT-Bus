@@ -9,26 +9,22 @@ import SwiftUI
 
 struct HomeSchoolBusCell: View {
     
-    var data: SBReferenceData?
+    var timetable: SchoolBusTimetable?
     
     var type: BusLineType.SchoolBus
     var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
-    @State var nextBusDate: Date? = nil
-    @State var note: LocalizedStringKey? = nil
-    @State var nextBusText: LocalizedStringKey = ""
+    @State var date: Date? = nil
+    @State var note: LocalizedStringKey = "Label.Loading"
+    @State var nextBusText: LocalizedStringKey = "Label.Loading"
     
     @ScaledMetric var busFontSize = 24
     
     var body: some View {
         GroupBox {
-            if let note {
-                Text(note)
-                    .padding(.top, 8)
-                    .padding(.bottom, 4)
-            } else if let nextBusDate {
+            if let date {
                 HStack(alignment: .lastTextBaseline) {
-                    Text(nextBusDate, format: .dateTime.hour().minute())
+                    Text(date, format: .dateTime.hour().minute())
                         .monospacedDigit()
                         .font(.system(size: busFontSize, weight: .semibold))
                         .padding(.top, 8)
@@ -40,11 +36,11 @@ struct HomeSchoolBusCell: View {
                 }
                 .contentTransition(.numericText())
                 .accessibilityElement(children: .combine)
-                .animation(.default, value: nextBusDate)
+                .animation(.default, value: date)
                 .animation(.default, value: nextBusText)
             } else {
                 HStack {
-                    Text("Label.BusServiceEnded")
+                    Text(note)
                         .padding(.top, 8)
                         .padding(.bottom, 4)
                     Spacer()
@@ -58,40 +54,44 @@ struct HomeSchoolBusCell: View {
             }
         }
         .foregroundStyle(Color.primary)
-        .onAppear {
-            loadNextBus()
-        }
         .onReceive(timer) { _ in
             loadNextBus()
         }
     }
     
     func loadNextBus() {
-        if let nextBusDate = data?.getNextBus(for: type, date: .now) {
-            self.nextBusDate = nextBusDate
-            let note = data?.getNextBusNote(for: type, date: .now)
+        if let nextBusDate = timetable?.getNextBus(for: .now) {
+            self.date = nextBusDate
+            let note = timetable?.getNextBusNote(for: .now, nextBusDate: nextBusDate)
             
             if let note, nextBusDate > note.start {
+                self.date = nil
                 self.note = "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
-            } else {   
-                let minutesRemaining = nextBusDate.convertToMinutes() - Date.now.convertToMinutes()
+            } else {
+                let remainingMinutes = nextBusDate.convertToMinutes() - Date.now.convertToMinutes()
                 
-                if minutesRemaining < 0 {
+                if remainingMinutes <= 0 {
                     self.nextBusText = "Label.DepartsIn0Minutes"
-                } else {
-                    self.nextBusText = "Label.DepartsIn\(minutesRemaining)Minutes"
+                } else if remainingMinutes >= 60 {
+                    self.nextBusText = "Label.DepartsIn\(remainingMinutes/60)Hours"
+                } else  {
+                    self.nextBusText = "Label.DepartsIn\(remainingMinutes)Minutes"
                 }
             }
         } else {
-            self.nextBusDate = nil
-            self.note = nil
+            self.date = nil
+            if self.timetable == nil {
+                self.note = "Label.NoBusService"
+            } else {
+                self.note = "Label.BusServiceEnded"
+            }
         }
     }
 }
 
 #Preview {
     HomeSchoolBusCell(
-        data: nil,
+        timetable: nil,
         type: .stationToCampus
     )
 }

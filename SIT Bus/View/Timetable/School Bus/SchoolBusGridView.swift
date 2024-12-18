@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SchoolBusGridView: View {
     
-    var timeSheet: [TimetableValue]
+    var timetable: SchoolBusTimetable
     
     var body: some View {
         ScrollView {
             VStack(spacing: 8) {
-                ForEach(timeSheet, id: \.hour) { timetable in
+                ForEach(timetable.values, id: \.hour) { timetable in
                     makeNoteLabel(timetable)
                     
                     if timetable.times.isEmpty == false {
@@ -58,7 +58,7 @@ struct SchoolBusGridView: View {
     }
     
     @ViewBuilder
-    private func makeNoteLabel(_ timetable: TimetableValue) -> some View {
+    private func makeNoteLabel(_ timetable: SchoolBusTimetable.Value) -> some View {
         if let range1 = timetable.dateRange1,
            let range2 = timetable.dateRange2 {
             Text("Label.\(Text(range1, format: .dateTime.hour().minute()))to\(Text(range2, format: .dateTime.hour().minute()))Service")
@@ -73,6 +73,6 @@ struct SchoolBusGridView: View {
 
 #Preview {
     SchoolBusGridView(
-        timeSheet: []
+        timetable: .init(values: [])
     )
 }

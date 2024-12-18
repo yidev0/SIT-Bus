@@ -10,13 +10,13 @@ import SwiftUI
 struct SchoolBusListView: View {
     
     @State var scrollPosition: Int?
-    var timesheet: [TimetableValue]?
+    var timetable: SchoolBusTimetable?
     
     var body: some View {
-        if let timesheet {
+        if let timetable {
             ScrollView {
                 LazyVStack(spacing: 8, pinnedViews: .sectionHeaders) {
-                    ForEach(timesheet, id: \.hour) { sheet in
+                    ForEach(timetable.values, id: \.hour) { sheet in
                         if sheet.times.isEmpty == false || sheet.note != nil {
                             Section {
                                 VStack(spacing: 8) {

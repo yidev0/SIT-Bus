@@ -19,9 +19,9 @@ struct TimetableView: View {
             ZStack {
                 switch model.timesheetBus {
                 case .schoolBus:
-                    if let timesheet = model.timesheet {
+                    if let timetable = model.timetable {
                         ScrollView {
-                            SchoolBusGridView(timeSheet: timesheet)
+                            SchoolBusGridView(timetable: timetable)
                         }
                         .contentMargins(.bottom, 80, for: .scrollContent)
                     } else {

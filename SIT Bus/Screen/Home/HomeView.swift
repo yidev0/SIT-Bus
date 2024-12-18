@@ -30,9 +30,6 @@ struct HomeView: View {
             .contentMargins(.top, 8, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Label.Home")
-            .refreshable {
-                timetableManager.loadData()
-            }
         }
         .environment(model)
         .sheet(isPresented: $model.showBusSelection) {
@@ -43,6 +40,13 @@ struct HomeView: View {
                 showToOmiya: $showToOmiya
             )
             .presentationDetents([.medium, .large])
+        }
+        .refreshable {
+            await timetableManager.loadData()
+            model.makeTimetable(from: timetableManager.data)
+        }
+        .onAppear {
+            model.makeTimetable(from: timetableManager.data)
         }
     }
 }

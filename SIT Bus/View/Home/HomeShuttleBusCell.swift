@@ -17,14 +17,16 @@ struct HomeShuttleBusCell: View {
     var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
     @State var date: Date?
-    @State var nextBusText: LocalizedStringKey = ""
-    @State var noBusText: LocalizedStringKey = ""
+    @State var note: LocalizedStringKey = "Label.Loading"
+    @State var nextBusText: LocalizedStringKey = "Label.Loading"
     
     @ScaledMetric var busFontSize = 24
     
     init(type: BusLineType.ShuttleBus) {
         self.type = type
         self.shuttleBusData = ShuttleBusData()
+        print(shuttleBusData.getDepartureDate(for: .now, type: type))
+        self.date = shuttleBusData.getDepartureDate(for: .now, type: type)
     }
     
     var body: some View {
@@ -35,7 +37,7 @@ struct HomeShuttleBusCell: View {
                         .monospacedDigit()
                         .font(.system(size: busFontSize, weight: .semibold))
                         .padding(.top, 8)
-                        .padding(.top, 4)
+                        .padding(.bottom, 4)
                     
                     Spacer()
                     
@@ -45,9 +47,9 @@ struct HomeShuttleBusCell: View {
                 .accessibilityElement(children: .combine)
             } else {
                 HStack(spacing: 0) {
-                    Text("Label.NoBusService")
+                    Text(note)
                         .padding(.top, 8)
-                        .padding(.top, 4)
+                        .padding(.bottom, 4)
                     Spacer()
                 }
             }
@@ -59,9 +61,6 @@ struct HomeShuttleBusCell: View {
             }
         }
         .foregroundStyle(Color.primary)
-        .onAppear {
-            checkBusData()
-        }
         .onReceive(timer) { _ in
             checkBusData()
         }
@@ -72,7 +71,7 @@ struct HomeShuttleBusCell: View {
             self.date = date
             
             if Date.now <= date {
-                let remainingMinutes = date.convertToMinutes() - Date.now.convertToMinutes() 
+                let remainingMinutes = date.convertToMinutes() - Date.now.convertToMinutes()
                 if remainingMinutes >= 60 {
                     nextBusText = "Label.DepartsIn\(remainingMinutes/60)Hours"
                 } else if remainingMinutes == 0 {
@@ -81,15 +80,15 @@ struct HomeShuttleBusCell: View {
                     nextBusText = "Label.DepartsIn\(remainingMinutes)Minutes"
                 }
             } else {
-                nextBusText = ""
-                noBusText = "Label.BusServiceEnded"
+                self.date = nil
+                note = "Label.BusServiceEnded"
             }
         } else {
             self.date = nil
             if shuttleBusData.isActive(.now) {
-                noBusText = "Label.BusServiceEnded"
+                note = "Label.BusServiceEnded"
             } else {
-                noBusText = "Label.NoBusService"
+                note = "Label.NoBusService"
             }
         }
     }

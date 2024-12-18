@@ -22,7 +22,10 @@ struct SettingsView: View {
                         format: .dateTime.year().month().day().hour().minute()
                     )
                     .contextMenu {
-                        Button(role: .destructive) { timetableManager.loadData(forceFetch: true)
+                        Button(role: .destructive) {
+                            Task {
+                                await timetableManager.loadData(forceFetch: true)
+                            }
                         } label: {
                             Text("Label.ForceFetch")
                         }

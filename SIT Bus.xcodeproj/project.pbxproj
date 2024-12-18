@@ -89,8 +89,8 @@
 				Model/Decodable/SBSiteInfo.swift,
 				Model/Decodable/SBTimeSheet.swift,
 				Model/ListType.swift,
+				Model/SchoolBusTimetableValue.swift,
 				Model/TimetableManager.swift,
-				Model/TimetableValue.swift,
 				Resource/Localizable.xcstrings,
 			);
 			target = D1E1202B2D059826003F9548 /* Widget Extension */;
