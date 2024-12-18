@@ -11,33 +11,34 @@ import Foundation
 class TimetableManager {
     
     public var data: SBReferenceData? = nil
-    public var urlTask: URLSessionTask?
     public var lastUpdatedDate: Date = .now
     public var isLoading: Bool = false
     
     private let dataStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
     
     init() {
+        Task {
 #if DEBUG
-        if ProcessInfo().isSwiftUIPreview {
-            print("is preview")
-            do {
-                let data = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                self.data = result
-            } catch {
-                loadData()
+            if ProcessInfo().isSwiftUIPreview {
+                print("is preview")
+                do {
+                    let data = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
+                    let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
+                    self.data = result
+                } catch {
+                    await loadData()
+                }
+            } else {
+                print("not preview")
+                await loadData()
             }
-        } else {
-            print("not preview")
-            loadData()
-        }
 #else
-        loadData()
+            await loadData()
 #endif
+        }
     }
     
-    public func loadData(forceFetch: Bool = false) {
+    public func loadData(forceFetch: Bool = false) async {
         let lastUpdate = UserDefaults.standard.double(forKey: "LastUpdate")
         let lastUpdateDate = Date(timeIntervalSince1970: lastUpdate)
         self.lastUpdatedDate = lastUpdateDate
@@ -49,12 +50,11 @@ class TimetableManager {
             } else {
                 do {
                     self.data = try await fetchData()
-                    isLoading = false
                 } catch {
                     self.data = await fetchLocalData()
-                    isLoading = false
                 }
             }
+            isLoading = false
         }
     }
     

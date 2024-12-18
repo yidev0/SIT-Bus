@@ -13,7 +13,7 @@ class TimetableViewModel {
     var timesheetDate: Date
     var showTimesheetDatePicker = false
     var timesheetBus: BusLineType = .schoolBus(.stationToCampus)
-    var timesheet: [TimetableValue]? = nil
+    var timetable: SchoolBusTimetable? = nil
     
     init() {
         timesheetDate = Date.now
@@ -27,7 +27,7 @@ class TimetableViewModel {
         let sheet = data?.getTimesheet(for: timesheetDate)
         switch timesheetBus {
         case .schoolBus(let schoolBus):
-            self.timesheet = sheet?.makeTimetable(for: schoolBus)
+            self.timetable = sheet?.makeTimetable(for: schoolBus)
         case .shuttleBus(_):
             break
         }

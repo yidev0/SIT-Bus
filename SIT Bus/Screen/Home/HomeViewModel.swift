@@ -12,11 +12,27 @@ import ActivityKit
 class HomeViewModel {
     
     var showBusSelection = false
-    var timetable: [TimetableValue]? = nil
+    var toCampusTimetable: SchoolBusTimetable? = nil
+    var toStationTimetable: SchoolBusTimetable? = nil
 //    var busActivity: Activity<SITBusActivityAttributes>?
     
-    func makeTimeTable(for type: BusLineType.SchoolBus, with data: SBReferenceData?) -> [TimetableValue]? {
-        return data?.getTimesheet(for: .now)?.makeTimetable(for: type)
+    func makeTimetable(from data: SBReferenceData?) {
+        if let data, let timesheet = data.getTimesheet(for: .now) {
+            self.toStationTimetable = timesheet.makeTimetable(for: .campusToStation)
+            self.toCampusTimetable = timesheet.makeTimetable(for: .stationToCampus)
+        } else {
+            self.toStationTimetable = nil
+            self.toCampusTimetable = nil
+        }
+    }
+    
+    func getTimetable(for type: BusLineType.SchoolBus) -> SchoolBusTimetable? {
+        switch type {
+        case .stationToCampus:
+            toCampusTimetable
+        case .campusToStation:
+            toStationTimetable
+        }
     }
     
     func startLiveActivity(for type: BusLineType.SchoolBus) {
