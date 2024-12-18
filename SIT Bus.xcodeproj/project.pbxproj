@@ -89,7 +89,7 @@
 				Model/Decodable/SBSiteInfo.swift,
 				Model/Decodable/SBTimeSheet.swift,
 				Model/ListType.swift,
-				Model/SchoolBusTimetableValue.swift,
+				Model/SchoolBusTimetable.swift,
 				Model/TimetableManager.swift,
 				Resource/Localizable.xcstrings,
 			);

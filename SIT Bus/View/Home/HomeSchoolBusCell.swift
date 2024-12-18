@@ -14,11 +14,23 @@ struct HomeSchoolBusCell: View {
     var type: BusLineType.SchoolBus
     var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
-    @State var date: Date? = nil
-    @State var note: LocalizedStringKey = "Label.Loading"
-    @State var nextBusText: LocalizedStringKey = "Label.Loading"
+    @State var date: Date?
+    @State var note: LocalizedStringKey
+    @State var nextBusText: LocalizedStringKey
     
     @ScaledMetric var busFontSize = 24
+    
+    init(
+        timetable: SchoolBusTimetable? = nil,
+        type: BusLineType.SchoolBus
+    ) {
+        self.timetable = timetable
+        self.type = type
+        
+        self.date = timetable?.getNextBus(for: .now)
+        self.note = "Label.Loading"
+        self.nextBusText = "Label.Loading"
+    }
     
     var body: some View {
         GroupBox {

@@ -8,7 +8,11 @@
 import Foundation
 import SwiftUI
 
-struct SBReferenceData: Decodable {
+struct SBReferenceData: Decodable, Equatable {
+    static func == (lhs: SBReferenceData, rhs: SBReferenceData) -> Bool {
+        lhs.update == rhs.update
+    }
+    
     let update: String
     let timesheet: [SBTimeSheet]
     let calendar: [SBCalendar]

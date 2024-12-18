@@ -17,16 +17,18 @@ struct HomeShuttleBusCell: View {
     var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
     @State var date: Date?
-    @State var note: LocalizedStringKey = "Label.Loading"
-    @State var nextBusText: LocalizedStringKey = "Label.Loading"
+    @State var note: LocalizedStringKey
+    @State var nextBusText: LocalizedStringKey
     
     @ScaledMetric var busFontSize = 24
     
     init(type: BusLineType.ShuttleBus) {
         self.type = type
         self.shuttleBusData = ShuttleBusData()
-        print(shuttleBusData.getDepartureDate(for: .now, type: type))
         self.date = shuttleBusData.getDepartureDate(for: .now, type: type)
+        
+        self.note = "Label.Loading"
+        self.nextBusText = "Label.Loading"
     }
     
     var body: some View {
@@ -61,6 +63,9 @@ struct HomeShuttleBusCell: View {
             }
         }
         .foregroundStyle(Color.primary)
+        .onAppear {
+            checkBusData()
+        }
         .onReceive(timer) { _ in
             checkBusData()
         }

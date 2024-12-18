@@ -11,7 +11,6 @@ import Foundation
 class TimetableManager {
     
     public var data: SBReferenceData? = nil
-    public var urlTask: URLSessionTask?
     public var lastUpdatedDate: Date = .now
     public var isLoading: Bool = false
     

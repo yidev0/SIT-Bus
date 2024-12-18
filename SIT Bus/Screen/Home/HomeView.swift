@@ -48,6 +48,9 @@ struct HomeView: View {
         .onAppear {
             model.makeTimetable(from: timetableManager.data)
         }
+        .onChange(of: timetableManager.data) { _, newValue in
+            model.makeTimetable(from: timetableManager.data)
+        }
     }
 }
 
