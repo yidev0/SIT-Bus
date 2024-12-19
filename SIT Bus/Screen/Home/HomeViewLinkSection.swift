@@ -33,7 +33,6 @@ fileprivate enum LinkType: Int, CaseIterable {
 struct HomeViewLinkSection: View {
     
     @Environment(HomeViewModel.self) private var model
-    @ScaledMetric var iconSize = 17
     
     var body: some View {
         Section {
@@ -47,22 +46,11 @@ struct HomeViewLinkSection: View {
                             BusMapView()
                         }
                     } label: {
-                        HStack(spacing: 12) {
-                            ZStack {
-                                Image(systemName: type.symbol)
-                                    .foregroundStyle(.accent)
-                            }
-                            .frame(width: iconSize)
-                            
-                            Text(type.title)
-                                
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundStyle(.secondary)
-                        }
-                        .fontWeight(.medium)
-                        .padding()
-                        .background()
+                        HomeLinkCell(
+                            title: type.title,
+                            symbol: type.symbol,
+                            trailingSymbol: "chevron.right"
+                        )
                     }
                 }
             }
