@@ -38,5 +38,6 @@ struct SettingsLink: View {
             }
             .foregroundStyle(Color.primary)
         }
+        .makeListLink()
     }
 }

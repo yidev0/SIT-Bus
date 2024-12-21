@@ -14,7 +14,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section {
+                Section("Label.AutoUpdateSource") {
                     SettingsLink(
                         url: "http://bus.shibaura-it.ac.jp/developer.html",
                         label: "Label.SchoolBus",
@@ -30,11 +30,9 @@ struct SettingsView: View {
                             Text("Label.ForceFetch")
                         }
                     }
-                } header: {
-                    Text("Label.AutoUpdateSource")
                 }
                     
-                Section {
+                Section("Label.InfoSource") {
                     SettingsLink(
                         url: "https://www.shibaura-it.ac.jp/access/index.html#bus",
                         label: "Label.ShuttleBus",
@@ -48,11 +46,9 @@ struct SettingsView: View {
                         date: .createDate(year: 2024, month: 9, day: 30)!,
                         format: .dateTime.year().month().day()
                     )
-                } header: {
-                    Text("Label.InfoSource")
                 }
                 
-                Section {
+                Section("Label.AboutApp") {
                     Link(
                         destination: .init(
                             string: "https://apps.apple.com/app/id6736679708"
@@ -63,10 +59,12 @@ struct SettingsView: View {
                                 Text(verbatim: Bundle.main.appName ?? "")
                                 Text(verbatim: "\(Bundle.main.releaseVersionNumber ?? "0.0")(\(Bundle.main.buildVersionNumber ?? "0"))")
                             }
+                            .foregroundStyle(Color.primary)
                         } icon: {
                             Image(.appIconDisplay)
                                 .clipShape(.rect(cornerRadius: 4))
                         }
+                        .makeListLink()
                     }
                     
                     Link(
@@ -78,8 +76,9 @@ struct SettingsView: View {
                             Text(verbatim: "GitHub")
                         } icon: {
                             Image(.githubFill)
-                                .foregroundStyle(Color.primary)
                         }
+                        .foregroundStyle(Color.primary)
+                        .makeListLink()
                     }
                 }
                 
@@ -91,6 +90,7 @@ struct SettingsView: View {
                 
             }
             .navigationTitle("Label.Settings")
+            .listSectionSpacing(8)
         }
     }
 }

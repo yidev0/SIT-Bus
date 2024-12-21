@@ -43,12 +43,9 @@ struct LibraryView: View {
             
             Section {
                 Link(destination: .init(string: "https://library1.shibaura-it.ac.jp/")!) {
-                    LabeledContent {
-                        Image(systemName: "arrow.up.right")
-                    } label: {
-                        Text(verbatim: "OPAC")
-                    }
+                    Text(verbatim: "OPAC")
                 }
+                .makeListLink()
             }
             
 #if !targetEnvironment(simulator)
