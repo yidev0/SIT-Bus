@@ -53,18 +53,19 @@ struct LibraryView: View {
             
 #if !targetEnvironment(simulator)
             Section("Label.Omiya") {
-                WebView(request: model.omiyaCalendarRequest)
+                WebView(request: .omiyaCalendarRequest)
                     .listRowInsets(.init())
                     .frame(height: 400)
             }
             
             Section("Label.Toyosu") {
-                WebView(request: model.toyosuCalendarRequest)
+                WebView(request: .toyosuCalendarRequest)
                     .listRowInsets(.init())
                     .frame(height: 400)
             }
 #endif
         }
+        .listSectionSpacing(16)
     }
 }
 

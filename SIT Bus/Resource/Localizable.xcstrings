@@ -458,7 +458,20 @@
       }
     },
     "Label.Library" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図書館"
+          }
+        }
+      }
     },
     "Label.Loading" : {
       "localizations" : {
@@ -573,12 +586,17 @@
       }
     },
     "Label.Omiya" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omiya"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮"
           }
         }
       }
@@ -808,7 +826,6 @@
       }
     },
     "Label.Toyosu" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

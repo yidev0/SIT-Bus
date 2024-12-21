@@ -81,6 +81,7 @@
 				"Extension/Date +.swift",
 				"Extension/GroupBox +.swift",
 				"Extension/String +.swift",
+				"Extension/URLRequest +.swift",
 				"Extension/View +.swift",
 				Model/Bus/BusLineType.swift,
 				Model/Data/ShuttleBusData.swift,
