@@ -569,6 +569,17 @@
         }
       }
     },
+    "Label.Omiya" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya"
+          }
+        }
+      }
+    },
     "Label.OmiyaStationToCampus" : {
       "localizations" : {
         "en" : {
@@ -661,6 +672,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス（東大宮駅）"
+          }
+        }
+      }
+    },
+    "Label.Search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
           }
         }
       }
@@ -773,6 +800,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "時刻表"
+          }
+        }
+      }
+    },
+    "Label.Toyosu" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toyosu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "豊洲"
           }
         }
       }
