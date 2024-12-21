@@ -8,8 +8,9 @@
 import SwiftUI
 
 fileprivate enum LinkType: Int, CaseIterable {
-    case univCoop
     case boardingLocation
+    case univCoop
+    case library
     
     var title: LocalizedStringKey {
         switch self {
@@ -17,6 +18,8 @@ fileprivate enum LinkType: Int, CaseIterable {
             "Label.UnivCoop"
         case .boardingLocation:
             "Label.BoardingLocation"
+        case .library:
+            "Label.Library"
         }
     }
     
@@ -26,6 +29,8 @@ fileprivate enum LinkType: Int, CaseIterable {
             "fork.knife"
         case .boardingLocation:
             "map.fill"
+        case .library:
+            "books.vertical.fill"
         }
     }
 }
@@ -44,6 +49,8 @@ struct HomeViewLinkSection: View {
                             CoopServiceView()
                         case .boardingLocation:
                             BusMapView()
+                        case .library:
+                            LibraryView()
                         }
                     } label: {
                         HomeLinkCell(

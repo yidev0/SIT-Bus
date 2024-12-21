@@ -457,6 +457,22 @@
         }
       }
     },
+    "Label.Library" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図書館"
+          }
+        }
+      }
+    },
     "Label.Loading" : {
       "localizations" : {
         "en" : {
@@ -569,6 +585,22 @@
         }
       }
     },
+    "Label.Omiya" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮"
+          }
+        }
+      }
+    },
     "Label.OmiyaStationToCampus" : {
       "localizations" : {
         "en" : {
@@ -661,6 +693,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス（東大宮駅）"
+          }
+        }
+      }
+    },
+    "Label.Search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
           }
         }
       }
@@ -773,6 +821,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "時刻表"
+          }
+        }
+      }
+    },
+    "Label.Toyosu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toyosu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "豊洲"
           }
         }
       }
