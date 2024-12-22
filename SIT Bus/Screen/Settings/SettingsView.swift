@@ -14,6 +14,9 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.openLinkInApp)
     var openLinkInApp: Bool = true
     
+    @AppStorage(UserDefaultsKeys.hideGoogleCalendar)
+    var hideCalendar: Bool = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -23,6 +26,9 @@ struct SettingsView: View {
                     }
                 }
                 
+                Section("Label.Other") {
+                    Toggle(isOn: $hideCalendar) {
+                        Text("Label.HideGoogleCalendar")
                     }
                     
                     }

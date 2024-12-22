@@ -13,6 +13,9 @@ struct LibraryView: View {
     @State var model = LibraryViewModel()
     @FocusState var isFocused: Bool
     
+    @AppStorage(UserDefaultsKeys.hideGoogleCalendar)
+    var hideCalendar: Bool = false
+    
     var body: some View {
         List {
             Section {
@@ -42,27 +45,48 @@ struct LibraryView: View {
             }
             
             Section {
-                LinkButton("https://library1.shibaura-it.ac.jp/") {
-                    Text(verbatim: "OPAC")
-                }
-                .makeListLink()
+                makeLink(
+                    url: "https://library1.shibaura-it.ac.jp/",
+                    title: "OPAC"
+                )
             }
             
 #if !targetEnvironment(simulator)
-            Section("Label.Omiya") {
-                WebView(request: .omiyaCalendarRequest)
-                    .listRowInsets(.init())
-                    .frame(height: 400)
-            }
-            
-            Section("Label.Toyosu") {
-                WebView(request: .toyosuCalendarRequest)
-                    .listRowInsets(.init())
-                    .frame(height: 400)
+            if hideCalendar {
+                Section {
+                    makeLink(
+                        url: "URL.LibraryServices".localize,
+                        title: "Label.LibraryServices"
+                    )
+                    
+                    makeLink(
+                        url: "https://lib.shibaura-it.ac.jp/usage/schedule",
+                        title: "開館スケジュール"
+                    )
+                }
+            } else {
+                Section("Label.Omiya") {
+                    WebView(request: .omiyaCalendarRequest)
+                        .listRowInsets(.init())
+                        .frame(height: 400)
+                }
+                
+                Section("Label.Toyosu") {
+                    WebView(request: .toyosuCalendarRequest)
+                        .listRowInsets(.init())
+                        .frame(height: 400)
+                }
             }
 #endif
         }
         .listSectionSpacing(16)
+    }
+    
+    func makeLink(url: String, title: LocalizedStringKey) -> some View {
+        LinkButton(url) {
+            Text(title)
+        }
+        .makeListLink()
     }
 }
 

@@ -8,4 +8,6 @@
 struct UserDefaultsKeys {
     /// Wether to open url in-app or default browser
     static let openLinkInApp = "OpenLinkInApp"
+    /// Hide Google Calendar for privacy
+    static let hideGoogleCalendar = "HideGoogleCalendar"
 }

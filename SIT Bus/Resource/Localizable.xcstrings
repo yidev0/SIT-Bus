@@ -505,6 +505,22 @@
         }
       }
     },
+    "Label.LibraryServices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library Services"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用案内"
+          }
+        }
+      }
+    },
     "Label.Loading" : {
       "localizations" : {
         "en" : {
@@ -634,7 +650,6 @@
       }
     },
     "Label.Omiya" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -694,6 +709,38 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "リンクをアプリ内で開く"
+          }
+        }
+      }
+    },
+    "Label.Options" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オプション"
+          }
+        }
+      }
+    },
+    "Label.Other" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
           }
         }
       }
@@ -891,7 +938,6 @@
       }
     },
     "Label.Toyosu" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -939,7 +985,30 @@
         }
       }
     },
+    "OPAC" : {
+
+    },
     "OSS" : {
+
+    },
+    "URL.LibraryService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/usage/information/"
+          }
+        }
+      }
+    },
+    "開館スケジュール" : {
 
     }
   },
