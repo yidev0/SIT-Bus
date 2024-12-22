@@ -683,7 +683,20 @@
       }
     },
     "Label.OpenLinkInApp" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Link In-App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "リンクをアプリ内で開く"
+          }
+        }
+      }
     },
     "Label.RelatedSites" : {
       "localizations" : {

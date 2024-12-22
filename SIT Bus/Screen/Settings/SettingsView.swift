@@ -10,56 +10,22 @@ import SwiftUI
 struct SettingsView: View {
     
     @Environment(TimetableManager.self) private var timetableManager
+    
     @AppStorage(UserDefaultsKeys.openLinkInApp)
     var openLinkInApp: Bool = true
     
     var body: some View {
         NavigationStack {
             List {
-                Section {
+                Section("Label.Options") {
                     Toggle(isOn: $openLinkInApp) {
                         Text("Label.OpenLinkInApp")
                     }
                 }
                 
-                Section("Label.AutoUpdateSource") {
-                    LinkButton("http://bus.shibaura-it.ac.jp/developer.html") {
-                        SettingsSourceLabel(
-                            label: "Label.SchoolBus",
-                            date: timetableManager.lastUpdatedDate,
-                            format: .dateTime.year().month().day().hour().minute()
-                        )
                     }
-                    .makeListLink()
-                    .contextMenu {
-                        Button(role: .destructive) {
-                            Task {
-                                await timetableManager.loadData(forceFetch: true)
-                            }
-                        } label: {
-                            Text("Label.ForceFetch")
-                        }
-                    }
-                }
                     
-                Section("Label.InfoSource") {
-                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
-                        SettingsSourceLabel(
-                            label: "Label.ShuttleBus",
-                            date: Date.createDate(year: 2024, month: 9, day: 23)!,
-                            format: .dateTime.year().month().day()
-                        )
                     }
-                    .makeListLink()
-                    
-                    LinkButton("https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf") {
-                        SettingsSourceLabel(
-                            label: "Label.SchoolBusIwatsuki",
-                            date: .createDate(year: 2024, month: 9, day: 30)!,
-                            format: .dateTime.year().month().day()
-                        )
-                    }
-                    .makeListLink()
                 }
                 
                 Section("Label.AboutApp") {
@@ -95,6 +61,23 @@ struct SettingsView: View {
                         SettingsCreditsView()
                     } label: {
                         Label("Label.Credits", systemImage: "scroll")
+                    }
+                
+                    NavigationLink {
+                        SettingsSourcesView(
+                            lastUpdatedDate: timetableManager.lastUpdatedDate
+                        )
+                    } label: {
+                        Label("Label.InfoSource", systemImage: "chevron.left.forwardslash.chevron.right")
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            Task {
+                                await timetableManager.loadData(forceFetch: true)
+                            }
+                        } label: {
+                            Text("Label.ForceFetch")
+                        }
                     }
                 }
                 
