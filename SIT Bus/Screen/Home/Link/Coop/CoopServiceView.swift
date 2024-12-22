@@ -43,7 +43,7 @@ struct CoopServiceView: View {
     }
     
     func makeLink(url: String, title: String) -> some View {
-        Link(destination: URL(string: url)!) {
+        LinkButton(URL(string: url)!) {
             Text(title)
         }
         .makeListLink()

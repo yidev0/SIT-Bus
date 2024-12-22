@@ -682,6 +682,9 @@
         }
       }
     },
+    "Label.OpenLinkInApp" : {
+
+    },
     "Label.RelatedSites" : {
       "localizations" : {
         "en" : {

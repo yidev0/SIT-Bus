@@ -42,7 +42,7 @@ struct LibraryView: View {
             }
             
             Section {
-                Link(destination: .init(string: "https://library1.shibaura-it.ac.jp/")!) {
+                LinkButton("https://library1.shibaura-it.ac.jp/") {
                     Text(verbatim: "OPAC")
                 }
                 .makeListLink()

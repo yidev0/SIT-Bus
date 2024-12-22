@@ -17,6 +17,14 @@ struct LinkButton<Label: View>: View {
     var label: Label
     
     init(
+        _ urlString: String,
+        @ViewBuilder label: () -> Label
+    ) {
+        self.url = URL(string: urlString)!
+        self.label = label()
+    }
+    
+    init(
         _ url: URL,
         @ViewBuilder label: () -> Label
     ) {

@@ -23,12 +23,14 @@ struct SettingsView: View {
                 }
                 
                 Section("Label.AutoUpdateSource") {
-                    SettingsLink(
-                        url: "http://bus.shibaura-it.ac.jp/developer.html",
-                        label: "Label.SchoolBus",
-                        date: timetableManager.lastUpdatedDate,
-                        format: .dateTime.year().month().day().hour().minute()
-                    )
+                    LinkButton("http://bus.shibaura-it.ac.jp/developer.html") {
+                        SettingsSourceLabel(
+                            label: "Label.SchoolBus",
+                            date: timetableManager.lastUpdatedDate,
+                            format: .dateTime.year().month().day().hour().minute()
+                        )
+                    }
+                    .makeListLink()
                     .contextMenu {
                         Button(role: .destructive) {
                             Task {
@@ -41,26 +43,28 @@ struct SettingsView: View {
                 }
                     
                 Section("Label.InfoSource") {
-                    SettingsLink(
-                        url: "https://www.shibaura-it.ac.jp/access/index.html#bus",
-                        label: "Label.ShuttleBus",
-                        date: Date.createDate(year: 2024, month: 9, day: 23)!,
-                        format: .dateTime.year().month().day()
-                    )
+                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
+                        SettingsSourceLabel(
+                            label: "Label.ShuttleBus",
+                            date: Date.createDate(year: 2024, month: 9, day: 23)!,
+                            format: .dateTime.year().month().day()
+                        )
+                    }
+                    .makeListLink()
                     
-                    SettingsLink(
-                        url: "https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf",
-                        label: "Label.SchoolBusIwatsuki",
-                        date: .createDate(year: 2024, month: 9, day: 30)!,
-                        format: .dateTime.year().month().day()
-                    )
+                    LinkButton("https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf") {
+                        SettingsSourceLabel(
+                            label: "Label.SchoolBusIwatsuki",
+                            date: .createDate(year: 2024, month: 9, day: 30)!,
+                            format: .dateTime.year().month().day()
+                        )
+                    }
+                    .makeListLink()
                 }
                 
                 Section("Label.AboutApp") {
-                    Link(
-                        destination: .init(
-                            string: "https://apps.apple.com/app/id6736679708"
-                        )!
+                    LinkButton(
+                        "https://apps.apple.com/app/id6736679708"
                     ) {
                         Label {
                             HStack {
@@ -75,10 +79,8 @@ struct SettingsView: View {
                         .makeListLink()
                     }
                     
-                    Link(
-                        destination: .init(
-                            string: "https://github.com/yidev0/School-Bus"
-                        )!
+                    LinkButton(
+                        "https://github.com/yidev0/School-Bus"
                     ) {
                         Label {
                             Text(verbatim: "GitHub")
