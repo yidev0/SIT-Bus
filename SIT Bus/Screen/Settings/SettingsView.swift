@@ -10,10 +10,18 @@ import SwiftUI
 struct SettingsView: View {
     
     @Environment(TimetableManager.self) private var timetableManager
+    @AppStorage(UserDefaultsKeys.openLinkInApp)
+    var openLinkInApp: Bool = true
     
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    Toggle(isOn: $openLinkInApp) {
+                        Text("Label.OpenLinkInApp")
+                    }
+                }
+                
                 Section("Label.AutoUpdateSource") {
                     SettingsLink(
                         url: "http://bus.shibaura-it.ac.jp/developer.html",

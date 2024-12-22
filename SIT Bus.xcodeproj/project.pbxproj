@@ -93,6 +93,7 @@
 				Model/ListType.swift,
 				Model/SchoolBusTimetable.swift,
 				Model/TimetableManager.swift,
+				Model/UserDefaultsKeys.swift,
 				Resource/Localizable.xcstrings,
 			);
 			target = D1E1202B2D059826003F9548 /* Widget Extension */;
