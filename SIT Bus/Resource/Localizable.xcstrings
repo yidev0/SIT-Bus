@@ -116,6 +116,22 @@
         }
       }
     },
+    "Label.AboutApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリについて"
+          }
+        }
+      }
+    },
     "Label.Accessibility.%lldTime" : {
       "localizations" : {
         "en" : {
@@ -272,6 +288,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "営業時間"
+          }
+        }
+      }
+    },
+    "Label.Credits" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クレジット"
           }
         }
       }
@@ -489,6 +521,22 @@
         }
       }
     },
+    "Label.Localization" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localization"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ローカリゼーション"
+          }
+        }
+      }
+    },
     "Label.Map.FromHigashiOmiya" : {
       "localizations" : {
         "en" : {
@@ -586,6 +634,7 @@
       }
     },
     "Label.Omiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -826,6 +875,7 @@
       }
     },
     "Label.Toyosu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -872,6 +922,9 @@
           }
         }
       }
+    },
+    "OSS" : {
+
     }
   },
   "version" : "1.0"

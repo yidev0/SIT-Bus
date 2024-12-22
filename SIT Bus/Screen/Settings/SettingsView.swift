@@ -80,6 +80,12 @@ struct SettingsView: View {
                         .foregroundStyle(Color.primary)
                         .makeListLink()
                     }
+                    
+                    NavigationLink {
+                        SettingsCreditsView()
+                    } label: {
+                        Label("Label.Credits", systemImage: "scroll")
+                    }
                 }
                 
 #if DEBUG
