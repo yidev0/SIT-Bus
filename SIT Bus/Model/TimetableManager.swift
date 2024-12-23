@@ -12,9 +12,7 @@ class TimetableManager {
     
     public var data: SBReferenceData? = nil
     public var lastUpdatedDate: Date = .now
-    public var isLoading: Bool = false
-    
-    private let dataStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
+    public var error: BusDataFetcherError? = nil
     
     init() {
         Task {
@@ -39,54 +37,40 @@ class TimetableManager {
     }
     
     public func loadData(forceFetch: Bool = false) async {
-        let lastUpdate = UserDefaults.standard.double(forKey: "LastUpdate")
+        let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
         let lastUpdateDate = Date(timeIntervalSince1970: lastUpdate)
-        self.lastUpdatedDate = lastUpdateDate
         
-        isLoading = true
+        let dataFetcher = BusDataFetcher()
         Task {
-            if Calendar.current.isDateInToday(lastUpdateDate) == true || forceFetch {
-                self.data = await fetchLocalData()
-            } else {
-                do {
-                    self.data = try await fetchData()
-                } catch {
-                    self.data = await fetchLocalData()
+            let fetch = Calendar.current.isDateInToday(lastUpdateDate) == false || forceFetch
+            if fetch {
+                let response = await dataFetcher.fetchData()
+                
+                switch response {
+                case .success(let success):
+                    self.data = success
+                    self.lastUpdatedDate = lastUpdateDate
+                    UserDefaults.shared.set(Date.now.timeIntervalSince1970, forKey: UserDefaultsKeys.lastUpdateDate)
+                case .failure(let failure):
+                    error = failure
                 }
             }
-            isLoading = false
-        }
-    }
-    
-    private func fetchLocalData() async -> SBReferenceData? {
-        if let url = dataStoreURL, FileManager.default.fileExists(atPath: url.path()) {
-            do {
-                let data = try Data(contentsOf: url)
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                return result
-            } catch {
-                print(error)
-            }
-        }
-        return nil
-    }
-    
-    private func fetchData() async throws -> SBReferenceData? {
-        print("fetching...")
-        let fetchURL = URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: fetchURL)
-            let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
             
-            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus") {
-                try data.write(to: url.appendingPathComponent("bus_data", conformingTo: .json))
-                UserDefaults.standard.set(Date.now.timeIntervalSince1970, forKey: "LastUpdate")
+            if self.data == nil {
+                let response = await dataFetcher.fetchLocalData()
+                switch response {
+                case .success(let success):
+                    self.data = success
+                case .failure(let failure):
+                    switch failure {
+                    case .noLocalData:
+                        // TODO: alert local data
+                        break
+                    default:
+                        break
+                    }
+                }
             }
-            
-            return result
-        } catch {
-            throw error
         }
     }
     
