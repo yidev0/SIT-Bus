@@ -457,6 +457,22 @@
         }
       }
     },
+    "Label.HideGoogleCalendar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Google Calendar"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Googleカレンダーを非表示"
+          }
+        }
+      }
+    },
     "Label.Home" : {
       "localizations" : {
         "en" : {
@@ -757,6 +773,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "関連リンク"
+          }
+        }
+      }
+    },
+    "Label.SaveCoopSchedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Co-op Schedule"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "生協のスケジュールを保存"
           }
         }
       }

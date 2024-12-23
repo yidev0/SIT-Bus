@@ -17,6 +17,9 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.hideGoogleCalendar)
     var hideCalendar: Bool = false
     
+    @AppStorage(UserDefaultsKeys.saveCoopSchedule)
+    var saveCoopSchedule: Bool = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -31,6 +34,8 @@ struct SettingsView: View {
                         Text("Label.HideGoogleCalendar")
                     }
                     
+                    Toggle(isOn: $saveCoopSchedule) {
+                        Text("Label.SaveCoopSchedule")
                     }
                 }
                 

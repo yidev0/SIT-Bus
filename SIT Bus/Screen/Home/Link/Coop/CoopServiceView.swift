@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import QuickLook
 
 struct CoopServiceView: View {
     
     @State var model = CoopServiceViewModel()
+    
+    @AppStorage(UserDefaultsKeys.saveCoopSchedule)
+    var saveSchedule: Bool = false
     
     var body: some View {
         List {
@@ -27,7 +31,7 @@ struct CoopServiceView: View {
             
             Section {
                 ForEach(model.coopSchedule, id: \.title) { schedule in
-                    makeLink(
+                    makeScheduleLink(
                         url: schedule.href,
                         title: schedule.title
                     )
@@ -37,8 +41,9 @@ struct CoopServiceView: View {
             }
         }
         .tint(Color.primary)
+        .quickLookPreview($model.quickLookURL)
         .task {
-            model.getCoopSchedule()
+            model.getCoopSchedule(saveLocal: saveSchedule)
         }
     }
     
@@ -47,6 +52,21 @@ struct CoopServiceView: View {
             Text(title)
         }
         .makeListLink()
+    }
+    
+    @ViewBuilder
+    func makeScheduleLink(url: String, title: String) -> some View {
+        if saveSchedule && !model.coopSchedule.isEmpty {
+            Button {
+                if let url = model.getFileURL(for: title) {
+                    model.quickLookURL = url
+                }
+            } label: {
+                Text(title)
+            }
+        } else {
+            makeLink(url: url, title: title)
+        }
     }
 }
 

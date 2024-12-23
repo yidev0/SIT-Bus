@@ -11,15 +11,46 @@ import Foundation
 class CoopServiceViewModel {
     
     var coopSchedule: [(title: String, href: String)] = []
+    var quickLookURL: URL?
     
-    public func getCoopSchedule() {
+    public func getCoopSchedule(saveLocal: Bool) {
         Task {
             do {
                 let fetchedHTML = try await fetchHTML(from: "https://www.univcoop.jp/sit/time/")
                 let links = extractLinks(from: fetchedHTML, withClass: "link_btn")
+                if saveLocal {
+                    await loadSchedule(for: links)
+                }
                 self.coopSchedule = links
             } catch {
                 print(error)
+            }
+        }
+    }
+    
+    public func getFileURL(for title: String) -> URL? {
+        let fileManager = FileManager.default
+        guard let cachesDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("coop") else { return nil }
+        return cachesDirectory.appendingPathComponent(title, conformingTo: .pdf)
+    }
+    
+    private func loadSchedule(for data: [(title: String, href: String)]) async {
+        let fileManager = FileManager.default
+        guard let cachesDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("coop") else { return }
+        
+        if !fileManager.fileExists(atPath: cachesDirectory.path()) {
+            try? fileManager.createDirectory(at: cachesDirectory, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        for data in data {
+            let directory = cachesDirectory.appendingPathComponent(data.title, conformingTo: .pdf)
+            if let url = URL(string: data.href), fileManager.fileExists(atPath: directory.path(percentEncoded: false)) == false {
+                do {
+                    let data = try await URLSession.shared.data(from: url)
+                    try data.0.write(to: directory)
+                } catch {
+                    print(error)
+                }
             }
         }
     }
