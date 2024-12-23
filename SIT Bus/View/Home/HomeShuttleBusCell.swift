@@ -38,8 +38,7 @@ struct HomeShuttleBusCell: View {
                     Text(date, style: .time)
                         .monospacedDigit()
                         .font(.system(size: busFontSize, weight: .semibold))
-                        .padding(.top, 8)
-                        .padding(.bottom, 4)
+                        .padding(.top, 6)
                     
                     Spacer()
                     
@@ -51,7 +50,6 @@ struct HomeShuttleBusCell: View {
                 HStack(spacing: 0) {
                     Text(note)
                         .padding(.top, 8)
-                        .padding(.bottom, 4)
                     Spacer()
                 }
             }

@@ -116,6 +116,22 @@
         }
       }
     },
+    "Label.AboutApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリについて"
+          }
+        }
+      }
+    },
     "Label.Accessibility.%lldTime" : {
       "localizations" : {
         "en" : {
@@ -276,6 +292,22 @@
         }
       }
     },
+    "Label.Credits" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クレジット"
+          }
+        }
+      }
+    },
     "Label.DepartsIn%lldHours" : {
       "localizations" : {
         "en" : {
@@ -425,6 +457,22 @@
         }
       }
     },
+    "Label.HideGoogleCalendar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Google Calendar"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Googleカレンダーを非表示"
+          }
+        }
+      }
+    },
     "Label.Home" : {
       "localizations" : {
         "en" : {
@@ -457,6 +505,38 @@
         }
       }
     },
+    "Label.Library" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図書館"
+          }
+        }
+      }
+    },
+    "Label.LibraryServices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library Services"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用案内"
+          }
+        }
+      }
+    },
     "Label.Loading" : {
       "localizations" : {
         "en" : {
@@ -469,6 +549,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "読み込み中"
+          }
+        }
+      }
+    },
+    "Label.Localization" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localization"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ローカリゼーション"
           }
         }
       }
@@ -569,6 +665,22 @@
         }
       }
     },
+    "Label.Omiya" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮"
+          }
+        }
+      }
+    },
     "Label.OmiyaStationToCampus" : {
       "localizations" : {
         "en" : {
@@ -601,6 +713,54 @@
         }
       }
     },
+    "Label.OpenLinkInApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Link In-App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "リンクをアプリ内で開く"
+          }
+        }
+      }
+    },
+    "Label.Options" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オプション"
+          }
+        }
+      }
+    },
+    "Label.Other" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
+          }
+        }
+      }
+    },
     "Label.RelatedSites" : {
       "localizations" : {
         "en" : {
@@ -613,6 +773,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "関連リンク"
+          }
+        }
+      }
+    },
+    "Label.SaveCoopSchedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Co-op Schedule"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "生協のスケジュールを保存"
           }
         }
       }
@@ -661,6 +837,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス（東大宮駅）"
+          }
+        }
+      }
+    },
+    "Label.Search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
           }
         }
       }
@@ -777,6 +969,22 @@
         }
       }
     },
+    "Label.Toyosu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toyosu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "豊洲"
+          }
+        }
+      }
+    },
     "Label.ToyosuToOmiya" : {
       "localizations" : {
         "en" : {
@@ -808,6 +1016,32 @@
           }
         }
       }
+    },
+    "OPAC" : {
+
+    },
+    "OSS" : {
+
+    },
+    "URL.LibraryService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/usage/information/"
+          }
+        }
+      }
+    },
+    "開館スケジュール" : {
+
     }
   },
   "version" : "1.0"

@@ -8,6 +8,10 @@
 import Foundation
 
 extension String {
+    var localize: String {
+        return NSLocalizedString(self, comment: self)
+    }
+    
     func extractTime() -> String? {
         let pattern = #"(?:\b|^)([1-9]|0?[0-9]|1[0-9]|2[0-3]):[0-5]\d"#
         

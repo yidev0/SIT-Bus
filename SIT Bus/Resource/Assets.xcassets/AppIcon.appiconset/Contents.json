@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Artboard Copy 4.png",
+      "filename" : "Light.heic",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Artboard Copy 5.png",
+      "filename" : "Dark.heic",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
