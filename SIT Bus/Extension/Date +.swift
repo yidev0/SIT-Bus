@@ -23,6 +23,8 @@ extension Date {
         return calendar.date(from: dateComponents)
     }
     
+    static let sample = Date.createDate(year: 2025, month: 1, day: 8, hour: 9, minute: 41, second: 0)!
+    
     public func get(component: Calendar.Component) -> Int {
         let calendar = Calendar.current
         return calendar.component(component, from: self)

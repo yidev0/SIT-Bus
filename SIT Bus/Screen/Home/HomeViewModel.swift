@@ -16,10 +16,10 @@ class HomeViewModel {
     var toStationTimetable: SchoolBusTimetable? = nil
 //    var busActivity: Activity<SITBusActivityAttributes>?
     
-    func makeTimetable(from data: SBReferenceData?) {
-        if let data, let timesheet = data.getTimesheet(for: .now) {
-            self.toStationTimetable = timesheet.makeTimetable(for: .campusToStation)
-            self.toCampusTimetable = timesheet.makeTimetable(for: .stationToCampus)
+    func makeTimetable(from data: SBReferenceData?, date: Date) {
+        if let data {
+            self.toStationTimetable = data.makeTimetable(for: .campusToStation, date: date)
+            self.toCampusTimetable = data.makeTimetable(for: .stationToCampus, date: date)
         } else {
             self.toStationTimetable = nil
             self.toCampusTimetable = nil

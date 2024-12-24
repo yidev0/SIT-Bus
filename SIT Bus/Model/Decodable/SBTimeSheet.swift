@@ -85,7 +85,7 @@ struct SBTimeSheet: Decodable {
         }
     }
     
-    func makeTimetable(for type: BusLineType.SchoolBus) -> SchoolBusTimetable? {
+    func makeTimetable(for type: BusLineType.SchoolBus, date inputDate: Date) -> SchoolBusTimetable? {
         if self.list.isEmpty { return nil }
         
         var timetable: [SchoolBusTimetable.Value] = .init()
@@ -137,11 +137,12 @@ struct SBTimeSheet: Decodable {
                             if let range = Range(match.range, in: note) {
                                 let time = String(note[range])
                                 if let date = dateFormatter.date(from: time) {
-                                    let newDate = Calendar.current.date(
-                                        bySettingHour: date.get(component: .hour),
-                                        minute: date.get(component: .minute),
-                                        second: 0,
-                                        of: .now
+                                    let newDate = Date.createDate(
+                                        year: inputDate.get(component: .year),
+                                        month: inputDate.get(component: .month),
+                                        day: inputDate.get(component: .day),
+                                        hour: date.get(component: .hour),
+                                        minute: date.get(component: .minute)
                                     )
                                     dateRange.append(newDate ?? date)
                                 }
@@ -152,6 +153,7 @@ struct SBTimeSheet: Decodable {
                 
                 timetable.append(
                     .init(
+                        inputDate: inputDate,
                         hour: hour,
                         times: times,
                         note: note,
