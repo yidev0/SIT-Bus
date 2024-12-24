@@ -85,8 +85,10 @@ struct SBTimeSheet: Decodable {
         }
     }
     
-    func makeTimetable(for type: BusLineType.SchoolBus) -> [TimetableValue] {
-        var timetable: [TimetableValue] = .init()
+    func makeTimetable(for type: BusLineType.SchoolBus) -> SchoolBusTimetable? {
+        if self.list.isEmpty { return nil }
+        
+        var timetable: [SchoolBusTimetable.Value] = .init()
         var lastNote: String?
         
         for list in self.list {
@@ -160,7 +162,7 @@ struct SBTimeSheet: Decodable {
             }
         }
         
-        return timetable
+        return .init(values: timetable)
     }
     
 }

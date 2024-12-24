@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "%lld" : {
-
-    },
     "%lld:%lld" : {
       "localizations" : {
         "en" : {
@@ -103,6 +100,142 @@
         }
       }
     },
+    "Error.ClientError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Client Error"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クライアントエラー"
+          }
+        }
+      }
+    },
+    "Error.InvalidResponse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Response"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無効な応答"
+          }
+        }
+      }
+    },
+    "Error.InvalidURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無効なURL"
+          }
+        }
+      }
+    },
+    "Error.NetworkError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network Error"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワークエラー"
+          }
+        }
+      }
+    },
+    "Error.NoLocalData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Data"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データがありません"
+          }
+        }
+      }
+    },
+    "Error.ParseError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parse Error"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パースエラー"
+          }
+        }
+      }
+    },
+    "Error.ServerError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Error"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーエラー"
+          }
+        }
+      }
+    },
+    "Error.Undefined(%lld)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error(%lld)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー（%lld）"
+          }
+        }
+      }
+    },
     "Label.%@to%@Service" : {
       "localizations" : {
         "en" : {
@@ -115,6 +248,22 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "適時運行：%1$@から%2$@"
+          }
+        }
+      }
+    },
+    "Label.AboutApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリについて"
           }
         }
       }
@@ -215,8 +364,37 @@
         }
       }
     },
+    "Label.BusServiceEnded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s service has ended."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本日のバスの運行は終了しました"
+          }
+        }
+      }
+    },
     "Label.BusType" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus type"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バスの種類"
+          }
+        }
+      }
     },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
@@ -230,6 +408,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャンパスから東大宮駅"
+          }
+        }
+      }
+    },
+    "Label.Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
           }
         }
       }
@@ -250,18 +444,86 @@
         }
       }
     },
-    "Label.DepartsIn%lldMinutes" : {
+    "Label.Credits" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In %lld minutes"
+            "value" : "Credits"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "発車まで%lld分"
+            "value" : "クレジット"
+          }
+        }
+      }
+    },
+    "Label.DepartsIn%lldHours" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld hour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld hours"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "発車まで%lld時間"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Label.DepartsIn%lldMinutes" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld minute"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "In %lld minutes"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "発車まで%lld分"
+                }
+              }
+            }
           }
         }
       }
@@ -314,7 +576,24 @@
         }
       }
     },
+    "Label.FetchError" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to update timetable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "時刻表の取得に失敗しました"
+          }
+        }
+      }
+    },
     "Label.FinalBus" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -342,6 +621,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "強制的に更新"
+          }
+        }
+      }
+    },
+    "Label.HideGoogleCalendar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Google Calendar"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Googleカレンダーを非表示"
           }
         }
       }
@@ -374,6 +669,71 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ソース"
+          }
+        }
+      }
+    },
+    "Label.Library" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図書館"
+          }
+        }
+      }
+    },
+    "Label.LibraryServices" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library Services"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用案内"
+          }
+        }
+      }
+    },
+    "Label.Loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込み中"
+          }
+        }
+      }
+    },
+    "Label.Localization" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localization"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ローカリゼーション"
           }
         }
       }
@@ -463,13 +823,30 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Today’s service has ended."
+            "value" : "No bus service today."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本日のバスの運行は終了しました"
+            "value" : "本日のバスの運行はありません"
+          }
+        }
+      }
+    },
+    "Label.Omiya" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮"
           }
         }
       }
@@ -506,6 +883,54 @@
         }
       }
     },
+    "Label.OpenLinkInApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Link In-App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "リンクをアプリ内で開く"
+          }
+        }
+      }
+    },
+    "Label.Options" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オプション"
+          }
+        }
+      }
+    },
+    "Label.Other" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
+          }
+        }
+      }
+    },
     "Label.RelatedSites" : {
       "localizations" : {
         "en" : {
@@ -518,6 +943,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "関連リンク"
+          }
+        }
+      }
+    },
+    "Label.SaveCoopSchedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Co-op Schedule"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "生協のスケジュールを保存"
           }
         }
       }
@@ -566,6 +1007,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス（東大宮駅）"
+          }
+        }
+      }
+    },
+    "Label.Search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
           }
         }
       }
@@ -682,6 +1139,23 @@
         }
       }
     },
+    "Label.Toyosu" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toyosu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "豊洲"
+          }
+        }
+      }
+    },
     "Label.ToyosuToOmiya" : {
       "localizations" : {
         "en" : {
@@ -710,6 +1184,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "消費生活協同組合（生協）"
+          }
+        }
+      }
+    },
+    "OPAC" : {
+
+    },
+    "OSS" : {
+
+    },
+    "URL.LibraryService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/usage/information/"
           }
         }
       }

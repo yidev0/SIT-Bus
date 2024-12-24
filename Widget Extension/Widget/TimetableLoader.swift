@@ -22,20 +22,22 @@ class TimetableLoader {
     }
     
     func loadTimetable() {
+        let dataFetcher = BusDataFetcher()
         loadingState = .loading
         let fileURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
-        if let fileURL, FileManager.default.fileExists(atPath: fileURL.path()) {
-            do {
-                let data = try Data(contentsOf: fileURL)
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                self.data = result
+        
+        Task {
+            let response = await dataFetcher.fetchLocalData()
+            switch response {
+            case .success(let success):
+                self.data = success
                 loadingState = .loaded
-            } catch {
-                print(error)
+            case .failure(let failure):
+                print(failure)
+                loadingState = .notAvailable
             }
-        } else {
-            loadingState = .notAvailable
         }
+        
     }
     
 }

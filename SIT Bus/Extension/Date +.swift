@@ -17,6 +17,8 @@ extension Date {
         dateComponents.hour = hour
         dateComponents.minute = minute
         dateComponents.second = second
+        
+        dateComponents.timeZone = TimeZone(identifier: "Asia/Tokyo")
 
         return calendar.date(from: dateComponents)
     }
@@ -40,5 +42,9 @@ extension Date {
     
     var keyYearMonth: String {
         return "\(get(component: .year)).\(getMonthText())"
+    }
+    
+    public func convertToMinutes() -> Int {
+        self.get(component: .hour) * 60 + self.get(component: .minute)
     }
 }

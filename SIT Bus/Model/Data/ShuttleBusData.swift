@@ -56,7 +56,65 @@ struct ShuttleBusData {
         Date.createDate(year: 2025, month:  1, day: 27)!,
     ]
     
-    let toToyosu: DepartureDetail = .init(
+    private let toToyosuDepartureDates: [Date] = [
+        Date.createDate(year: 2024, month:  9, day: 30, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 2,  hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 4,  hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 7,  hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 9,  hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 11, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 14, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 16, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 18, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 21, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 23, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 25, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 28, hour: 13)!,
+        Date.createDate(year: 2024, month: 10, day: 30, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 8,  hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 11, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 13, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 15, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 18, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 20, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 22, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 25, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 27, hour: 13)!,
+        Date.createDate(year: 2024, month: 11, day: 29, hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 2,  hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 4,  hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 6,  hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 9,  hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 11, hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 13, hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 16, hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 18, hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 20, hour: 13)!,
+        Date.createDate(year: 2024, month: 12, day: 23, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 8,  hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 10, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 15, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 17, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 20, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 22, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 24, hour: 13)!,
+        Date.createDate(year: 2025, month:  1, day: 27, hour: 13)!,
+    ]
+    
+    private func makeToOmiyaDepartureDates() -> [Date] {
+        let calendar = Calendar.current
+        return activeDates.map { date in
+            if date.get(component: .weekday) == 6 {
+                // friday
+                calendar.date(bySettingHour: 15, minute: 15, second: 0, of: date)!
+            } else {
+                // monday, wednesday
+                calendar.date(bySettingHour: 17, minute: 5, second: 0, of: date)!
+            }
+        }
+    }
+    
+    private let toToyosu: DepartureDetail = .init(
         location: "",
         time: [
             1: nil,
@@ -78,7 +136,7 @@ struct ShuttleBusData {
         ]
     )
     
-    let toOmiya: DepartureDetail = .init(
+    private let toOmiya: DepartureDetail = .init(
         location: "",
         time: [
             1: nil,
@@ -122,46 +180,75 @@ struct ShuttleBusData {
         return dates.sorted()
     }
     
-    public func getTimesFor(year: Int, month: Int) -> [Date] {
-        return activeDates.filter { $0.get(component: .year) == year && $0.get(component: .month) == month }
-    }
-    
-    public func getDepartureTime(for date: Date, type: BusLineType.ShuttleBus) -> (hour: Int, minute: Int) {
-        let day = date.get(component: .weekday)
-        switch type {
-        case .toOmiya:
-            let time = toOmiya.time[day]!!.departure
-            return (time.hour, time.minute)
-        case .toToyosu:
-            let time = toToyosu.time[day]!!.departure
-            return (time.hour, time.minute)
-        }
-    }
-    
-    public func getNextDate(for type: BusLineType.ShuttleBus) -> Date? {
-        let today: Date = .now
-        var departureTime: (hour: Int, minute: Int)? = nil
-        
-        switch type {
-        case .toToyosu:
-            departureTime = toToyosu.time[today.get(component: .weekday)]??.departure
-        case .toOmiya:
-            departureTime = toOmiya.time[today.get(component: .weekday)]??.departure
+    public func getTimesFor(year: Int, month: Int, type: BusLineType.ShuttleBus) -> [Date] {
+        var departureDates: [Date] {
+            switch type {
+            case .toToyosu:
+                toToyosuDepartureDates
+            case .toOmiya:
+                makeToOmiyaDepartureDates()
+            }
         }
         
-        if let departureTime, let date: Date = .createDate(
-                year: today.get(component: .year),
-                month: today.get(component: .month),
-                day: today.get(component: .day),
-                hour: departureTime.hour,
-                minute: departureTime.minute
-        ) {
-            let futureDates = activeDates.filter { $0 >= date }.sorted()
-            return futureDates.first
+        return departureDates.filter { $0.get(component: .year) == year && $0.get(component: .month) == month }
+    }
+    
+    public func getDepartureTime(for weekday: Int, date: Date, type: BusLineType.ShuttleBus) -> Date {
+        var departureDetail: DepartureDetail {
+            switch type {
+            case .toToyosu:
+                toToyosu
+            case .toOmiya:
+                toOmiya
+            }
+        }
+        
+        let time = departureDetail.time[weekday]!!.departure
+        let calendar = Calendar.current
+        return calendar.date(bySettingHour: time.hour, minute: time.minute, second: 0, of: date)!
+    }
+    
+    public func getDepartureDate(for date: Date, type: BusLineType.ShuttleBus) -> Date? {
+        var departureDates: [Date] {
+            switch type {
+            case .toToyosu:
+                toToyosuDepartureDates
+            case .toOmiya:
+                makeToOmiyaDepartureDates()
+            }
+        }
+        
+        let calendar = Calendar.current
+        if let date = departureDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
+            return date
         } else {
-            let futureDates = activeDates.filter { $0 >= .now }.sorted()
-            return futureDates.first
+            return nil
         }
+    }
+    
+    public func getNextDate(for type: BusLineType.ShuttleBus, from inpuDate: Date) -> Date? {
+        var departureDates: [Date] {
+            switch type {
+            case .toToyosu:
+                toToyosuDepartureDates
+            case .toOmiya:
+                makeToOmiyaDepartureDates()
+            }
+        }
+        
+        let calendar = Calendar.current
+        return departureDates.first { date in
+            if calendar.isDate(date, inSameDayAs: inpuDate) == true || date > inpuDate {
+                true
+            } else {
+                false
+            }
+        }
+    }
+    
+    public func isActive(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        return activeDates.contains(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     
 }

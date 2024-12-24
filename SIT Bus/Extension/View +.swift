@@ -8,8 +8,18 @@
 import SwiftUI
 
 extension View {
-    public func addAccessiblityTraits(for selection: Bool) -> some View {
+    
+    func addAccessiblityTraits(for selection: Bool) -> some View {
         self
             .accessibilityAddTraits(selection ? [.isSelected]:[])
     }
+    
+    func makeListLink() -> some View {
+        LabeledContent {
+            Image(systemName: "arrow.up.right")
+        } label: {
+            self
+        }
+    }
+    
 }

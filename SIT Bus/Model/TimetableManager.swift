@@ -11,72 +11,69 @@ import Foundation
 class TimetableManager {
     
     public var data: SBReferenceData? = nil
-    public var urlTask: URLSessionTask?
     public var lastUpdatedDate: Date = .now
     
-    private let dataStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
+    public var showAlert = false
+    public var error: BusDataFetcherError? = .parseError
     
     init() {
+        Task {
 #if DEBUG
-        if ProcessInfo().isSwiftUIPreview {
-            print("is preview")
-            do {
-                let data = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                self.data = result
-            } catch {
-                loadData()
+            if ProcessInfo().isSwiftUIPreview {
+                print("is preview")
+                do {
+                    let data = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
+                    let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
+                    self.data = result
+                } catch {
+                    await loadData()
+                }
+            } else {
+                print("not preview")
+                await loadData()
             }
-        } else {
-            print("not preview")
-            loadData()
-        }
 #else
-        loadData()
+            await loadData()
 #endif
+        }
     }
     
-    public func loadData(forceFetch: Bool = false) {
-        let lastUpdate = UserDefaults.standard.double(forKey: "LastUpdate")
+    public func loadData(forceFetch: Bool = false) async {
+        let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
         let lastUpdateDate = Date(timeIntervalSince1970: lastUpdate)
-        self.lastUpdatedDate = lastUpdateDate
         
-        if Calendar.current.isDateInToday(lastUpdateDate) == true || forceFetch,
-           let url = dataStoreURL, FileManager.default.fileExists(atPath: url.path()) {
-            do {
-                let data = try Data(contentsOf: url)
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                self.data = result
-            } catch {
-                print(error)
-            }
-        } else {
-            Task {
-                do {
-                    self.data = try await fetchData()
-                } catch {
-                    print(error)
+        let dataFetcher = BusDataFetcher()
+        Task {
+            let fetch = Calendar.current.isDateInToday(lastUpdateDate) == false || forceFetch
+            if fetch {
+                let response = await dataFetcher.fetchData()
+                
+                switch response {
+                case .success(let success):
+                    self.data = success
+                    self.lastUpdatedDate = lastUpdateDate
+                    UserDefaults.shared.set(Date.now.timeIntervalSince1970, forKey: UserDefaultsKeys.lastUpdateDate)
+                case .failure(let failure):
+                    error = failure
+                    showAlert = true
                 }
             }
-        }
-    }
-    
-    private func fetchData() async throws -> SBReferenceData? {
-        print("fetching...")
-        let fetchURL = URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: fetchURL)
-            let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
             
-            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus") {
-                try data.write(to: url.appendingPathComponent("bus_data", conformingTo: .json))
-                UserDefaults.standard.set(Date.now.timeIntervalSince1970, forKey: "LastUpdate")
+            if self.data == nil {
+                let response = await dataFetcher.fetchLocalData()
+                switch response {
+                case .success(let success):
+                    self.data = success
+                case .failure(let failure):
+                    switch failure {
+                    case .noLocalData:
+                        error = failure
+                        showAlert = true
+                    default:
+                        break
+                    }
+                }
             }
-            
-            return result
-        } catch {
-            throw error
         }
     }
     

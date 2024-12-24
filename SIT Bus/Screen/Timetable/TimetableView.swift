@@ -19,13 +19,11 @@ struct TimetableView: View {
             ZStack {
                 switch model.timesheetBus {
                 case .schoolBus:
-                    if let timesheet = model.timesheet {
+                    if let timetable = model.timetable {
                         ScrollView {
-                            SchoolBusGridView(timeSheet: timesheet)
+                            SchoolBusGridView(timetable: timetable)
                         }
-                        .contentMargins(.horizontal, 16, for: .scrollContent)
-                        .contentMargins(.vertical, 8, for: .scrollContent)
-                        .contentMargins(.bottom, 60, for: .scrollContent)
+                        .contentMargins(.bottom, 80, for: .scrollContent)
                     } else {
                         ContentUnavailableView(
                             "Label.NoBuses",
@@ -37,6 +35,7 @@ struct TimetableView: View {
                         listType: .grid,
                         shuttleType: bus
                     )
+                    .contentMargins(.bottom, 80, for: .scrollContent)
                 }
                 
                 VStack {
