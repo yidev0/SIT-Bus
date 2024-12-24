@@ -24,10 +24,9 @@ class TimetableViewModel {
     }
         
     func makeTimesheet(data: SBReferenceData?) {
-        let sheet = data?.getTimesheet(for: timesheetDate)
         switch timesheetBus {
-        case .schoolBus(let schoolBus):
-            self.timetable = sheet?.makeTimetable(for: schoolBus)
+        case .schoolBus(let type):
+            self.timetable = data?.makeTimetable(for: type, date: timesheetDate)
         case .shuttleBus(_):
             break
         }

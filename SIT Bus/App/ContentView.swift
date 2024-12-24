@@ -13,6 +13,8 @@ struct ContentView: View {
     @Environment(TimetableManager.self) private var timetableManager
     
     var body: some View {
+        @Bindable var timetableManager = timetableManager
+        
         TabView {
             HomeView()
                 .tabItem {
@@ -31,6 +33,22 @@ struct ContentView: View {
                     Label("Label.Settings", systemImage: "gear")
                         .symbolVariant(.fill)
                 }
+        }
+        .alert(
+            isPresented: $timetableManager.showAlert
+        ) {
+            if let error = timetableManager.error {
+                Alert(
+                    title: Text("Label.FetchError"),
+                    message: Text(error.errorDescription!) ,
+                    dismissButton: .default(Text("Label.Close"))
+                )
+            } else {
+                Alert(
+                    title: Text("Label.FetchError"),
+                    dismissButton: .default(Text("Label.Close"))
+                )
+            }
         }
     }
 

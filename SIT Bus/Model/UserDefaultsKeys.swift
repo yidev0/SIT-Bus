@@ -12,4 +12,6 @@ struct UserDefaultsKeys {
     static let saveCoopSchedule = "SaveCoopSchedule"
     /// Hide Google Calendar for privacy
     static let hideGoogleCalendar = "HideGoogleCalendar"
+    /// Last saved date interval since 1970, since bus data is saved
+    static let lastUpdateDate = "LastUpdateDate"
 }
