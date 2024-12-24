@@ -21,6 +21,7 @@ struct SettingsView: View {
     var saveCoopSchedule: Bool = false
     
     var body: some View {
+        @Bindable var timetableManager = timetableManager
         NavigationStack {
             List {
                 Section("Label.Options") {
@@ -94,7 +95,22 @@ struct SettingsView: View {
                 
 #if DEBUG
                 Section {
-                    
+                    Picker(selection: $timetableManager.error) {
+                        ForEach(BusDataFetcherError.allCases, id: \.self) { error in
+                            Text(error.errorDescription!)
+                                .tag(error)
+                        }
+                    } label: {
+                        Text(verbatim: "Error Type")
+                    }
+
+                    Button {
+                        timetableManager.showAlert = true
+                    } label: {
+                        Text(verbatim: "Show Error")
+                    }
+                } header: {
+                    Text(verbatim: "DEBUG")
                 }
 #endif
                 
