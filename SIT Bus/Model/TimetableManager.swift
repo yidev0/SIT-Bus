@@ -12,7 +12,9 @@ class TimetableManager {
     
     public var data: SBReferenceData? = nil
     public var lastUpdatedDate: Date = .now
-    public var error: BusDataFetcherError? = nil
+    
+    public var showAlert = false
+    public var error: BusDataFetcherError? = .parseError
     
     init() {
         Task {
@@ -53,6 +55,7 @@ class TimetableManager {
                     UserDefaults.shared.set(Date.now.timeIntervalSince1970, forKey: UserDefaultsKeys.lastUpdateDate)
                 case .failure(let failure):
                     error = failure
+                    showAlert = true
                 }
             }
             
@@ -64,8 +67,8 @@ class TimetableManager {
                 case .failure(let failure):
                     switch failure {
                     case .noLocalData:
-                        // TODO: alert local data
-                        break
+                        error = failure
+                        showAlert = true
                     default:
                         break
                     }

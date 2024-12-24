@@ -13,6 +13,8 @@ struct ContentView: View {
     @Environment(TimetableManager.self) private var timetableManager
     
     var body: some View {
+        @Bindable var timetableManager = timetableManager
+        
         TabView {
             HomeView()
                 .tabItem {
@@ -31,6 +33,14 @@ struct ContentView: View {
                     Label("Label.Settings", systemImage: "gear")
                         .symbolVariant(.fill)
                 }
+        }
+        .alert(
+            isPresented: $timetableManager.showAlert,
+            error: timetableManager.error
+        ) {
+            Button(action: {}) {
+                Text("Label.Close")
+            }
         }
     }
 
