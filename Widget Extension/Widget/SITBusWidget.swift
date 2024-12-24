@@ -58,7 +58,11 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         var time: Date?
         var note: (start: Date, end: Date)?
         
-        let timetable = timetableloader.data?.getTimesheet(for: baseTime)?.makeTimetable(for: busType)
+        let timetable = timetableloader.data?.makeTimetable(
+            for: busType,
+            date: baseTime
+        )
+        
         while entries.count < 20 {
             print(baseTime)
             

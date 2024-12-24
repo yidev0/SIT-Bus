@@ -70,11 +70,15 @@ struct HomeShuttleBusCell: View {
     }
     
     func checkBusData() {
-        if let date = shuttleBusData.getDepartureDate(for: .now, type: type) {
+        let baseTime = Date.now
+        if let date = shuttleBusData.getDepartureDate(
+            for: baseTime,
+            type: type
+        ) {
             self.date = date
             
-            if Date.now <= date {
-                let remainingMinutes = date.convertToMinutes() - Date.now.convertToMinutes()
+            if baseTime <= date {
+                let remainingMinutes = date.convertToMinutes() - baseTime.convertToMinutes()
                 if remainingMinutes >= 60 {
                     nextBusText = "Label.DepartsIn\(remainingMinutes/60)Hours"
                 } else if remainingMinutes == 0 {
@@ -88,7 +92,7 @@ struct HomeShuttleBusCell: View {
             }
         } else {
             self.date = nil
-            if shuttleBusData.isActive(.now) {
+            if shuttleBusData.isActive(baseTime) {
                 note = "Label.BusServiceEnded"
             } else {
                 note = "Label.NoBusService"
@@ -99,5 +103,7 @@ struct HomeShuttleBusCell: View {
 }
 
 #Preview {
-    HomeShuttleBusCell(type: .toOmiya)
+    HomeShuttleBusCell(
+        type: .toOmiya
+    )
 }
