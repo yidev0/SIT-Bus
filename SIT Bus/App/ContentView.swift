@@ -35,11 +35,19 @@ struct ContentView: View {
                 }
         }
         .alert(
-            isPresented: $timetableManager.showAlert,
-            error: timetableManager.error
+            isPresented: $timetableManager.showAlert
         ) {
-            Button(action: {}) {
-                Text("Label.Close")
+            if let error = timetableManager.error {
+                Alert(
+                    title: Text("Label.FetchError"),
+                    message: Text(error.errorDescription!) ,
+                    dismissButton: .default(Text("Label.Close"))
+                )
+            } else {
+                Alert(
+                    title: Text("Label.FetchError"),
+                    dismissButton: .default(Text("Label.Close"))
+                )
             }
         }
     }

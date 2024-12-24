@@ -570,6 +570,9 @@
         }
       }
     },
+    "Label.FetchError" : {
+      "localizations" : {
+        "en" : {
     "Label.FinalBus" : {
       "extractionState" : "stale",
       "localizations" : {
