@@ -70,15 +70,16 @@ struct HomeSchoolBusCell: View {
     }
     
     func loadNextBus() {
-        if let nextBusDate = timetable?.getNextBus(for: .now) {
+        let baseTime = Date.now
+        if let nextBusDate = timetable?.getNextBus(for: baseTime) {
             self.date = nextBusDate
-            let note = timetable?.getNextBusNote(for: .now, nextBusDate: nextBusDate)
+            let note = timetable?.getNextBusNote(for: baseTime, nextBusDate: nextBusDate)
             
             if let note, nextBusDate > note.start {
                 self.date = nil
                 self.note = "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
             } else {
-                let remainingMinutes = nextBusDate.convertToMinutes() - Date.now.convertToMinutes()
+                let remainingMinutes = nextBusDate.convertToMinutes() - baseTime.convertToMinutes()
                 
                 if remainingMinutes <= 0 {
                     self.nextBusText = "Label.DepartsIn0Minutes"

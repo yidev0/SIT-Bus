@@ -460,6 +460,22 @@
         }
       }
     },
+    "Label.Date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "日付"
+          }
+        }
+      }
+    },
     "Label.DepartsIn%lldHours" : {
       "localizations" : {
         "en" : {

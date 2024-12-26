@@ -55,14 +55,16 @@ extension SchoolBusTimetable {
         let dateRange1: Date?
         let dateRange2: Date?
         
-        init(hour: Int, times: [Int], note: String?, dateRange1: Date? = nil, dateRange2: Date? = nil) {
+        init(inputDate: Date, hour: Int, times: [Int], note: String?, dateRange1: Date? = nil, dateRange2: Date? = nil) {
             self.hour = hour
             self.times = times.map { minute in
-                return Calendar.current.date(
-                    bySettingHour: hour,
+                return Date.createDate(
+                    year: inputDate.get(component: .year),
+                    month: inputDate.get(component: .month),
+                    day: inputDate.get(component: .day),
+                    hour: hour,
                     minute: minute,
-                    second: 59,
-                    of: .now
+                    second: 59
                 ) ?? .now
             }
             self.note = note

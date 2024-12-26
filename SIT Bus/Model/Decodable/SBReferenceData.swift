@@ -52,6 +52,12 @@ struct SBReferenceData: Decodable, Equatable {
         return nil
     }
     
+    public func makeTimetable(for type: BusLineType.SchoolBus, date: Date) -> SchoolBusTimetable? {
+        let id = getTimesheetID(for: date)
+        guard let timesheet = timesheet.first(where: { $0.ts_id == id }) else { return nil }
+        return timesheet.makeTimetable(for: type, date: date)
+    }
+    
     public func getActiveDays() -> [[Date]] {
         var dates: [[Date]] = []
         for calendar in self.calendar {
