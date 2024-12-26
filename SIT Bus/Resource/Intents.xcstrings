@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "GetNextBus.Description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the next school bus departure time from specified bus type and date."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定されたバスの種類と日付から次のスクールバスの出発時間を探す。"
+          }
+        }
+      }
+    },
+    "GetNextBus.Title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find Next School Bus Time"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のスクールバスの発車時刻"
+          }
+        }
+      }
+    },
+    "NextSchoolBusFrom${date}.Summary" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the next school bus from ${date}"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${date}から次のスクールバスの発車時刻"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
