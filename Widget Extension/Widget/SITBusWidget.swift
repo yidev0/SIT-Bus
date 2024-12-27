@@ -69,6 +69,8 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
             time = timetable?.getNextBus(for: baseTime)
             if let time {
                 note = timetable?.getNextBusNote(for: baseTime, nextBusDate: time)
+            } else {
+                note = nil
             }
             
             if let note {
