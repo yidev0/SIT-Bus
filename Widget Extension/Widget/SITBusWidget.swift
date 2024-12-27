@@ -79,7 +79,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                         note: "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
                     )
                 )
-                baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: note.end) ?? .now
+                baseTime = note.end.addingTimeInterval(60)
             } else if let time = time {
                 entries.append(
                     .init(
@@ -88,14 +88,14 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                         time: time
                     )
                 )
-                baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: time) ?? .now
+                baseTime = time.addingTimeInterval(60)
             } else {
                 entries.append(.init(date: baseTime, lineType: busType))
                 break
             }
         }
         
-        if entries.count == 1 {
+        if entries.count <= 1 {
             var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: .now)!
             tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? .now
             
