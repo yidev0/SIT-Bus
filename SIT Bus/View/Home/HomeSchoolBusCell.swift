@@ -12,7 +12,6 @@ struct HomeSchoolBusCell: View {
     var timetable: SchoolBusTimetable?
     
     var type: BusLineType.SchoolBus
-    var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
     @State var date: Date?
     @State var note: LocalizedStringKey
@@ -64,38 +63,50 @@ struct HomeSchoolBusCell: View {
             }
         }
         .foregroundStyle(Color.primary)
-        .onReceive(timer) { _ in
-            loadNextBus()
+        .task {
+            await loadNextEvent()
         }
     }
     
-    func loadNextBus() {
+    func loadNextEvent() async {
         let baseTime = Date.now
         if let nextBusDate = timetable?.getNextBus(for: baseTime) {
-            self.date = nextBusDate
+            date = nextBusDate
             let note = timetable?.getNextBusNote(for: baseTime, nextBusDate: nextBusDate)
             
             if let note, nextBusDate > note.start {
-                self.date = nil
+                date = nil
                 self.note = "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
+                await scheduleNextEventUpdate(for: note.end, compareTo: baseTime)
             } else {
                 let remainingMinutes = nextBusDate.convertToMinutes() - baseTime.convertToMinutes()
                 
                 if remainingMinutes <= 0 {
-                    self.nextBusText = "Label.DepartsIn0Minutes"
+                    nextBusText = "Label.DepartsIn0Minutes"
                 } else if remainingMinutes >= 60 {
-                    self.nextBusText = "Label.DepartsIn\(remainingMinutes/60)Hours"
+                    nextBusText = "Label.DepartsIn\(remainingMinutes / 60)Hours"
                 } else  {
-                    self.nextBusText = "Label.DepartsIn\(remainingMinutes)Minutes"
+                    nextBusText = "Label.DepartsIn\(remainingMinutes)Minutes"
                 }
+                
+                await scheduleNextEventUpdate(for: nextBusDate, compareTo: baseTime)
             }
         } else {
-            self.date = nil
-            if self.timetable == nil {
-                self.note = "Label.NoBusService"
+            date = nil
+            if timetable == nil {
+                note = "Label.NoBusService"
             } else {
-                self.note = "Label.BusServiceEnded"
+                note = "Label.BusServiceEnded"
             }
+        }
+    }
+    
+    func scheduleNextEventUpdate(for eventTime: Date, compareTo currentTime: Date) async {
+        let timeInterval = eventTime.timeIntervalSince( currentTime)
+        
+        if timeInterval > 0 {
+            try? await Task.sleep(for: .seconds(timeInterval))
+            await loadNextEvent()
         }
     }
 }
