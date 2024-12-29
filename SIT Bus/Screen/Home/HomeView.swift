@@ -52,16 +52,6 @@ struct HomeView: View {
             model.makeTimetable(from: timetableManager.data)
             model.startTasks()
         }
-//        .onAppear {
-//            model.makeTimetable(
-//                from: timetableManager.data
-//            )
-//        }
-//        .onChange(of: timetableManager.data) { _, newValue in
-//            model.makeTimetable(
-//                from: newValue
-//            )
-//        }
     }
 }
 
