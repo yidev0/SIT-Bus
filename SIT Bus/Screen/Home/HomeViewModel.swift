@@ -185,6 +185,16 @@ class HomeViewModel {
 
 extension HomeViewModel {
     private func getDate() -> Date {
+#if DEBUG
+        let userdefaults = UserDefaults.shared
+        let interval = userdefaults.double(forKey: UserDefaultsKeys.debugDate)
+        if interval == 0 {
+            return .now
+        } else {
+            return Date(timeIntervalSince1970: interval)
+        }
+#else
         return .now
+#endif
     }
 }
