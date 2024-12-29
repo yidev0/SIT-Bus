@@ -12,10 +12,8 @@ struct HomeViewBusSection: View {
     @Environment(HomeViewModel.self) private var model
     @Environment(TimetableManager.self) private var timetableManager
     
-    @AppStorage("Show.SchoolBus.ToCampus") var showToCampus: Bool = true
-    @AppStorage("Show.SchoolBus.ToStation") var showToStation: Bool = true
-    @AppStorage("Show.ShuttleBus.ToToyosu") var showToToyosu: Bool = true
-    @AppStorage("Show.ShuttleBus.ToOmiya") var showToOmiya: Bool = true
+    @AppStorage("Show.SchoolBus") var showSchoolBus: Bool = true
+    @AppStorage("Show.ShuttleBus") var showShuttleBus: Bool = true
     
     var body: some View {
         VStack(spacing: 16) {
@@ -26,8 +24,6 @@ struct HomeViewBusSection: View {
                     }
                 }
             }
-            .animation(.default, value: showToCampus)
-            .animation(.default, value: showToStation)
             
             if showShuttleBus {
                 VStack(spacing: 8) {
@@ -36,11 +32,21 @@ struct HomeViewBusSection: View {
                     }
                 }
             }
-            .animation(.default, value: showToToyosu)
-            .animation(.default, value: showToOmiya)
             
-            Button {
-                model.showBusSelection = true
+            Menu {
+                Toggle(isOn: $showSchoolBus) {
+                    Label(
+                        "Label.SchoolBus",
+                        systemImage: "bus.fill"
+                    )
+                }
+                
+                Toggle(isOn: $showShuttleBus) {
+                    Label(
+                        "Label.SchoolBus",
+                        systemImage: "app.connected.to.app.below.fill"
+                    )
+                }
             } label: {
                 Text("Label.Edit")
                     .foregroundStyle(.accent)
@@ -52,6 +58,8 @@ struct HomeViewBusSection: View {
             .buttonStyle(.home)
             .clipShape(.capsule)
         }
+        .animation(.default, value: showSchoolBus)
+        .animation(.default, value: showShuttleBus)
         .navigationDestination(for: BusLineType.SchoolBus.self) { type in
             SchoolBusListView(
                 timetable: model.getTimetable(for: type)

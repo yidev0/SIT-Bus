@@ -12,11 +12,6 @@ struct HomeView: View {
     @Environment(TimetableManager.self) private var timetableManager
     @State var model = HomeViewModel()
     
-    @AppStorage("Show.SchoolBus.ToCampus") var showToCampus: Bool = true
-    @AppStorage("Show.SchoolBus.ToStation") var showToStation: Bool = true
-    @AppStorage("Show.ShuttleBus.ToToyosu") var showToToyosu: Bool = true
-    @AppStorage("Show.ShuttleBus.ToOmiya") var showToOmiya: Bool = true
-    
     var body: some View {
         @Bindable var model = model
         
@@ -39,15 +34,6 @@ struct HomeView: View {
             }
         }
         .environment(model)
-        .sheet(isPresented: $model.showBusSelection) {
-            HomeBusSelectionView(
-                showToCampus: $showToCampus,
-                showToStation: $showToStation,
-                showToToyosu: $showToToyosu,
-                showToOmiya: $showToOmiya
-            )
-            .presentationDetents([.medium, .large])
-        }
         .task {
             model.makeTimetable(from: timetableManager.data)
             model.startTasks()
