@@ -11,7 +11,6 @@ import ActivityKit
 @Observable
 class HomeViewModel {
     
-    var showBusSelection = false
     var toCampusState: HomeBusCellState = .loading
     var toStationState: HomeBusCellState = .loading
     var toOmiyaState: HomeBusCellState = .loading
