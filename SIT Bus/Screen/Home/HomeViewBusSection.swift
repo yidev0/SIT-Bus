@@ -20,24 +20,32 @@ struct HomeViewBusSection: View {
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 8) {
-                if showToCampus {
-                    makeSchoolBusCell(for: .stationToCampus)
-                }
+//                if showToCampus {
+//                    makeSchoolBusCell(for: .stationToCampus)
+//                }
+//                
+//                if showToStation {
+//                    makeSchoolBusCell(for: .campusToStation)
+//                }
                 
-                if showToStation {
-                    makeSchoolBusCell(for: .campusToStation)
+                ForEach(BusLineType.SchoolBus.allCases, id: \.rawValue) { type in
+                    makeBusCell(for: type)
                 }
             }
             .animation(.default, value: showToCampus)
             .animation(.default, value: showToStation)
             
             VStack(spacing: 8) {
-                if showToToyosu {
-                    makeShuttleBusCell(for: .toToyosu)
-                }
-                
-                if showToOmiya {
-                    makeShuttleBusCell(for: .toOmiya)
+//                if showToToyosu {
+//                    makeShuttleBusCell(for: .toToyosu)
+//                }
+//                
+//                if showToOmiya {
+//                    makeShuttleBusCell(for: .toOmiya)
+//                }
+//                
+                ForEach(BusLineType.ShuttleBus.allCases, id: \.rawValue) { type in
+                    makeBusCell(for: type)
                 }
             }
             .animation(.default, value: showToToyosu)
@@ -56,6 +64,32 @@ struct HomeViewBusSection: View {
             .buttonStyle(.home)
             .clipShape(.capsule)
         }
+        .navigationDestination(for: BusLineType.SchoolBus.self) { type in
+            SchoolBusListView(
+                timetable: model.getTimetable(for: type)
+            )
+            .backgroundStyle(Color(.secondarySystemGroupedBackground))
+            .background(Color(.systemGroupedBackground))
+        }
+        .navigationDestination(for: BusLineType.ShuttleBus.self) { type in
+            ShuttleBusTimeTable(
+                listType: .list,
+                shuttleType: type
+            )
+            .backgroundStyle(Color(.secondarySystemGroupedBackground))
+            .background(Color(.systemGroupedBackground))
+        }
+    }
+    
+    @ViewBuilder
+    func makeBusCell<T: BusType>(for type: T) -> some View {
+        NavigationLink(value: type) {
+            HomeBusCell(
+                type: type,
+                state: model.getBusState(for: type)
+            )
+        }
+        .buttonStyle(.home)
     }
     
     @ViewBuilder

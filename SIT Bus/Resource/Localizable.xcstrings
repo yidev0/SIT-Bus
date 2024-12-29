@@ -706,6 +706,7 @@
       }
     },
     "Label.LibraryServices" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -850,6 +851,7 @@
       }
     },
     "Label.Omiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1154,6 +1156,7 @@
       }
     },
     "Label.Toyosu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1223,9 +1226,6 @@
           }
         }
       }
-    },
-    "開館スケジュール" : {
-
     }
   },
   "version" : "1.0"

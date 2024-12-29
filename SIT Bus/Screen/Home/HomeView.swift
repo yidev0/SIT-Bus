@@ -33,9 +33,9 @@ struct HomeView: View {
             .refreshable {
                 await timetableManager.loadData()
                 model.makeTimetable(
-                    from: timetableManager.data,
-                    date: .now
+                    from: timetableManager.data
                 )
+                model.startTasks()
             }
         }
         .environment(model)
@@ -48,18 +48,20 @@ struct HomeView: View {
             )
             .presentationDetents([.medium, .large])
         }
-        .onAppear {
-            model.makeTimetable(
-                from: timetableManager.data,
-                date: .now
-            )
+        .task {
+            model.makeTimetable(from: timetableManager.data)
+            model.startTasks()
         }
-        .onChange(of: timetableManager.data) { _, newValue in
-            model.makeTimetable(
-                from: newValue,
-                date: .now
-            )
-        }
+//        .onAppear {
+//            model.makeTimetable(
+//                from: timetableManager.data
+//            )
+//        }
+//        .onChange(of: timetableManager.data) { _, newValue in
+//            model.makeTimetable(
+//                from: newValue
+//            )
+//        }
     }
 }
 
