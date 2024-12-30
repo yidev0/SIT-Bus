@@ -13,6 +13,10 @@ struct SettingsSourcesView: View {
     
     var body: some View {
         List {
+            Section {
+                Text("Detail.BusInfo")
+            }
+            
             Section("Label.AutoUpdateSource") {
                 LinkButton("http://bus.shibaura-it.ac.jp/developer.html") {
                     SettingsSourceLabel(
