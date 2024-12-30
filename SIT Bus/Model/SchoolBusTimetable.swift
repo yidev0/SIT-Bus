@@ -13,7 +13,7 @@ struct SchoolBusTimetable {
     func getNextBus(for date: Date) -> Date? {
         let currentHour = date.get(component: .hour)
         
-        for value in values {
+        for value in values.lazy {
             if value.hour == currentHour {
                 for time in value.times where time >= date {
                     return time
@@ -30,7 +30,7 @@ struct SchoolBusTimetable {
     }
     
     func getNextBusNote(for currentDate: Date, nextBusDate: Date = .distantFuture) -> (start: Date, end: Date)? {
-        if let range = values.first(
+        if let range = values.lazy.first(
             where: {
                 currentDate < nextBusDate && currentDate < ($0.dateRange2 ?? .distantFuture) && ($0.dateRange2 ?? .distantFuture) < nextBusDate
             }
