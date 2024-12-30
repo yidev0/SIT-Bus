@@ -86,7 +86,6 @@ struct LibraryView: View {
         LinkButton(url) {
             Text(title)
         }
-        .makeListLink()
     }
 }
 

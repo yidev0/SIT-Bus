@@ -54,7 +54,6 @@ struct SettingsView: View {
                             Image(.appIconDisplay)
                                 .clipShape(.rect(cornerRadius: 4))
                         }
-                        .makeListLink()
                     }
                     
                     LinkButton(
@@ -66,7 +65,6 @@ struct SettingsView: View {
                             Image(.githubFill)
                         }
                         .foregroundStyle(Color.primary)
-                        .makeListLink()
                     }
                     
                     NavigationLink {

@@ -22,21 +22,18 @@ struct TimetableInformationView: View {
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
                     }
-                    .makeListLink()
                     
                     LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
                         Text("Label.ShuttleBus")
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
                     }
-                    .makeListLink()
                     
                     LinkButton("https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf") {
                         Text("Label.SchoolBusIwatsuki")
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
                     }
-                    .makeListLink()
                 }
                 
                 Section {
