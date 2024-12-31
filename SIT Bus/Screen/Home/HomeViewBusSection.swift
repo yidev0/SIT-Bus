@@ -43,7 +43,7 @@ struct HomeViewBusSection: View {
                 
                 Toggle(isOn: $showShuttleBus) {
                     Label(
-                        "Label.SchoolBus",
+                        "Label.ShuttleBus",
                         systemImage: "app.connected.to.app.below.fill"
                     )
                 }
