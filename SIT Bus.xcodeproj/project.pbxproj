@@ -94,6 +94,7 @@
 				Model/Decodable/SBSiteInfo.swift,
 				Model/Decodable/SBTimeSheet.swift,
 				Model/ListType.swift,
+				Model/NextBusState.swift,
 				Model/SchoolBusTimetable.swift,
 				Model/UserDefaultsKeys.swift,
 				Resource/Localizable.xcstrings,

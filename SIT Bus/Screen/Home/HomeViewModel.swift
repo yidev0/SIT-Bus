@@ -11,10 +11,10 @@ import ActivityKit
 @Observable
 class HomeViewModel {
     
-    var toCampusState: HomeBusCellState = .loading
-    var toStationState: HomeBusCellState = .loading
-    var toOmiyaState: HomeBusCellState = .loading
-    var toToyosuState: HomeBusCellState = .loading
+    var toCampusState: NextBusState = .loading
+    var toStationState: NextBusState = .loading
+    var toOmiyaState: NextBusState = .loading
+    var toToyosuState: NextBusState = .loading
     
     private var toCampusTimetable: SchoolBusTimetable? = nil
     private var toStationTimetable: SchoolBusTimetable? = nil
@@ -75,7 +75,7 @@ class HomeViewModel {
         }
     }
     
-    func getBusState(for type: any BusType) -> HomeBusCellState {
+    func getBusState(for type: any BusType) -> NextBusState {
         switch type {
         case BusLineType.SchoolBus.stationToCampus:
             return toCampusState
@@ -95,7 +95,7 @@ class HomeViewModel {
             return
         }
         let baseTime = getDate()
-        let nextSchoolBusStates: [HomeBusCellState] = BusLineType.SchoolBus.allCases.map {
+        let nextSchoolBusStates: [NextBusState] = BusLineType.SchoolBus.allCases.map {
             let state = loadNextState(type: $0, baseTime: baseTime)
             switch $0 {
             case .stationToCampus:
@@ -115,7 +115,7 @@ class HomeViewModel {
             return
         }
         let baseTime = getDate()
-        let nextShuttleBusStates: [HomeBusCellState] = BusLineType.ShuttleBus.allCases.map {
+        let nextShuttleBusStates: [NextBusState] = BusLineType.ShuttleBus.allCases.map {
             let state = loadNextState(type: $0, baseTime: baseTime)
             if $0 == .toToyosu {
                 toToyosuState = state
@@ -129,7 +129,7 @@ class HomeViewModel {
         }
     }
     
-    private func loadNextState(type: BusLineType.SchoolBus, baseTime: Date) -> HomeBusCellState {
+    private func loadNextState(type: BusLineType.SchoolBus, baseTime: Date) -> NextBusState {
         let timetable = getTimetable(for: type)
         if let nextBusDate = timetable?.getNextBus(for: baseTime) {
             let note = timetable?.getNextBusNote(for: baseTime, nextBusDate: nextBusDate)
@@ -148,7 +148,7 @@ class HomeViewModel {
         }
     }
     
-    private func loadNextState(type: BusLineType.ShuttleBus, baseTime: Date) -> HomeBusCellState {
+    private func loadNextState(type: BusLineType.ShuttleBus, baseTime: Date) -> NextBusState {
         if let nextBusDate = shuttleBusData.getDepartureDate(for: baseTime, type: type) {
             if baseTime <= nextBusDate {
                 let remainingMinutes = nextBusDate.convertToMinutes() - baseTime.convertToMinutes()
@@ -165,7 +165,7 @@ class HomeViewModel {
         }
     }
     
-    private func scheduleNextStateUpdate(states: [HomeBusCellState], compareTo currentTime: Date) async -> Bool {
+    private func scheduleNextStateUpdate(states: [NextBusState], compareTo currentTime: Date) async -> Bool {
         let intervals = states.compactMap { $0.makeTimeInterval(currentTime: currentTime) }
         print(intervals)
         if let interval = intervals.min() {
