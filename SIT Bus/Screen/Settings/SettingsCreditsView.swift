@@ -14,12 +14,10 @@ struct SettingsCreditsView: View {
                 LinkButton("https://github.com/cybozu/WebUI/blob/main/LICENSE") {
                     Text(verbatim: "cybozu/WebUI")
                 }
-                .makeListLink()
                 
                 LinkButton("https://github.com/jeremieb/social-symbols/blob/main/LICENSE") {
                     Text(verbatim: "jeremieb/social-symbols")
                 }
-                .makeListLink()
             }
             
             Section("Label.Localization") {

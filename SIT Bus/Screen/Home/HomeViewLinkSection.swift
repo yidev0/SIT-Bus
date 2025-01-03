@@ -67,6 +67,7 @@ struct HomeViewLinkSection: View {
                 Spacer()
             }
             .font(.headline)
+            .padding(.horizontal, 4)
         }
         .buttonStyle(.home)
     }

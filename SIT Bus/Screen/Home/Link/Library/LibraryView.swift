@@ -61,7 +61,7 @@ struct LibraryView: View {
                     
                     makeLink(
                         url: "https://lib.shibaura-it.ac.jp/usage/schedule",
-                        title: "開館スケジュール"
+                        title: "Label.Schedule"
                     )
                 }
             } else {
@@ -86,7 +86,6 @@ struct LibraryView: View {
         LinkButton(url) {
             Text(title)
         }
-        .makeListLink()
     }
 }
 

@@ -69,8 +69,16 @@ struct TimetableView: View {
             }
             .toolbar {
                 if model.timesheetBus.isSchoolBus {
-                    TimetableWheelchairButton()
+                    Button {
+                        model.showInfoSheet = true
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                    .accessibilityLabel("Label.Accessiblity.Information")
                 }
+            }
+            .sheet(isPresented: $model.showInfoSheet) {
+                TimetableInformationView()
             }
         }
         .onAppear {
@@ -82,49 +90,6 @@ struct TimetableView: View {
         model.makeTimesheet(data: timetableManager.data)
     }
     
-}
-
-private struct TimetableWheelchairButton: View {
-    
-    @State var showPopover: Bool = false
-    @ScaledMetric var fontSize: CGFloat = 22
-    @ScaledMetric(wrappedValue: 5, relativeTo: .largeTitle)
-    var rowEstimate
-    
-    var body: some View {
-        Button {
-            showPopover = true
-        } label: {
-            Image(systemName: "wheelchair")
-        }
-        .accessibilityLabel("Label.Accessiblity.WheelchairOnBus")
-        .sheet(isPresented: $showPopover) {
-            NavigationStack {
-                Form {
-                    Text("Detail.BusWheelchairInfo")
-                    
-                    Section {
-//                        AsyncImage(url: URL(string: "https://www.shibaura-it.ac.jp/assets/6D7A9300.jpg")!) { phase in
-//                            if let image = phase.image {
-//                                image
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fit)
-//                            } else {
-//                                ProgressView()
-//                                    .progressViewStyle(.circular)
-//                            }
-//                        }
-//                        .listRowInsets(.init())
-                    }
-                }
-                .toolbar {
-                    Button(action: {}) {
-                        Text("Label.Done")
-                    }
-                }
-            }
-        }
-    }
 }
 
 #Preview {

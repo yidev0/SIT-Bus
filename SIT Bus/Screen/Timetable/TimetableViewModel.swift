@@ -12,6 +12,7 @@ class TimetableViewModel {
     
     var timesheetDate: Date
     var showTimesheetDatePicker = false
+    var showInfoSheet = false
     var timesheetBus: BusLineType = .schoolBus(.stationToCampus)
     var timetable: SchoolBusTimetable? = nil
     
