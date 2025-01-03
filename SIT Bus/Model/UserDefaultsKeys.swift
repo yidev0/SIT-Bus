@@ -14,4 +14,6 @@ struct UserDefaultsKeys {
     static let hideGoogleCalendar = "HideGoogleCalendar"
     /// Last saved date interval since 1970, since bus data is saved
     static let lastUpdateDate = "LastUpdateDate"
+    
+    static let debugDate = "DebugDate"
 }
