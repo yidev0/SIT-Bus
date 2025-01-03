@@ -40,10 +40,12 @@ struct LinkButton<Label: View>: View {
                 UIApplication.shared.currentUIWindow()?.rootViewController?.present(safariVC, animated: true)
             } label: {
                 label
+                    .makeListLink()
             }
         case false:
             Link(destination: url) {
                 label
+                    .makeListLink()
             }
         }
     }

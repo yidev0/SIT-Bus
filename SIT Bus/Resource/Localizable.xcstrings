@@ -52,18 +52,34 @@
         }
       }
     },
-    "Detail.BusWheelchairInfo" : {
+    "Detail.BusInfo" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \nOne bus, with 100th anniversary design wrapping, is not wheelchair-accessible. Please contact campus management for details on operating hours."
+            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. The app is not liable for any issues or damages resulting from the use of the displayed information."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "運行しているほとんどのバスが車椅子対応（スロープ・運転手による補助）をしています。\n創立100周年記念ラッピングしている1台は車椅子で乗車できません。\n運行時間は管理課にお問い合わせください。"
+            "value" : "本アプリのバス情報は、以下の情報源に基づいて提供されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
+          }
+        }
+      }
+    },
+    "Detail.BusWheelchairInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \nOne bus, with 100th anniversary design wrapping, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "運行しているほとんどのバスが車椅子対応（スロープ・運転手による補助）をしています。\n創立100周年記念ラッピングしている1台は車椅子で乗車できません。\n運行時間は大宮キャンパスの管理課にお問い合わせください。"
           }
         }
       }
@@ -246,7 +262,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "適時運行：%1$@から%2$@"
           }
         }
@@ -316,18 +332,18 @@
         }
       }
     },
-    "Label.Accessiblity.WheelchairOnBus" : {
+    "Label.Accessiblity.Information" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "About wheelchair support"
+            "value" : "Information "
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "車椅子利用について"
+            "value" : "時刻表について"
           }
         }
       }
@@ -470,7 +486,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "日付"
           }
         }
@@ -561,6 +577,7 @@
       }
     },
     "Label.Done" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -602,7 +619,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "時刻表の取得に失敗しました"
           }
         }
@@ -706,7 +723,6 @@
       }
     },
     "Label.LibraryServices" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -748,7 +764,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "ローカリゼーション"
           }
         }
@@ -851,7 +867,6 @@
       }
     },
     "Label.Omiya" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -909,7 +924,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "リンクをアプリ内で開く"
           }
         }
@@ -973,8 +988,24 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "生協のスケジュールを保存"
+          }
+        }
+      }
+    },
+    "Label.Schedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スケジュール"
           }
         }
       }
@@ -1069,7 +1100,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "東大宮駅行き"
           }
         }
@@ -1085,7 +1116,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "キャンパス行き"
           }
         }
@@ -1156,7 +1187,6 @@
       }
     },
     "Label.Toyosu" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1200,6 +1230,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "消費生活協同組合（生協）"
+          }
+        }
+      }
+    },
+    "Label.WheelchairInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheelchair Support"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "車椅子対応について"
           }
         }
       }

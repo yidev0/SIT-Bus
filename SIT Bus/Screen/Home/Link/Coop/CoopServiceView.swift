@@ -51,7 +51,6 @@ struct CoopServiceView: View {
         LinkButton(URL(string: url)!) {
             Text(title)
         }
-        .makeListLink()
     }
     
     @ViewBuilder
