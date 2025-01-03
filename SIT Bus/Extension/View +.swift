@@ -17,6 +17,7 @@ extension View {
     func makeListLink() -> some View {
         LabeledContent {
             Image(systemName: "arrow.up.right")
+                .foregroundStyle(Color.primary.tertiary)
         } label: {
             self
         }
