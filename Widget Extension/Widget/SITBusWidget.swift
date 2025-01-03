@@ -19,15 +19,15 @@ struct SITBusWidgetIntent: WidgetConfigurationIntent {
 struct SITBusWidgetEntry: TimelineEntry {
     var date: Date
     var lineType: BusLineType.SchoolBus
-    var time: Date?
-    var note: LocalizedStringKey?
+    var nextBusState: NextBusState
 }
 
 struct SITBusTimelineProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SITBusWidgetEntry {
         .init(
             date: .now,
-            lineType: .stationToCampus
+            lineType: .stationToCampus,
+            nextBusState: .busServiceEnded
         )
     }
     
@@ -37,7 +37,8 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
     ) async -> SITBusWidgetEntry {
         return .init(
             date: .now,
-            lineType: configuration.busType
+            lineType: configuration.busType,
+            nextBusState: .busServiceEnded
         )
     }
     
@@ -55,8 +56,6 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         
         var entries: [SITBusWidgetEntry] = []
         var baseTime: Date = .now
-        var time: Date?
-        var note: (start: Date, end: Date)?
         
         let timetable = timetableloader.data?.makeTimetable(
             for: busType,
@@ -64,38 +63,26 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         )
         
         while entries.count < 20 {
-            print(baseTime)
-            
-            time = timetable?.getNextBus(for: baseTime)
-            if let time {
-                note = timetable?.getNextBusNote(for: baseTime, nextBusDate: time)
-            }
-            
-            if let note {
-                entries.append(
-                    .init(
-                        date: baseTime,
-                        lineType: busType,
-                        note: "Label.\(Text(note.start, format: .dateTime.hour().minute()))to\(Text(note.end, format: .dateTime.hour().minute()))Service"
-                    )
+            let state = loadNextState(timetable: timetable, type: busType, baseTime: baseTime)
+            entries.append(
+                .init(
+                    date: baseTime,
+                    lineType: busType,
+                    nextBusState: state
                 )
-                baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: note.end) ?? .now
-            } else if let time = time {
-                entries.append(
-                    .init(
-                        date: baseTime,
-                        lineType: busType,
-                        time: time
-                    )
-                )
-                baseTime = Calendar.current.date(byAdding: .minute, value: 1, to: time) ?? .now
-            } else {
-                entries.append(.init(date: baseTime, lineType: busType))
-                break
+            )
+            
+            loop: switch state {
+            case .nextBus(let date, _):
+                baseTime = date.addingTimeInterval(60)
+            case .timely(let start, let end):
+                baseTime = end.addingTimeInterval(60)
+            case .busServiceEnded, .noBusService, .loading:
+                break loop
             }
         }
         
-        if entries.count == 1 {
+        if entries.count <= 1 {
             var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: .now)!
             tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? .now
             
@@ -106,6 +93,23 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         }
         
         return .init(entries: entries, policy: .atEnd)
+    }
+    
+    private func loadNextState(timetable: SchoolBusTimetable?, type: BusLineType.SchoolBus, baseTime: Date) -> NextBusState {
+        if let nextBusDate = timetable?.getNextBus(for: baseTime) {
+            let note = timetable?.getNextBusNote(for: baseTime, nextBusDate: nextBusDate)
+            if let note, nextBusDate > note.start {
+                return .timely(start: note.start, end: note.end)
+            } else {
+                return .nextBus(date: nextBusDate, departsIn: 0)
+            }
+        } else {
+            if timetable == nil {
+                return .noBusService
+            } else {
+                return .busServiceEnded
+            }
+        }
     }
 }
 
@@ -127,26 +131,32 @@ struct SITBusWidgetEntryView : View {
                 
                 Spacer()
             }
-            .fontWeight(.bold)
+            .fontWeight(.semibold)
             
             Spacer()
             
-            if let note = entry.note {
-                Text("Label.TimelyOperation", tableName: "Widget")
-                    .font(family == .systemSmall ? .footnote : .body)
-                Text(note, tableName: "Widget")
-                    .font(family == .systemSmall ? .body : .title2)
-                    .fontWeight(family == .systemSmall ? .regular : .medium)
-            } else if let time = entry.time {
+            switch entry.nextBusState {
+            case .nextBus(let date, _):
                 Text("Label.NextBus", tableName: "Widget")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                Text(time, style: .time)
+                Text(date, style: .time)
                     .font(family == .systemSmall ? .title2 : .largeTitle)
                     .fontWeight(.medium)
-            } else {
+            case .timely(let start, let end):
+                Text("Label.TimelyOperation", tableName: "Widget")
+                    .font(family == .systemSmall ? .footnote : .body)
+                Text("Label.\(Text(start, style: .time))to\(Text(end, style: .time))Service", tableName: "Widget")
+                    .font(family == .systemSmall ? .body : .title2)
+                    .fontWeight(family == .systemSmall ? .regular : .medium)
+            case .busServiceEnded:
                 Text("Label.BusServiceEnded")
                     .font(family == .systemSmall ? .body : .title)
+            case .noBusService:
+                Text("Label.NoBusService")
+                    .font(family == .systemSmall ? .body : .title)
+            case .loading:
+                EmptyView()
             }
         }
         .contentTransition(.numericText())
@@ -185,25 +195,25 @@ struct SITBusWidget: Widget {
     SITBusWidgetEntry(
         date: .now,
         lineType: .stationToCampus,
-        time: .now
+        nextBusState: .timely(start: .now, end: .distantFuture)
     )
     
     SITBusWidgetEntry(
         date: .now,
         lineType: .stationToCampus,
-        time: .distantFuture
+        nextBusState: .nextBus(date: .now, departsIn: 5)
     )
     
     SITBusWidgetEntry(
         date: .distantFuture,
-        lineType: .stationToCampus
+        lineType: .stationToCampus,
+        nextBusState: .noBusService
     )
     
     SITBusWidgetEntry(
         date: .now,
         lineType: .stationToCampus,
-        time: .now,
-        note: "Label.\(Text(Date.distantPast, format: .dateTime.hour().minute()))to\(Text(Date.distantFuture, format: .dateTime.hour().minute()))Service"
+        nextBusState: .busServiceEnded
     )
 }
 
@@ -213,18 +223,24 @@ struct SITBusWidget: Widget {
     SITBusWidgetEntry(
         date: .now,
         lineType: .stationToCampus,
-        time: .now
-    )
-    
-    SITBusWidgetEntry(
-        date: .distantFuture,
-        lineType: .stationToCampus
+        nextBusState: .timely(start: .now, end: .distantFuture)
     )
     
     SITBusWidgetEntry(
         date: .now,
         lineType: .stationToCampus,
-        time: .now,
-        note: "Label.\(Text(Date.distantPast, format: .dateTime.hour().minute()))to\(Text(Date.distantFuture, format: .dateTime.hour().minute()))Service"
+        nextBusState: .nextBus(date: .now, departsIn: 5)
+    )
+    
+    SITBusWidgetEntry(
+        date: .distantFuture,
+        lineType: .stationToCampus,
+        nextBusState: .noBusService
+    )
+    
+    SITBusWidgetEntry(
+        date: .now,
+        lineType: .stationToCampus,
+        nextBusState: .busServiceEnded
     )
 }

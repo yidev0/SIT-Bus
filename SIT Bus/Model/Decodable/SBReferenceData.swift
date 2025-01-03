@@ -36,7 +36,7 @@ struct SBReferenceData: Decodable, Equatable {
             $0.month == String(format: "%02d", month)
         }) {
             let currentCalendarList = currentCalendar.list
-            let id = currentCalendarList.first(where: { $0.day == String(day) })?.ts_id
+            let id = currentCalendarList.lazy.first(where: { $0.day == String(day) })?.ts_id
             return id
         }
         

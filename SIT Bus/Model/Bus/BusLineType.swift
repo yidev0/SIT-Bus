@@ -8,10 +8,11 @@
 import SwiftUI
 import AppIntents
 
-protocol BusType: Codable {
+protocol BusType: Codable, Hashable {
     var localizedTitle: LocalizedStringKey { get }
     var localizedShortTitle: LocalizedStringKey { get }
     var symbol: String { get }
+    var rawValue: String { get }
 }
 
 enum BusLineType: CaseIterable, Hashable {

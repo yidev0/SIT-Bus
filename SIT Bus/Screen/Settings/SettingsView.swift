@@ -20,6 +20,11 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
     var saveCoopSchedule: Bool = false
     
+    @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
+    var debugDateStore: Double = 0
+    
+    @State var debugDate: Date = Date.now
+    
     var body: some View {
         @Bindable var timetableManager = timetableManager
         NavigationStack {
@@ -106,6 +111,23 @@ struct SettingsView: View {
                         timetableManager.showAlert = true
                     } label: {
                         Text(verbatim: "Show Error")
+                    }
+                    
+                    DatePicker(selection: $debugDate, displayedComponents: [.date, .hourAndMinute]) {
+                        Text(verbatim: "Date")
+                    }
+                    .datePickerStyle(.graphical)
+                    .listRowInsets(.init(top: 0,leading: 16,bottom: 0,trailing: 16))
+                    .onChange(of: debugDate) { _, newValue in
+                        debugDateStore = newValue.timeIntervalSince1970
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            debugDate = Date(timeIntervalSince1970: 0)
+                            debugDateStore = 0
+                        } label: {
+                            Text(verbatim: "Reset")
+                        }
                     }
                 } header: {
                     Text(verbatim: "DEBUG")
