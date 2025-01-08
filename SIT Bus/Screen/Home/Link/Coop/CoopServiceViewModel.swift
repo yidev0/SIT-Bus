@@ -21,9 +21,10 @@ class CoopServiceViewModel {
                 if saveLocal {
                     await loadSchedule(for: links)
                 }
-                self.coopSchedule = links
+                self.coopSchedule = links.sorted(by: { $0.title > $1.title })
             } catch {
                 print(error)
+                getLocalSchedule()
             }
         }
     }
@@ -32,6 +33,18 @@ class CoopServiceViewModel {
         let fileManager = FileManager.default
         guard let cachesDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("coop") else { return nil }
         return cachesDirectory.appendingPathComponent(title, conformingTo: .pdf)
+    }
+    
+    private func getLocalSchedule() {
+        let fileManager = FileManager.default
+        if let url = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("coop") {
+            do {
+                let contents = try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                coopSchedule = contents.map { $0.lastPathComponent }.map { (title: $0, href: "") }.sorted(by: { $0.title > $1.title })
+            } catch {
+                print("Error getting contents: \(error.localizedDescription)")
+            }
+        }
     }
     
     private func loadSchedule(for data: [(title: String, href: String)]) async {

@@ -23,6 +23,7 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
     var debugDateStore: Double = 0
     
+    @State var model = SettingsViewModel()
     @State var debugDate: Date = Date.now
     
     var body: some View {
@@ -43,6 +44,24 @@ struct SettingsView: View {
                     Toggle(isOn: $saveCoopSchedule) {
                         Text("Label.SaveCoopSchedule")
                     }
+                    
+                    Button {
+                        model.deleteCache()
+                    } label: {
+                        LabeledContent {
+                            if model.deletingCache {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            } else if let cacheSize = model.cacheSize {
+                                Text("\(cacheSize, specifier: "%.2f") MB")
+                                    .font(.subheadline)
+                            }
+                        } label: {
+                            Text("Label.DeleteCache")
+                                .foregroundStyle(Color.primary)
+                        }
+                    }
+                    .disabled(model.deletingCache)
                 }
                 
                 Section("Label.AboutApp") {
@@ -137,6 +156,9 @@ struct SettingsView: View {
             }
             .navigationTitle("Label.Settings")
             .listSectionSpacing(8)
+        }
+        .onAppear {
+            model.updateCacheSize()
         }
     }
 }

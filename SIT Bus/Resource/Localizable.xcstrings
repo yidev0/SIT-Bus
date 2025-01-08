@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%.2f MB" : {
+      "shouldTranslate" : false
+    },
     "%lld:%lld" : {
       "localizations" : {
         "en" : {
@@ -493,6 +496,22 @@
         }
       }
     },
+    "Label.DeleteCache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete cache"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュを削除"
+          }
+        }
+      }
+    },
     "Label.DepartsIn%lldHours" : {
       "localizations" : {
         "en" : {
@@ -724,6 +743,7 @@
       }
     },
     "Label.LibraryServices" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -868,6 +888,7 @@
       }
     },
     "Label.Omiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -996,6 +1017,7 @@
       }
     },
     "Label.Schedule" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1188,6 +1210,7 @@
       }
     },
     "Label.Toyosu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
