@@ -21,12 +21,12 @@ enum NextBusState: Equatable {
             let interval = date.timeIntervalSince(currentTime)
             
             if interval >= 3600 {
-                var targetDate = calendar.date(byAdding: .hour, value: 0, to: currentTime)!
+                var targetDate = currentTime.addingTimeInterval(1)
                 targetDate = calendar.date(bySetting: .minute, value: 0, of: targetDate)!
                 targetDate = calendar.date(bySetting: .second, value: 0, of: targetDate)!
                 return targetDate.timeIntervalSince(currentTime)
             } else {
-                var targetDate = calendar.date(byAdding: .minute, value: 0, to: currentTime)!
+                var targetDate = currentTime.addingTimeInterval(1)
                 targetDate = calendar.date(bySetting: .second, value: 0, of: targetDate)!
                 return targetDate.timeIntervalSince(currentTime)
             }
