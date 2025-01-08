@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%.2f MB" : {
+      "shouldTranslate" : false
+    },
     "%lld:%lld" : {
       "localizations" : {
         "en" : {
@@ -489,6 +492,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日付"
+          }
+        }
+      }
+    },
+    "Label.DeleteCache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete cache"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュを削除"
           }
         }
       }
