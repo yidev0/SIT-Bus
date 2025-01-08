@@ -13,6 +13,10 @@ struct SettingsSourcesView: View {
     
     var body: some View {
         List {
+            Section {
+                Text("Detail.BusInfo")
+            }
+            
             Section("Label.AutoUpdateSource") {
                 LinkButton("http://bus.shibaura-it.ac.jp/developer.html") {
                     SettingsSourceLabel(
@@ -21,7 +25,6 @@ struct SettingsSourcesView: View {
                         format: .dateTime.year().month().day().hour().minute()
                     )
                 }
-                .makeListLink()
             }
             
             Section {
@@ -32,7 +35,6 @@ struct SettingsSourcesView: View {
                         format: .dateTime.year().month().day()
                     )
                 }
-                .makeListLink()
                 
                 LinkButton("https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf") {
                     SettingsSourceLabel(
@@ -41,7 +43,6 @@ struct SettingsSourcesView: View {
                         format: .dateTime.year().month().day()
                     )
                 }
-                .makeListLink()
             }
         }
     }

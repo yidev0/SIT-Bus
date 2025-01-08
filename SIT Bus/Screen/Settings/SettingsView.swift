@@ -20,6 +20,12 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
     var saveCoopSchedule: Bool = false
     
+    @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
+    var debugDateStore: Double = 0
+    
+    @State var model = SettingsViewModel()
+    @State var debugDate: Date = Date.now
+    
     var body: some View {
         @Bindable var timetableManager = timetableManager
         NavigationStack {
@@ -38,6 +44,24 @@ struct SettingsView: View {
                     Toggle(isOn: $saveCoopSchedule) {
                         Text("Label.SaveCoopSchedule")
                     }
+                    
+                    Button {
+                        model.deleteCache()
+                    } label: {
+                        LabeledContent {
+                            if model.deletingCache {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            } else if let cacheSize = model.cacheSize {
+                                Text("\(cacheSize, specifier: "%.2f") MB")
+                                    .font(.subheadline)
+                            }
+                        } label: {
+                            Text("Label.DeleteCache")
+                                .foregroundStyle(Color.primary)
+                        }
+                    }
+                    .disabled(model.deletingCache)
                 }
                 
                 Section("Label.AboutApp") {
@@ -54,7 +78,6 @@ struct SettingsView: View {
                             Image(.appIconDisplay)
                                 .clipShape(.rect(cornerRadius: 4))
                         }
-                        .makeListLink()
                     }
                     
                     LinkButton(
@@ -66,7 +89,6 @@ struct SettingsView: View {
                             Image(.githubFill)
                         }
                         .foregroundStyle(Color.primary)
-                        .makeListLink()
                     }
                     
                     NavigationLink {
@@ -109,6 +131,23 @@ struct SettingsView: View {
                     } label: {
                         Text(verbatim: "Show Error")
                     }
+                    
+                    DatePicker(selection: $debugDate, displayedComponents: [.date, .hourAndMinute]) {
+                        Text(verbatim: "Date")
+                    }
+                    .datePickerStyle(.graphical)
+                    .listRowInsets(.init(top: 0,leading: 16,bottom: 0,trailing: 16))
+                    .onChange(of: debugDate) { _, newValue in
+                        debugDateStore = newValue.timeIntervalSince1970
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            debugDate = Date(timeIntervalSince1970: 0)
+                            debugDateStore = 0
+                        } label: {
+                            Text(verbatim: "Reset")
+                        }
+                    }
                 } header: {
                     Text(verbatim: "DEBUG")
                 }
@@ -117,6 +156,9 @@ struct SettingsView: View {
             }
             .navigationTitle("Label.Settings")
             .listSectionSpacing(8)
+        }
+        .onAppear {
+            model.updateCacheSize()
         }
     }
 }
