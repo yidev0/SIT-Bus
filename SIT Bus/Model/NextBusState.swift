@@ -21,17 +21,17 @@ enum NextBusState: Equatable {
             let interval = date.timeIntervalSince(currentTime)
             
             if interval >= 3600 {
-                var targetDate = calendar.date(byAdding: .hour, value: 1, to: currentTime)!
+                var targetDate = currentTime.addingTimeInterval(1)
                 targetDate = calendar.date(bySetting: .minute, value: 0, of: targetDate)!
                 targetDate = calendar.date(bySetting: .second, value: 0, of: targetDate)!
                 return targetDate.timeIntervalSince(currentTime)
             } else {
-                var targetDate = calendar.date(byAdding: .minute, value: 1, to: currentTime)!
+                var targetDate = currentTime.addingTimeInterval(1)
                 targetDate = calendar.date(bySetting: .second, value: 0, of: targetDate)!
                 return targetDate.timeIntervalSince(currentTime)
             }
         case .timely(_, let end):
-            return end.timeIntervalSince(currentTime)
+            return end.addingTimeInterval(60).timeIntervalSince(currentTime)
         case .busServiceEnded, .noBusService:
             return nil
 //            var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: currentTime)!
