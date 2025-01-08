@@ -164,7 +164,8 @@ struct SITBusWidgetEntryView : View {
             LinearGradient(
                 colors: [
                     Color.widgetBackground,
-                    Color.accent.opacity(0.13),
+                    Color.widgetBackground,
+                    Color.accent.opacity(0.03),
                 ],
                 startPoint: .top,
                 endPoint: .bottom
