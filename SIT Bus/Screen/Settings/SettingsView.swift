@@ -18,7 +18,7 @@ struct SettingsView: View {
     var hideCalendar: Bool = false
     
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
-    var saveCoopSchedule: Bool = false
+    var saveCoopSchedule: Bool = true
     
     @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
     var debugDateStore: Double = 0
