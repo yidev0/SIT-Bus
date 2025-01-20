@@ -75,7 +75,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
             loop: switch state {
             case .nextBus(let date, _):
                 baseTime = date.addingTimeInterval(60)
-            case .timely(let start, let end):
+            case .timely(_, let end):
                 baseTime = end.addingTimeInterval(60)
             case .busServiceEnded, .noBusService, .loading:
                 break loop

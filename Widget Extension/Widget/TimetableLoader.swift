@@ -24,7 +24,6 @@ class TimetableLoader {
     func loadTimetable() {
         let dataFetcher = BusDataFetcher()
         loadingState = .loading
-        let fileURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
         
         Task {
             let response = await dataFetcher.fetchLocalData()
