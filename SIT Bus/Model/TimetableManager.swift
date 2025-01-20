@@ -51,8 +51,9 @@ class TimetableManager {
                 switch response {
                 case .success(let success):
                     self.data = success
-                    self.lastUpdatedDate = lastUpdateDate
+                    self.lastUpdatedDate = Date.now
                     UserDefaults.shared.set(Date.now.timeIntervalSince1970, forKey: UserDefaultsKeys.lastUpdateDate)
+                    UserDefaults.shared.synchronize()
                 case .failure(let failure):
                     error = failure
                     showAlert = true
