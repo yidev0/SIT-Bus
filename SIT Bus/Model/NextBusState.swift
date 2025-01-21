@@ -33,10 +33,9 @@ enum NextBusState: Equatable {
         case .timely(_, let end):
             return end.addingTimeInterval(60).timeIntervalSince(currentTime)
         case .busServiceEnded, .noBusService:
-            return nil
-//            var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: currentTime)!
-//            tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? currentTime
-//            return tomorrow.timeIntervalSince(currentTime)
+            var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: currentTime)!
+            tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? currentTime
+            return tomorrow.timeIntervalSince(currentTime)
         case .loading:
             return nil
         }

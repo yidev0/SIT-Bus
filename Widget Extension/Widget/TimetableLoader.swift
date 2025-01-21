@@ -21,22 +21,19 @@ class TimetableLoader {
         case loaded
     }
     
-    func loadTimetable() {
+    func loadTimetable() async {
         let dataFetcher = BusDataFetcher()
         loadingState = .loading
         
-        Task {
-            let response = await dataFetcher.fetchLocalData()
-            switch response {
-            case .success(let success):
-                self.data = success
-                loadingState = .loaded
-            case .failure(let failure):
-                print(failure)
-                loadingState = .notAvailable
-            }
+        let response = await dataFetcher.fetchLocalData()
+        switch response {
+        case .success(let success):
+            self.data = success
+            loadingState = .loaded
+        case .failure(let failure):
+            print(failure)
+            loadingState = .notAvailable
         }
-        
     }
     
 }

@@ -46,13 +46,15 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         for configuration: SITBusWidgetIntent,
         in context: Context
     ) async -> Timeline<SITBusWidgetEntry> {
-        let timeline: Timeline<SITBusWidgetEntry> = makeTimeline(busType: configuration.busType)
+        let timeline: Timeline<SITBusWidgetEntry> = await makeTimeline(busType: configuration.busType)
         return timeline
     }
     
-    func makeTimeline(busType: BusLineType.SchoolBus) -> Timeline<SITBusWidgetEntry> {
+    func makeTimeline(
+        busType: BusLineType.SchoolBus
+    ) async -> Timeline<SITBusWidgetEntry> {
         let timetableloader = TimetableLoader.shared
-        timetableloader.loadTimetable()
+        await timetableloader.loadTimetable()
         
         var entries: [SITBusWidgetEntry] = []
         var baseTime: Date = .now
