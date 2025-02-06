@@ -6,9 +6,9 @@
 //
 
 import XCTest
-@testable import School_Bus
+@testable import SIT_Bus
 
-final class School_BusTests: XCTestCase {
+final class SIT_BusTests: XCTestCase {
 
 //    override func setUpWithError() throws {
 //        // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -34,7 +34,7 @@ final class School_BusTests: XCTestCase {
 //    }
     
     func testFetch() {
-        let testBundle = Bundle(for: School_BusTests.self)
+        let testBundle = Bundle(for: SIT_BusTests.self)
         do {
             let data = try Data(contentsOf: URL(filePath: testBundle.path(forResource: "bus_data", ofType: "json")!))
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
@@ -46,7 +46,7 @@ final class School_BusTests: XCTestCase {
     }
     
     func testFetchForOperationDate() {
-        let testBundle = Bundle(for: School_BusTests.self)
+        let testBundle = Bundle(for: SIT_BusTests.self)
         do {
             let data = try Data(contentsOf: URL(filePath: testBundle.path(forResource: "bus_data", ofType: "json")!))
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
@@ -66,7 +66,7 @@ final class School_BusTests: XCTestCase {
     }
     
     func testFetchForNonOperationDate() {
-        let testBundle = Bundle(for: School_BusTests.self)
+        let testBundle = Bundle(for: SIT_BusTests.self)
         do {
             let data = try Data(contentsOf: URL(filePath: testBundle.path(forResource: "bus_data", ofType: "json")!))
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
