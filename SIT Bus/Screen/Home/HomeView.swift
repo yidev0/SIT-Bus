@@ -27,17 +27,21 @@ struct HomeView: View {
             .navigationTitle("Label.Home")
             .refreshable {
                 await timetableManager.loadData()
-                model.makeTimetable(
-                    from: timetableManager.data
-                )
-                model.startTasks()
+                makeTimetable()
             }
         }
         .environment(model)
         .task {
-            model.makeTimetable(from: timetableManager.data)
-            model.startTasks()
+            if Calendar.current.isDateInToday(timetableManager.lastUpdatedDate) == false {
+                await timetableManager.loadData()
+            }
+            makeTimetable()
         }
+    }
+    
+    func makeTimetable() {
+        model.makeTimetable(from: timetableManager.data)
+        model.startTasks()
     }
 }
 
