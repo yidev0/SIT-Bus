@@ -16,7 +16,7 @@ struct BusPickerView: View {
             Section {
                 Picker(selection: $selectedBus) {
                     ForEach(BusLineType.SchoolBus.allCases, id: \.self) { type in
-                        Label(type.localizedTitle, systemImage: "bus.fill")
+                        Label(type.localizedTitle, systemImage: type.symbol)
                             .tag(BusLineType.schoolBus(type))
                     }
                 } label: {
