@@ -26,7 +26,13 @@ struct DatePickerButton: View {
         self._showPicker = showPicker
         
         self.activeDates = activeDates
-        _tabSelection = .init(initialValue: activeDates.first ?? [])
+        
+        let selectedMonthTab = activeDates.first(where: {
+            $0.contains(where: {
+                Calendar.current.isDate($0, inSameDayAs: selectedDate.wrappedValue)
+            })
+        })
+        self._tabSelection = .init(initialValue: selectedMonthTab ?? [])
     }
     
     var body: some View {
