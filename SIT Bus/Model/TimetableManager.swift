@@ -40,11 +40,11 @@ class TimetableManager {
     
     public func loadData(forceFetch: Bool = false) async {
         let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
-        let lastUpdateDate = Date(timeIntervalSince1970: lastUpdate)
+        lastUpdatedDate = Date(timeIntervalSince1970: lastUpdate)
         
         let dataFetcher = BusDataFetcher()
         Task {
-            let fetch = Calendar.current.isDateInToday(lastUpdateDate) == false || forceFetch
+            let fetch = Calendar.current.isDateInToday(lastUpdatedDate) == false || forceFetch
             if fetch {
                 let response = await dataFetcher.fetchData()
                 
