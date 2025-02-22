@@ -20,47 +20,43 @@ struct TimetableView: View {
         NavigationStack {
             ZStack {
                 if horizontalSizeClass == .regular {
-                    if model.timetable != nil {
-                        ScrollView(.horizontal) {
-                            LazyHStack(spacing: 16, pinnedViews: .sectionHeaders) {
-                                ForEach(BusLineType.SchoolBus.allCases, id: \.self) { bus in
-                                    makeTimetable(for: .schoolBus(bus))
-                                        .frame(width: 420)
-                                }
-                            }
-                            .padding([.top, .trailing])
-                            .padding(.horizontal, 8)
+                    switch model.timesheetBusType {
+                    case .schoolOmiya, .schoolIwatsuki:
+                        if model.isActiveDate {
+                            horizontalTimetable
+                        } else {
+                            ContentUnavailableView(
+                                "Label.NoBuses",
+                                systemImage: "exclamationmark.triangle.fill"
+                            )
                         }
-                    } else {
-                        ContentUnavailableView(
-                            "Label.NoBuses",
-                            systemImage: "exclamationmark.triangle.fill"
-                        )
+                    case .shuttle:
+                        horizontalTimetable
                     }
                 } else {
                     makeTimetable(for: model.timesheetBus)
-                }
-                
-                VStack {
-                    Spacer()
                     
-                    HStack(spacing: 12) {
-                        if model.timesheetBus.busType == .schoolOmiya {
-                            DatePickerButton(
-                                selectedDate: $model.timesheetDate,
-                                showPicker: $model.showTimesheetDatePicker,
-                                activeDates: timetableManager.data?.getActiveDays() ?? []
+                    VStack {
+                        Spacer()
+                        
+                        HStack(spacing: 12) {
+                            if model.timesheetBus.busType == .schoolOmiya {
+                                DatePickerButton(
+                                    selectedDate: $model.timesheetDate,
+                                    showPicker: $model.showTimesheetDatePicker,
+                                    activeDates: timetableManager.data?.getActiveDays() ?? []
+                                )
+                            }
+                            
+                            BusPickerView(
+                                selectedBus: $model.timesheetBus
                             )
                         }
-                        
-                        BusPickerView(
-                            selectedBus: $model.timesheetBus
-                        )
+                        .padding(.bottom, 16)
+                        .buttonStyle(.filter)
                     }
-                    .padding(.bottom, 16)
-                    .buttonStyle(.filter)
+                    .animation(.default, value: model.timesheetBus)
                 }
-                .animation(.default, value: model.timesheetBus)
             }
             .navigationTitle("Label.Timetable")
             .background(Color(.systemGroupedBackground))
@@ -79,19 +75,37 @@ struct TimetableView: View {
                     }
                     .accessibilityLabel("Label.Accessiblity.Information")
                 }
-                    
+                
                 if horizontalSizeClass == .regular {
                     ToolbarItem(placement: .topBarLeading) {
-                        
+                        Picker(selection: $model.timesheetBusType) {
+                            ForEach(BusType.allCases, id: \.rawValue) { type in
+                                Label(type.localizedTitle, systemImage: type.symbol)
+                                    .tag(type)
+                            }
+                        } label: {
+                            Text(model.timesheetBusType.localizedTitle)
+                        }
+                    }
+                    
+                    if model.timesheetBusType != .shuttle  {
+                        ToolbarItem(placement: .topBarLeading) {
+                            DatePickerButton(
+                                selectedDate: $model.timesheetDate,
+                                showPicker: $model.showTimesheetDatePicker,
+                                activeDates: timetableManager.data?.getActiveDays() ?? []
+                            )
+                            .fontWeight(.semibold)
+                        }
                     }
                 }
             }
             .sheet(isPresented: $model.showInfoSheet) {
                 TimetableInformationView()
             }
-//            .refreshable {
-//                model.timesheetDate = Date()
-//            }
+            //            .refreshable {
+            //                model.timesheetDate = Date()
+            //            }
         }
         .onAppear {
             updateTimesheet()
@@ -103,7 +117,7 @@ struct TimetableView: View {
     }
     
     @ViewBuilder
-    func makeTimetable(for bus: BusLineType) -> some View {
+    private func makeTimetable(for bus: BusLineType) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Label(bus.localizedTitle, systemImage: bus.symbol)
                 .font(.headline)
@@ -112,7 +126,7 @@ struct TimetableView: View {
             
             switch bus {
             case .schoolBus, .schoolBusIwatsuki:
-                if let timetable = model.timetable {
+                if let timetable = model.getTimetable(for: bus) {
                     ScrollView {
                         SchoolBusGridView(timetable: timetable)
                     }
@@ -125,6 +139,20 @@ struct TimetableView: View {
                 )
                 .contentMargins(.bottom, 80, for: .scrollContent)
             }
+        }
+    }
+    
+    @ViewBuilder
+    var horizontalTimetable: some View {
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 16, pinnedViews: .sectionHeaders) {
+                ForEach(model.timesheetBusType.cases, id: \.self) { bus in
+                    makeTimetable(for: bus)
+                        .frame(width: 420)
+                }
+            }
+            .padding([.top, .trailing])
+            .padding(.horizontal, 8)
         }
     }
     
