@@ -88,6 +88,7 @@
 				Model/Bus/BusType.swift,
 				Model/BusDataFetcher.swift,
 				Model/BusDataFetcherError.swift,
+				Model/Data/IwatsukiBusData.swift,
 				Model/Data/ShuttleBusData.swift,
 				Model/Data/SITBusActivityAttributes.swift,
 				Model/Decodable/SBCalendar.swift,

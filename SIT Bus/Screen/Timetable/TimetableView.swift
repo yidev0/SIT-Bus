@@ -18,7 +18,7 @@ struct TimetableView: View {
         NavigationStack {
             ZStack {
                 switch model.timesheetBus {
-                case .schoolBus:
+                case .schoolBus, .schoolBusIwatsuki:
                     if let timetable = model.timetable {
                         ScrollView {
                             SchoolBusGridView(timetable: timetable)

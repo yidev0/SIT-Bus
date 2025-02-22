@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum BusType: String, CaseIterable {
+enum BusType: String, CaseIterable, Hashable {
     case schoolOmiya
     case schoolIwatsuki
     case shuttle
@@ -20,6 +20,17 @@ enum BusType: String, CaseIterable {
             "Label.SchoolBusIwatsuki"
         case .shuttle:
             "Label.ShuttleBus"
+        }
+    }
+    
+    var cases: [BusLineType] {
+        switch self {
+        case .schoolOmiya:
+            [.schoolBus(.stationToCampus), .schoolBus(.campusToStation)]
+        case .schoolIwatsuki:
+            [.schoolBusIwatsuki(.stationToCampus), .schoolBusIwatsuki(.campusToStation)]
+        case .shuttle:
+            [.shuttleBus(.toToyosu), .shuttleBus(.toOmiya)]
         }
     }
 }
