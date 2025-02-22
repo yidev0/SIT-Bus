@@ -45,7 +45,7 @@ struct TimetableView: View {
                     Spacer()
                     
                     HStack(spacing: 12) {
-                        if model.timesheetBus.isSchoolBus {
+                        if model.timesheetBus.busType == .schoolOmiya {
                             DatePickerButton(
                                 selectedDate: $model.timesheetDate,
                                 showPicker: $model.showTimesheetDatePicker,

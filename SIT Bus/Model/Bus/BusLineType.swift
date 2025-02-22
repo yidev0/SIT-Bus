@@ -15,33 +15,19 @@ protocol BusLine: Codable, Hashable {
     var rawValue: String { get }
 }
 
-enum BusLineType: CaseIterable, Hashable {
-    static var allCases: [BusLineType] = [
-        .schoolBus(.stationToCampus),
-        .schoolBus(.campusToStation),
-        .shuttleBus(.toOmiya),
-        .shuttleBus(.toToyosu),
-    ]
-    
+enum BusLineType: Hashable {
     case schoolBus(SchoolBus)
     case schoolBusIwatsuki(SchoolBusIwatsuki)
     case shuttleBus(ShuttleBus)
     
-    var isSchoolBus: Bool {
+    var busType: BusType {
         switch self {
-        case .schoolBus, .schoolBusIwatsuki:
-            true
+        case .schoolBus:
+                .schoolOmiya
+        case .schoolBusIwatsuki:
+                .schoolIwatsuki
         case .shuttleBus:
-            false
-        }
-    }
-    
-    var isShuttleBus: Bool {
-        switch self {
-        case .schoolBus, .schoolBusIwatsuki:
-            false
-        case .shuttleBus:
-            true
+                .shuttle
         }
     }
     
