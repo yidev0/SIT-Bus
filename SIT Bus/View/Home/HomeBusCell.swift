@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeBusCell<T: BusType>: View {
+struct HomeBusCell<T: BusLine>: View {
     
     @ScaledMetric var busFontSize = 24
     @ScaledMetric var timelyFontSize = 20

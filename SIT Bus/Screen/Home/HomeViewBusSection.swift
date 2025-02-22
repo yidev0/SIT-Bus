@@ -96,7 +96,7 @@ struct HomeViewBusSection: View {
     }
     
     @ViewBuilder
-    func makeBusCell<T: BusType>(for type: T) -> some View {
+    func makeBusCell<T: BusLine>(for type: T) -> some View {
         NavigationLink(value: type) {
             HomeBusCell(
                 type: type,

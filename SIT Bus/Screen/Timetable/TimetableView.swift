@@ -105,15 +105,13 @@ struct TimetableView: View {
     @ViewBuilder
     func makeTimetable(for bus: BusLineType) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            if horizontalSizeClass == .regular {
-                Label(bus.localizedTitle, systemImage: bus.symbol)
-                    .font(.headline)
-                    .padding(.horizontal)
-                    .padding(.bottom, 8)
-            }
+            Label(bus.localizedTitle, systemImage: bus.symbol)
+                .font(.headline)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
             
             switch bus {
-            case .schoolBus:
+            case .schoolBus, .schoolBusIwatsuki:
                 if let timetable = model.timetable {
                     ScrollView {
                         SchoolBusGridView(timetable: timetable)
