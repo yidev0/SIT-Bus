@@ -46,13 +46,15 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         for configuration: SITBusWidgetIntent,
         in context: Context
     ) async -> Timeline<SITBusWidgetEntry> {
-        let timeline: Timeline<SITBusWidgetEntry> = makeTimeline(busType: configuration.busType)
+        let timeline: Timeline<SITBusWidgetEntry> = await makeTimeline(busType: configuration.busType)
         return timeline
     }
     
-    func makeTimeline(busType: BusLineType.SchoolBus) -> Timeline<SITBusWidgetEntry> {
+    func makeTimeline(
+        busType: BusLineType.SchoolBus
+    ) async -> Timeline<SITBusWidgetEntry> {
         let timetableloader = TimetableLoader.shared
-        timetableloader.loadTimetable()
+        await timetableloader.loadTimetable()
         
         var entries: [SITBusWidgetEntry] = []
         var baseTime: Date = .now
@@ -75,7 +77,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
             loop: switch state {
             case .nextBus(let date, _):
                 baseTime = date.addingTimeInterval(60)
-            case .timely(let start, let end):
+            case .timely(_, let end):
                 baseTime = end.addingTimeInterval(60)
             case .busServiceEnded, .noBusService, .loading:
                 break loop
@@ -164,7 +166,8 @@ struct SITBusWidgetEntryView : View {
             LinearGradient(
                 colors: [
                     Color.widgetBackground,
-                    Color.accent.opacity(0.13),
+                    Color.widgetBackground,
+                    Color.accent.opacity(0.03),
                 ],
                 startPoint: .top,
                 endPoint: .bottom

@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%.2f MB" : {
+      "shouldTranslate" : false
+    },
     "%lld:%lld" : {
       "localizations" : {
         "en" : {
@@ -21,7 +24,7 @@
       }
     },
     "Button.Done" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -413,6 +416,22 @@
         }
       }
     },
+    "Label.CampusToIwatsukiStation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campus to Iwatsuki Station"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパスから岩槻駅"
+          }
+        }
+      }
+    },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
@@ -489,6 +508,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日付"
+          }
+        }
+      }
+    },
+    "Label.DeleteCache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete cache"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュを削除"
           }
         }
       }
@@ -577,23 +612,6 @@
         }
       }
     },
-    "Label.Done" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        }
-      }
-    },
     "Label.Edit" : {
       "localizations" : {
         "en" : {
@@ -627,7 +645,7 @@
       }
     },
     "Label.FinalBus" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -703,6 +721,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ソース"
+          }
+        }
+      }
+    },
+    "Label.IwatsukiStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Station to Iwatsuki Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパス行き"
           }
         }
       }
@@ -968,13 +1002,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Related Sites"
+            "value" : "Information"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "関連リンク"
+            "value" : "その他"
           }
         }
       }
@@ -1032,7 +1066,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Iwatsuki Station)"
+            "value" : "School Bus (Iwatsuki)"
           }
         },
         "ja" : {
@@ -1048,7 +1082,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Higashi-Omiya Station)"
+            "value" : "School Bus (Higashi-Omiya)"
           }
         },
         "ja" : {
@@ -1091,6 +1125,22 @@
         }
       }
     },
+    "Label.Short.CampusToIwatsukiStation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Station"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅行き"
+          }
+        }
+      }
+    },
     "Label.Short.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
@@ -1103,6 +1153,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "東大宮駅行き"
+          }
+        }
+      }
+    },
+    "Label.Short.IwatsukiStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅からキャンパス"
           }
         }
       }

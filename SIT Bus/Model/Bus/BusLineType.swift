@@ -8,43 +8,30 @@
 import SwiftUI
 import AppIntents
 
-protocol BusType: Codable, Hashable {
+protocol BusLine: Codable, Hashable {
     var localizedTitle: LocalizedStringKey { get }
     var localizedShortTitle: LocalizedStringKey { get }
     var symbol: String { get }
     var rawValue: String { get }
 }
 
-enum BusLineType: CaseIterable, Hashable {
-    static var allCases: [BusLineType] = [
-        .schoolBus(.stationToCampus),
-        .schoolBus(.campusToStation),
-        .shuttleBus(.toOmiya),
-        .shuttleBus(.toToyosu),
-    ]
-    
+enum BusLineType: Hashable {
     case schoolBus(SchoolBus)
+    case schoolBusIwatsuki(SchoolBusIwatsuki)
     case shuttleBus(ShuttleBus)
     
-    var isSchoolBus: Bool {
+    var busType: BusType {
         switch self {
         case .schoolBus:
-            true
+                .schoolOmiya
+        case .schoolBusIwatsuki:
+                .schoolIwatsuki
         case .shuttleBus:
-            false
+                .shuttle
         }
     }
     
-    var isShuttleBus: Bool {
-        switch self {
-        case .schoolBus:
-            false
-        case .shuttleBus:
-            true
-        }
-    }
-    
-    enum SchoolBus: String, CaseIterable, BusType, AppEnum {
+    enum SchoolBus: String, CaseIterable, BusLine, AppEnum {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
         
@@ -73,9 +60,9 @@ enum BusLineType: CaseIterable, Hashable {
         var symbol: String {
             switch self {
             case .campusToStation:
-                "graduationcap.fill"
-            case .stationToCampus:
                 "tram.fill"
+            case .stationToCampus:
+                "graduationcap.fill"
             }
         }
         
@@ -89,7 +76,43 @@ enum BusLineType: CaseIterable, Hashable {
         ]
     }
     
-    enum ShuttleBus: String, CaseIterable, BusType {
+    enum SchoolBusIwatsuki: String, CaseIterable, BusLine {
+        case stationToCampus = "IwatsukiStationToCampus"
+        case campusToStation = "CampusToIwatsukiStation"
+        
+        static var allCases: [BusLineType.SchoolBus] = [
+            .stationToCampus, .campusToStation,
+        ]
+        
+        var localizedTitle: LocalizedStringKey {
+            switch self {
+            case .campusToStation:
+                "Label.CampusToIwatsukiStation"
+            case .stationToCampus:
+                "Label.IwatsukiStationToCampus"
+            }
+        }
+        
+        var localizedShortTitle: LocalizedStringKey {
+            switch self {
+            case .campusToStation:
+                "Label.Short.CampusToIwatsukiStation"
+            case .stationToCampus:
+                "Label.Short.IwatsukiStationToCampus"
+            }
+        }
+        
+        var symbol: String {
+            switch self {
+            case .campusToStation:
+                "graduationcap"
+            case .stationToCampus:
+                "tram"
+            }
+        }
+    }
+    
+    enum ShuttleBus: String, CaseIterable, BusLine {
         case toToyosu = "OmiyaToToyosu"
         case toOmiya = "ToyosuToOmiya"
         
@@ -118,9 +141,9 @@ enum BusLineType: CaseIterable, Hashable {
         var symbol: String {
             switch self {
             case .toToyosu:
-                "app.connected.to.app.below.fill"
+                "point.topleft.down.to.point.bottomright.filled.curvepath"
             case .toOmiya:
-                "app.connected.to.app.below.fill"
+                "point.topleft.filled.down.to.point.bottomright.curvepath"
             }
         }
     }
@@ -131,6 +154,8 @@ enum BusLineType: CaseIterable, Hashable {
             schoolBus.localizedTitle
         case .shuttleBus(let shuttleBus):
             shuttleBus.localizedTitle
+        case .schoolBusIwatsuki(let schoolBus):
+            schoolBus.localizedTitle
         }
     }
     
@@ -140,6 +165,8 @@ enum BusLineType: CaseIterable, Hashable {
             schoolBus.localizedShortTitle
         case .shuttleBus(let shuttleBus):
             shuttleBus.localizedShortTitle
+        case .schoolBusIwatsuki(let schoolBus):
+            schoolBus.localizedShortTitle
         }
     }
     
@@ -149,6 +176,8 @@ enum BusLineType: CaseIterable, Hashable {
             schoolBus.symbol
         case .shuttleBus(let shuttleBus):
             shuttleBus.symbol
+        case .schoolBusIwatsuki(let schoolBus):
+            schoolBus.symbol
         }
     }
 }

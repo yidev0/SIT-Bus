@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "SIT Bus"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SITバス時刻表"
+          }
         }
       }
     },
@@ -25,8 +31,26 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "SITバス時刻表"
+          }
+        }
+      }
+    },
+    "kMDItemKeywords" : {
+      "comment" : "Keywords associated with this file.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SIT,Shibaura,Bus,Timetable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT,Shibaura,シバウラ,芝浦工業大学,Bus,バス,Timetable,時刻表"
           }
         }
       }

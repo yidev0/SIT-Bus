@@ -63,7 +63,7 @@ extension SchoolBusTimetable {
                     day: inputDate.get(component: .day),
                     hour: hour,
                     minute: minute,
-                    second: 59
+                    second: 0
                 ) ?? .now
             }
             self.note = note
