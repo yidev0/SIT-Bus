@@ -1054,7 +1054,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Iwatsuki Station)"
+            "value" : "School Bus (Iwatsuki)"
           }
         },
         "ja" : {
@@ -1070,7 +1070,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Higashi-Omiya Station)"
+            "value" : "School Bus (Higashi-Omiya)"
           }
         },
         "ja" : {
