@@ -9,110 +9,154 @@ import Foundation
 import SwiftUICore
 
 struct ShuttleBusData {
-    let lastUpdate = Date.createDate(year: 2024, month: 9, day: 23)
+    static let lastUpdateDate = Date.createDate(year: 2025, month: 2, day: 18)!
     
     private let activeDates: [Date] = [
-        Date.createDate(year: 2024, month:  9, day: 30)!,
-        Date.createDate(year: 2024, month: 10, day: 2)!,
-        Date.createDate(year: 2024, month: 10, day: 4)!,
-        Date.createDate(year: 2024, month: 10, day: 7)!,
-        Date.createDate(year: 2024, month: 10, day: 9)!,
-        Date.createDate(year: 2024, month: 10, day: 11)!,
-        Date.createDate(year: 2024, month: 10, day: 14)!,
-        Date.createDate(year: 2024, month: 10, day: 16)!,
-        Date.createDate(year: 2024, month: 10, day: 18)!,
-        Date.createDate(year: 2024, month: 10, day: 21)!,
-        Date.createDate(year: 2024, month: 10, day: 23)!,
-        Date.createDate(year: 2024, month: 10, day: 25)!,
-        Date.createDate(year: 2024, month: 10, day: 28)!,
-        Date.createDate(year: 2024, month: 10, day: 30)!,
-        Date.createDate(year: 2024, month: 11, day: 8)!,
-        Date.createDate(year: 2024, month: 11, day: 11)!,
-        Date.createDate(year: 2024, month: 11, day: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 15)!,
-        Date.createDate(year: 2024, month: 11, day: 18)!,
-        Date.createDate(year: 2024, month: 11, day: 20)!,
-        Date.createDate(year: 2024, month: 11, day: 22)!,
-        Date.createDate(year: 2024, month: 11, day: 25)!,
-        Date.createDate(year: 2024, month: 11, day: 27)!,
-        Date.createDate(year: 2024, month: 11, day: 29)!,
-        Date.createDate(year: 2024, month: 12, day: 2)!,
-        Date.createDate(year: 2024, month: 12, day: 4)!,
-        Date.createDate(year: 2024, month: 12, day: 6)!,
-        Date.createDate(year: 2024, month: 12, day: 9)!,
-        Date.createDate(year: 2024, month: 12, day: 11)!,
-        Date.createDate(year: 2024, month: 12, day: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 16)!,
-        Date.createDate(year: 2024, month: 12, day: 18)!,
-        Date.createDate(year: 2024, month: 12, day: 20)!,
-        Date.createDate(year: 2024, month: 12, day: 23)!,
-        Date.createDate(year: 2025, month:  1, day: 8)!,
-        Date.createDate(year: 2025, month:  1, day: 10)!,
-        Date.createDate(year: 2025, month:  1, day: 15)!,
-        Date.createDate(year: 2025, month:  1, day: 17)!,
-        Date.createDate(year: 2025, month:  1, day: 20)!,
-        Date.createDate(year: 2025, month:  1, day: 22)!,
-        Date.createDate(year: 2025, month:  1, day: 24)!,
-        Date.createDate(year: 2025, month:  1, day: 27)!,
+        // 4
+        Date.createDate(year: 2025, month:  4, day: 11)!,
+        Date.createDate(year: 2025, month:  4, day: 14)!,
+        Date.createDate(year: 2025, month:  4, day: 16)!,
+        Date.createDate(year: 2025, month:  4, day: 18)!,
+        Date.createDate(year: 2025, month:  4, day: 21)!,
+        Date.createDate(year: 2025, month:  4, day: 23)!,
+        Date.createDate(year: 2025, month:  4, day: 25)!,
+        Date.createDate(year: 2025, month:  4, day: 28)!,
+        // 5
+        Date.createDate(year: 2025, month:  5, day: 7)!,
+        Date.createDate(year: 2025, month:  5, day: 9)!,
+        Date.createDate(year: 2025, month:  5, day: 12)!,
+        Date.createDate(year: 2025, month:  5, day: 14)!,
+        Date.createDate(year: 2025, month:  5, day: 16)!,
+        Date.createDate(year: 2025, month:  5, day: 21)!,
+        Date.createDate(year: 2025, month:  5, day: 23)!,
+        Date.createDate(year: 2025, month:  5, day: 26)!,
+        Date.createDate(year: 2025, month:  5, day: 28)!,
+        Date.createDate(year: 2025, month:  5, day: 30)!,
+        // 6
+        Date.createDate(year: 2025, month:  6, day: 2)!,
+        Date.createDate(year: 2025, month:  6, day: 4)!,
+        Date.createDate(year: 2025, month:  6, day: 6)!,
+        Date.createDate(year: 2025, month:  6, day: 9)!,
+        Date.createDate(year: 2025, month:  6, day: 11)!,
+        Date.createDate(year: 2025, month:  6, day: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 16)!,
+        Date.createDate(year: 2025, month:  6, day: 18)!,
+        Date.createDate(year: 2025, month:  6, day: 20)!,
+        Date.createDate(year: 2025, month:  6, day: 23)!,
+        Date.createDate(year: 2025, month:  6, day: 25)!,
+        Date.createDate(year: 2025, month:  6, day: 27)!,
+        Date.createDate(year: 2025, month:  6, day: 30)!,
+        // 7
+        Date.createDate(year: 2025, month:  7, day: 2)!,
+        Date.createDate(year: 2025, month:  7, day: 4)!,
+        Date.createDate(year: 2025, month:  7, day: 7)!,
+        Date.createDate(year: 2025, month:  7, day: 9)!,
+        Date.createDate(year: 2025, month:  7, day: 11)!,
+        Date.createDate(year: 2025, month:  7, day: 14)!,
+        Date.createDate(year: 2025, month:  7, day: 16)!,
+        Date.createDate(year: 2025, month:  7, day: 18)!,
+        Date.createDate(year: 2025, month:  7, day: 21)!,
+        Date.createDate(year: 2025, month:  7, day: 23)!,
+        Date.createDate(year: 2025, month:  7, day: 25)!,
     ]
     
     private let toToyosuDepartureDates: [Date] = [
-        Date.createDate(year: 2024, month:  9, day: 30, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 2,  hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 4,  hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 7,  hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 9,  hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 11, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 14, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 16, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 18, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 21, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 23, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 25, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 28, hour: 13)!,
-        Date.createDate(year: 2024, month: 10, day: 30, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 8,  hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 11, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 13, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 15, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 18, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 20, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 22, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 25, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 27, hour: 13)!,
-        Date.createDate(year: 2024, month: 11, day: 29, hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 2,  hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 4,  hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 6,  hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 9,  hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 11, hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 13, hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 16, hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 18, hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 20, hour: 13)!,
-        Date.createDate(year: 2024, month: 12, day: 23, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 8,  hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 10, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 15, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 17, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 20, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 22, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 24, hour: 13)!,
-        Date.createDate(year: 2025, month:  1, day: 27, hour: 13)!,
+        // 4
+        Date.createDate(year: 2025, month:  4, day: 11, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 14, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 16, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 18, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 21, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 23, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 25, hour: 13)!,
+        Date.createDate(year: 2025, month:  4, day: 28, hour: 13)!,
+        // 5
+        Date.createDate(year: 2025, month:  5, day: 7,  hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 9,  hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 12, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 14, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 16, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 21, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 23, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 26, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 28, hour: 13)!,
+        Date.createDate(year: 2025, month:  5, day: 30, hour: 13)!,
+        // 6
+        Date.createDate(year: 2025, month:  6, day: 2,  hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 4,  hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 6,  hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 9,  hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 11, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 13, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 16, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 18, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 20, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 23, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 25, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 27, hour: 13)!,
+        Date.createDate(year: 2025, month:  6, day: 30, hour: 13)!,
+        // 7
+        Date.createDate(year: 2025, month:  7, day: 2,  hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 4,  hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 7,  hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 9,  hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 11, hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 14, hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 16, hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 18, hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 21, hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 23, hour: 13)!,
+        Date.createDate(year: 2025, month:  7, day: 25, hour: 13)!,
     ]
     
-    private func makeToOmiyaDepartureDates() -> [Date] {
-        let calendar = Calendar.current
-        return activeDates.map { date in
-            if date.get(component: .weekday) == 6 {
-                // friday
-                calendar.date(bySettingHour: 15, minute: 15, second: 0, of: date)!
-            } else {
-                // monday, wednesday
-                calendar.date(bySettingHour: 17, minute: 5, second: 0, of: date)!
-            }
-        }
-    }
+    private let toOmiyaDepartureDates: [Date] = [
+        // 4
+        Date.createDate(year: 2025, month:  4, day: 11, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  4, day: 14, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  4, day: 16, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  4, day: 18, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  4, day: 21, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  4, day: 23, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  4, day: 25, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  4, day: 28, hour: 17, minute: 5)!,
+        // 5
+        Date.createDate(year: 2025, month:  5, day: 7,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  5, day: 9,  hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  5, day: 12, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  5, day: 14, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  5, day: 16, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  5, day: 21, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  5, day: 23, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  5, day: 26, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  5, day: 28, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  5, day: 30, hour: 15, minute: 15)!,
+        // 6
+        Date.createDate(year: 2025, month:  6, day: 2,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 4,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 6,  hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  6, day: 9,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 11, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 13, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  6, day: 16, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 18, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 20, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  6, day: 23, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 25, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  6, day: 27, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  6, day: 30, hour: 17, minute: 5)!,
+        // 7
+        Date.createDate(year: 2025, month:  7, day: 2,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 4,  hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  7, day: 7,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 9,  hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 11, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  7, day: 14, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 16, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 18, hour: 15, minute: 15)!,
+        Date.createDate(year: 2025, month:  7, day: 21, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 23, hour: 17, minute: 5)!,
+        Date.createDate(year: 2025, month:  7, day: 25, hour: 15, minute: 15)!,
+    ]
     
     private let toToyosu: DepartureDetail = .init(
         location: "",
@@ -186,7 +230,7 @@ struct ShuttleBusData {
             case .toToyosu:
                 toToyosuDepartureDates
             case .toOmiya:
-                makeToOmiyaDepartureDates()
+                toOmiyaDepartureDates
             }
         }
         
@@ -214,7 +258,7 @@ struct ShuttleBusData {
             case .toToyosu:
                 toToyosuDepartureDates
             case .toOmiya:
-                makeToOmiyaDepartureDates()
+                toOmiyaDepartureDates
             }
         }
         
@@ -232,7 +276,7 @@ struct ShuttleBusData {
             case .toToyosu:
                 toToyosuDepartureDates
             case .toOmiya:
-                makeToOmiyaDepartureDates()
+                toOmiyaDepartureDates
             }
         }
         
