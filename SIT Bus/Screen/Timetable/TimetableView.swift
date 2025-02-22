@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TimetableView: View {
     
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @State private var model = TimetableViewModel()
     @Environment(TimetableManager.self) private var timetableManager
     
@@ -17,25 +19,26 @@ struct TimetableView: View {
         
         NavigationStack {
             ZStack {
-                switch model.timesheetBus {
-                case .schoolBus:
-                    if let timetable = model.timetable {
-                        ScrollView {
-                            SchoolBusGridView(timetable: timetable)
+                if horizontalSizeClass == .regular {
+                    if model.timetable != nil {
+                        ScrollView(.horizontal) {
+                            LazyHStack(spacing: 16, pinnedViews: .sectionHeaders) {
+                                ForEach(BusLineType.SchoolBus.allCases, id: \.self) { bus in
+                                    makeTimetable(for: .schoolBus(bus))
+                                        .frame(width: 420)
+                                }
+                            }
+                            .padding([.top, .trailing])
+                            .padding(.horizontal, 8)
                         }
-                        .contentMargins(.bottom, 80, for: .scrollContent)
                     } else {
                         ContentUnavailableView(
                             "Label.NoBuses",
                             systemImage: "exclamationmark.triangle.fill"
                         )
                     }
-                case .shuttleBus(let bus):
-                    ShuttleBusTimeTable(
-                        listType: .grid,
-                        shuttleType: bus
-                    )
-                    .contentMargins(.bottom, 80, for: .scrollContent)
+                } else {
+                    makeTimetable(for: model.timesheetBus)
                 }
                 
                 VStack {
@@ -68,7 +71,7 @@ struct TimetableView: View {
                 updateTimesheet()
             }
             .toolbar {
-                if model.timesheetBus.isSchoolBus {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         model.showInfoSheet = true
                     } label: {
@@ -76,13 +79,19 @@ struct TimetableView: View {
                     }
                     .accessibilityLabel("Label.Accessiblity.Information")
                 }
+                    
+                if horizontalSizeClass == .regular {
+                    ToolbarItem(placement: .topBarLeading) {
+                        
+                    }
+                }
             }
             .sheet(isPresented: $model.showInfoSheet) {
                 TimetableInformationView()
             }
-            .refreshable {
-                model.timesheetDate = Date()
-            }
+//            .refreshable {
+//                model.timesheetDate = Date()
+//            }
         }
         .onAppear {
             updateTimesheet()
@@ -91,6 +100,34 @@ struct TimetableView: View {
     
     func updateTimesheet() {
         model.makeTimesheet(data: timetableManager.data)
+    }
+    
+    @ViewBuilder
+    func makeTimetable(for bus: BusLineType) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if horizontalSizeClass == .regular {
+                Label(bus.localizedTitle, systemImage: bus.symbol)
+                    .font(.headline)
+                    .padding(.horizontal)
+                    .padding(.bottom, 8)
+            }
+            
+            switch bus {
+            case .schoolBus:
+                if let timetable = model.timetable {
+                    ScrollView {
+                        SchoolBusGridView(timetable: timetable)
+                    }
+                    .contentMargins(.bottom, 80, for: .scrollContent)
+                }
+            case .shuttleBus(let bus):
+                ShuttleBusTimeTable(
+                    listType: .grid,
+                    shuttleType: bus
+                )
+                .contentMargins(.bottom, 80, for: .scrollContent)
+            }
+        }
     }
     
 }
