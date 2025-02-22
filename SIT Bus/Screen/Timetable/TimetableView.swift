@@ -34,7 +34,14 @@ struct TimetableView: View {
                         horizontalTimetable
                     }
                 } else {
-                    makeTimetable(for: model.timesheetBus)
+                    if model.isActiveDate {
+                        makeTimetable(for: model.timesheetBus)
+                    } else {
+                        ContentUnavailableView(
+                            "Label.NoBuses",
+                            systemImage: "exclamationmark.triangle.fill"
+                        )
+                    }
                     
                     VStack {
                         Spacer()
@@ -59,6 +66,7 @@ struct TimetableView: View {
                 }
             }
             .navigationTitle("Label.Timetable")
+            .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .background(Color(.systemGroupedBackground))
             .onChange(of: model.timesheetBus) { _, _ in
                 updateTimesheet()
@@ -118,27 +126,37 @@ struct TimetableView: View {
     
     @ViewBuilder
     private func makeTimetable(for bus: BusLineType) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Label(bus.localizedTitle, systemImage: bus.symbol)
-                .font(.headline)
-                .padding(.horizontal)
-                .padding(.bottom, 8)
-            
-            switch bus {
-            case .schoolBus, .schoolBusIwatsuki:
-                if let timetable = model.getTimetable(for: bus) {
-                    ScrollView {
-                        SchoolBusGridView(timetable: timetable)
+        switch bus {
+        case .schoolBus, .schoolBusIwatsuki:
+            if let timetable = model.getTimetable(for: bus) {
+                ScrollView {
+                    LazyVStack(
+                        alignment: .leading,
+                        spacing: 0,
+                        pinnedViews: .sectionHeaders
+                    ) {
+                        Section {
+                            SchoolBusGridView(timetable: timetable)
+                        } header: {
+                            Label(bus.localizedTitle, systemImage: bus.symbol)
+                                .font(.headline)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(.regularMaterial)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .padding(.horizontal)
+                                .padding(.vertical, 4)
+                        }
                     }
-                    .contentMargins(.bottom, 80, for: .scrollContent)
                 }
-            case .shuttleBus(let bus):
-                ShuttleBusTimeTable(
-                    listType: .grid,
-                    shuttleType: bus
-                )
                 .contentMargins(.bottom, 80, for: .scrollContent)
             }
+        case .shuttleBus(let bus):
+            ShuttleBusTimeTable(
+                listType: .grid,
+                shuttleType: bus
+            )
+            .contentMargins(.bottom, 80, for: .scrollContent)
         }
     }
     
