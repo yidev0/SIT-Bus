@@ -8,7 +8,7 @@
 import SwiftUI
 import AppIntents
 
-protocol BusType: Codable, Hashable {
+protocol BusLine: Codable, Hashable {
     var localizedTitle: LocalizedStringKey { get }
     var localizedShortTitle: LocalizedStringKey { get }
     var symbol: String { get }
@@ -44,7 +44,7 @@ enum BusLineType: CaseIterable, Hashable {
         }
     }
     
-    enum SchoolBus: String, CaseIterable, BusType, AppEnum {
+    enum SchoolBus: String, CaseIterable, BusLine, AppEnum {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
         
@@ -89,7 +89,7 @@ enum BusLineType: CaseIterable, Hashable {
         ]
     }
     
-    enum ShuttleBus: String, CaseIterable, BusType {
+    enum ShuttleBus: String, CaseIterable, BusLine {
         case toToyosu = "OmiyaToToyosu"
         case toOmiya = "ToyosuToOmiya"
         

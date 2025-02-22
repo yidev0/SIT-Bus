@@ -85,6 +85,7 @@
 				"Extension/UserDefaults + .swift",
 				"Extension/View +.swift",
 				Model/Bus/BusLineType.swift,
+				Model/Bus/BusType.swift,
 				Model/BusDataFetcher.swift,
 				Model/BusDataFetcherError.swift,
 				Model/Data/ShuttleBusData.swift,
