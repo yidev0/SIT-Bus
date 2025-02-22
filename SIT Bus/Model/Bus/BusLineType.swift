@@ -73,9 +73,9 @@ enum BusLineType: CaseIterable, Hashable {
         var symbol: String {
             switch self {
             case .campusToStation:
-                "graduationcap.fill"
-            case .stationToCampus:
                 "tram.fill"
+            case .stationToCampus:
+                "graduationcap.fill"
             }
         }
         
@@ -118,9 +118,9 @@ enum BusLineType: CaseIterable, Hashable {
         var symbol: String {
             switch self {
             case .toToyosu:
-                "app.connected.to.app.below.fill"
+                "point.topleft.down.to.point.bottomright.filled.curvepath"
             case .toOmiya:
-                "app.connected.to.app.below.fill"
+                "point.topleft.filled.down.to.point.bottomright.curvepath"
             }
         }
     }
