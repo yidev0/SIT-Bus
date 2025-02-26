@@ -80,6 +80,9 @@ struct TimetableView: View {
             .sheet(isPresented: $model.showInfoSheet) {
                 TimetableInformationView()
             }
+            .refreshable {
+                model.timesheetDate = Date()
+            }
         }
         .onAppear {
             updateTimesheet()

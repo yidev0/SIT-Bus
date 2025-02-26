@@ -989,13 +989,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Related Sites"
+            "value" : "Information"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "関連リンク"
+            "value" : "その他"
           }
         }
       }

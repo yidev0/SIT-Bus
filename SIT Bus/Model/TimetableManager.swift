@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StoreKit
 
 @Observable
 class TimetableManager {
@@ -40,19 +41,25 @@ class TimetableManager {
     
     public func loadData(forceFetch: Bool = false) async {
         let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
-        let lastUpdateDate = Date(timeIntervalSince1970: lastUpdate)
+        lastUpdatedDate = Date(timeIntervalSince1970: lastUpdate)
         
         let dataFetcher = BusDataFetcher()
         Task {
-            let fetch = Calendar.current.isDateInToday(lastUpdateDate) == false || forceFetch
+            let fetch = Calendar.current.isDateInToday(lastUpdatedDate) == false || forceFetch
             if fetch {
                 let response = await dataFetcher.fetchData()
                 
                 switch response {
                 case .success(let success):
                     self.data = success
-                    self.lastUpdatedDate = lastUpdateDate
+                    self.lastUpdatedDate = Date.now
+                    
+                    if fetch, lastUpdate != 0 {
+                        await requestReview()
+                    }
+                    
                     UserDefaults.shared.set(Date.now.timeIntervalSince1970, forKey: UserDefaultsKeys.lastUpdateDate)
+                    UserDefaults.shared.synchronize()
                 case .failure(let failure):
                     error = failure
                     showAlert = true
@@ -74,6 +81,14 @@ class TimetableManager {
                     }
                 }
             }
+        }
+    }
+    
+    private func requestReview() async {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasReviewedApp) == true { return }
+        if let window = await UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            await AppStore.requestReview(in: window)
+            UserDefaults.standard.setValue(true, forKey: UserDefaultsKeys.hasReviewedApp)
         }
     }
     

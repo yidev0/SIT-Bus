@@ -13,7 +13,7 @@ struct CoopServiceView: View {
     @State var model = CoopServiceViewModel()
     
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
-    var saveSchedule: Bool = false
+    var saveSchedule: Bool = true
     
     var body: some View {
         List {
