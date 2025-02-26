@@ -12,35 +12,25 @@ struct BusPickerView: View {
     @Binding var selectedBus: BusLineType
     
     var body: some View {
-        Menu {
-            Section {
-                Picker(selection: $selectedBus) {
-                    ForEach(BusLineType.SchoolBus.allCases, id: \.self) { type in
-                        Label(type.localizedTitle, systemImage: type.symbol)
-                            .tag(BusLineType.schoolBus(type))
+        Menu(selectedBus.localizedShortTitle) {
+            ForEach(BusType.allCases, id: \.rawValue) { bus in
+                Section(bus.localizedTitle) {
+                    Picker(bus.localizedTitle, selection: $selectedBus) {
+                        ForEach(bus.cases, id: \.self) { type in
+                            switch bus {
+                            case .schoolOmiya:
+                                Label(type.localizedShortTitle, systemImage: "bus.fill")
+                            case .schoolIwatsuki:
+                                Label(type.localizedShortTitle, systemImage: "bus")
+                            case .shuttle:
+                                Label(type.localizedShortTitle, systemImage: "app.connected.to.app.below.fill")
+                            }
+                        }
                     }
-                } label: {
-                    Text(selectedBus.localizedTitle)
                 }
-            } header: {
-                Text("Label.SchoolBus")
             }
-            
-            Section {
-                Picker(selection: $selectedBus) {
-                    ForEach(BusLineType.ShuttleBus.allCases, id: \.self) { type in
-                        Label(type.localizedTitle, systemImage: type.symbol)
-                            .tag(BusLineType.shuttleBus(type))
-                    }
-                } label: {
-                    Text(selectedBus.localizedTitle)
-                }
-            } header: {
-                Text("Label.ShuttleBus")
-            }
-        } label: {
-            Text(selectedBus.localizedShortTitle)
         }
+        .labelsVisibility(.visible)
     }
 }
 

@@ -31,7 +31,7 @@ struct SettingsSourcesView: View {
                 LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
                     SettingsSourceLabel(
                         label: "Label.ShuttleBus",
-                        date: Date.createDate(year: 2024, month: 9, day: 23)!,
+                        date: ShuttleBusData.lastUpdateDate,
                         format: .dateTime.year().month().day()
                     )
                 }

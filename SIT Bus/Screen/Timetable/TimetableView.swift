@@ -18,7 +18,7 @@ struct TimetableView: View {
         NavigationStack {
             ZStack {
                 switch model.timesheetBus {
-                case .schoolBus:
+                case .schoolBus, .schoolBusIwatsuki:
                     if let timetable = model.timetable {
                         ScrollView {
                             SchoolBusGridView(timetable: timetable)
@@ -42,7 +42,7 @@ struct TimetableView: View {
                     Spacer()
                     
                     HStack(spacing: 12) {
-                        if model.timesheetBus.isSchoolBus {
+                        if model.timesheetBus.busType == .schoolOmiya {
                             DatePickerButton(
                                 selectedDate: $model.timesheetDate,
                                 showPicker: $model.showTimesheetDatePicker,
@@ -68,14 +68,12 @@ struct TimetableView: View {
                 updateTimesheet()
             }
             .toolbar {
-                if model.timesheetBus.isSchoolBus {
-                    Button {
-                        model.showInfoSheet = true
-                    } label: {
-                        Image(systemName: "info.circle")
-                    }
-                    .accessibilityLabel("Label.Accessiblity.Information")
+                Button {
+                    model.showInfoSheet = true
+                } label: {
+                    Image(systemName: "info.circle")
                 }
+                .accessibilityLabel("Label.Accessiblity.Information")
             }
             .sheet(isPresented: $model.showInfoSheet) {
                 TimetableInformationView()

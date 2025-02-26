@@ -416,6 +416,22 @@
         }
       }
     },
+    "Label.CampusToIwatsukiStation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campus to Iwatsuki Station"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパスから岩槻駅"
+          }
+        }
+      }
+    },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
@@ -722,6 +738,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ソース"
+          }
+        }
+      }
+    },
+    "Label.IwatsukiStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Station to Iwatsuki Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパス行き"
           }
         }
       }
@@ -1054,7 +1086,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Iwatsuki Station)"
+            "value" : "School Bus (Iwatsuki)"
           }
         },
         "ja" : {
@@ -1070,7 +1102,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Higashi-Omiya Station)"
+            "value" : "School Bus (Higashi-Omiya)"
           }
         },
         "ja" : {
@@ -1113,6 +1145,22 @@
         }
       }
     },
+    "Label.Short.CampusToIwatsukiStation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Station"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅行き"
+          }
+        }
+      }
+    },
     "Label.Short.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
@@ -1125,6 +1173,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "東大宮駅行き"
+          }
+        }
+      }
+    },
+    "Label.Short.IwatsukiStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅からキャンパス"
           }
         }
       }

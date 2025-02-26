@@ -14,6 +14,8 @@ class TimetableViewModel {
     var showTimesheetDatePicker = false
     var showInfoSheet = false
     var timesheetBus: BusLineType = .schoolBus(.stationToCampus)
+    var timesheetBusType: BusType = .schoolOmiya
+    
     var timetable: SchoolBusTimetable? = nil
     
     init() {
@@ -30,6 +32,13 @@ class TimetableViewModel {
             self.timetable = data?.makeTimetable(for: type, date: timesheetDate)
         case .shuttleBus(_):
             break
+        case .schoolBusIwatsuki(let type):
+            switch type {
+            case .campusToStation:
+                self.timetable = IwatsukiBusData.toIwatsuki
+            case .stationToCampus:
+                self.timetable = IwatsukiBusData.toCampus
+            }
         }
     }
     
