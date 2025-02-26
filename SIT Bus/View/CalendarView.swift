@@ -10,6 +10,9 @@ import SwiftUI
 
 struct CalendarView<DateView: View, MonthView: View>: View {
     
+    @Environment(\.dynamicTypeSize)
+    var dynamicTypeSize
+    
     @Environment(\.calendar) var calendar
     let month: Date
     
@@ -55,8 +58,8 @@ struct CalendarView<DateView: View, MonthView: View>: View {
                 ),
                 spacing: 4
             ) {
-                ForEach(Calendar.current.shortWeekdaySymbols, id: \.description) { weekday in
-                    Text(weekday)
+                ForEach(0..<7) { index in
+                    Text((dynamicTypeSize.isAccessibilitySize ? calendar.veryShortStandaloneWeekdaySymbols: calendar.shortWeekdaySymbols)[index])
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .accessibilityHidden(true)
