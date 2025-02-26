@@ -747,13 +747,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Station to Iwatsuki Campus"
+            "value" : "Iwatsuki Station to Campus"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キャンパス行き"
+            "value" : "岩槻駅からキャンパス"
           }
         }
       }
@@ -1188,7 +1188,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "岩槻駅からキャンパス"
+            "value" : "キャンパス行き"
           }
         }
       }
