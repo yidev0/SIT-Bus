@@ -49,4 +49,14 @@ extension Date {
     public func convertToMinutes() -> Int {
         self.get(component: .hour) * 60 + self.get(component: .minute)
     }
+    
+    func calendarRows() -> Int {
+        let calendar = Calendar.current
+        guard let range = calendar.range(of: .day, in: .month, for: self) else {
+            return 0
+        }
+        
+        let lastDayOfMonth = calendar.date(bySetting: .day, value: range.count, of: self)!
+        return calendar.component(.weekOfMonth, from: lastDayOfMonth)
+    }
 }
