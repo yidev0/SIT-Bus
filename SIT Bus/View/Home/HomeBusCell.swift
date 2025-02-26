@@ -55,7 +55,7 @@ struct HomeBusCell<T: BusLine>: View {
             .padding(.top, 6)
         } label: {
             Label {
-                Text(type.localizedTitle)
+                Text(type.localizedShortTitle)
             } icon: {
                 Image(systemName: type.symbol)
             }
