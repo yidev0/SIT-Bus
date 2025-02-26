@@ -49,6 +49,7 @@ struct DatePickerButton: View {
                 height: 70 + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 53
             )
             .presentationCompactAdaptation(.popover)
+            .presentationBackground(.regularMaterial)
         }
     }
     
@@ -94,6 +95,7 @@ struct DatePickerButton: View {
             if isActive {
                 Circle()
                     .frame(height: 6)
+                    .foregroundStyle(.tint)
             } else {
                 Circle()
                     .frame(height: 6)
