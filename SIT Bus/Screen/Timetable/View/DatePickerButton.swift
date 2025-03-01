@@ -10,9 +10,14 @@ import SwiftUI
 struct DatePickerButton: View {
     
     @Environment(\.calendar) var calendar
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    @ScaledMetric(wrappedValue: 70, relativeTo: .largeTitle)
+    var header
     
     @Binding var selectedDate: Date
     @Binding var showPicker: Bool
+    @Binding var showFullScreenPicker: Bool
     
     var activeDates: [Date]
     var activeMonths: [Date]
@@ -20,10 +25,12 @@ struct DatePickerButton: View {
     init(
         selectedDate: Binding<Date>,
         showPicker: Binding<Bool>,
+        showFullPicker: Binding<Bool>,
         activeDates: [[Date]]
     ) {
         self._selectedDate = selectedDate
         self._showPicker = showPicker
+        self._showFullScreenPicker = showFullPicker
         
         self.activeDates = activeDates.flatMap { $0 }
         
@@ -32,7 +39,11 @@ struct DatePickerButton: View {
     
     var body: some View {
         Button {
-            showPicker = true
+            if UIDevice.current.userInterfaceIdiom == .phone && ( UIDevice.current.orientation.isLandscape || horizontalSizeClass == .regular) {
+                showFullScreenPicker = true
+            } else {
+                showPicker = true
+            }
         } label: {
             Text(selectedDate, format: .dateTime.day().month().weekday())
         }
@@ -43,10 +54,11 @@ struct DatePickerButton: View {
             ) { date in
                 makeCalendarCell(for: date)
             }
-            .padding(12)
+            .padding(.vertical, 12)
+            .padding(.horizontal, 8)
             .frame(
                 width: 320,
-                height: 70 + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 53
+                height: CGFloat(header) + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 54
             )
             .presentationCompactAdaptation(.popover)
             .presentationBackground(.regularMaterial)
@@ -108,13 +120,14 @@ struct DatePickerButton: View {
 #Preview {
     @Previewable @State var date = Date()
     @Previewable @State var show = false
+    @Previewable @State var full = false
     
     VStack {
         Spacer()
         
         DatePickerButton(
             selectedDate: $date,
-            showPicker: $show,
+            showPicker: $show, showFullPicker: $full,
             activeDates: [
                 [
                     .createDate(year: 2025, month: 2, day: 1)!

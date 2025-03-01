@@ -33,4 +33,15 @@ enum BusType: String, CaseIterable, Hashable {
             [.shuttleBus(.toToyosu), .shuttleBus(.toOmiya)]
         }
     }
+    
+    var symbol: String {
+        switch self {
+        case .schoolOmiya:
+            "bus.fill"
+        case .schoolIwatsuki:
+            "bus"
+        case .shuttle:
+            "app.connected.to.app.below.fill"
+        }
+    }
 }

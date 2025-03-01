@@ -25,6 +25,7 @@ struct HomeView: View {
             .contentMargins(.top, 8, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Label.Home")
+            .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .refreshable {
                 await timetableManager.loadData()
                 makeTimetable()
