@@ -12,6 +12,7 @@ struct FilterButtonStyle: ButtonStyle {
         configuration.label
             .font(.body)
             .foregroundStyle(Color.primary)
+            .scaledToFill()
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
             .background()

@@ -24,7 +24,7 @@
       }
     },
     "Button.Done" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -84,6 +84,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "運行しているほとんどのバスが車椅子対応（スロープ・運転手による補助）をしています。\n創立100周年記念ラッピングしている1台は車椅子で乗車できません。\n運行時間は大宮キャンパスの管理課にお問い合わせください。"
+          }
+        }
+      }
+    },
+    "Detail.SchoolBusIwatsuki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates only on weekday class days "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "授業日の平日のみ運行"
           }
         }
       }
@@ -416,6 +432,32 @@
         }
       }
     },
+    "Label.Calendar" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カレンダー"
+          }
+        }
+      }
+    },
+    "Label.CampusToIwatsukiStation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campus to Iwatsuki Station"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパスから岩槻駅"
+          }
+        }
+      }
+    },
     "Label.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
@@ -596,23 +638,6 @@
         }
       }
     },
-    "Label.Done" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        }
-      }
-    },
     "Label.Edit" : {
       "localizations" : {
         "en" : {
@@ -646,7 +671,7 @@
       }
     },
     "Label.FinalBus" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -726,6 +751,22 @@
         }
       }
     },
+    "Label.IwatsukiStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Station to Iwatsuki Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパス行き"
+          }
+        }
+      }
+    },
     "Label.Library" : {
       "localizations" : {
         "en" : {
@@ -743,7 +784,6 @@
       }
     },
     "Label.LibraryServices" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -888,7 +928,6 @@
       }
     },
     "Label.Omiya" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1017,7 +1056,6 @@
       }
     },
     "Label.Schedule" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1054,7 +1092,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Iwatsuki Station)"
+            "value" : "School Bus (Iwatsuki)"
           }
         },
         "ja" : {
@@ -1070,7 +1108,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "School Bus (Higashi-Omiya Station)"
+            "value" : "School Bus (Higashi-Omiya)"
           }
         },
         "ja" : {
@@ -1113,6 +1151,22 @@
         }
       }
     },
+    "Label.Short.CampusToIwatsukiStation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Station"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅行き"
+          }
+        }
+      }
+    },
     "Label.Short.CampusToOmiyaStation" : {
       "localizations" : {
         "en" : {
@@ -1125,6 +1179,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "東大宮駅行き"
+          }
+        }
+      }
+    },
+    "Label.Short.IwatsukiStationToCampus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅からキャンパス"
           }
         }
       }
@@ -1210,7 +1280,6 @@
       }
     },
     "Label.Toyosu" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

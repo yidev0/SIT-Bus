@@ -75,7 +75,7 @@ class HomeViewModel {
         }
     }
     
-    func getBusState(for type: any BusType) -> NextBusState {
+    func getBusState(for type: any BusLine) -> NextBusState {
         switch type {
         case BusLineType.SchoolBus.stationToCampus:
             return toCampusState

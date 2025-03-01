@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeBusCell<T: BusType>: View {
+struct HomeBusCell<T: BusLine>: View {
     
     @ScaledMetric var busFontSize = 24
     @ScaledMetric var timelyFontSize = 20
@@ -55,7 +55,7 @@ struct HomeBusCell<T: BusType>: View {
             .padding(.top, 6)
         } label: {
             Label {
-                Text(type.localizedTitle)
+                Text(type.localizedShortTitle)
             } icon: {
                 Image(systemName: type.symbol)
             }
