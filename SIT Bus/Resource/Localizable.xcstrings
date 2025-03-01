@@ -416,6 +416,9 @@
         }
       }
     },
+    "Label.Calendar" : {
+
+    },
     "Label.CampusToIwatsukiStation" : {
       "localizations" : {
         "en" : {

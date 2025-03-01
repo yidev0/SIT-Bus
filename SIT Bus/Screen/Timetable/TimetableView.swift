@@ -51,6 +51,7 @@ struct TimetableView: View {
                                 DatePickerButton(
                                     selectedDate: $model.timesheetDate,
                                     showPicker: $model.showTimesheetDatePicker,
+                                    showFullPicker: $model.showFullTimesheetDatePicker,
                                     activeDates: timetableManager.data?.getActiveDays() ?? []
                                 )
                             }
@@ -101,6 +102,7 @@ struct TimetableView: View {
                             DatePickerButton(
                                 selectedDate: $model.timesheetDate,
                                 showPicker: $model.showTimesheetDatePicker,
+                                showFullPicker: $model.showFullTimesheetDatePicker,
                                 activeDates: timetableManager.data?.getActiveDays() ?? []
                             )
                             .fontWeight(.semibold)
@@ -111,9 +113,13 @@ struct TimetableView: View {
             .sheet(isPresented: $model.showInfoSheet) {
                 TimetableInformationView()
             }
-            //            .refreshable {
-            //                model.timesheetDate = Date()
-            //            }
+            .fullScreenCover(isPresented: $model.showFullTimesheetDatePicker) {
+                TimetableFullDatePickerView(
+                    date: $model.timesheetDate,
+                    data: timetableManager.data,
+                    range: model.makeRangeForSheet(activeMonths: timetableManager.data?.getActiveDays() ?? [])
+                )
+            }
         }
         .onAppear {
             updateTimesheet()

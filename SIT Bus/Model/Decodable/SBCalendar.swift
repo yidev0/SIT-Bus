@@ -48,4 +48,32 @@ struct SBCalendar: Decodable {
         
         return dates
     }
+    
+//    func getCalendarType() -> CalendarType? {
+//        let pattern = "(?<=【).*?(?=】)"
+//        guard let range = title.range(of: pattern, options: .regularExpression) else {
+//            return nil
+//        }
+//        
+//        let title = String(title[range])
+//        
+//        if title.contains("平日") && title.contains("休業") {
+//            return .weekdayVacation
+//        } else if title.contains("平日") && title.contains("祝日") {
+//            return .weekdayHoliday
+//        } else if title.contains("平日") {
+//            return .weekday
+//        } else {
+//            return nil
+//        }
+//    }
+    
+    func getDateComment(for date: Date) -> String? {
+        if month == String(format: "%02d", date.get(component: .month)),
+           let comment = list.first(where: { $0.day == String(date.get(component: .day)) })?.comment {
+            return comment
+        } else {
+            return nil
+        }
+    }
 }

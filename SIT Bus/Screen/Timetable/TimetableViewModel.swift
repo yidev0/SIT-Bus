@@ -14,6 +14,7 @@ class TimetableViewModel {
     var isActiveDate = false
     
     var showTimesheetDatePicker = false
+    var showFullTimesheetDatePicker = false
     var showInfoSheet = false
     
     var toCampusTimetable: SchoolBusTimetable? = nil
@@ -57,6 +58,23 @@ class TimetableViewModel {
             }
         case .shuttleBus:
             nil
+        }
+    }
+    
+    func makeRangeForSheet(activeMonths: [[Date]]) -> ClosedRange<Date> {
+        let calendar = Calendar.current
+        if activeMonths.isEmpty {
+            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: .now))!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+            
+            return startOfMonth ... endOfMonth
+        } else if activeMonths.count == 1 {
+            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: activeMonths.first!.first!))!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+            
+            return startOfMonth ... endOfMonth
+        } else {
+            return activeMonths.first!.first! ... activeMonths.last!.last!
         }
     }
     

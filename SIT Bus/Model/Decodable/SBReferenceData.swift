@@ -67,4 +67,16 @@ struct SBReferenceData: Decodable, Equatable {
         return dates
     }
     
+    func getComment(for date: Date) -> String? {
+        if let calendar = calendar.first(where: { $0.month == String(format: "%02d", date.get(component: .month)) }) {
+            calendar.getDateComment(for: date)
+        } else {
+            nil
+        }
+    }
+    
+    func getCalendarName(for date: Date) -> String? {
+        return getTimesheet(for: date)?.title
+    }
+    
 }
