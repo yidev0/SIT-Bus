@@ -11,6 +11,9 @@ struct DatePickerButton: View {
     
     @Environment(\.calendar) var calendar
     
+    @ScaledMetric(wrappedValue: 70, relativeTo: .largeTitle)
+    var header
+    
     @Binding var selectedDate: Date
     @Binding var showPicker: Bool
     
@@ -43,10 +46,11 @@ struct DatePickerButton: View {
             ) { date in
                 makeCalendarCell(for: date)
             }
-            .padding(12)
+            .padding(.vertical, 12)
+            .padding(.horizontal, 8)
             .frame(
                 width: 320,
-                height: 70 + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 53
+                height: CGFloat(header) + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 54
             )
             .presentationCompactAdaptation(.popover)
             .presentationBackground(.regularMaterial)
