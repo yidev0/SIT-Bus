@@ -88,6 +88,22 @@
         }
       }
     },
+    "Detail.SchoolBusIwatsuki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates only on weekday class days "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "授業日の平日のみ運行"
+          }
+        }
+      }
+    },
     "Detail.ShuttleToOmiya" : {
       "localizations" : {
         "en" : {
@@ -417,7 +433,14 @@
       }
     },
     "Label.Calendar" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カレンダー"
+          }
+        }
+      }
     },
     "Label.CampusToIwatsukiStation" : {
       "localizations" : {

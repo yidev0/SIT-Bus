@@ -21,7 +21,7 @@ struct TimetableView: View {
             ZStack {
                 if horizontalSizeClass == .regular {
                     switch model.timesheetBusType {
-                    case .schoolOmiya, .schoolIwatsuki:
+                    case .schoolOmiya:
                         if model.isActiveDate {
                             horizontalTimetable
                         } else {
@@ -30,7 +30,7 @@ struct TimetableView: View {
                                 systemImage: "exclamationmark.triangle.fill"
                             )
                         }
-                    case .shuttle:
+                    case .shuttle, .schoolIwatsuki:
                         horizontalTimetable
                     }
                 } else {
@@ -142,6 +142,10 @@ struct TimetableView: View {
                         pinnedViews: .sectionHeaders
                     ) {
                         Section {
+                            if bus.busType == .schoolIwatsuki {
+                                Text("Detail.SchoolBusIwatsuki")
+                                    .padding()
+                            }
                             SchoolBusGridView(timetable: timetable)
                         } header: {
                             Label(bus.localizedTitle, systemImage: bus.symbol)

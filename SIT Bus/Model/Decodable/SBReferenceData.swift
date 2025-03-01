@@ -79,4 +79,13 @@ struct SBReferenceData: Decodable, Equatable {
         return getTimesheet(for: date)?.title
     }
     
+    func checkIfWeekdaySchoolDay(for date: Date) -> Bool {
+        if let title = getTimesheet(for: date)?.title,
+           title.contains("平日") && !title.contains("休業") {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

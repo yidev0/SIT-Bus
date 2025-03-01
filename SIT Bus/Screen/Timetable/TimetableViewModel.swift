@@ -37,7 +37,12 @@ class TimetableViewModel {
         toCampusTimetable = data?.makeTimetable(for: .stationToCampus, date: timesheetDate)
         toStationTimetable = data?.makeTimetable(for: .campusToStation, date: timesheetDate)
         // TODO: Check if date is a school day
-        isActiveDate = toCampusTimetable != nil || toStationTimetable != nil
+        switch timesheetBusType {
+        case .schoolOmiya:
+            isActiveDate = toCampusTimetable != nil || toStationTimetable != nil
+        case .schoolIwatsuki, .shuttle:
+            isActiveDate = true
+        }
     }
     
     func getTimetable(for bus: BusLineType) -> SchoolBusTimetable? {
