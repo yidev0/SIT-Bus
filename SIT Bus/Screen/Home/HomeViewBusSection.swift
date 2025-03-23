@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeViewBusSection: View {
     
+    @Environment(\.horizontalSizeClass) var sizeClass
     @Environment(HomeViewModel.self) private var model
     @Environment(TimetableManager.self) private var timetableManager
     
@@ -16,19 +17,36 @@ struct HomeViewBusSection: View {
     @AppStorage("Show.ShuttleBus") var showShuttleBus: Bool = true
     
     var body: some View {
-        VStack(spacing: 16) {
-            if showSchoolBus {
-                VStack(spacing: 8) {
-                    ForEach(BusLineType.SchoolBus.allCases, id: \.rawValue) { type in
-                        makeBusCell(for: type)
+        VStack(
+            alignment: sizeClass == .compact ? .center : .leading,
+            spacing: 16
+        ) {
+            LazyVGrid(
+                columns: [GridItem(.adaptive(minimum: 350 - 32))],
+                alignment: .leading,
+                spacing: 8
+            ) {
+                if showSchoolBus {
+                    Section {
+                        ForEach(BusLineType.SchoolBus.allCases, id: \.rawValue) { type in
+                            makeBusCell(for: type)
+                        }
+                    } header: {
+                        Text("Label.SchoolBus")
+                            .font(.headline)
+                            .padding([.top, .leading], 4)
                     }
                 }
-            }
-            
-            if showShuttleBus {
-                VStack(spacing: 8) {
-                    ForEach(BusLineType.ShuttleBus.allCases, id: \.rawValue) { type in
-                        makeBusCell(for: type)
+                
+                if showShuttleBus {
+                    Section {
+                        ForEach(BusLineType.ShuttleBus.allCases, id: \.rawValue) { type in
+                            makeBusCell(for: type)
+                        }
+                    } header: {
+                        Text("Label.ShuttleBus")
+                            .font(.headline)
+                            .padding([.top, .leading], 4)
                     }
                 }
             }

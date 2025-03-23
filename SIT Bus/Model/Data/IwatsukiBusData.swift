@@ -10,7 +10,7 @@ import Foundation
 struct IwatsukiBusData {
     static let lastUpdate = Date.createDate(year: 2024, month: 9, day: 30)!
     
-    static let toIwatsuki: SchoolBusTimetable = .init(values: [
+    static let toStation: SchoolBusTimetable = .init(values: [
         .init(inputDate: .distantPast, hour: 7,  times: [50], note: nil),
         .init(inputDate: .distantPast, hour: 8,  times: [32], note: nil),
         .init(inputDate: .distantPast, hour: 9,  times: [12], note: nil),

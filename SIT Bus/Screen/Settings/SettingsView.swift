@@ -155,6 +155,7 @@ struct SettingsView: View {
                 
             }
             .navigationTitle("Label.Settings")
+            .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .listSectionSpacing(8)
         }
         .onAppear {

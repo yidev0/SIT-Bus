@@ -19,9 +19,13 @@ struct ShuttleBusTimeTable: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(pinnedViews: .sectionHeaders) {
+            LazyVStack(alignment: .leading, pinnedViews: .sectionHeaders) {
                 switch listType {
                 case .grid:
+                    Label(shuttleType.localizedTitle, systemImage: shuttleType.symbol)
+                        .font(.headline)
+                        .padding(.horizontal)
+                    
                     Section {
                         grid
                     } header: {
