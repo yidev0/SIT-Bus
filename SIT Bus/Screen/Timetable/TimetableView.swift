@@ -186,7 +186,11 @@ struct TimetableView: View {
                                         .padding()
                                 }
                             }
-                            SchoolBusGridView(timetable: timetable)
+                            
+                            SchoolBusGridView(
+                                timetable: timetable,
+                                showEmpty: bus.busType == .schoolIwatsuki
+                            )
                         } header: {
                             Label(bus.localizedTitle, systemImage: bus.symbol)
                                 .font(.headline)

@@ -10,6 +10,7 @@ import SwiftUI
 struct SchoolBusGridView: View {
     
     var timetable: SchoolBusTimetable
+    var showEmpty: Bool
     
     var body: some View {
         ScrollView {
@@ -17,7 +18,7 @@ struct SchoolBusGridView: View {
                 ForEach(timetable.values, id: \.hour) { timetable in
                     makeNoteLabel(timetable)
                     
-//                    if timetable.times.isEmpty == false {
+                    if !timetable.times.isEmpty || showEmpty {
                         HStack(spacing: 0) {
                             TimetableHeader(
                                 text: String(timetable.hour),
@@ -49,7 +50,7 @@ struct SchoolBusGridView: View {
                                     Color(.secondarySystemGroupedBackground)
                                 )
                         }
-//                    }
+                    }
                 }
             }
             .padding(.horizontal)
@@ -73,6 +74,7 @@ struct SchoolBusGridView: View {
 
 #Preview {
     SchoolBusGridView(
-        timetable: .init(values: [])
+        timetable: .init(values: []),
+        showEmpty: true
     )
 }
