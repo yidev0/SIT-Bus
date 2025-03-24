@@ -69,11 +69,13 @@ class TimetableViewModel {
                     isWeekday ? IwatsukiBusData.toCampusWeekday : IwatsukiBusData.toCampusSaturday
                 }
             } else {
-                switch schoolBusIwatsuki {
-                case .campusToStation:
+                switch (schoolBusIwatsuki, isWeekday) {
+                case (.campusToStation, true):
                     IwatsukiBusData.toStation
-                case .stationToCampus:
+                case (.stationToCampus, true):
                     IwatsukiBusData.toCampus
+                default:
+                    nil
                 }
             }
         case .shuttleBus:

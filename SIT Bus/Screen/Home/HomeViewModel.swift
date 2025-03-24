@@ -50,18 +50,28 @@ class HomeViewModel {
     
     func getTimetable(for type: BusLineType.SchoolBusIwatsuki) -> SchoolBusTimetable? {
         let weekday = Calendar(identifier: .gregorian).component(.weekday, from: .now) // 1 is sunday
-//        if Date.now < Date.createDate(year: 2025, month: 4, day: 1)! { return nil }
-        switch (type, weekday) {
-        case (.campusToStation, 2...6):
-            return IwatsukiBusData.toStationWeekday
-        case (.campusToStation, 7):
-            return IwatsukiBusData.toStationSaturday
-        case (.stationToCampus, 2...6):
-            return IwatsukiBusData.toCampusWeekday
-        case (.stationToCampus, 7):
-            return IwatsukiBusData.toCampusSaturday
-        default:
-            return nil
+        if Date.now >= Date.createDate(year: 2025, month: 4, day: 1)! {
+            return switch (type, weekday) {
+            case (.campusToStation, 2...6):
+                IwatsukiBusData.toStationWeekday
+            case (.campusToStation, 7):
+                IwatsukiBusData.toStationSaturday
+            case (.stationToCampus, 2...6):
+                IwatsukiBusData.toCampusWeekday
+            case (.stationToCampus, 7):
+                IwatsukiBusData.toCampusSaturday
+            default:
+                nil
+            }
+        } else {
+            return switch (type, weekday) {
+            case (.campusToStation, 2...6):
+                IwatsukiBusData.toStation
+            case (.stationToCampus, 2...6):
+                IwatsukiBusData.toCampus
+            default:
+                nil
+            }
         }
     }
     
@@ -110,20 +120,19 @@ class HomeViewModel {
                 toStationState
             }
         case .schoolBusIwatsuki(let bus):
-//            if Date.now < Date.createDate(year: 2025, month: 4, day: 1)! ||
-//               Date.now == Date.createDate(year: 2025, month: 4, day: 5)! ||
-//               Date.now == Date.createDate(year: 2025, month: 5, day: 3)! ||
-//               (Date.now >= Date.createDate(year: 2025, month: 7, day: 26)! && Calendar(identifier: .gregorian).component(.weekday, from: .now) == 7) ||
-//                toCampusState == .noBusService {
-//                .noBusService
-//            } else {
+            if Date.now == Date.createDate(year: 2025, month: 4, day: 5)! ||
+               Date.now == Date.createDate(year: 2025, month: 5, day: 3)! ||
+               (Date.now >= Date.createDate(year: 2025, month: 7, day: 26)! && Calendar(identifier: .gregorian).component(.weekday, from: .now) == 7) ||
+                toCampusState == .noBusService {
+                .noBusService
+            } else {
                 switch bus {
                 case .campusToStation:
                     toStationStateIwatsuki
                 case .stationToCampus:
                     toCampusStateIwatsuki
                 }
-//            }
+            }
         case .shuttleBus(let shuttleBus):
             switch shuttleBus {
             case .toOmiya:
