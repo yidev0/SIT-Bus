@@ -61,7 +61,7 @@ struct DatePickerButton: View {
                 height: CGFloat(header) + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 54
             )
             .presentationCompactAdaptation(.popover)
-            .presentationBackground(.regularMaterial)
+            .presentationBackground(.thickMaterial)
         }
     }
     

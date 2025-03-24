@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-enum BusType: String, CaseIterable, Hashable {
+enum BusType: String, CaseIterable, Hashable, Identifiable {
+    var id: String {
+        self.rawValue
+    }
+    
     case schoolOmiya
     case schoolIwatsuki
     case shuttle

@@ -80,7 +80,7 @@ enum BusLineType: Hashable {
         case stationToCampus = "IwatsukiStationToCampus"
         case campusToStation = "CampusToIwatsukiStation"
         
-        static var allCases: [BusLineType.SchoolBus] = [
+        static var allCases: [BusLineType.SchoolBusIwatsuki] = [
             .stationToCampus, .campusToStation,
         ]
         
@@ -105,9 +105,9 @@ enum BusLineType: Hashable {
         var symbol: String {
             switch self {
             case .campusToStation:
-                "graduationcap"
-            case .stationToCampus:
                 "tram"
+            case .stationToCampus:
+                "graduationcap"
             }
         }
     }

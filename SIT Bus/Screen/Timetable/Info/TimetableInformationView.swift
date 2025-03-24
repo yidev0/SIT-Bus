@@ -29,7 +29,7 @@ struct TimetableInformationView: View {
                             .foregroundStyle(Color.primary)
                     }
                     
-                    LinkButton("https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf") {
+                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html") {
                         Text("Label.SchoolBusIwatsuki")
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
