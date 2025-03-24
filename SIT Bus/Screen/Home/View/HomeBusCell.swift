@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct HomeBusCell<T: BusLine>: View {
+struct HomeBusCell: View {
     
     @ScaledMetric var busFontSize = 24
     @ScaledMetric var timelyFontSize = 20
     
-    let type: T
+    let type: BusLineType
     let state: NextBusState
     
     var body: some View {
@@ -66,22 +66,22 @@ struct HomeBusCell<T: BusLine>: View {
 
 #Preview {
     HomeBusCell(
-        type: BusLineType.SchoolBus.campusToStation,
+        type: .schoolBus(.campusToStation),
         state: .nextBus(date: .now, departsIn: 5)
     )
     
     HomeBusCell(
-        type: BusLineType.SchoolBus.campusToStation,
+        type: .schoolBus(.campusToStation),
         state: .timely(start: .now, end: .distantFuture)
     )
     
     HomeBusCell(
-        type: BusLineType.SchoolBus.campusToStation,
+        type: .schoolBus(.campusToStation),
         state: .busServiceEnded
     )
     
     HomeBusCell(
-        type: BusLineType.SchoolBus.campusToStation,
+        type: .schoolBus(.campusToStation),
         state: .noBusService
     )
 }

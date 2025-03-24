@@ -13,6 +13,8 @@ class HomeViewModel {
     
     var toCampusState: NextBusState = .loading
     var toStationState: NextBusState = .loading
+    var toCampusStateIwatsuki: NextBusState = .loading
+    var toStationStateIwatsuki: NextBusState = .loading
     var toOmiyaState: NextBusState = .loading
     var toToyosuState: NextBusState = .loading
     
@@ -21,6 +23,7 @@ class HomeViewModel {
     private var shuttleBusData = ShuttleBusData()
     
     private var schoolBusTask: Task<Void, Never>?
+    private var schoolBusIwatsukiTask: Task<Void, Never>?
     private var shuttleBusTask: Task<Void, Never>?
 
 //    var busActivity: Activity<SITBusActivityAttributes>?
@@ -45,6 +48,23 @@ class HomeViewModel {
         }
     }
     
+    func getTimetable(for type: BusLineType.SchoolBusIwatsuki) -> SchoolBusTimetable? {
+        let weekday = Calendar(identifier: .gregorian).component(.weekday, from: .now) // 1 is sunday
+//        if Date.now < Date.createDate(year: 2025, month: 4, day: 1)! { return nil }
+        switch (type, weekday) {
+        case (.campusToStation, 2...6):
+            return IwatsukiBusData.toStationWeekday
+        case (.campusToStation, 7):
+            return IwatsukiBusData.toStationSaturday
+        case (.stationToCampus, 2...6):
+            return IwatsukiBusData.toCampusWeekday
+        case (.stationToCampus, 7):
+            return IwatsukiBusData.toCampusSaturday
+        default:
+            return nil
+        }
+    }
+    
     func startLiveActivity(for type: BusLineType.SchoolBus) {
 //        TODO: Live Activities
 //        if ActivityAuthorizationInfo().areActivitiesEnabled {
@@ -64,10 +84,15 @@ class HomeViewModel {
     
     func startTasks() {
         schoolBusTask?.cancel()
+        schoolBusIwatsukiTask?.cancel()
         shuttleBusTask?.cancel()
         
         schoolBusTask = Task {
             await loadSchoolBusStates()
+        }
+        
+        schoolBusIwatsukiTask = Task {
+            await loadSchoolBusIwatsukiStates()
         }
         
         shuttleBusTask = Task {
@@ -75,18 +100,37 @@ class HomeViewModel {
         }
     }
     
-    func getBusState(for type: any BusLine) -> NextBusState {
+    func getBusState(for type: BusLineType) -> NextBusState {
         switch type {
-        case BusLineType.SchoolBus.stationToCampus:
-            return toCampusState
-        case BusLineType.SchoolBus.campusToStation:
-            return toStationState
-        case BusLineType.ShuttleBus.toToyosu:
-            return toToyosuState
-        case BusLineType.ShuttleBus.toOmiya:
-            return toOmiyaState
-        default:
-            return .loading
+        case .schoolBus(let schoolBus):
+            switch schoolBus {
+            case .campusToStation:
+                toCampusState
+            case .stationToCampus:
+                toStationState
+            }
+        case .schoolBusIwatsuki(let bus):
+//            if Date.now < Date.createDate(year: 2025, month: 4, day: 1)! ||
+//               Date.now == Date.createDate(year: 2025, month: 4, day: 5)! ||
+//               Date.now == Date.createDate(year: 2025, month: 5, day: 3)! ||
+//               (Date.now >= Date.createDate(year: 2025, month: 7, day: 26)! && Calendar(identifier: .gregorian).component(.weekday, from: .now) == 7) ||
+//                toCampusState == .noBusService {
+//                .noBusService
+//            } else {
+                switch bus {
+                case .campusToStation:
+                    toStationStateIwatsuki
+                case .stationToCampus:
+                    toCampusStateIwatsuki
+                }
+//            }
+        case .shuttleBus(let shuttleBus):
+            switch shuttleBus {
+            case .toOmiya:
+                toOmiyaState
+            case .toToyosu:
+                toToyosuState
+            }
         }
     }
     
@@ -107,6 +151,26 @@ class HomeViewModel {
         }
         if await scheduleNextStateUpdate(states: nextSchoolBusStates, compareTo: baseTime) {
             await loadSchoolBusStates()
+        }
+    }
+    
+    private func loadSchoolBusIwatsukiStates() async {
+        if Task.isCancelled {
+            return
+        }
+        let baseTime = getDate()
+        let nextSchoolBusStates: [NextBusState] = BusLineType.SchoolBusIwatsuki.allCases.map {
+            let state = loadNextState(type: $0, baseTime: baseTime)
+            switch $0 {
+            case .stationToCampus:
+                toCampusStateIwatsuki = state
+            case .campusToStation:
+                toStationStateIwatsuki = state
+            }
+            return state
+        }
+        if await scheduleNextStateUpdate(states: nextSchoolBusStates, compareTo: baseTime) {
+            await loadSchoolBusIwatsukiStates()
         }
     }
     
@@ -139,6 +203,20 @@ class HomeViewModel {
                 let remainingMinutes = nextBusDate.convertToMinutes() - baseTime.convertToMinutes()
                 return .nextBus(date: nextBusDate, departsIn: remainingMinutes)
             }
+        } else {
+            if timetable == nil {
+                return .noBusService
+            } else {
+                return .busServiceEnded
+            }
+        }
+    }
+    
+    private func loadNextState(type: BusLineType.SchoolBusIwatsuki, baseTime: Date) -> NextBusState {
+        let timetable = getTimetable(for: type)
+        if let nextBusDate = timetable?.getNextBus(for: baseTime) {
+            let remainingMinutes = nextBusDate.convertToMinutes() - baseTime.convertToMinutes()
+            return .nextBus(date: nextBusDate, departsIn: remainingMinutes)
         } else {
             if timetable == nil {
                 return .noBusService

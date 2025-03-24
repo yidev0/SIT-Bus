@@ -88,6 +88,22 @@
         }
       }
     },
+    "Detail.SchoolBusIwatsuki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operation date and time may be inaccurate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "運行日時が不正確な場合があります"
+          }
+        }
+      }
+    },
     "Detail.SchoolBusIwatsukiSaturday" : {
       "localizations" : {
         "en" : {
