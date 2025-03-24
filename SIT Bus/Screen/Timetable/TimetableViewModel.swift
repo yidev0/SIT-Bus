@@ -12,6 +12,7 @@ class TimetableViewModel {
     
     var timesheetDate: Date
     var isActiveDate = false
+    var isWeekday: Bool
     
     var showTimesheetDatePicker = false
     var showFullTimesheetDatePicker = false
@@ -27,13 +28,18 @@ class TimetableViewModel {
     
     init() {
         timesheetDate = Date.now
+        isWeekday = !Calendar.current.isDateInWeekend(.now)
     }
     
     init(date: Date) {
         self.timesheetDate = date
+        isWeekday = !Calendar.current.isDateInWeekend(.now)
     }
         
     func makeTimesheet(data: SBReferenceData?) {
+        isWeekday = !Calendar.current.isDateInWeekend(timesheetDate)
+        timesheetBusType = timesheetBus.busType
+        
         toCampusTimetable = data?.makeTimetable(for: .stationToCampus, date: timesheetDate)
         toStationTimetable = data?.makeTimetable(for: .campusToStation, date: timesheetDate)
         // TODO: Check if date is a school day
@@ -55,11 +61,15 @@ class TimetableViewModel {
                 toCampusTimetable
             }
         case .schoolBusIwatsuki(let schoolBusIwatsuki):
-            switch schoolBusIwatsuki {
-            case .campusToStation:
-                IwatsukiBusData.toStation
-            case .stationToCampus:
-                IwatsukiBusData.toCampus
+            if Date.now >= Date.createDate(year: 2025, month: 4, day: 1)! {
+                switch schoolBusIwatsuki {
+                case .campusToStation:
+                    isWeekday ? IwatsukiBusData.toStationWeekday : IwatsukiBusData.toStationSaturday
+                case .stationToCampus:
+                    isWeekday ? IwatsukiBusData.toCampusWeekday : IwatsukiBusData.toCampusSaturday
+                }
+            } else {
+                nil
             }
         case .shuttleBus:
             nil

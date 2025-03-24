@@ -17,7 +17,7 @@ struct SchoolBusGridView: View {
                 ForEach(timetable.values, id: \.hour) { timetable in
                     makeNoteLabel(timetable)
                     
-                    if timetable.times.isEmpty == false {
+//                    if timetable.times.isEmpty == false {
                         HStack(spacing: 0) {
                             TimetableHeader(
                                 text: String(timetable.hour),
@@ -49,7 +49,7 @@ struct SchoolBusGridView: View {
                                     Color(.secondarySystemGroupedBackground)
                                 )
                         }
-                    }
+//                    }
                 }
             }
             .padding(.horizontal)

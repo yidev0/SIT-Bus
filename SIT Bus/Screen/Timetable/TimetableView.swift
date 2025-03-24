@@ -34,7 +34,7 @@ struct TimetableView: View {
                         horizontalTimetable
                     }
                 } else {
-                    if model.isActiveDate {
+                    if model.isActiveDate || model.timesheetBusType != .schoolOmiya {
                         makeTimetable(for: model.timesheetBus)
                     } else {
                         ContentUnavailableView(
@@ -47,13 +47,34 @@ struct TimetableView: View {
                         Spacer()
                         
                         HStack(spacing: 12) {
-                            if model.timesheetBus.busType == .schoolOmiya {
+                            switch model.timesheetBusType {
+                            case .schoolOmiya:
                                 DatePickerButton(
                                     selectedDate: $model.timesheetDate,
                                     showPicker: $model.showTimesheetDatePicker,
                                     showFullPicker: $model.showFullTimesheetDatePicker,
                                     activeDates: timetableManager.data?.getActiveDays() ?? []
                                 )
+                            case .schoolIwatsuki:
+                                Menu {
+                                    Picker(selection: $model.isWeekday) {
+                                        Text("Label.Weekday")
+                                            .tag(true)
+                                        Text("Label.Saturday")
+                                            .tag(false)
+                                    } label: {
+                                        Text("Label.ScheduleType")
+                                    }
+                                } label: {
+                                    switch model.isWeekday {
+                                    case true:
+                                        Text("Label.Weekday")
+                                    case false:
+                                        Text("Label.Saturday")
+                                    }
+                                }
+                            case .shuttle:
+                                EmptyView()
                             }
                             
                             BusPickerView(
@@ -143,8 +164,14 @@ struct TimetableView: View {
                     ) {
                         Section {
                             if bus.busType == .schoolIwatsuki {
-                                Text("Detail.SchoolBusIwatsuki")
-                                    .padding()
+                                switch model.isWeekday {
+                                case true:
+                                    Text("Detail.SchoolBusIwatsukiWeekday")
+                                        .padding()
+                                case false:
+                                    Text("Detail.SchoolBusIwatsukiSaturday")
+                                        .padding()
+                                }
                             }
                             SchoolBusGridView(timetable: timetable)
                         } header: {
