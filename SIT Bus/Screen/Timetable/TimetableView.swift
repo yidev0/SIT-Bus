@@ -118,8 +118,9 @@ struct TimetableView: View {
                         }
                     }
                     
-                    if model.timesheetBusType != .shuttle  {
-                        ToolbarItem(placement: .topBarLeading) {
+                    ToolbarItem(placement: .topBarLeading) {
+                        switch model.timesheetBusType {
+                        case .schoolOmiya:
                             DatePickerButton(
                                 selectedDate: $model.timesheetDate,
                                 showPicker: $model.showTimesheetDatePicker,
@@ -127,6 +128,18 @@ struct TimetableView: View {
                                 activeDates: timetableManager.data?.getActiveDays() ?? []
                             )
                             .fontWeight(.semibold)
+                        case .schoolIwatsuki:
+                            Picker(selection: $model.isWeekday) {
+                                Text("Label.Weekday")
+                                    .tag(true)
+                                Text("Label.Saturday")
+                                    .tag(false)
+                            } label: {
+                                Text("Label.ScheduleType")
+                            }
+                            .fontWeight(.semibold)
+                        case .shuttle:
+                            EmptyView()
                         }
                     }
                 }
