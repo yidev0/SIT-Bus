@@ -200,6 +200,12 @@ struct TimetableView: View {
                     }
                 }
                 .contentMargins(.bottom, 80, for: .scrollContent)
+            } else {
+                ContentUnavailableView(
+                    "Label.NoBuses",
+                    systemImage: "bus.fill",
+                    description: Text(bus.localizedTitle)
+                )
             }
         case .shuttleBus(let bus):
             ShuttleBusTimeTable(
