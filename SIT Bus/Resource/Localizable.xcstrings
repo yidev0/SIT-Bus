@@ -93,13 +93,45 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Operates only on weekday class days "
+            "value" : "Operation date and time may be inaccurate"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "授業日の平日のみ運行"
+            "state" : "translated",
+            "value" : "運行日時が不正確な場合があります"
+          }
+        }
+      }
+    },
+    "Detail.SchoolBusIwatsukiSaturday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates only on class days "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授業日のみ運行"
+          }
+        }
+      }
+    },
+    "Detail.SchoolBusIwatsukiWeekday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates every weekday **except** on open campus, parents' meeting, entrance exams, and vacations."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オープンキャンパス、父母懇談会、共通テスト、入試、夏季冬季一斉休暇**以外**運行"
           }
         }
       }
@@ -434,6 +466,12 @@
     },
     "Label.Calendar" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -756,13 +794,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Station to Iwatsuki Campus"
+            "value" : "Iwatsuki Station to Campus"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キャンパス行き"
+            "value" : "岩槻駅からキャンパス"
           }
         }
       }
@@ -784,20 +822,7 @@
       }
     },
     "Label.LibraryServices" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Library Services"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "利用案内"
-          }
-        }
-      }
+
     },
     "Label.Loading" : {
       "localizations" : {
@@ -928,6 +953,7 @@
       }
     },
     "Label.Omiya" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1039,6 +1065,22 @@
         }
       }
     },
+    "Label.Saturday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saturday "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "土曜日"
+          }
+        }
+      }
+    },
     "Label.SaveCoopSchedule" : {
       "localizations" : {
         "en" : {
@@ -1056,6 +1098,7 @@
       }
     },
     "Label.Schedule" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1067,6 +1110,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
+          }
+        }
+      }
+    },
+    "Label.ScheduleType" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule type"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スケジュールの種類"
           }
         }
       }
@@ -1194,7 +1253,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "岩槻駅からキャンパス"
+            "value" : "キャンパス行き"
           }
         }
       }
@@ -1280,6 +1339,7 @@
       }
     },
     "Label.Toyosu" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1323,6 +1383,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "消費生活協同組合（生協）"
+          }
+        }
+      }
+    },
+    "Label.Weekday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekday"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平日"
           }
         }
       }
