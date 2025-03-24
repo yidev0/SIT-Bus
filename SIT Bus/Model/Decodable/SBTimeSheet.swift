@@ -114,7 +114,9 @@ struct SBTimeSheet: Decodable {
                     note = (lastNote?.extractTime() ?? "") + "より" + (note ?? "")
                     lastNote = nil
                 default:
-                    if note == "適時運行" {
+                    if note == "適時運行" && lastNote?.contains("より") == true {
+                        note = nil
+                    } else if note == "適時運行" {
                         lastNote = "\(hour):00"
                         note = nil
                     } else {
