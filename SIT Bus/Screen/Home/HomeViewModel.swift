@@ -115,9 +115,9 @@ class HomeViewModel {
         case .schoolBus(let schoolBus):
             switch schoolBus {
             case .campusToStation:
-                toCampusState
-            case .stationToCampus:
                 toStationState
+            case .stationToCampus:
+                toCampusState
             }
         case .schoolBusIwatsuki(let bus):
             if Date.now == Date.createDate(year: 2025, month: 4, day: 5)! ||
