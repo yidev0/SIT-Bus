@@ -46,7 +46,12 @@ struct LibraryView: View {
             
             Section {
                 makeLink(
-                    url: "https://library1.shibaura-it.ac.jp/",
+                    url: "https://library.shibaura-it.ac.jp/portal/portal/selectLogin/",
+                    title: "My Library"
+                )
+                
+                makeLink(
+                    url: "https://library.shibaura-it.ac.jp/opc/",
                     title: "OPAC"
                 )
             }
@@ -55,7 +60,7 @@ struct LibraryView: View {
             if hideCalendar {
                 Section {
                     makeLink(
-                        url: "URL.LibraryServices".localize,
+                        url: "URL.LibraryService".localize,
                         title: "Label.LibraryServices"
                     )
                     

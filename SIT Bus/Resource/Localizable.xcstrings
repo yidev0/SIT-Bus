@@ -821,6 +821,22 @@
         }
       }
     },
+    "Label.LibraryServices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Information"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用案内"
+          }
+        }
+      }
+    },
     "Label.Loading" : {
       "localizations" : {
         "en" : {
@@ -1433,10 +1449,10 @@
       }
     },
     "OPAC" : {
-
+      "shouldTranslate" : false
     },
     "OSS" : {
-
+      "shouldTranslate" : false
     },
     "URL.LibraryService" : {
       "extractionState" : "manual",
