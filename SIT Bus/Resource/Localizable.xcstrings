@@ -821,9 +821,6 @@
         }
       }
     },
-    "Label.LibraryServices" : {
-
-    },
     "Label.Loading" : {
       "localizations" : {
         "en" : {
@@ -965,6 +962,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宮"
+          }
+        }
+      }
+    },
+    "Label.OmiyaFestival" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya Festival"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮祭"
           }
         }
       }

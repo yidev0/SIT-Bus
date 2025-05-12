@@ -8,9 +8,18 @@
 import SwiftUI
 
 fileprivate enum LinkType: Int, CaseIterable {
+    case festival
     case boardingLocation
     case univCoop
     case library
+    
+    static var allCases: [LinkType] {
+        if Date.now <= Date.createDate(year: 2025, month: 5, day: 19)! && Date.now >= Date.createDate(year: 2025, month: 4, day: 1)! {
+            [.festival, .boardingLocation, .univCoop, .library]
+        } else {
+            [.boardingLocation, .univCoop, .library]
+        }
+    }
     
     var title: LocalizedStringKey {
         switch self {
@@ -20,6 +29,8 @@ fileprivate enum LinkType: Int, CaseIterable {
             "Label.BoardingLocation"
         case .library:
             "Label.Library"
+        case .festival:
+            "Label.OmiyaFestival"
         }
     }
     
@@ -31,6 +42,8 @@ fileprivate enum LinkType: Int, CaseIterable {
             "map.fill"
         case .library:
             "books.vertical.fill"
+        case .festival:
+            "party.popper.fill"
         }
     }
 }
@@ -51,6 +64,8 @@ struct HomeViewLinkSection: View {
                             BusMapView()
                         case .library:
                             LibraryView()
+                        case .festival:
+                            HomeFestivalView()
                         }
                     } label: {
                         HomeLinkCell(
@@ -75,9 +90,12 @@ struct HomeViewLinkSection: View {
 
 #Preview {
     @Previewable @State var model = HomeViewModel()
-    ScrollView {
-        HomeViewLinkSection()
-            .environment(model)
+    
+    NavigationStack {
+        ScrollView {
+            HomeViewLinkSection()
+                .environment(model)
+        }
+        .backgroundStyle(Color(.systemGroupedBackground))
     }
-    .backgroundStyle(Color(.systemGroupedBackground))
 }
