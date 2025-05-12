@@ -79,6 +79,9 @@ struct DatePickerButton: View {
                     if Calendar.current.isDate(selectedDate, inSameDayAs: date) {
                         Circle()
                             .foregroundStyle(.tint.secondary)
+                    } else if Calendar.current.isDate(.now, inSameDayAs: date) {
+                        Circle()
+                            .foregroundStyle(.tertiary)
                     } else {
                         Circle()
                             .hidden()
