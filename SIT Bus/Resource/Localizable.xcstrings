@@ -692,6 +692,22 @@
         }
       }
     },
+    "Label.Feedback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードバック"
+          }
+        }
+      }
+    },
     "Label.FetchError" : {
       "localizations" : {
         "en" : {
@@ -1447,6 +1463,9 @@
           }
         }
       }
+    },
+    "My Library" : {
+
     },
     "OPAC" : {
       "shouldTranslate" : false
