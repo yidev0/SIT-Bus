@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D19CBF312D16A989001D9B17 /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = D19CBF302D16A989001D9B17 /* WebUI */; };
 		D1C5D8872D06D3FD009DAB6B /* Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D1E17C032DD1E50D00F4686E /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = D1E17C022DD1E50D00F4686E /* WebUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19CBF312D16A989001D9B17 /* WebUI in Frameworks */,
+				D1E17C032DD1E50D00F4686E /* WebUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +308,7 @@
 			);
 			mainGroup = D1AF68C62C6A0F1500630B5A;
 			packageReferences = (
-				D19CBF2F2D16A989001D9B17 /* XCRemoteSwiftPackageReference "WebUI" */,
+				D1E17C012DD1E50D00F4686E /* XCRemoteSwiftPackageReference "WebUI" */,
 			);
 			productRefGroup = D1AF68C62C6A0F1500630B5A;
 			projectDirPath = "";
@@ -799,12 +801,25 @@
 				minimumVersion = 2.3.0;
 			};
 		};
+		D1E17C012DD1E50D00F4686E /* XCRemoteSwiftPackageReference "WebUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cybozu/WebUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		D19CBF302D16A989001D9B17 /* WebUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D19CBF2F2D16A989001D9B17 /* XCRemoteSwiftPackageReference "WebUI" */;
+			productName = WebUI;
+		};
+		D1E17C022DD1E50D00F4686E /* WebUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E17C012DD1E50D00F4686E /* XCRemoteSwiftPackageReference "WebUI" */;
 			productName = WebUI;
 		};
 /* End XCSwiftPackageProductDependency section */
