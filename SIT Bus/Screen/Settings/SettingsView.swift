@@ -91,6 +91,17 @@ struct SettingsView: View {
                         .foregroundStyle(Color.primary)
                     }
                     
+                    LinkButton(
+                        "https://tally.so/r/mDY9yb"
+                    ) {
+                        Label {
+                            Text("Label.Feedback")
+                                .foregroundStyle(Color.primary)
+                        } icon: {
+                            Image(systemName: "list.bullet.clipboard")
+                        }
+                    }
+                    
                     NavigationLink {
                         SettingsCreditsView()
                     } label: {
