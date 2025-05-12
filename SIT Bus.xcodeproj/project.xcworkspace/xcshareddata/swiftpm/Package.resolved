@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cybozu/WebUI.git",
       "state" : {
-        "revision" : "9579095605b6e2d8c0712cbf6fb37dc04b7fe173",
-        "version" : "2.3.0"
+        "revision" : "efc8e2a58de3959536156bb2bc206828613f7996",
+        "version" : "3.1.0"
       }
     }
   ],

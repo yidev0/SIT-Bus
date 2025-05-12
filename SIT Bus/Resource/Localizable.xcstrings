@@ -692,6 +692,22 @@
         }
       }
     },
+    "Label.Feedback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードバック"
+          }
+        }
+      }
+    },
     "Label.FetchError" : {
       "localizations" : {
         "en" : {
@@ -822,7 +838,20 @@
       }
     },
     "Label.LibraryServices" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Information"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用案内"
+          }
+        }
+      }
     },
     "Label.Loading" : {
       "localizations" : {
@@ -965,6 +994,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宮"
+          }
+        }
+      }
+    },
+    "Label.OmiyaFestival" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya Festival"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮祭"
           }
         }
       }
@@ -1419,11 +1464,14 @@
         }
       }
     },
-    "OPAC" : {
+    "My Library" : {
 
     },
+    "OPAC" : {
+      "shouldTranslate" : false
+    },
     "OSS" : {
-
+      "shouldTranslate" : false
     },
     "URL.LibraryService" : {
       "extractionState" : "manual",
