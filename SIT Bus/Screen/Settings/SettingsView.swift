@@ -25,6 +25,7 @@ struct SettingsView: View {
     
     @State var model = SettingsViewModel()
     @State var debugDate: Date = Date.now
+    @State var includeDeviceInfo = true
     
     var body: some View {
         @Bindable var timetableManager = timetableManager
@@ -64,9 +65,31 @@ struct SettingsView: View {
                     .disabled(model.deletingCache)
                 }
                 
-                Section("Label.AboutApp") {
+                Section {
                     LinkButton(
-                        "https://apps.apple.com/app/id6736679708"
+                        model.makeFeedbackURL(include: includeDeviceInfo)
+                    ) {
+                        Label {
+                            Text("Label.Feedback")
+                                .foregroundStyle(Color.primary)
+                        } icon: {
+                            Image(systemName: "list.bullet.clipboard")
+                        }
+                    }
+                    
+                    Toggle(isOn: $includeDeviceInfo) {
+                        VStack(alignment: .leading) {
+                            Text("Label.IncludeDeviceInfo")
+                            Text("Detail.IncludeDeviceInfo")
+                                .foregroundStyle(.secondary)
+                                .font(.subheadline)
+                        }
+                    }
+                }
+                
+                Section("Label.AboutApp") {
+                    Link(
+                        destination: URL(string: "https://apps.apple.com/app/id6736679708")!
                     ) {
                         Label {
                             HStack {
@@ -89,17 +112,6 @@ struct SettingsView: View {
                             Image(.githubFill)
                         }
                         .foregroundStyle(Color.primary)
-                    }
-                    
-                    LinkButton(
-                        "https://tally.so/r/mDY9yb"
-                    ) {
-                        Label {
-                            Text("Label.Feedback")
-                                .foregroundStyle(Color.primary)
-                        } icon: {
-                            Image(systemName: "list.bullet.clipboard")
-                        }
                     }
                     
                     NavigationLink {

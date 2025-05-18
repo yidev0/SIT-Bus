@@ -56,4 +56,18 @@ class SettingsViewModel {
         }
     }
     
+    func makeFeedbackURL(include deviceInfo: Bool) -> String {
+        let url = "https://tally.so/r/mDY9yb"
+        if deviceInfo == false {
+            return url
+        }
+        
+        let osVersion = UIDevice.current.systemVersion
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return "\(url)?os=\(osVersion)&app=\(version)"
+        } else {
+            return "\(url)?os=\(osVersion)"
+        }
+    }
+    
 }
