@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="946px" height="175px" viewBox="0 0 946 175" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Road Glow</title>
+    <defs>
+        <filter x="-10.5%" y="-121.5%" width="121.0%" height="343.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Bus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.820503715">
+        <g id="Artboard-Copy-5" transform="translate(-39, -849)" fill="#737575">
+            <path d="M244.439267,945 L780.535917,945 C781.71128,945 782.860758,945.345215 783.84164,945.992786 L885.327255,1012.99279 C888.092663,1014.81849 888.854447,1018.54032 887.028746,1021.30572 C885.9182,1022.98788 884.037211,1024 882.021532,1024 L141.25745,1024 C137.943741,1024 135.25745,1021.31371 135.25745,1018 C135.25745,1015.96816 136.285757,1014.07436 137.989857,1012.96782 L241.171675,945.967819 C242.144434,945.336168 243.27942,945 244.439267,945 Z" id="Road-Glow" filter="url(#filter-1)"></path>
+        </g>
+    </g>
+</svg>
