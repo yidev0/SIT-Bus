@@ -25,7 +25,7 @@ extension Date {
     
     static let sample = Date.createDate(year: 2025, month: 1, day: 8, hour: 9, minute: 41, second: 0)!
     
-    public func get(component: Calendar.Component) -> Int {
+    public func get(_ component: Calendar.Component) -> Int {
         let calendar = Calendar.current
         return calendar.component(component, from: self)
     }
@@ -43,11 +43,11 @@ extension Date {
     }
     
     var keyYearMonth: String {
-        return "\(get(component: .year)).\(getMonthText())"
+        return "\(get(.year)).\(getMonthText())"
     }
     
     public func convertToMinutes() -> Int {
-        self.get(component: .hour) * 60 + self.get(component: .minute)
+        self.get(.hour) * 60 + self.get(.minute)
     }
     
     func calendarRows() -> Int {

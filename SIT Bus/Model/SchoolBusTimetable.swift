@@ -11,7 +11,7 @@ struct SchoolBusTimetable {
     var values: [Value]
     
     func getNextBus(for date: Date) -> Date? {
-        let currentHour = date.get(component: .hour)
+        let currentHour = date.get(.hour)
         
         for value in values.lazy {
             if value.hour == currentHour {
@@ -58,9 +58,9 @@ extension SchoolBusTimetable {
             self.hour = hour
             self.times = times.map { minute in
                 return Date.createDate(
-                    year: inputDate.get(component: .year),
-                    month: inputDate.get(component: .month),
-                    day: inputDate.get(component: .day),
+                    year: inputDate.get(currentCalendar.year),
+                    month: inputDate.get(currentCalendar.month),
+                    day: inputDate.get(currentCalendar.day),
                     hour: hour,
                     minute: minute,
                     second: 0

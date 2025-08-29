@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 struct ShuttleBusData {
     static let lastUpdateDate = Date.createDate(year: 2025, month: 2, day: 18)!
@@ -204,10 +204,10 @@ struct ShuttleBusData {
     
     public func makeTable() -> [Date: [Int]] {
         var returnValue = [Date: [Int]]()
-        let months = Set(activeDates.map({ $0.get(component: .month) }))
+        let months = Set(activeDates.map({ $0.get(.month) }))
         for month in months {
-            let key = activeDates.first(where: { $0.get(component: .month) == month })!
-            let dates = activeDates.filter({ $0.get(component: .month) == month }).map { $0.get(component: .day) }
+            let key = activeDates.first(where: { $0.get(.month) == month })!
+            let dates = activeDates.filter({ $0.get(.month) == month }).map { $0.get(.day) }
             returnValue[key] = dates
         }
         
@@ -215,10 +215,10 @@ struct ShuttleBusData {
     }
     
     public func getMonths() -> [Date] {
-        let months = Set(activeDates.map({ $0.get(component: .month) }))
+        let months = Set(activeDates.map({ $0.get(.month) }))
         var dates: [Date] = []
         months.forEach { month in
-            dates.append(activeDates.first(where: { $0.get(component: .month) == month })!)
+            dates.append(activeDates.first(where: { $0.get(.month) == month })!)
         }
         
         return dates.sorted()
@@ -234,7 +234,7 @@ struct ShuttleBusData {
             }
         }
         
-        return departureDates.filter { $0.get(component: .year) == year && $0.get(component: .month) == month }
+        return departureDates.filter { $0.get(.year) == year && $0.get(.month) == month }
     }
     
     public func getDepartureTime(for weekday: Int, date: Date, type: BusLineType.ShuttleBus) -> Date {

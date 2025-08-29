@@ -140,11 +140,11 @@ struct SBTimeSheet: Decodable {
                                 let time = String(note[range])
                                 if let date = dateFormatter.date(from: time) {
                                     let newDate = Date.createDate(
-                                        year: inputDate.get(component: .year),
-                                        month: inputDate.get(component: .month),
-                                        day: inputDate.get(component: .day),
-                                        hour: date.get(component: .hour),
-                                        minute: date.get(component: .minute)
+                                        year: inputDate.get(.year),
+                                        month: inputDate.get(.month),
+                                        day: inputDate.get(.day),
+                                        hour: date.get(.hour),
+                                        minute: date.get(.minute)
                                     )
                                     dateRange.append(newDate ?? date)
                                 }
