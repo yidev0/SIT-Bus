@@ -23,6 +23,22 @@ extension Date {
         return calendar.date(from: dateComponents)
     }
     
+    static func createTime(year: Int? = nil, month: Int? = nil, day: Int? = nil, hour: Int, minute: Int, second: Int = 0) -> Date? {
+        let calendar = Calendar.current
+        let date = Date.now
+        var dateComponents = DateComponents()
+        dateComponents.year = year ?? date.get(.year)
+        dateComponents.month = month ?? date.get(.month)
+        dateComponents.day = day ?? date.get(.day)
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        dateComponents.second = second
+        
+        dateComponents.timeZone = TimeZone(identifier: "Asia/Tokyo")
+
+        return calendar.date(from: dateComponents)
+    }
+    
     static let sample = Date.createDate(year: 2025, month: 1, day: 8, hour: 9, minute: 41, second: 0)!
     
     public func get(_ component: Calendar.Component) -> Int {
@@ -58,5 +74,10 @@ extension Date {
         
         let lastDayOfMonth = calendar.date(bySetting: .day, value: range.count, of: self)!
         return calendar.component(.weekOfMonth, from: lastDayOfMonth)
+    }
+    
+    var isWeekday: Bool {
+        let weekday = Calendar.current.component(.weekday, from: self)
+        return weekday != 1 && weekday != 7
     }
 }

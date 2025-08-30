@@ -10,53 +10,35 @@ import SwiftUI
 struct SchoolBusListView: View {
     
     @State var scrollPosition: Int?
-    var timetable: SchoolBusTimetable?
+    var timetable: [Int: [BusTimetable.Table.Value]]?
+    
+    init(table: BusTimetable.Table?, for type: BusTimetable.DestinationType) {
+        self.timetable = table?.sectionize(type: type)
+    }
     
     var body: some View {
         if let timetable {
-            ScrollView {
-                LazyVStack(spacing: 8, pinnedViews: .sectionHeaders) {
-                    ForEach(timetable.values, id: \.hour) { sheet in
-                        if sheet.times.isEmpty == false || sheet.note != nil {
-                            Section {
-                                VStack(spacing: 8) {
-                                    if let date1 = sheet.dateRange1, let date2 = sheet.dateRange2 {
-                                        Text("Label.\(Text(date1, format: .dateTime.hour().minute()))to\(Text(date2, format: .dateTime.hour().minute()))Service")
-                                            .padding(.vertical, 2)
-                                    }
-                                    
-                                    ForEach(sheet.times, id: \.self) { time in
-                                        GroupBox {
-                                            HStack {
-                                                Text(time, style: .time)
-                                                    .monospacedDigit()
-                                                Spacer()
-                                            }
-                                        }
-                                    }
+            List {
+                ForEach(timetable.keys.sorted(), id: \.self) { hour in
+                    Section {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(timetable[hour] ?? [], id: \.self) { value in
+                                if let note = value.note, let from = note.from?.toDate(), let until = note.until?.toDate() {
+                                    Text("Label.\(Text(from, format: .dateTime.hour().minute()))to\(Text(until, format: .dateTime.hour().minute()))Service")
                                 }
-                            } header: {
-                                if let hour = formatHour(hour: sheet.hour) {
-                                    HStack {
-                                        Text(hour, format: .dateTime.hour())
-                                            .font(.headline)
-                                            .font(.headline)
-                                            .padding(.vertical, 4)
-                                            .padding(.horizontal, 8)
-                                            .background(.regularMaterial)
-                                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                                        Spacer()
-                                    }
-                                }
+                                Text(value.time.toDate(), style: .time)
+                                    .monospacedDigit()
                             }
                         }
+                    } header: {
+                        Text(hour, format: .number)
                     }
                 }
             }
             .scrollPosition(id: $scrollPosition, anchor: .top)
             .contentMargins(16)
             .onAppear {
-                self.scrollPosition = Date.now.get(component: .hour)
+                self.scrollPosition = Date.now.get(.hour)
             }
         } else {
             ContentUnavailableView(
@@ -76,5 +58,8 @@ struct SchoolBusListView: View {
 }
 
 #Preview {
-    SchoolBusListView()
+    SchoolBusListView(
+        table: BusTimetable.schoolBusIwatsuki.getTable(for: .createDate(year: 2025, month: 10, day: 1)!),
+        for: .type1
+    )
 }

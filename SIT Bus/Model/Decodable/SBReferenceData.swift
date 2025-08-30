@@ -162,10 +162,11 @@ struct SBReferenceData: Decodable, Equatable {
                     if let time = dateRange?.until, time.getSum() < hour * 60 + minute {
                         note = dateRange
                         dateRange = nil
-                    } else if let time = dateRange?.from, time.getSum() > hour * 60 + minute {
-                        note = dateRange
-                        dateRange = nil
                     }
+//                    } else if let time = dateRange?.from, time.getSum() > hour * 60 + minute {
+//                        note = dateRange
+//                        dateRange = nil
+//                    }
                     
                     result.append(BusTimetable.Table.Value(
                         time: .init(hour: hour, minute: minute),

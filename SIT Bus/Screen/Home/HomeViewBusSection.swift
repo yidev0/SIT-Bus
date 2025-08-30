@@ -89,21 +89,21 @@ struct HomeViewBusSection: View {
         .animation(.default, value: showShuttleBus)
         .navigationDestination(for: BusLineType.self) { type in
             ZStack {
-                switch type {
-                case .schoolBus(let bus):
-                    SchoolBusListView(
-                        timetable: model.getTimetable(for: bus)
-                    )
-                case .schoolBusIwatsuki(let bus):
-                    SchoolBusListView(
-                        timetable: model.getTimetable(for: bus)
-                    )
-                case .shuttleBus(let bus):
-                    ShuttleBusTimeTable(
-                        listType: .list,
-                        shuttleType: bus
-                    )
-                }
+//                switch type {
+//                case .schoolBus(let bus):
+//                    SchoolBusListView(
+//                        timetable: model.getTimetable(for: bus)
+//                    )
+//                case .schoolBusIwatsuki(let bus):
+//                    SchoolBusListView(
+//                        timetable: model.getTimetable(for: bus)
+//                    )
+//                case .shuttleBus(let bus):
+//                    ShuttleBusTimeTable(
+//                        listType: .list,
+//                        shuttleType: bus
+//                    )
+//                }
             }
             .backgroundStyle(Color(.secondarySystemGroupedBackground))
             .background(Color(.systemGroupedBackground))
@@ -128,7 +128,7 @@ struct HomeViewBusSection: View {
         NavigationLink(value: type) {
             HomeBusCell(
                 type: type,
-                state: model.getBusState(for: type)
+                state: timetableManager.getBusState(for: type)
             )
         }
         .buttonStyle(.home)

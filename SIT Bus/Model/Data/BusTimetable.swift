@@ -6,12 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class BusTimetable {
     
     let calendar: [Calendar]
-    
-    private let tables: [Table]
+    let tables: [Table]
     
     init(
         calendar: [Calendar],
@@ -33,7 +33,7 @@ class BusTimetable {
         /// To Station / To Omiya
         let destination2: [Value]
         
-        struct Value {
+        struct Value: Hashable {
             let time: Time
             let note: Note?
             
@@ -45,25 +45,90 @@ class BusTimetable {
                 self.note = note
             }
             
-            struct Time {
+            struct Time: Hashable {
                 let hour: Int
                 let minute: Int
                 
                 func getSum() -> Int {
                     hour * 60 + minute
                 }
+                
+                func toDate() -> Date {
+                    .createTime(hour: hour, minute: minute)!
+                }
             }
             
-            struct Note {
+            struct Note: Hashable {
                 let from: Time?
                 let until: Time?
+                
+                @ViewBuilder
+                func makeText() -> some View {
+                    if let from = from?.toDate(), let until = until?.toDate() {
+                        Text("Label.\(Text(from, format: .dateTime.hour().minute()))to\(Text(until, format: .dateTime.hour().minute()))Service")
+                    } else {
+                        EmptyView()
+                    }
+                }
             }
+        }
+        
+        func sectionize(type: DestinationType) -> [Int: [Value]] {
+            let source: [Value] = {
+                switch type {
+                case .type1:
+                    return destination1
+                case .type2:
+                    return destination2
+                }
+            }()
+            
+            var grouped: [Int: [Value]] = [:]
+            for value in source {
+                let hour = value.time.hour
+                grouped[hour, default: []].append(value)
+            }
+            return grouped
         }
     }
     
     enum DestinationType {
+        /// To Campus or Toyosy
         case type1
+        /// To Station or Omiya
         case type2
+    }
+    
+    func getTable(for date: Date) -> Table? {
+        let tableName = calendar.first(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })?.tableName
+        let table = tables.first(where: { $0.name == tableName })
+        return table
+    }
+    
+    func getActiveDates() -> [[Date]] {
+        let cal = Foundation.Calendar.current
+        // Extract raw dates from the calendar entries
+        let dates = calendar.map { $0.date }
+        
+        // Group by (year, month)
+        let grouped = Dictionary(grouping: dates) { date -> DateComponents in
+            return cal.dateComponents([.year, .month], from: date)
+        }
+        
+        // Sort keys chronologically
+        let sortedKeys = grouped.keys.sorted { lhs, rhs in
+            if lhs.year == rhs.year {
+                return lhs.month! < rhs.month!
+            }
+            return lhs.year! < rhs.year!
+        }
+        
+        let result: [[Date]] = sortedKeys.map { key in
+            let monthDates = grouped[key] ?? []
+            return monthDates.sorted()
+        }
+        
+        return result
     }
     
     /// Returns the Date of the next bus after the given date, or nil if not found.
@@ -141,9 +206,73 @@ class BusTimetable {
         }
         return nil
     }
+    
+    func isActive(for date: Date) -> Bool {
+        calendar.contains(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })
+    }
 }
 
 extension BusTimetable {
+    static func schoolBusIwatsuki(basedOn dates: [Date]) -> BusTimetable {
+        let calendar = Foundation.Calendar.current
+        return .init(
+            calendar: dates.map {
+                .init(date: $0, tableName: calendar.isDateInWeekend($0) ? "Weekend" : "Weekday")
+            },
+            tables: [
+                .init(
+                    name: "Weekday",
+                    destination1: [
+                        .init(time: .init(hour: 7, minute: 45)),
+                        .init(time: .init(hour: 8, minute: 25)),
+                        .init(time: .init(hour: 9, minute: 5)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 50)),
+                        .init(time: .init(hour: 13, minute: 30)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 15)),
+                        .init(time: .init(hour: 17, minute: 35)),
+                        .init(time: .init(hour: 19, minute: 10)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 8, minute: 5)),
+                        .init(time: .init(hour: 8, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 0)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 10)),
+                        .init(time: .init(hour: 15, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 55)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                        .init(time: .init(hour: 19, minute: 30)),
+                    ]
+                ),
+                .init(
+                    name: "Weekend",
+                    destination1: [
+                        .init(time: .init(hour: 8, minute: 25)),
+                        .init(time: .init(hour: 9, minute: 5)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 50)),
+                        .init(time: .init(hour: 13, minute: 30)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 15)),
+                        .init(time: .init(hour: 17, minute: 35)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 8, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 0)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 10)),
+                        .init(time: .init(hour: 15, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 55)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                    ]
+                )
+            ]
+        )
+    }
     static let schoolBusIwatsuki: BusTimetable = .init(
         calendar: [
             // Saturdays
@@ -285,6 +414,10 @@ extension BusTimetable {
                 ]
             )
         ]
+    )
+    static let shuttleBus: BusTimetable = .init(
+        calendar: [],
+        tables: []
     )
 }
 

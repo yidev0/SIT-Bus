@@ -11,11 +11,40 @@ import StoreKit
 @Observable
 class TimetableManager {
     
-    public var data: SBReferenceData? = nil
-    public var lastUpdatedDate: Date = .now
+    var data: SBReferenceData? = nil
+    var lastUpdatedDate: Date = .now
     
-    public var showAlert = false
-    public var error: BusDataFetcherError? = .parseError
+    var showAlert = false
+    var error: BusDataFetcherError? = .parseError
+    
+    var schoolBusOmiya: BusTimetable? = nil {
+        didSet {
+            schoolBusIwatsuki = BusTimetable.schoolBusIwatsuki(basedOn: schoolBusOmiya?.calendar.compactMap({ calendar in
+                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
+                    print("1", calendar.date)
+                    return calendar.date
+                } else if calendar.date.isWeekday || calendar.tableName.contains("大宮祭") {
+                    print("2", calendar.date)
+                    return calendar.date
+                }
+                print("3", calendar.date)
+                return nil
+            }) ?? [])
+        }
+    }
+    var schoolBusIwatsuki: BusTimetable = .schoolBusIwatsuki
+    var shuttleBus: BusTimetable = .shuttleBus
+    
+    var toCampusState: NextBusState = .loading
+    var toStationState: NextBusState = .loading
+    var toCampusStateIwatsuki: NextBusState = .loading
+    var toStationStateIwatsuki: NextBusState = .loading
+    var toOmiyaState: NextBusState = .loading
+    var toToyosuState: NextBusState = .loading
+    
+    // MARK: - Private Properties
+    
+    private var busStateUpdateTask: Task<Void, Never>? = nil
     
     init() {
         Task {
@@ -36,6 +65,42 @@ class TimetableManager {
 #else
             await loadData()
 #endif
+            // Start updating bus states in background
+            await startBusStateUpdates()
+        }
+    }
+    
+    deinit {
+        // Cancel ongoing bus state update task on deinit
+        busStateUpdateTask?.cancel()
+        busStateUpdateTask = nil
+    }
+    
+    // MARK: - Public Methods
+    
+    func getBusState(for type: BusLineType) -> NextBusState {
+        switch type {
+        case .schoolBus(let schoolBus):
+            switch schoolBus {
+            case .campusToStation:
+                toStationState
+            case .stationToCampus:
+                toCampusState
+            }
+        case .schoolBusIwatsuki(let bus):
+            switch bus {
+            case .campusToStation:
+                toStationStateIwatsuki
+            case .stationToCampus:
+                toCampusStateIwatsuki
+            }
+        case .shuttleBus(let shuttleBus):
+            switch shuttleBus {
+            case .toOmiya:
+                toOmiyaState
+            case .toToyosu:
+                toToyosuState
+            }
         }
     }
     
@@ -52,6 +117,7 @@ class TimetableManager {
                 switch response {
                 case .success(let success):
                     self.data = success
+                    self.schoolBusOmiya = success.toBusTimetable()
                     self.lastUpdatedDate = Date.now
                     
                     if fetch, lastUpdate != 0 {
@@ -71,6 +137,7 @@ class TimetableManager {
                 switch response {
                 case .success(let success):
                     self.data = success
+                    self.schoolBusOmiya = success.toBusTimetable()
                 case .failure(let failure):
                     switch failure {
                     case .noLocalData:
@@ -84,11 +151,91 @@ class TimetableManager {
         }
     }
     
+    // MARK: - Private Methods
     private func requestReview() async {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasReviewedApp) == true { return }
         if let window = await UIApplication.shared.connectedScenes.first as? UIWindowScene {
             await AppStore.requestReview(in: window)
             UserDefaults.standard.setValue(true, forKey: UserDefaultsKeys.hasReviewedApp)
+        }
+    }
+    
+    /// Starts a background task that continuously updates all bus states.
+    @MainActor
+    public func startBusStateUpdates() async {
+        // Cancel existing task if any
+        busStateUpdateTask?.cancel()
+        
+        busStateUpdateTask = Task.detached(priority: .background) { [weak self] in
+            guard let self else { return }
+            
+            while !Task.isCancelled {
+                await self.updateBusStates()
+                
+                // Use NextBusState.makeTimeInterval(currentTime:) to decide the most precise next wake time
+                let now = Date()
+                let intervals: [TimeInterval?] = [
+                    self.toCampusState.makeTimeInterval(currentTime: now),
+                    self.toStationState.makeTimeInterval(currentTime: now),
+                    self.toCampusStateIwatsuki.makeTimeInterval(currentTime: now),
+                    self.toStationStateIwatsuki.makeTimeInterval(currentTime: now),
+                    self.toOmiyaState.makeTimeInterval(currentTime: now),
+                    self.toToyosuState.makeTimeInterval(currentTime: now)
+                ]
+                
+                let nextInterval = intervals.compactMap { $0 }.min() ?? 30
+                let sleepDuration = max(nextInterval, 5)
+                
+                do {
+                    try await Task.sleep(nanoseconds: UInt64(sleepDuration * 1_000_000_000))
+                } catch {
+                    break
+                }
+            }
+        }
+    }
+    
+    /// Updates all bus state properties based on current timetable data.
+    @MainActor
+    private func updateBusStates() async {
+        let now = Date()
+        
+        // Omiya
+        if let timetable = schoolBusOmiya {
+            toCampusState = computeNextState(timetable: timetable, type: .type1, now: now)
+            toStationState = computeNextState(timetable: timetable, type: .type2, now: now)
+        } else {
+            toCampusState = .loading
+            toStationState = .loading
+        }
+        
+        // Iwatsuki (always available timetable object)
+        toCampusStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type1, now: now)
+        toStationStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type2, now: now)
+        
+        toToyosuState = computeNextState(timetable: shuttleBus, type: .type1, now: now)
+        toOmiyaState = computeNextState(timetable: shuttleBus, type: .type2, now: now)
+    }
+    
+    private func computeNextState(
+        timetable: BusTimetable,
+        type: BusTimetable.DestinationType,
+        now: Date
+    ) -> NextBusState {
+        if let nextBusDate = timetable.getNext(from: now, type: type) {
+            if let note = timetable.getNextNote(from: now, nextDate: nextBusDate, type: type),
+               now > note.startDate {
+                return .timely(start: note.startDate, end: note.endDate)
+            } else {
+                let minutes = max(0, Int(ceil(nextBusDate.timeIntervalSince(now) / 60)))
+                return .nextBus(date: nextBusDate, departsIn: minutes)
+            }
+        } else {
+            if timetable.isActive(for: now) {
+                return .busServiceEnded
+            } else {
+                return .noBusService
+            }
         }
     }
     

@@ -37,7 +37,7 @@ struct SchoolBusGridView: View {
                                 ForEach(timetable.times, id: \.self) { time in
                                     SchoolBusGridCell(
                                         hour: timetable.hour,
-                                        minute: time.get(component: .minute)
+                                        minute: time.get(.minute)
                                     )
                                 }
                             }

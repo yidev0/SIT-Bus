@@ -19,7 +19,8 @@ struct TimetableView: View {
         
         NavigationStack {
             ZStack {
-                if horizontalSizeClass == .regular {
+                switch horizontalSizeClass {
+                case .regular:
                     switch model.timesheetBusType {
                     case .schoolOmiya:
                         if model.isActiveDate {
@@ -33,77 +34,59 @@ struct TimetableView: View {
                     case .shuttle, .schoolIwatsuki:
                         horizontalTimetable
                     }
-                } else {
-                    if model.isActiveDate || model.timesheetBusType != .schoolOmiya {
-                        makeTimetable(for: model.timesheetBus)
-                    } else {
-                        ContentUnavailableView(
-                            "Label.NoBuses",
-                            systemImage: "exclamationmark.triangle.fill"
+                default:
+                    TimetableContentView(
+                        table: model.timetable?.getTable(for: model.date),
+                        for: model.timesheetBus,
+                        date: model.date
+                    )
+                }
+            }
+            .safeAreaInset(edge: .bottom) {
+                switch horizontalSizeClass {
+                case .compact:
+                    HStack(spacing: 12) {
+                        switch model.timesheetBusType {
+                        case .schoolOmiya, .schoolIwatsuki:
+                            Button {
+                                model.showTimesheetDatePicker = true
+                            } label: {
+                                Text(model.date, format: .dateTime.day().month().weekday())
+                            }
+                            .matchedTransitionSource(id: "DatePicker", in: namespace)
+                        case .shuttle:
+                            EmptyView()
+                        }
+                        
+                        BusPickerView(
+                            selectedBus: $model.timesheetBus
                         )
                     }
-                    
-                    VStack {
-                        Spacer()
-                        
-                        HStack(spacing: 12) {
-                            switch model.timesheetBusType {
-                            case .schoolOmiya:
-                                DatePickerButton(
-                                    selectedDate: $model.timesheetDate,
-                                    showPicker: $model.showTimesheetDatePicker,
-                                    showFullPicker: $model.showFullTimesheetDatePicker,
-                                    activeDates: timetableManager.data?.getActiveDays() ?? []
-                                )
-                            case .schoolIwatsuki:
-                                Menu {
-                                    Picker(selection: $model.isWeekday) {
-                                        Text("Label.Weekday")
-                                            .tag(true)
-                                        Text("Label.Saturday")
-                                            .tag(false)
-                                    } label: {
-                                        Text("Label.ScheduleType")
-                                    }
-                                } label: {
-                                    switch model.isWeekday {
-                                    case true:
-                                        Text("Label.Weekday")
-                                    case false:
-                                        Text("Label.Saturday")
-                                    }
-                                }
-                            case .shuttle:
-                                EmptyView()
-                            }
-                            
-                            BusPickerView(
-                                selectedBus: $model.timesheetBus
-                            )
-                        }
-                        .padding(.bottom, 16)
-                        .buttonStyle(.filter)
-                    }
-                    .animation(.default, value: model.timesheetBus)
+                    .padding(.bottom, 16)
+                    .buttonStyle(.filter)
+                default:
+                    EmptyView()
                 }
             }
             .navigationTitle("Label.Timetable")
             .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .background(Color(.systemGroupedBackground))
+            .animation(.default, value: model.timesheetBus)
             .onChange(of: model.timesheetBus) { _, _ in
                 updateTimesheet()
             }
-            .onChange(of: model.timesheetDate) { _, _ in
+            .onChange(of: model.date) { _, _ in
                 updateTimesheet()
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        model.showInfoSheet = true
+                        model.sheet = .information
                     } label: {
                         Image(systemName: "info.circle")
                     }
                     .accessibilityLabel("Label.Accessiblity.Information")
+                    .matchedTransitionSource(id: "Information", in: namespace)
                 }
                 
                 if horizontalSizeClass == .regular {
@@ -149,7 +132,7 @@ struct TimetableView: View {
             }
             .fullScreenCover(isPresented: $model.showFullTimesheetDatePicker) {
                 TimetableFullDatePickerView(
-                    date: $model.timesheetDate,
+                    date: $model.date,
                     data: timetableManager.data,
                     range: model.makeRangeForSheet(activeMonths: timetableManager.data?.getActiveDays() ?? [])
                 )
@@ -162,6 +145,15 @@ struct TimetableView: View {
     
     func updateTimesheet() {
         model.makeTimesheet(data: timetableManager.data)
+        
+        model.timetable = switch model.timesheetBus {
+        case .schoolBus(_):
+            timetableManager.schoolBusOmiya
+        case .schoolBusIwatsuki(_):
+            timetableManager.schoolBusIwatsuki
+        case .shuttleBus(_):
+            timetableManager.shuttleBus
+        }
     }
     
     @ViewBuilder
@@ -238,9 +230,7 @@ struct TimetableView: View {
 
 #Preview {
     @Previewable @State var timetableManager = TimetableManager()
-    @Previewable @State var model = TimetableViewModel(
-        date: .createDate(year: 2024, month: 9, day: 30)!
-    )
+    @Previewable @State var model = TimetableViewModel()
     
     TimetableView()
         .environment(timetableManager)

@@ -10,7 +10,7 @@ import Foundation
 @Observable
 class TimetableViewModel {
     
-    var timesheetDate: Date
+    var date: Date = .now
     var isActiveDate = false
     var isWeekday: Bool
     
@@ -21,27 +21,23 @@ class TimetableViewModel {
     var toCampusTimetable: SchoolBusTimetable? = nil
     var toStationTimetable: SchoolBusTimetable? = nil
     
+    var timetable: BusTimetable? = nil
+    
     /// for iPhone
     var timesheetBus: BusLineType = .schoolBus(.stationToCampus)
     /// For iPad
     var timesheetBusType: BusType = .schoolOmiya
     
     init() {
-        timesheetDate = Date.now
-        isWeekday = !Calendar.current.isDateInWeekend(.now)
-    }
-    
-    init(date: Date) {
-        self.timesheetDate = date
         isWeekday = !Calendar.current.isDateInWeekend(.now)
     }
         
     func makeTimesheet(data: SBReferenceData?) {
-        isWeekday = !Calendar.current.isDateInWeekend(timesheetDate)
-        timesheetBusType = timesheetBus.busType
-        
-        toCampusTimetable = data?.makeTimetable(for: .stationToCampus, date: timesheetDate)
-        toStationTimetable = data?.makeTimetable(for: .campusToStation, date: timesheetDate)
+//        isWeekday = !Calendar.current.isDateInWeekend(timesheetDate)
+//        timesheetBusType = timesheetBus.busType
+//        
+//        toCampusTimetable = data?.makeTimetable(for: .stationToCampus, date: timesheetDate)
+//        toStationTimetable = data?.makeTimetable(for: .campusToStation, date: timesheetDate)
         // TODO: Check if date is a school day
         switch timesheetBusType {
         case .schoolOmiya:

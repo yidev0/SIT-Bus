@@ -28,7 +28,6 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .refreshable {
                 await timetableManager.loadData()
-                makeTimetable()
             }
         }
         .environment(model)
@@ -36,14 +35,9 @@ struct HomeView: View {
             if Calendar.current.isDateInToday(timetableManager.lastUpdatedDate) == false {
                 await timetableManager.loadData()
             }
-            makeTimetable()
         }
     }
     
-    func makeTimetable() {
-        model.makeTimetable(from: timetableManager.data)
-        model.startTasks()
-    }
 }
 
 #Preview {

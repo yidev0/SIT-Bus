@@ -37,7 +37,7 @@ enum NextBusState: Equatable {
             tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? currentTime
             return tomorrow.timeIntervalSince(currentTime)
         case .loading:
-            return nil
+            return 10
         }
     }
 }

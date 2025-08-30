@@ -58,9 +58,9 @@ extension SchoolBusTimetable {
             self.hour = hour
             self.times = times.map { minute in
                 return Date.createDate(
-                    year: inputDate.get(currentCalendar.year),
-                    month: inputDate.get(currentCalendar.month),
-                    day: inputDate.get(currentCalendar.day),
+                    year: inputDate.get(.year),
+                    month: inputDate.get(.month),
+                    day: inputDate.get(.day),
                     hour: hour,
                     minute: minute,
                     second: 0

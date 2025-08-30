@@ -138,8 +138,8 @@ struct ShuttleBusTimeTable: View {
         var data = [Date: [Date]]()
         for month in months {
             let dates = shuttleBusData.getTimesFor(
-                year: month.get(component: .year),
-                month: month.get(component: .month),
+                year: month.get(.year),
+                month: month.get(.month),
                 type: shuttleType
             )
             data[month] = dates
@@ -154,8 +154,8 @@ struct ShuttleBusTimeTable: View {
     }
     
     private func showHeader(date: Date) -> Bool {
-        (date.get(component: .year) == 2025
-         && date.get(component: .month) == 1)
+        (date.get(.year) == 2025
+         && date.get(.month) == 1)
         || busData.keys.sorted().first == date
     }
 }

@@ -87,7 +87,7 @@ struct DatePickerButton: View {
                             .hidden()
                     }
                     
-                    Text(date.get(component: .day), format: .number)
+                    Text(date.get(.day), format: .number)
                         .font(.body)
                         .fontWeight(Calendar.current.isDate(.now, inSameDayAs: date) ? .bold : .regular)
                         .foregroundStyle(isActive ? .primary : .secondary)

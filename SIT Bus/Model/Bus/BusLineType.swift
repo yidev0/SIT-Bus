@@ -31,6 +31,32 @@ enum BusLineType: Hashable {
         }
     }
     
+    var destinationType: BusTimetable.DestinationType {
+        switch self {
+        case .schoolBus(let bus):
+            switch bus {
+            case .stationToCampus:
+                    .type1
+            case .campusToStation:
+                    .type2
+            }
+        case .schoolBusIwatsuki(let bus):
+            switch bus {
+            case .stationToCampus:
+                    .type1
+            case .campusToStation:
+                    .type2
+            }
+        case .shuttleBus(let bus):
+            switch bus {
+            case .toToyosu:
+                    .type1
+            case .toOmiya:
+                    .type2
+            }
+        }
+    }
+    
     enum SchoolBus: String, CaseIterable, BusLine, AppEnum {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
