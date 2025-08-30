@@ -12,7 +12,7 @@ struct TimetableFullDatePickerView: View {
     @Environment(\.dismiss) var dismiss
     
     @Binding var date: Date
-    var data: SBReferenceData?
+    var calendar: [BusTimetable.Calendar]?
     var range: ClosedRange<Date>
     
     var body: some View {
@@ -32,14 +32,12 @@ struct TimetableFullDatePickerView: View {
                 List {
                     Text(date, format: .dateTime.year().month().day().weekday())
                     
-                    if let title = data?.getCalendarName(for: date) {
-                        Text(title)
+                    if let calendar = calendar?.first(where: { $0.date == date }),
+                       let comment = calendar.comment {
+                        Text(calendar.tableName)
+                        Text(comment)
                     } else {
                         Text("Label.NoBuses")
-                    }
-                    
-                    if let comment = data?.getComment(for: date) {
-                        Text(comment)
                     }
                 }
             }

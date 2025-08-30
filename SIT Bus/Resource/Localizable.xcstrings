@@ -838,7 +838,6 @@
       }
     },
     "Label.LibraryServices" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1112,6 +1111,7 @@
       }
     },
     "Label.Saturday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1161,6 +1161,7 @@
       }
     },
     "Label.ScheduleType" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1434,6 +1435,7 @@
       }
     },
     "Label.Weekday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

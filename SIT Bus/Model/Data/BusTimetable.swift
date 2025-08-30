@@ -24,6 +24,13 @@ class BusTimetable {
     struct Calendar {
         let date: Date
         let tableName: String
+        let comment: String?
+        
+        init(date: Date, tableName: String, comment: String? = nil) {
+            self.date = date
+            self.tableName = tableName
+            self.comment = comment?.isEmpty == true ? nil : comment
+        }
     }
     
     struct Table {
@@ -103,6 +110,10 @@ class BusTimetable {
         let tableName = calendar.first(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })?.tableName
         let table = tables.first(where: { $0.name == tableName })
         return table
+    }
+    
+    func getCalendar(for date: Date) -> Calendar? {
+        calendar.first(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })
     }
     
     func getActiveDates() -> [[Date]] {

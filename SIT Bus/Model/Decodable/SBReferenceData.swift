@@ -105,7 +105,7 @@ struct SBReferenceData: Decodable, Equatable {
             for entry in monthCalendar.list {
                 guard let day = Int(entry.day), let date = Date.createDate(year: year, month: month, day: day) else { continue }
                 if let timesheet = self.timesheet.first(where: { $0.ts_id == entry.ts_id }) {
-                    calendarEntries.append(.init(date: date, tableName: timesheet.title))
+                    calendarEntries.append(.init(date: date, tableName: timesheet.title, comment: entry.comment))
                 }
             }
         }
