@@ -127,18 +127,11 @@ struct TimetableView: View {
                     .navigationTransition(.zoom(sourceID: "Information", in: namespace))
             }
             .sheet(isPresented: $model.showDatePicker) {
-                TimetableCalendarView(
-                    date: $model.date,
-                    activeDates: model.timetable?.getActiveDates() ?? []
-                )
-                .ignoresSafeArea()
-                .padding([.horizontal, .top])
-                .presentationDetents([.large, .medium])
-                .presentationCompactAdaptation(.sheet)
-                .navigationTransition(.zoom(sourceID: "DatePicker", in: namespace))
-                .presentationBackground(.regularMaterial)
+                TimetableCalendarSheet()
+                    .navigationTransition(.zoom(sourceID: "DatePicker", in: namespace))
             }
         }
+        .environment(model)
         .onAppear {
             updateTimesheet()
         }
@@ -173,6 +166,48 @@ struct TimetableView: View {
         }
     }
     
+}
+
+private struct TimetableCalendarSheet: View {
+
+    @Environment(TimetableViewModel.self)
+    var model
+    
+    @State var detent: PresentationDetent = .medium
+    
+    var body: some View {
+        @Bindable var model = model
+
+        VStack {
+            TimetableCalendarView(
+                date: $model.date,
+                activeDates: model.timetable?.getActiveDates() ?? []
+            )
+            .padding([.horizontal, .top])
+            
+            switch detent {
+            case .large:
+                List {
+                    if let name = model.timetable?.getCalendar(for: model.date)?.tableName {
+                        Text(verbatim: name)
+                    }
+                    
+                    if let comment = model.timetable?.getCalendar(for: model.date)?.comment {
+                        Text(verbatim: comment)
+                    }
+                }
+                .listRowBackground(Color(.secondarySystemGroupedBackground))
+                .scrollContentBackground(.hidden)
+                .listSectionSpacing(.compact)
+            default:
+                EmptyView()
+            }
+        }
+        .ignoresSafeArea()
+        .presentationDetents([.large, .medium], selection: $detent)
+        .presentationCompactAdaptation(.sheet)
+        .presentationBackground(.regularMaterial)
+    }
 }
 
 #Preview {
