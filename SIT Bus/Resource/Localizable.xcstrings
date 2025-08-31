@@ -336,7 +336,7 @@
         }
       }
     },
-    "Label.Accessibility.%lldTime" : {
+    "Label.Accessibility.%@Time" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1111,7 +1111,7 @@
       }
     },
     "Label.Saturday" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1156,23 +1156,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
-          }
-        }
-      }
-    },
-    "Label.ScheduleType" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schedule type"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スケジュールの種類"
           }
         }
       }
@@ -1435,7 +1418,7 @@
       }
     },
     "Label.Weekday" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -12,13 +12,16 @@ class BusTimetable {
     
     let calendar: [Calendar]
     let tables: [Table]
+    let lastUpdated: Date?
     
     init(
         calendar: [Calendar],
-        tables: [Table]
+        tables: [Table],
+        lastUpdated: Date?
     ) {
         self.calendar = calendar
         self.tables = tables
+        self.lastUpdated = lastUpdated
     }
     
     struct Calendar {
@@ -224,11 +227,17 @@ class BusTimetable {
 }
 
 extension BusTimetable {
-    static func schoolBusIwatsuki(basedOn dates: [Date]) -> BusTimetable {
-        let calendar = Foundation.Calendar.current
+    static func schoolBusIwatsuki(basedOn calendar: [BusTimetable.Calendar]) -> BusTimetable {
         return .init(
-            calendar: dates.map {
-                .init(date: $0, tableName: calendar.isDateInWeekend($0) ? "Weekend" : "Weekday")
+            calendar: calendar.compactMap { calendar in
+                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
+                    return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "Weekday" : "Weekend")
+                } else if calendar.date.isWeekday {
+                    return Calendar(date: calendar.date, tableName: "Weekday")
+                } else if calendar.tableName.contains("大宮祭") {
+                    return Calendar(date: calendar.date, tableName: "Weekend")
+                }
+                return nil
             },
             tables: [
                 .init(
@@ -281,7 +290,8 @@ extension BusTimetable {
                         .init(time: .init(hour: 18, minute: 50)),
                     ]
                 )
-            ]
+            ],
+            lastUpdated: .createDate(year: 2025, month: 3, day: 10)!
         )
     }
     static let schoolBusIwatsuki: BusTimetable = .init(
@@ -424,11 +434,36 @@ extension BusTimetable {
                     .init(time: .init(hour: 18, minute: 50)),
                 ]
             )
-        ]
+        ],
+        lastUpdated: .createDate(year: 2025, month: 3, day: 10)!
     )
     static let shuttleBus: BusTimetable = .init(
-        calendar: [],
-        tables: []
+        calendar: [
+            .init(date: .createDate(year: 2025, month: 9, day: 29)!, tableName: "Monday and Friday"),
+            .init(date: .createDate(year: 2025, month: 10, day: 1)!, tableName: "Wednesday"),
+            .init(date: .createDate(year: 2025, month: 10, day: 3)!, tableName: "Monday and Friday"),
+        ],
+        tables: [
+            .init(
+                name: "Monday and Friday",
+                destination1: [
+                    .init(time: .init(hour: 17, minute: 5))
+                ],
+                destination2: [
+                    .init(time: .init(hour: 13, minute: 0))
+                ]
+            ),
+            .init(
+                name: "Wednesday",
+                destination1: [
+                    .init(time: .init(hour: 15, minute: 15))
+                ],
+                destination2: [
+                    .init(time: .init(hour: 13, minute: 0))
+                ]
+            )
+        ],
+        lastUpdated: .distantPast
     )
 }
 

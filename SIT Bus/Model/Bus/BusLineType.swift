@@ -16,6 +16,7 @@ protocol BusLine: Codable, Hashable {
 }
 
 enum BusLineType: Hashable {
+    
     case schoolBus(SchoolBus)
     case schoolBusIwatsuki(SchoolBusIwatsuki)
     case shuttleBus(ShuttleBus)
@@ -61,7 +62,7 @@ enum BusLineType: Hashable {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
         
-        static var allCases: [BusLineType.SchoolBus] = [
+        static let allCases: [BusLineType.SchoolBus] = [
             .stationToCampus, .campusToStation,
         ]
         
@@ -106,7 +107,7 @@ enum BusLineType: Hashable {
         case stationToCampus = "IwatsukiStationToCampus"
         case campusToStation = "CampusToIwatsukiStation"
         
-        static var allCases: [BusLineType.SchoolBusIwatsuki] = [
+        static let allCases: [BusLineType.SchoolBusIwatsuki] = [
             .stationToCampus, .campusToStation,
         ]
         
@@ -142,7 +143,7 @@ enum BusLineType: Hashable {
         case toToyosu = "OmiyaToToyosu"
         case toOmiya = "ToyosuToOmiya"
         
-        static var allCases: [BusLineType.ShuttleBus] = [
+        static let allCases: [BusLineType.ShuttleBus] = [
             .toToyosu, .toOmiya
         ]
         
@@ -182,6 +183,32 @@ enum BusLineType: Hashable {
             shuttleBus.localizedTitle
         case .schoolBusIwatsuki(let schoolBus):
             schoolBus.localizedTitle
+        }
+    }
+    
+    var localizedResourceTitle: LocalizedStringResource {
+        return switch self {
+        case .schoolBus(let bus):
+            switch bus {
+            case .stationToCampus:
+                "Label.CampusToOmiyaStation"
+            case .campusToStation:
+                "Label.OmiyaStationToCampus"
+            }
+        case .shuttleBus(let bus):
+            switch bus {
+            case .toToyosu:
+                "Label.OmiyaToToyosu"
+            case .toOmiya:
+                "Label.ToyosuToOmiya"
+            }
+        case .schoolBusIwatsuki(let bus):
+            switch bus {
+            case .campusToStation:
+                "Label.CampusToIwatsukiStation"
+            case .stationToCampus:
+                "Label.IwatsukiStationToCampus"
+            }
         }
     }
     

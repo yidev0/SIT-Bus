@@ -35,6 +35,7 @@
       }
     },
     "Label.BusType" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -65,6 +66,9 @@
           }
         }
       }
+    },
+    "Label.Service" : {
+
     },
     "Label.ShortMinutes%lld" : {
       "localizations" : {
@@ -113,6 +117,9 @@
           }
         }
       }
+    },
+    "Label.To" : {
+
     }
   },
   "version" : "1.0"

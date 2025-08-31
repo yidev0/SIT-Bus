@@ -124,6 +124,7 @@ struct TimetableView: View {
             }
             .sheet(isPresented: $model.showInfoSheet) {
                 TimetableInformationView()
+                    .navigationTransition(.zoom(sourceID: "Information", in: namespace))
             }
             .sheet(isPresented: $model.showDatePicker) {
                 TimetableCalendarView(

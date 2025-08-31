@@ -32,40 +32,15 @@ struct SBReferenceData: Decodable, Equatable {
         return formatter
     }()
     
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "Asia/Tokyo") // JST (UTC+9)
+        return formatter
+    }()
+    
     private static let noteRegex: NSRegularExpression = try! NSRegularExpression(pattern: "\\d{1,2}:\\d{2}")
-    
-    private func getTimesheetID(for date: Date) -> String? {
-        let components = Calendar.current.dateComponents(in: .current, from: date)
-        let year = components.year ?? -1
-        let month = components.month ?? -1
-        let day = components.day ?? -1
-        
-        if let currentCalendar = self.calendar.first(where: {
-            $0.year == String(format: "%02d", year) &&
-            $0.month == String(format: "%02d", month)
-        }) {
-            let currentCalendarList = currentCalendar.list
-            let id = currentCalendarList.lazy.first(where: { $0.day == String(day) })?.ts_id
-            return id
-        }
-        
-        return nil
-    }
-    
-    public func getTimesheet(for date: Date) -> SBTimeSheet? {
-        if let id = getTimesheetID(for: date) {
-            let timesheet = timesheet.first(where: { $0.ts_id == id })
-            return timesheet
-        }
-        
-        return nil
-    }
-    
-    public func makeTimetable(for type: BusLineType.SchoolBus, date: Date) -> SchoolBusTimetable? {
-        let id = getTimesheetID(for: date)
-        guard let timesheet = timesheet.first(where: { $0.ts_id == id }) else { return nil }
-        return timesheet.makeTimetable(for: type, date: date)
-    }
     
     public func getActiveDays() -> [[Date]] {
         var dates: [[Date]] = []
@@ -74,27 +49,6 @@ struct SBReferenceData: Decodable, Equatable {
         }
         
         return dates
-    }
-    
-    func getComment(for date: Date) -> String? {
-        if let calendar = calendar.first(where: { $0.month == String(format: "%02d", date.get(.month)) }) {
-            calendar.getDateComment(for: date)
-        } else {
-            nil
-        }
-    }
-    
-    func getCalendarName(for date: Date) -> String? {
-        return getTimesheet(for: date)?.title
-    }
-    
-    func checkIfWeekdaySchoolDay(for date: Date) -> Bool {
-        if let title = getTimesheet(for: date)?.title,
-           title.contains("平日") && !title.contains("休業") {
-            return true
-        } else {
-            return false
-        }
     }
     
     func toBusTimetable() -> BusTimetable {
@@ -184,8 +138,10 @@ struct SBReferenceData: Decodable, Equatable {
                 destination2: parseDestination({ $0.station }, sheet: sheet)
             )
         }
+        
+        let updateDate = SBReferenceData.dateFormatter.date(from: update)
 
-        return BusTimetable(calendar: calendarEntries, tables: tables)
+        return BusTimetable(calendar: calendarEntries, tables: tables, lastUpdated: updateDate)
     }
     
 }

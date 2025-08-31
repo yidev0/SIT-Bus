@@ -39,7 +39,7 @@ struct SettingsSourcesView: View {
                 LinkButton("https://www.shibaura-it.ac.jp/assets/zikokuhyou.pdf") {
                     SettingsSourceLabel(
                         label: "Label.SchoolBusIwatsuki",
-                        date: IwatsukiBusData.lastUpdateDate,
+                        date: BusTimetable.schoolBusIwatsuki.lastUpdated!,
                         format: .dateTime.year().month().day()
                     )
                 }

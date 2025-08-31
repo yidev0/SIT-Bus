@@ -19,17 +19,7 @@ class TimetableManager {
     
     var schoolBusOmiya: BusTimetable? = nil {
         didSet {
-            schoolBusIwatsuki = BusTimetable.schoolBusIwatsuki(basedOn: schoolBusOmiya?.calendar.compactMap({ calendar in
-                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
-                    print("1", calendar.date)
-                    return calendar.date
-                } else if calendar.date.isWeekday || calendar.tableName.contains("大宮祭") {
-                    print("2", calendar.date)
-                    return calendar.date
-                }
-                print("3", calendar.date)
-                return nil
-            }) ?? [])
+            schoolBusIwatsuki = BusTimetable.schoolBusIwatsuki(basedOn: schoolBusOmiya?.calendar ?? [])
         }
     }
     var schoolBusIwatsuki: BusTimetable = .schoolBusIwatsuki

@@ -75,12 +75,14 @@ struct TimetableContentView: View {
                     radius: 26
                 )
                 .frame(width: 64)
+                .accessibilityLabel("Label.Accessibility.\(text)Time")
             } else {
                 TimetableHeader(
                     text: text,
                     radius: 10
                 )
                 .frame(width: 64)
+                .accessibilityLabel("Label.Accessibility.\(text)Time")
             }
             
             LazyVGrid(
