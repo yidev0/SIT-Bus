@@ -54,24 +54,39 @@ struct TimetableView: View {
                                     model.showDatePicker = true
                                 } label: {
                                     Text(model.date, format: .dateTime.day().month().weekday())
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 4)
+                                        .matchedTransitionSource(id: "DatePicker", in: namespace)
                                 }
-                                .matchedTransitionSource(id: "DatePicker", in: namespace)
+                                .buttonBorderShape(.capsule)
+                                .contentShape(.capsule)
+                                .buttonStyle(.glass)
+                                
                             } else {
                                 DatePickerButton(
                                     selectedDate: $model.date,
                                     activeDates: model.timetable?.getActiveDates() ?? []
                                 )
+                                .buttonStyle(.filter)
                             }
                         case .shuttle:
                             EmptyView()
                         }
                         
-                        BusPickerView(
-                            selectedBus: $model.timesheetBus
-                        )
+                        if #available(iOS 26.0, *) {
+                            BusPickerView(
+                                selectedBus: $model.timesheetBus,
+                                glassPadding: true
+                            )
+                            .buttonStyle(.glass)
+                        } else {
+                            BusPickerView(
+                                selectedBus: $model.timesheetBus
+                            )
+                            .buttonStyle(.filter)
+                        }
                     }
-                    .padding(.bottom, 16)
-                    .buttonStyle(.filter)
+                    .padding(.bottom, 12)
                 default:
                     EmptyView()
                 }
@@ -206,7 +221,7 @@ private struct TimetableCalendarSheet: View {
         .ignoresSafeArea()
         .presentationDetents([.large, .medium], selection: $detent)
         .presentationCompactAdaptation(.sheet)
-        .presentationBackground(.regularMaterial)
+        .presentationBackground(.thinMaterial)
     }
 }
 
