@@ -188,7 +188,8 @@ private struct TimetableCalendarSheet: View {
     @Environment(TimetableViewModel.self)
     var model
     
-    @State var detent: PresentationDetent = .medium
+    @State
+    var detent: PresentationDetent = .medium
     
     var body: some View {
         @Bindable var model = model
@@ -198,7 +199,8 @@ private struct TimetableCalendarSheet: View {
                 date: $model.date,
                 activeDates: model.timetable?.getActiveDates() ?? []
             )
-            .padding([.horizontal, .top])
+            .padding(.top)
+            .contentMargins(.horizontal, 16)
             
             switch detent {
             case .large:

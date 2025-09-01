@@ -9,7 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Environment(TimetableManager.self) private var timetableManager
+    @Environment(TimetableManager.self)
+    private var timetableManager
+    
+    @Environment(\.horizontalSizeClass)
+    private var horizontalSizeClass
+    
     @State var model = HomeViewModel()
     
     var body: some View {
@@ -25,7 +30,7 @@ struct HomeView: View {
             .contentMargins(.top, 8, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Label.Home")
-            .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
+            .navigationBarTitleDisplayMode(horizontalSizeClass == .regular ? .inline : .automatic)
             .refreshable {
                 await timetableManager.loadData()
             }

@@ -80,4 +80,11 @@ extension Date {
         let weekday = Calendar.current.component(.weekday, from: self)
         return weekday != 1 && weekday != 7
     }
+    
+    func startOfDay(after days: Int) -> Date {
+        let calendar = Calendar.current
+        var date = calendar.startOfDay(for: self)
+        date = calendar.date(byAdding: .day, value: days, to: date)!
+        return date
+    }
 }
