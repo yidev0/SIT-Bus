@@ -81,6 +81,8 @@ struct HomeViewBusSection: View {
                     .padding(.vertical, 6)
                     .background()
             }
+            .buttonStyle(.home)
+            .buttonBorderShape(.capsule)
         }
         .animation(.default, value: showSchoolBus)
         .animation(.default, value: showSchoolBusIwatsuki)
