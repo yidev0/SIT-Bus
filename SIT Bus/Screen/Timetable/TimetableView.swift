@@ -89,15 +89,10 @@ struct TimetableView: View {
                     }
                     
                     ToolbarItem(placement: .topBarLeading) {
-                        switch model.timesheetBusType {
-                        case .schoolOmiya, .schoolIwatsuki:
-                            DatePickerButton(
-                                selectedDate: $model.date,
-                                activeDates: model.timetable?.getActiveDates() ?? []
-                            )
-                        case .shuttle:
-                            EmptyView()
-                        }
+                        DatePickerButton(
+                            selectedDate: $model.date,
+                            activeDates: model.timetable?.getActiveDates() ?? []
+                        )
                     }
                 }
             }
