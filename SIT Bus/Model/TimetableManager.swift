@@ -40,13 +40,14 @@ class TimetableManager {
         Task {
 #if DEBUG
             if ProcessInfo().isSwiftUIPreview {
-                print("is preview")
                 do {
                     let data = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
                     let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
                     self.data = result
+                    print("Preview, local data")
                 } catch {
                     await loadData()
+                    print("Preview, loading data")
                 }
             } else {
                 print("not preview")
@@ -91,6 +92,17 @@ class TimetableManager {
             case .toToyosu:
                 toToyosuState
             }
+        }
+    }
+    
+    func getTable(type: BusLineType, date: Date) -> BusTimetable.Table? {
+        switch type {
+        case .schoolBus:
+            schoolBusOmiya?.getTable(for: date)
+        case .schoolBusIwatsuki:
+            schoolBusIwatsuki.getTable(for: date)
+        case .shuttleBus:
+            shuttleBus.getTable(for: date)
         }
     }
     

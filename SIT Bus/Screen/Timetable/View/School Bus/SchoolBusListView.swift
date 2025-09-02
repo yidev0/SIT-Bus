@@ -21,14 +21,12 @@ struct SchoolBusListView: View {
             List {
                 ForEach(timetable.keys.sorted(), id: \.self) { hour in
                     Section {
-                        VStack(alignment: .leading, spacing: 8) {
-                            ForEach(timetable[hour] ?? [], id: \.self) { value in
-                                if let note = value.note, let from = note.from?.toDate(), let until = note.until?.toDate() {
-                                    Text("Label.\(Text(from, format: .dateTime.hour().minute()))to\(Text(until, format: .dateTime.hour().minute()))Service")
-                                }
-                                Text(value.time.toDate(), style: .time)
-                                    .monospacedDigit()
+                        ForEach(timetable[hour] ?? [], id: \.self) { value in
+                            if let note = value.note {
+                                note.makeText()
                             }
+                            Text(value.time.toDate(), style: .time)
+                                .monospacedDigit()
                         }
                     } header: {
                         Text(hour, format: .number)
