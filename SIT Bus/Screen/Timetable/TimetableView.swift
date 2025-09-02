@@ -194,33 +194,23 @@ private struct TimetableCalendarSheet: View {
     var body: some View {
         @Bindable var model = model
 
-        VStack {
+        List {
             TimetableCalendarView(
                 date: $model.date,
                 activeDates: model.timetable?.getActiveDates() ?? []
             )
-            .padding(.top)
-            .contentMargins(.horizontal, 16)
             
-            switch detent {
-            case .large:
-                List {
-                    if let name = model.timetable?.getCalendar(for: model.date)?.tableName {
-                        Text(verbatim: name)
-                    }
-                    
-                    if let comment = model.timetable?.getCalendar(for: model.date)?.comment {
-                        Text(verbatim: comment)
-                    }
+            Section {
+                if let name = model.timetable?.getCalendar(for: model.date)?.tableName {
+                    Text(verbatim: name)
                 }
-                .listRowBackground(Color(.secondarySystemGroupedBackground))
-                .scrollContentBackground(.hidden)
-                .listSectionSpacing(.compact)
-            default:
-                EmptyView()
+                
+                if let comment = model.timetable?.getCalendar(for: model.date)?.comment {
+                    Text(verbatim: comment)
+                }
             }
         }
-        .ignoresSafeArea()
+        .listSectionSpacing(.compact)
         .presentationDetents([.large, .medium], selection: $detent)
         .presentationCompactAdaptation(.sheet)
         .presentationBackground(.thinMaterial)

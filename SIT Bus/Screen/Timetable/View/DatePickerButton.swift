@@ -50,10 +50,6 @@ struct DatePickerButton: View {
             )
             .padding(.vertical, 12)
             .padding(.horizontal, 8)
-            .frame(
-                width: 320,
-                height: CGFloat(header) + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 54
-            )
             .presentationCompactAdaptation(.popover)
             .presentationBackground(.thickMaterial)
         }

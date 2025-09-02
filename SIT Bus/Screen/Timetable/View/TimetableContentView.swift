@@ -13,6 +13,9 @@ struct TimetableContentView: View {
     var busType: BusLineType
     var timetable: [Int: [BusTimetable.Table.Value]]?
     
+    @ScaledMetric
+    var cellSize = 42
+    
     init(
         table: BusTimetable.Table?,
         for type: BusLineType,
@@ -68,7 +71,7 @@ struct TimetableContentView: View {
         text: String,
         values: [BusTimetable.Table.Value]
     ) -> some View {
-        HStack(spacing: 6) {
+        HStack(spacing: 0) {
             if #available(iOS 26.0, *) {
                 TimetableHeader(
                     text: text,
@@ -87,22 +90,28 @@ struct TimetableContentView: View {
             
             LazyVGrid(
                 columns: [.init(
-                    .adaptive(minimum: 48, maximum: 96),
-                    spacing: 8
-                )]
+                    .adaptive(minimum: cellSize),
+                    spacing: 12
+                )],
+                spacing: 0
             ) {
                 ForEach(values, id: \.self) { value in
-                    Rectangle()
-                        .aspectRatio(1.618, contentMode: .fit)
-                        .hidden()
-                        .overlay {
-                            Text(value.time.minute, format: .number)
-                                .accessibilityLabel(Text("\(value.time.hour):\(value.time.minute)"))
-                        }
+                    ZStack {
+                        Rectangle()
+                            .foregroundStyle(.tertiary)
+                            .aspectRatio(1.414, contentMode: .fill)
+                            .hidden()
+                        
+                        Text(value.time.minute, format: .number)
+                            .accessibilityLabel(Text("\(value.time.hour):\(value.time.minute)"))
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    .frame(maxWidth: .infinity)
                 }
             }
+            .padding(4)
         }
-        .listRowInsets(.init())
+        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 8))
         
         if let note = values.first(where: { $0.note != nil })?.note {
             note.makeText()
@@ -112,7 +121,7 @@ struct TimetableContentView: View {
 
 #Preview {
     TimetableContentView(
-        table: BusTimetable.schoolBusIwatsuki.tables.first!,
+        table: BusTimetable.sample.tables.first!,
         for: .schoolBusIwatsuki(.stationToCampus),
         date: .now
     )

@@ -40,7 +40,7 @@ struct CalendarView<DateView: View>: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(calendar.standaloneMonthSymbols[selectedMonth - 1])
                 .font(.headline)
                 .padding(.horizontal, 8)
@@ -94,7 +94,7 @@ struct CalendarView<DateView: View>: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
-        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
     }
     
     private func makeDates(for month: Date) -> [Date] {

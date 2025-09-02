@@ -81,32 +81,15 @@ struct HomeViewBusSection: View {
                     .padding(.vertical, 6)
                     .background()
             }
-            .buttonStyle(.home)
-            .clipShape(.capsule)
         }
         .animation(.default, value: showSchoolBus)
         .animation(.default, value: showSchoolBusIwatsuki)
         .animation(.default, value: showShuttleBus)
         .navigationDestination(for: BusLineType.self) { type in
-            ZStack {
-//                switch type {
-//                case .schoolBus(let bus):
-//                    SchoolBusListView(
-//                        timetable: model.getTimetable(for: bus)
-//                    )
-//                case .schoolBusIwatsuki(let bus):
-//                    SchoolBusListView(
-//                        timetable: model.getTimetable(for: bus)
-//                    )
-//                case .shuttleBus(let bus):
-//                    ShuttleBusTimeTable(
-//                        listType: .list,
-//                        shuttleType: bus
-//                    )
-//                }
-            }
-            .backgroundStyle(Color(.secondarySystemGroupedBackground))
-            .background(Color(.systemGroupedBackground))
+            SchoolBusListView(
+                table: timetableManager.getTable(type: type, date: .now),
+                for: type.destinationType
+            )
         }
     }
     

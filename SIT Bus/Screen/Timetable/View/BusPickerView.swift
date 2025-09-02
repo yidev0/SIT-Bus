@@ -32,8 +32,8 @@ struct BusPickerView: View {
             }
         } label: {
             Text(selectedBus.localizedShortTitle)
-                .padding(.horizontal, glassPadding ? 10 : nil)
-                .padding(.vertical, glassPadding ? 4 : nil)
+                .padding(.horizontal, glassPadding ? 10 : 0)
+                .padding(.vertical, glassPadding ? 4 : 0)
         }
         .labelsVisibility(.visible)
     }
