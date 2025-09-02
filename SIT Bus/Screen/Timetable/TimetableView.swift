@@ -46,47 +46,7 @@ struct TimetableView: View {
             .safeAreaInset(edge: .bottom) {
                 switch horizontalSizeClass {
                 case .compact:
-                    HStack(spacing: 12) {
-                        switch model.timesheetBusType {
-                        case .schoolOmiya, .schoolIwatsuki:
-                            if #available(iOS 26, *) {
-                                Button {
-                                    model.showDatePicker = true
-                                } label: {
-                                    Text(model.date, format: .dateTime.day().month().weekday())
-                                        .padding(.horizontal, 10)
-                                        .padding(.vertical, 4)
-                                        .matchedTransitionSource(id: "DatePicker", in: namespace)
-                                }
-                                .buttonBorderShape(.capsule)
-                                .contentShape(.capsule)
-                                .buttonStyle(.glass)
-                                
-                            } else {
-                                DatePickerButton(
-                                    selectedDate: $model.date,
-                                    activeDates: model.timetable?.getActiveDates() ?? []
-                                )
-                                .buttonStyle(.filter)
-                            }
-                        case .shuttle:
-                            EmptyView()
-                        }
-                        
-                        if #available(iOS 26.0, *) {
-                            BusPickerView(
-                                selectedBus: $model.timesheetBus,
-                                glassPadding: true
-                            )
-                            .buttonStyle(.glass)
-                        } else {
-                            BusPickerView(
-                                selectedBus: $model.timesheetBus
-                            )
-                            .buttonStyle(.filter)
-                        }
-                    }
-                    .padding(.bottom, 12)
+                    TimetableCompactMenu(namespace: namespace)
                 default:
                     EmptyView()
                 }
@@ -122,6 +82,10 @@ struct TimetableView: View {
                         } label: {
                             Text(model.timesheetBusType.localizedTitle)
                         }
+                    }
+                    
+                    if #available(iOS 26.0, *) {
+                        ToolbarSpacer(placement: .topBarLeading)
                     }
                     
                     ToolbarItem(placement: .topBarLeading) {
