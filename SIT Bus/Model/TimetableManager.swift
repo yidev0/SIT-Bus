@@ -186,7 +186,7 @@ class TimetableManager {
                 ]
                 
                 let nextInterval = intervals.compactMap { $0 }.min() ?? 30
-                let sleepDuration = max(nextInterval, 5)
+                let sleepDuration = max(nextInterval, 1)
                 
                 do {
                     try await Task.sleep(nanoseconds: UInt64(sleepDuration * 1_000_000_000))

@@ -21,6 +21,25 @@ enum BusLineType: Hashable {
     case schoolBusIwatsuki(SchoolBusIwatsuki)
     case shuttleBus(ShuttleBus)
     
+    init?(name: String) {
+        switch name {
+        case "CampusToOmiyaStation":
+            self = .schoolBus(.campusToStation)
+        case "OmiyaStationToCampus":
+            self = .schoolBus(.stationToCampus)
+        case "OmiyaToToyosu":
+            self = .shuttleBus(.toToyosu)
+        case "ToyosuToOmiya":
+            self = .shuttleBus(.toOmiya)
+        case "CampusToIwatsukiStation":
+            self = .schoolBusIwatsuki(.campusToStation)
+        case "IwatsukiStationToCampus":
+            self = .schoolBusIwatsuki(.stationToCampus)
+        default:
+            return nil
+        }
+    }
+    
     var busType: BusType {
         switch self {
         case .schoolBus:
@@ -220,6 +239,17 @@ enum BusLineType: Hashable {
             shuttleBus.localizedShortTitle
         case .schoolBusIwatsuki(let schoolBus):
             schoolBus.localizedShortTitle
+        }
+    }
+    
+    var rawValue: String {
+        switch self {
+        case .schoolBus(let bus):
+            bus.rawValue
+        case .schoolBusIwatsuki(let bus):
+            bus.rawValue
+        case .shuttleBus(let bus):
+            bus.rawValue
         }
     }
     

@@ -64,13 +64,13 @@ struct TimetableCompactMenu: View {
         
         if #available(iOS 26.0, *) {
             BusPickerView(
-                selectedBus: $model.timesheetBus,
+                selectedBus: $model.busLineType,
                 glassPadding: true
             )
             .buttonStyle(.glass)
         } else {
             BusPickerView(
-                selectedBus: $model.timesheetBus
+                selectedBus: $model.busLineType
             )
             .buttonStyle(.filter)
         }

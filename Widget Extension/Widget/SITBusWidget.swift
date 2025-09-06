@@ -112,7 +112,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                 return .nextBus(date: nextBusDate, departsIn: 0)
             }
         } else {
-            if timetable == nil {
+            if timetable?.getTable(for: baseTime) == nil {
                 return .noBusService
             } else {
                 return .busServiceEnded

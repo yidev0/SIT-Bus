@@ -34,7 +34,6 @@ struct SchoolBusListView: View {
                 }
             }
             .scrollPosition(id: $scrollPosition, anchor: .top)
-            .contentMargins(16)
             .onAppear {
                 self.scrollPosition = Date.now.get(.hour)
             }

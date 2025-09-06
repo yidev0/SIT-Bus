@@ -22,7 +22,7 @@ struct TimetableView: View {
             ZStack {
                 switch horizontalSizeClass {
                 case .regular:
-                    switch model.timesheetBusType {
+                    switch model.busType {
                     case .schoolOmiya, .schoolIwatsuki:
                         if model.isActive {
                             horizontalTimetable
@@ -38,7 +38,7 @@ struct TimetableView: View {
                 default:
                     TimetableContentView(
                         table: model.timetable?.getTable(for: model.date),
-                        for: model.timesheetBus,
+                        for: model.busLineType,
                         date: model.date
                     )
                 }
@@ -54,8 +54,8 @@ struct TimetableView: View {
             .navigationTitle("Label.Timetable")
             .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .background(Color(.systemGroupedBackground))
-            .animation(.default, value: model.timesheetBus)
-            .onChange(of: model.timesheetBus) { _, _ in
+            .animation(.default, value: model.busLineType)
+            .onChange(of: model.busLineType) { _, _ in
                 updateTimesheet()
             }
             .onChange(of: model.date) { _, _ in
@@ -74,13 +74,13 @@ struct TimetableView: View {
                 
                 if horizontalSizeClass == .regular {
                     ToolbarItem(placement: .topBarLeading) {
-                        Picker(selection: $model.timesheetBusType) {
+                        Picker(selection: $model.busType) {
                             ForEach(BusType.allCases, id: \.rawValue) { type in
                                 Label(type.localizedTitle, systemImage: type.symbol)
                                     .tag(type)
                             }
                         } label: {
-                            Text(model.timesheetBusType.localizedTitle)
+                            Text(model.busType.localizedTitle)
                         }
                     }
                     
@@ -112,7 +112,7 @@ struct TimetableView: View {
     }
     
     func updateTimesheet() {
-        model.timetable = switch model.timesheetBus {
+        model.timetable = switch model.busLineType {
         case .schoolBus(_):
             timetableManager.schoolBusOmiya
         case .schoolBusIwatsuki(_):
@@ -126,7 +126,7 @@ struct TimetableView: View {
     var horizontalTimetable: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 16, pinnedViews: .sectionHeaders) {
-                ForEach(model.timesheetBusType.cases, id: \.self) { bus in
+                ForEach(model.busType.cases, id: \.self) { bus in
                     TimetableContentView(
                         table: model.timetable?.getTable(for: model.date),
                         for: bus,

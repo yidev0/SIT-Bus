@@ -41,7 +41,7 @@ struct TimetableContentView: View {
                         case false:
                             Text("Detail.SchoolBusIwatsukiSaturday")
                         }
-                    case .shuttleBus(let type):
+                    case .shuttleBus:
                         EmptyView()
                     }
                     

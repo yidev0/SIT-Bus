@@ -23,8 +23,25 @@ class TimetableViewModel {
     var isActive = false
     
     /// for iPhone
-    var timesheetBus: BusLineType = .schoolBus(.stationToCampus)
+    var busLineType: BusLineType {
+        didSet {
+            UserDefaults.standard.set(busLineType.rawValue, forKey: UserDefaultsKeys.timetableBus)
+        }
+    }
     /// For iPad
-    var timesheetBusType: BusType = .schoolOmiya
+    var busType: BusType {
+        didSet {
+            UserDefaults.standard.set(busType.rawValue, forKey: UserDefaultsKeys.timetableBusType)
+        }
+    }
     
+    init() {
+        let userDefaults = UserDefaults.standard
+        
+        let busKey = userDefaults.string(forKey: UserDefaultsKeys.timetableBus)
+        self.busLineType = .init(name: busKey ?? "") ?? .schoolBus(.stationToCampus)
+        
+        let busTypeKey = userDefaults.string(forKey: UserDefaultsKeys.timetableBusType)
+        self.busType = .init(rawValue: busTypeKey ?? "") ?? .schoolOmiya
+    }
 }
