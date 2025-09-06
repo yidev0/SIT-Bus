@@ -71,6 +71,10 @@ struct TimetableContentView: View {
         text: String,
         values: [BusTimetable.Table.Value]
     ) -> some View {
+        if let note = values.first(where: { $0.note != nil })?.note {
+            note.makeText()
+        }
+        
         HStack(spacing: 0) {
             if #available(iOS 26.0, *) {
                 TimetableHeader(
@@ -112,10 +116,6 @@ struct TimetableContentView: View {
             .padding(4)
         }
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 8))
-        
-        if let note = values.first(where: { $0.note != nil })?.note {
-            note.makeText()
-        }
     }
 }
 

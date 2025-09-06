@@ -22,18 +22,13 @@ struct TimetableView: View {
             ZStack {
                 switch horizontalSizeClass {
                 case .regular:
-                    switch model.busType {
-                    case .schoolOmiya, .schoolIwatsuki:
-                        if model.isActive {
-                            horizontalTimetable
-                        } else {
-                            ContentUnavailableView(
-                                "Label.NoBuses",
-                                systemImage: "exclamationmark.triangle.fill"
-                            )
-                        }
-                    case .shuttle:
+                    if model.isActive {
                         horizontalTimetable
+                    } else {
+                        ContentUnavailableView(
+                            "Label.NoBuses",
+                            systemImage: "exclamationmark.triangle.fill"
+                        )
                     }
                 default:
                     TimetableContentView(

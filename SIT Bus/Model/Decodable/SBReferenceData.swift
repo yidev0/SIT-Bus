@@ -87,6 +87,9 @@ struct SBReferenceData: Decodable, Equatable {
                     } else if note == "適時運行" {
                         lastNote = "\(hour):00"
                         note = nil
+                    } else if note == nil, lastNote != nil {
+                        note = lastNote
+                        lastNote = nil
                     } else {
                         lastNote = nil
                     }
@@ -112,19 +115,18 @@ struct SBReferenceData: Decodable, Equatable {
                 }
                 // Output values
                 for minute in times {
-                    var note: BusTimetable.Table.Value.Note? = nil
+                    var valueNote: BusTimetable.Table.Value.Note? = nil
                     if let time = dateRange?.until, time.getSum() < hour * 60 + minute {
-                        note = dateRange
+                        valueNote = dateRange
+                        dateRange = nil
+                    } else if let time = dateRange?.from, time.getSum() > hour * 60 + minute {
+                        lastNote = note
                         dateRange = nil
                     }
-//                    } else if let time = dateRange?.from, time.getSum() > hour * 60 + minute {
-//                        note = dateRange
-//                        dateRange = nil
-//                    }
                     
                     result.append(BusTimetable.Table.Value(
                         time: .init(hour: hour, minute: minute),
-                        note: note
+                        note: valueNote
                     ))
                 }
             }
@@ -134,8 +136,8 @@ struct SBReferenceData: Decodable, Equatable {
         let tables: [BusTimetable.Table] = timesheet.map { sheet in
             BusTimetable.Table(
                 name: sheet.title,
-                destination1: parseDestination({ $0.campus }, sheet: sheet),
-                destination2: parseDestination({ $0.station }, sheet: sheet)
+                destination1: parseDestination({ $0.station }, sheet: sheet),
+                destination2: parseDestination({ $0.campus }, sheet: sheet)
             )
         }
         
