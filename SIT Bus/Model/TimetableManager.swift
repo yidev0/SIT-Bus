@@ -106,7 +106,7 @@ class TimetableManager {
         }
     }
     
-    public func loadData(forceFetch: Bool = false) async {
+    func loadData(forceFetch: Bool = false) async {
         let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
         lastUpdatedDate = Date(timeIntervalSince1970: lastUpdate)
         
@@ -164,7 +164,7 @@ class TimetableManager {
     
     /// Starts a background task that continuously updates all bus states.
     @MainActor
-    public func startBusStateUpdates() async {
+    func startBusStateUpdates() async {
         // Cancel existing task if any
         busStateUpdateTask?.cancel()
         

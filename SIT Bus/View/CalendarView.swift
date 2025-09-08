@@ -10,9 +10,6 @@ import SwiftUI
 
 struct CalendarView<DateView: View>: View {
     
-    @Environment(\.dynamicTypeSize)
-    var dynamicTypeSize
-    
     @Environment(\.calendar)
     var calendar
     

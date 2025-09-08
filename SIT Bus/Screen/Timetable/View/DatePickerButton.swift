@@ -9,11 +9,8 @@ import SwiftUI
 
 struct DatePickerButton: View {
     
-    @Environment(\.calendar) var calendar
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    
-    @ScaledMetric(wrappedValue: 70, relativeTo: .largeTitle)
-    var header
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
     
     @State var showPicker = false
     @State var showFullScreenPicker = false
@@ -22,7 +19,6 @@ struct DatePickerButton: View {
     var busCalendar: [BusTimetable.Calendar]?
     
     var activeDatesByMonth: [[Date]]
-    var activeMonths: [Date]
     
     init(
         selectedDate: Binding<Date>,
@@ -30,7 +26,6 @@ struct DatePickerButton: View {
     ) {
         self._selectedDate = selectedDate
         self.activeDatesByMonth = activeDates
-        self.activeMonths = activeDates.compactMap { $0.first }
     }
     
     var body: some View {

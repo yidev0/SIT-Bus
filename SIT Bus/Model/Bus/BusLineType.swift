@@ -205,32 +205,6 @@ enum BusLineType: Hashable {
         }
     }
     
-    var localizedResourceTitle: LocalizedStringResource {
-        return switch self {
-        case .schoolBus(let bus):
-            switch bus {
-            case .stationToCampus:
-                "Label.CampusToOmiyaStation"
-            case .campusToStation:
-                "Label.OmiyaStationToCampus"
-            }
-        case .shuttleBus(let bus):
-            switch bus {
-            case .toToyosu:
-                "Label.OmiyaToToyosu"
-            case .toOmiya:
-                "Label.ToyosuToOmiya"
-            }
-        case .schoolBusIwatsuki(let bus):
-            switch bus {
-            case .campusToStation:
-                "Label.CampusToIwatsukiStation"
-            case .stationToCampus:
-                "Label.IwatsukiStationToCampus"
-            }
-        }
-    }
-    
     var localizedShortTitle: LocalizedStringKey {
         switch self {
         case .schoolBus(let schoolBus):

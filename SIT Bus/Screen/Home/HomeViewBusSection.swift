@@ -9,13 +9,20 @@ import SwiftUI
 
 struct HomeViewBusSection: View {
     
-    @Environment(\.horizontalSizeClass) var sizeClass
-    @Environment(HomeViewModel.self) private var model
-    @Environment(TimetableManager.self) private var timetableManager
+    @Environment(\.horizontalSizeClass)
+    var sizeClass
     
-    @AppStorage("Show.SchoolBus") var showSchoolBus: Bool = true
-    @AppStorage("Show.SchoolBusIwatsuki") var showSchoolBusIwatsuki: Bool = false
-    @AppStorage("Show.ShuttleBus") var showShuttleBus: Bool = true
+    @Environment(TimetableManager.self)
+    private var timetableManager
+    
+    @AppStorage("Show.SchoolBus")
+    var showSchoolBus: Bool = true
+    
+    @AppStorage("Show.SchoolBusIwatsuki")
+    var showSchoolBusIwatsuki: Bool = false
+    
+    @AppStorage("Show.ShuttleBus")
+    var showShuttleBus: Bool = true
     
     var body: some View {
         VStack(

@@ -46,26 +46,6 @@ extension Date {
         return calendar.component(component, from: self)
     }
     
-    public func getMonthText() -> String {
-        let calendar = Calendar.current
-        let months = calendar.monthSymbols
-        return months[calendar.component(.month, from: self) - 1]
-    }
-    
-    public func getShortMonthText() -> String {
-        let calendar = Calendar.current
-        let months = calendar.shortMonthSymbols
-        return months[calendar.component(.month, from: self) - 1]
-    }
-    
-    var keyYearMonth: String {
-        return "\(get(.year)).\(getMonthText())"
-    }
-    
-    public func convertToMinutes() -> Int {
-        self.get(.hour) * 60 + self.get(.minute)
-    }
-    
     func calendarRows() -> Int {
         let calendar = Calendar.current
         guard let range = calendar.range(of: .day, in: .month, for: self) else {

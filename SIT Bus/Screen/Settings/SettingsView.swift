@@ -20,11 +20,7 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
     var saveCoopSchedule: Bool = true
     
-    @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
-    var debugDateStore: Double = 0
-    
     @State var model = SettingsViewModel()
-    @State var debugDate: Date = Date.now
     
     var body: some View {
         @Bindable var timetableManager = timetableManager

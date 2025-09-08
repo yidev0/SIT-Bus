@@ -45,13 +45,6 @@ struct SchoolBusListView: View {
         }
     }
     
-    private func formatHour(hour: Int) -> Date? {
-        var components = DateComponents()
-        components.hour = hour
-        let calendar = Calendar.current
-        return calendar.date(from: components)
-    }
-    
 }
 
 #Preview {
