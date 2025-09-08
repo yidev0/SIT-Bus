@@ -50,11 +50,18 @@ struct TimetableView: View {
             .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
-            .onChange(of: model.busLineType) { _, _ in
-                updateTimesheet()
+            .onChange(of: model.busLineType) { _, newValue in
+                updateTimesheet(for: newValue.busType)
+            }
+            .onChange(of: model.busType) { _, newValue in
+                updateTimesheet(for: newValue)
             }
             .onChange(of: model.date) { _, _ in
-                updateTimesheet()
+                if horizontalSizeClass == .regular {
+                    updateTimesheet(for: model.busType)
+                } else {
+                    updateTimesheet(for: model.busLineType.busType)
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -102,17 +109,21 @@ struct TimetableView: View {
         }
         .environment(model)
         .onAppear {
-            updateTimesheet()
+            if horizontalSizeClass == .regular {
+                updateTimesheet(for: model.busType)
+            } else {
+                updateTimesheet(for: model.busLineType.busType)
+            }
         }
     }
     
-    func updateTimesheet() {
-        model.timetable = switch model.busLineType {
-        case .schoolBus(_):
+    func updateTimesheet(for type: BusType) {
+        model.timetable = switch type {
+        case .schoolOmiya:
             timetableManager.schoolBusOmiya
-        case .schoolBusIwatsuki(_):
+        case .schoolIwatsuki:
             timetableManager.schoolBusIwatsuki
-        case .shuttleBus(_):
+        case .shuttle:
             timetableManager.shuttleBus
         }
     }

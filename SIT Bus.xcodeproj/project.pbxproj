@@ -92,7 +92,6 @@
 				Model/BusDataFetcherError.swift,
 				Model/CalendarType.swift,
 				Model/Data/BusTimetable.swift,
-				Model/Data/ShuttleBusData.swift,
 				Model/Data/SITBusActivityAttributes.swift,
 				Model/Decodable/SBCalendar.swift,
 				Model/Decodable/SBReferenceData.swift,
