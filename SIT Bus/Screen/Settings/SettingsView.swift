@@ -20,11 +20,7 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
     var saveCoopSchedule: Bool = true
     
-    @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
-    var debugDateStore: Double = 0
-    
     @State var model = SettingsViewModel()
-    @State var debugDate: Date = Date.now
     
     var body: some View {
         @Bindable var timetableManager = timetableManager
@@ -125,45 +121,6 @@ struct SettingsView: View {
                         }
                     }
                 }
-                
-#if DEBUG
-                Section {
-                    Picker(selection: $timetableManager.error) {
-                        ForEach(BusDataFetcherError.allCases, id: \.self) { error in
-                            Text(error.errorDescription!)
-                                .tag(error)
-                        }
-                    } label: {
-                        Text(verbatim: "Error Type")
-                    }
-
-                    Button {
-                        timetableManager.showAlert = true
-                    } label: {
-                        Text(verbatim: "Show Error")
-                    }
-                    
-                    DatePicker(selection: $debugDate, displayedComponents: [.date, .hourAndMinute]) {
-                        Text(verbatim: "Date")
-                    }
-                    .datePickerStyle(.graphical)
-                    .listRowInsets(.init(top: 0,leading: 16,bottom: 0,trailing: 16))
-                    .onChange(of: debugDate) { _, newValue in
-                        debugDateStore = newValue.timeIntervalSince1970
-                    }
-                    .contextMenu {
-                        Button(role: .destructive) {
-                            debugDate = Date(timeIntervalSince1970: 0)
-                            debugDateStore = 0
-                        } label: {
-                            Text(verbatim: "Reset")
-                        }
-                    }
-                } header: {
-                    Text(verbatim: "DEBUG")
-                }
-#endif
-                
             }
             .navigationTitle("Label.Settings")
             .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)

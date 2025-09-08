@@ -10,9 +10,10 @@ import SwiftUI
 struct BusPickerView: View {
     
     @Binding var selectedBus: BusLineType
+    var glassPadding = false
     
     var body: some View {
-        Menu(selectedBus.localizedShortTitle) {
+        Menu {
             ForEach(BusType.allCases, id: \.rawValue) { bus in
                 Section(bus.localizedTitle) {
                     Picker(bus.localizedTitle, selection: $selectedBus) {
@@ -29,6 +30,10 @@ struct BusPickerView: View {
                     }
                 }
             }
+        } label: {
+            Text(selectedBus.localizedShortTitle)
+                .padding(.horizontal, glassPadding ? 10 : 0)
+                .padding(.vertical, glassPadding ? 4 : 0)
         }
         .labelsVisibility(.visible)
     }

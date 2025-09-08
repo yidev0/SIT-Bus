@@ -9,32 +9,23 @@ import SwiftUI
 
 struct DatePickerButton: View {
     
-    @Environment(\.calendar) var calendar
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
     
-    @ScaledMetric(wrappedValue: 70, relativeTo: .largeTitle)
-    var header
+    @State var showPicker = false
+    @State var showFullScreenPicker = false
     
     @Binding var selectedDate: Date
-    @Binding var showPicker: Bool
-    @Binding var showFullScreenPicker: Bool
+    var busCalendar: [BusTimetable.Calendar]?
     
-    var activeDates: [Date]
-    var activeMonths: [Date]
+    var activeDatesByMonth: [[Date]]
     
     init(
         selectedDate: Binding<Date>,
-        showPicker: Binding<Bool>,
-        showFullPicker: Binding<Bool>,
         activeDates: [[Date]]
     ) {
         self._selectedDate = selectedDate
-        self._showPicker = showPicker
-        self._showFullScreenPicker = showFullPicker
-        
-        self.activeDates = activeDates.flatMap { $0 }
-        
-        self.activeMonths = activeDates.compactMap { $0.first }
+        self.activeDatesByMonth = activeDates
     }
     
     var body: some View {
@@ -48,98 +39,62 @@ struct DatePickerButton: View {
             Text(selectedDate, format: .dateTime.day().month().weekday())
         }
         .popover(isPresented: $showPicker, arrowEdge: .bottom) {
-            CalendarView(
-                selectedDate: $selectedDate,
-                activeMonths: activeMonths
-            ) { date in
-                makeCalendarCell(for: date)
-            }
+            TimetableCalendarView(
+                date: $selectedDate,
+                activeDates: activeDatesByMonth
+            )
             .padding(.vertical, 12)
             .padding(.horizontal, 8)
-            .frame(
-                width: 320,
-                height: CGFloat(header) + (activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) * 54
-            )
             .presentationCompactAdaptation(.popover)
             .presentationBackground(.thickMaterial)
         }
+        .fullScreenCover(isPresented: $showFullScreenPicker) {
+            TimetableFullDatePickerView(
+                date: $selectedDate,
+                calendar: busCalendar,
+                range: makeRangeForSheet(activeMonths: activeDatesByMonth)
+            )
+        }
     }
     
-    @ViewBuilder
-    func makeCalendarCell(for date: Date) -> some View {
-        let isActive = activeDates.contains(date)
-        
-        VStack(spacing: 2) {
-            Button {
-                if isActive {
-                    selectedDate = date
-                }
-            } label: {
-                ZStack {
-                    if Calendar.current.isDate(selectedDate, inSameDayAs: date) {
-                        Circle()
-                            .foregroundStyle(.tint.secondary)
-                    } else if Calendar.current.isDate(.now, inSameDayAs: date) {
-                        Circle()
-                            .foregroundStyle(.tertiary)
-                    } else {
-                        Circle()
-                            .hidden()
-                    }
-                    
-                    Text(date.get(component: .day), format: .number)
-                        .font(.body)
-                        .fontWeight(Calendar.current.isDate(.now, inSameDayAs: date) ? .bold : .regular)
-                        .foregroundStyle(isActive ? .primary : .secondary)
-                }
-                .aspectRatio(1, contentMode: .fit)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(Text(date, format: .dateTime.weekday(.wide).month().day()))
-            .accessibilityValue(
-                Text("Label.Accessibility.NoBusService"),
-                isEnabled: !isActive
-            )
-            .accessibilityValue(
-                Text("Label.Accessibility.Today"),
-                isEnabled: calendar.isDateInToday(date)
-            )
-            .addAccessiblityTraits(for: calendar.isDate(date, inSameDayAs: selectedDate))
-            .contentShape(.rect(cornerRadius: 3.5))
+    func makeRangeForSheet(activeMonths: [[Date]]) -> ClosedRange<Date> {
+        let calendar = Calendar.current
+        if activeMonths.isEmpty {
+            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: .now))!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
             
-            if isActive {
-                Circle()
-                    .frame(height: 6)
-                    .foregroundStyle(.tint)
-            } else {
-                Circle()
-                    .frame(height: 6)
-                    .hidden()
-            }
+            return startOfMonth ... endOfMonth
+        } else if activeMonths.count == 1 {
+            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: activeMonths.first!.first!))!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+            
+            return startOfMonth ... endOfMonth
+        } else {
+            return activeMonths.first!.first! ... activeMonths.last!.last!
         }
     }
 }
 
-#Preview {
-    @Previewable @State var date = Date()
-    @Previewable @State var show = false
-    @Previewable @State var full = false
-    
-    VStack {
-        Spacer()
-        
-        DatePickerButton(
-            selectedDate: $date,
-            showPicker: $show, showFullPicker: $full,
-            activeDates: [
-                [
-                    .createDate(year: 2025, month: 2, day: 1)!
-                ],
-                [
-                    .createDate(year: 2025, month: 3, day: 1)!
-                ]
-            ]
-        )
-    }
-    .environment(\.locale, .init(identifier: "ja"))
-}
+//#Preview {
+//    @Previewable @State var date = Date()
+//    @Previewable @State var show = false
+//    @Previewable @State var full = false
+//    
+//    VStack {
+//        Spacer()
+//        
+//        DatePickerButton(
+//            selectedDate: $date,
+//            showPicker: $show, showFullPicker: $full,
+//            activeDates: [
+//                [
+//                    .createDate(year: 2025, month: 2, day: 1)!
+//                ],
+//                [
+//                    .createDate(year: 2025, month: 3, day: 1)!
+//                ]
+//            ]
+//        )
+//    }
+//    .environment(\.locale, .init(identifier: "ja"))
+//}

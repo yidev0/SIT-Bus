@@ -44,8 +44,14 @@ struct TimetableInformationView: View {
             }
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
-                Button(action: { dismiss.callAsFunction() }) {
-                    Text("Label.Close")
+                if #available(iOS 26.0, *) {
+                    Button(role: .close) {
+                        dismiss.callAsFunction()
+                    }
+                } else {
+                    Button(action: { dismiss.callAsFunction() }) {
+                        Text("Label.Close")
+                    }
                 }
             }
         }
