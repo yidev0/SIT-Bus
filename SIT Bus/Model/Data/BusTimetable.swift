@@ -155,11 +155,11 @@ class BusTimetable {
         case .type1: table.destination1
         case .type2: table.destination2
         }
-        let nowComponents = currentCalendar.dateComponents([.hour, .minute], from: date)
-        let nowMinutes = (nowComponents.hour ?? 0) * 60 + (nowComponents.minute ?? 0)
+        
+        let nowMinutes = date.get(.hour) * 60 + date.get(.minute)
         if let next = timetable.first(where: { val in
             let busMinutes = val.time.hour * 60 + val.time.minute
-            return busMinutes > nowMinutes
+            return busMinutes >= nowMinutes
         }) {
             var components = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
             components.hour = next.time.hour
