@@ -10,15 +10,18 @@ import AppIntents
 import SwiftUI
 
 struct SITBusWidgetIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = .init("Label.BusType", table: "Widget")
-    
-    @Parameter(title: .init("Label.BusType", table: "Widget"), default: .stationToCampus)
-    var busType: BusLineType.SchoolBus
+    static var title: LocalizedStringResource = "Label.Timetable"
+
+    @Parameter(
+        title: "Label.Timetable",
+        default: .schoolStationToCampus
+    )
+    var busType: IntentBusLineType
 }
 
 struct SITBusWidgetEntry: TimelineEntry {
     var date: Date
-    var lineType: BusLineType.SchoolBus
+    var lineType: BusLineType
     var nextBusState: NextBusState
 }
 
@@ -26,44 +29,43 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SITBusWidgetEntry {
         .init(
             date: .now,
-            lineType: .stationToCampus,
+            lineType: .schoolBus(.stationToCampus),
             nextBusState: .busServiceEnded
         )
     }
-    
+
     func snapshot(
         for configuration: SITBusWidgetIntent,
         in context: Context
     ) async -> SITBusWidgetEntry {
+        let line = configuration.busType.toBusLineType()
         return .init(
             date: .now,
-            lineType: configuration.busType,
+            lineType: line,
             nextBusState: .busServiceEnded
         )
     }
-    
+
     func timeline(
         for configuration: SITBusWidgetIntent,
         in context: Context
     ) async -> Timeline<SITBusWidgetEntry> {
-        let timeline: Timeline<SITBusWidgetEntry> = await makeTimeline(busType: configuration.busType)
+        let line = configuration.busType.toBusLineType()
+        let timeline: Timeline<SITBusWidgetEntry> = await makeTimeline(busType: line)
         return timeline
     }
-    
+
     func makeTimeline(
-        busType: BusLineType.SchoolBus
+        busType: BusLineType
     ) async -> Timeline<SITBusWidgetEntry> {
         let timetableloader = TimetableLoader.shared
         await timetableloader.loadTimetable()
-        
+
         var entries: [SITBusWidgetEntry] = []
         var baseTime: Date = .now
-        
-        let timetable = timetableloader.data?.makeTimetable(
-            for: busType,
-            date: baseTime
-        )
-        
+
+        let timetable = timetableloader.data?.toBusTimetable()
+
         while entries.count < 20 {
             let state = loadNextState(timetable: timetable, type: busType, baseTime: baseTime)
             entries.append(
@@ -73,7 +75,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                     nextBusState: state
                 )
             )
-            
+
             loop: switch state {
             case .nextBus(let date, _):
                 baseTime = date.addingTimeInterval(60)
@@ -83,30 +85,34 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
                 break loop
             }
         }
-        
+
         if entries.count <= 1 {
             var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: .now)!
             tomorrow = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) ?? .now
-            
+
             return .init(
                 entries: entries,
                 policy: .after(tomorrow)
             )
         }
-        
+
         return .init(entries: entries, policy: .atEnd)
     }
-    
-    private func loadNextState(timetable: SchoolBusTimetable?, type: BusLineType.SchoolBus, baseTime: Date) -> NextBusState {
-        if let nextBusDate = timetable?.getNextBus(for: baseTime) {
-            let note = timetable?.getNextBusNote(for: baseTime, nextBusDate: nextBusDate)
-            if let note, nextBusDate > note.start {
-                return .timely(start: note.start, end: note.end)
+
+    private func loadNextState(
+        timetable: BusTimetable?,
+        type: BusLineType,
+        baseTime: Date
+    ) -> NextBusState {
+        if let nextBusDate = timetable?.getNext(from: baseTime, type: type.destinationType) {
+            let note = timetable?.getNextNote(from: baseTime, type: type.destinationType)
+            if let note, nextBusDate > note.startDate {
+                return .timely(start: note.startDate, end: note.endDate)
             } else {
                 return .nextBus(date: nextBusDate, departsIn: 0)
             }
         } else {
-            if timetable == nil {
+            if timetable?.getTable(for: baseTime) == nil {
                 return .noBusService
             } else {
                 return .busServiceEnded
@@ -118,7 +124,7 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
 struct SITBusWidgetEntryView : View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.widgetFamily) var family
-    
+
     var entry: SITBusTimelineProvider.Entry
 
     var body: some View {
@@ -130,13 +136,13 @@ struct SITBusWidgetEntryView : View {
                 default:
                     Text(entry.lineType.localizedTitle)
                 }
-                
+
                 Spacer()
             }
             .fontWeight(.semibold)
-            
+
             Spacer()
-            
+
             switch entry.nextBusState {
             case .nextBus(let date, _):
                 Text("Label.NextBus", tableName: "Widget")
@@ -148,9 +154,15 @@ struct SITBusWidgetEntryView : View {
             case .timely(let start, let end):
                 Text("Label.TimelyOperation", tableName: "Widget")
                     .font(family == .systemSmall ? .footnote : .body)
-                Text("Label.\(Text(start, style: .time))to\(Text(end, style: .time))Service", tableName: "Widget")
-                    .font(family == .systemSmall ? .body : .title2)
-                    .fontWeight(family == .systemSmall ? .regular : .medium)
+                // Avoid dynamically building a localization key:
+                HStack(spacing: 4) {
+                    Text(start, style: .time)
+                    Text("Label.To", tableName: "Widget")
+                    Text(end, style: .time)
+                    Text("Label.Service", tableName: "Widget")
+                }
+                .font(family == .systemSmall ? .body : .title2)
+                .fontWeight(family == .systemSmall ? .regular : .medium)
             case .busServiceEnded:
                 Text("Label.BusServiceEnded")
                     .font(family == .systemSmall ? .body : .title)
@@ -197,25 +209,25 @@ struct SITBusWidget: Widget {
 } timeline: {
     SITBusWidgetEntry(
         date: .now,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .timely(start: .now, end: .distantFuture)
     )
-    
+
     SITBusWidgetEntry(
         date: .now,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .nextBus(date: .now, departsIn: 5)
     )
-    
+
     SITBusWidgetEntry(
         date: .distantFuture,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .noBusService
     )
-    
+
     SITBusWidgetEntry(
         date: .now,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .busServiceEnded
     )
 }
@@ -225,25 +237,25 @@ struct SITBusWidget: Widget {
 } timeline: {
     SITBusWidgetEntry(
         date: .now,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .timely(start: .now, end: .distantFuture)
     )
-    
+
     SITBusWidgetEntry(
         date: .now,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .nextBus(date: .now, departsIn: 5)
     )
-    
+
     SITBusWidgetEntry(
         date: .distantFuture,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .noBusService
     )
-    
+
     SITBusWidgetEntry(
         date: .now,
-        lineType: .stationToCampus,
+        lineType: .schoolBus(.stationToCampus),
         nextBusState: .busServiceEnded
     )
 }

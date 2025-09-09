@@ -38,7 +38,7 @@ final class SIT_BusTests: XCTestCase {
         do {
             let data = try Data(contentsOf: URL(filePath: testBundle.path(forResource: "bus_data", ofType: "json")!))
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-            print(result.getTimesheet(for: .now))
+            print(result.toBusTimetable().calendar)
         } catch {
             print(error)
             XCTFail()
@@ -52,7 +52,7 @@ final class SIT_BusTests: XCTestCase {
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
             
             let testDate = Date.createDate(year: 2024, month: 8, day: 5)!
-            let timesheet = result.getTimesheet(for: testDate)
+            let timesheet = result.toBusTimetable().getCalendar(for: testDate)
             
             let expectation = expectation(description: "Operation Date")
             if timesheet != nil {
@@ -72,7 +72,7 @@ final class SIT_BusTests: XCTestCase {
             let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
             
             let testDate = Date.createDate(year: 2024, month: 8, day: 12)!
-            let timesheet = result.getTimesheet(for: testDate)
+            let timesheet = result.toBusTimetable().getCalendar(for: testDate)
             
             let expectation = expectation(description: "Non Operation Date")
             if timesheet == nil {

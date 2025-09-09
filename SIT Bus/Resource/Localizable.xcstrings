@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "%.2f MB" : {
       "shouldTranslate" : false
     },
@@ -153,6 +150,7 @@
       }
     },
     "Detail.ShuttleToOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -169,6 +167,7 @@
       }
     },
     "Detail.ShuttleToToyosu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -352,7 +351,7 @@
         }
       }
     },
-    "Label.Accessibility.%lldTime" : {
+    "Label.Accessibility.%@Time" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -864,20 +863,7 @@
       }
     },
     "Label.LibraryServices" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "General Information"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "利用案内"
-          }
-        }
-      }
+
     },
     "Label.Loading" : {
       "localizations" : {
@@ -1137,6 +1123,7 @@
       }
     },
     "Label.Saturday" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1181,22 +1168,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
-          }
-        }
-      }
-    },
-    "Label.ScheduleType" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schedule type"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スケジュールの種類"
           }
         }
       }
@@ -1459,6 +1430,7 @@
       }
     },
     "Label.Weekday" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

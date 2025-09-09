@@ -50,8 +50,6 @@ fileprivate enum LinkType: Int, CaseIterable {
 
 struct HomeViewLinkSection: View {
     
-    @Environment(HomeViewModel.self) private var model
-    
     var body: some View {
         Section {
             VStack(spacing: 8) {
@@ -89,12 +87,10 @@ struct HomeViewLinkSection: View {
 }
 
 #Preview {
-    @Previewable @State var model = HomeViewModel()
     
     NavigationStack {
         ScrollView {
             HomeViewLinkSection()
-                .environment(model)
         }
         .backgroundStyle(Color(.systemGroupedBackground))
     }

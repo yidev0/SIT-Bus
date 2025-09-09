@@ -10,9 +10,6 @@ import SwiftUI
 
 struct CalendarView<DateView: View>: View {
     
-    @Environment(\.dynamicTypeSize)
-    var dynamicTypeSize
-    
     @Environment(\.calendar)
     var calendar
     
@@ -36,11 +33,11 @@ struct CalendarView<DateView: View>: View {
         
         self.content = content
         
-        self.selectedMonth = selectedDate.wrappedValue.get(component: .month)
+        self.selectedMonth = selectedDate.wrappedValue.get(.month)
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(calendar.standaloneMonthSymbols[selectedMonth - 1])
                 .font(.headline)
                 .padding(.horizontal, 8)
@@ -64,7 +61,7 @@ struct CalendarView<DateView: View>: View {
             
             TabView(selection: $selectedMonth) {
                 ForEach(activeMonths, id: \.self) { month in
-                    Tab(value: month.get(component: .month)) {
+                    Tab(value: month.get(.month)) {
                         VStack {
                             LazyVGrid(
                                 columns: .init(
@@ -94,7 +91,7 @@ struct CalendarView<DateView: View>: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
-        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
     }
     
     private func makeDates(for month: Date) -> [Date] {

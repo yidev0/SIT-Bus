@@ -16,9 +16,29 @@ protocol BusLine: Codable, Hashable {
 }
 
 enum BusLineType: Hashable {
+    
     case schoolBus(SchoolBus)
     case schoolBusIwatsuki(SchoolBusIwatsuki)
     case shuttleBus(ShuttleBus)
+    
+    init?(name: String) {
+        switch name {
+        case "CampusToOmiyaStation":
+            self = .schoolBus(.campusToStation)
+        case "OmiyaStationToCampus":
+            self = .schoolBus(.stationToCampus)
+        case "OmiyaToToyosu":
+            self = .shuttleBus(.toToyosu)
+        case "ToyosuToOmiya":
+            self = .shuttleBus(.toOmiya)
+        case "CampusToIwatsukiStation":
+            self = .schoolBusIwatsuki(.campusToStation)
+        case "IwatsukiStationToCampus":
+            self = .schoolBusIwatsuki(.stationToCampus)
+        default:
+            return nil
+        }
+    }
     
     var busType: BusType {
         switch self {
@@ -31,11 +51,37 @@ enum BusLineType: Hashable {
         }
     }
     
+    var destinationType: BusTimetable.DestinationType {
+        switch self {
+        case .schoolBus(let bus):
+            switch bus {
+            case .stationToCampus:
+                    .type1
+            case .campusToStation:
+                    .type2
+            }
+        case .schoolBusIwatsuki(let bus):
+            switch bus {
+            case .stationToCampus:
+                    .type1
+            case .campusToStation:
+                    .type2
+            }
+        case .shuttleBus(let bus):
+            switch bus {
+            case .toToyosu:
+                    .type1
+            case .toOmiya:
+                    .type2
+            }
+        }
+    }
+    
     enum SchoolBus: String, CaseIterable, BusLine, AppEnum {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
         
-        static var allCases: [BusLineType.SchoolBus] = [
+        static let allCases: [BusLineType.SchoolBus] = [
             .stationToCampus, .campusToStation,
         ]
         
@@ -80,7 +126,7 @@ enum BusLineType: Hashable {
         case stationToCampus = "IwatsukiStationToCampus"
         case campusToStation = "CampusToIwatsukiStation"
         
-        static var allCases: [BusLineType.SchoolBusIwatsuki] = [
+        static let allCases: [BusLineType.SchoolBusIwatsuki] = [
             .stationToCampus, .campusToStation,
         ]
         
@@ -116,7 +162,7 @@ enum BusLineType: Hashable {
         case toToyosu = "OmiyaToToyosu"
         case toOmiya = "ToyosuToOmiya"
         
-        static var allCases: [BusLineType.ShuttleBus] = [
+        static let allCases: [BusLineType.ShuttleBus] = [
             .toToyosu, .toOmiya
         ]
         
@@ -167,6 +213,17 @@ enum BusLineType: Hashable {
             shuttleBus.localizedShortTitle
         case .schoolBusIwatsuki(let schoolBus):
             schoolBus.localizedShortTitle
+        }
+    }
+    
+    var rawValue: String {
+        switch self {
+        case .schoolBus(let bus):
+            bus.rawValue
+        case .schoolBusIwatsuki(let bus):
+            bus.rawValue
+        case .shuttleBus(let bus):
+            bus.rawValue
         }
     }
     
