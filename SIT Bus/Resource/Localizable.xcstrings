@@ -58,13 +58,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. The app is not liable for any issues or damages resulting from the use of the displayed information."
+            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Sources for other bus may change in a future update, and can be seen in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本アプリのバス情報は、以下の情報源に基づいて提供されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
+            "value" : "本アプリのバス情報は、以下の情報源に基づいて提供されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスのソースは今後のアップデートで変更される可能性があります。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
           }
         }
       }
@@ -74,13 +74,61 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \nOne bus, with 100th anniversary design wrapping, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
+            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \n100th anniversary design wrapped bus, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "運行しているほとんどのバスが車椅子対応（スロープ・運転手による補助）をしています。\n創立100周年記念ラッピングしている1台は車椅子で乗車できません。\n運行時間は大宮キャンパスの管理課にお問い合わせください。"
+            "value" : "創立100周年記念ラッピングのバス以外、全てのバスが車椅子対応をしています。乗車時にサポートが必要な方は運転手にお声がけください。\n各車両の運行時間は大宮キャンパスの管理課にお問い合わせください。"
+          }
+        }
+      }
+    },
+    "Detail.FeatureNextBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check when the next bus departs at a glance."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のバスがいつ出発するか一目で確認することができます"
+          }
+        }
+      }
+    },
+    "Detail.FeatureTimetable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See all timetables of buses, and operation dates."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのバスの時刻表と運行日の一覧を見ることができます"
+          }
+        }
+      }
+    },
+    "Detail.FeatureWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place widgets on your home screen to check the departure time of the next bus."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム画面から次のバスの発車時刻を確認できます"
           }
         }
       }
@@ -129,40 +177,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "オープンキャンパス、父母懇談会、共通テスト、入試、夏季冬季一斉休暇**以外**運行"
-          }
-        }
-      }
-    },
-    "Detail.ShuttleToOmiya" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monday & Wednesday 5:05 PM departure\nFriday 3:15 PM departure"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月曜・水曜 17:05発\n金曜 15:15発"
-          }
-        }
-      }
-    },
-    "Detail.ShuttleToToyosu" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1:00 PM departure "
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月曜・水曜・金曜 13:00発"
           }
         }
       }
@@ -400,6 +414,7 @@
       }
     },
     "Label.AutoUpdateSource" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -523,6 +538,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "Label.Continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
           }
         }
       }
@@ -675,6 +706,22 @@
         }
       }
     },
+    "Label.Disclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disclaimer "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用にあたり注意事項"
+          }
+        }
+      }
+    },
     "Label.Edit" : {
       "localizations" : {
         "en" : {
@@ -687,6 +734,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "編集"
+          }
+        }
+      }
+    },
+    "Label.FeatureNextBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Bus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のバス"
+          }
+        }
+      }
+    },
+    "Label.FeatureTimetable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timetable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時刻表"
+          }
+        }
+      }
+    },
+    "Label.FeatureWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウィジェット"
           }
         }
       }
@@ -835,9 +930,6 @@
           }
         }
       }
-    },
-    "Label.LibraryServices" : {
-
     },
     "Label.Loading" : {
       "localizations" : {
