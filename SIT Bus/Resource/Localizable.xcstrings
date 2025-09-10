@@ -133,6 +133,22 @@
         }
       }
     },
+    "Detail.IncludeDeviceInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device info will be used to identify issues mentioned in your feedback."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス情報はフィードバックの問題を解決または発見することに利用されます"
+          }
+        }
+      }
+    },
     "Detail.SchoolBusIwatsuki" : {
       "localizations" : {
         "en" : {
@@ -911,6 +927,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ホーム"
+          }
+        }
+      }
+    },
+    "Label.IncludeDeviceInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include Device Info"
           }
         }
       }
