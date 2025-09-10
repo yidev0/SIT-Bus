@@ -20,11 +20,11 @@ struct BusPickerView: View {
                         ForEach(bus.cases, id: \.self) { type in
                             switch bus {
                             case .schoolOmiya:
-                                Label(type.localizedShortTitle, systemImage: "bus.fill")
+                                Label(type.localizedShortTitle, systemImage: type.symbol)
                             case .schoolIwatsuki:
-                                Label(type.localizedShortTitle, systemImage: "bus")
+                                Label(type.localizedShortTitle, systemImage: type.symbol)
                             case .shuttle:
-                                Label(type.localizedShortTitle, systemImage: "app.connected.to.app.below.fill")
+                                Label(type.localizedShortTitle, systemImage: type.symbol)
                             }
                         }
                     }

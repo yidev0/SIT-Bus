@@ -358,26 +358,13 @@ extension BusTimetable {
         calendar: [.init(date: .now, tableName: "")],
         tables: [.init(
             name: "",
-            destination1: [
-                .init(time: .init(hour: 8, minute: 0)),
-                .init(time: .init(hour: 8, minute: 12)),
-                .init(time: .init(hour: 8, minute: 24)),
-                .init(time: .init(hour: 8, minute: 36)),
-                .init(time: .init(hour: 8, minute: 48)),
-                .init(time: .init(hour: 10, minute: 18)),
-                .init(time: .init(hour: 10, minute: 36)),
-                .init(time: .init(hour: 10, minute: 54)),
-                .init(time: .init(hour: 18, minute: 2)),
-                .init(time: .init(hour: 18, minute: 4)),
-                .init(time: .init(hour: 18, minute: 6)),
-                .init(time: .init(hour: 18, minute: 8)),
-                .init(time: .init(hour: 18, minute: 10)),
-                .init(time: .init(hour: 18, minute: 12)),
-                .init(time: .init(hour: 18, minute: 14)),
-                .init(time: .init(hour: 18, minute: 16)),
-                .init(time: .init(hour: 18, minute: 18)),
-                .init(time: .init(hour: 18, minute: 20)),
-            ],
+            destination1: (6...23).flatMap { value in
+                [
+                    .init(time: .init(hour: value, minute: value)),
+                    .init(time: .init(hour: value, minute: value + 10)),
+                    .init(time: .init(hour: value, minute: value + 20))
+                ]
+            },
             destination2: []
         )],
         lastUpdated: nil,

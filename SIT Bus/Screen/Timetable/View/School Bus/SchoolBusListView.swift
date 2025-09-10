@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SchoolBusListView: View {
     
-    @State var scrollPosition: Int?
     var timetable: [Int: [BusTimetable.Table.Value]]?
     
     init(table: BusTimetable.Table?, for type: BusTimetable.DestinationType) {
@@ -18,24 +17,11 @@ struct SchoolBusListView: View {
     
     var body: some View {
         if let timetable {
-            List {
-                ForEach(timetable.keys.sorted(), id: \.self) { hour in
-                    Section {
-                        ForEach(timetable[hour] ?? [], id: \.self) { value in
-                            if let note = value.note {
-                                note.makeText()
-                            }
-                            Text(value.time.toDate(), style: .time)
-                                .monospacedDigit()
-                        }
-                    } header: {
-                        Text(hour, format: .number)
-                    }
-                }
-            }
-            .scrollPosition(id: $scrollPosition, anchor: .top)
-            .onAppear {
-                self.scrollPosition = Date.now.get(.hour)
+            if #available(iOS 26.0, *) {
+                makeList(for: timetable)
+                    .listSectionIndexVisibility(.visible)
+            } else {
+                makeList(for: timetable)
             }
         } else {
             ContentUnavailableView(
@@ -45,6 +31,42 @@ struct SchoolBusListView: View {
         }
     }
     
+    func makeList(for timetable: [Int: [BusTimetable.Table.Value]]) -> some View {
+        ScrollViewReader { proxy in
+            List {
+                ForEach(timetable.keys.sorted(), id: \.self) { hour in
+                    if #available(iOS 26.0, *) {
+                        makeSection(for: timetable, hour: hour)
+                            .sectionIndexLabel("\(hour)")
+                    } else {
+                        makeSection(for: timetable, hour: hour)
+                    }
+                }
+            }
+            .onAppear {
+                proxy.scrollTo(Date.now.get(.hour), anchor: .top)
+            }
+        }
+    }
+    
+    func makeSection(
+        for timetable: [Int: [BusTimetable.Table.Value]],
+        hour: Int
+    ) -> some View {
+        Section {
+            ForEach(timetable[hour] ?? [], id: \.self) { value in
+                if let note = value.note {
+                    note.makeText()
+                        .id(note)
+                }
+                Text(value.time.toDate(), style: .time)
+                    .monospacedDigit()
+                    .id(value)
+            }
+        } header: {
+            Text(hour, format: .number)
+        }
+    }
 }
 
 #Preview {
