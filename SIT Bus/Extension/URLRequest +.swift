@@ -17,6 +17,6 @@ extension URLRequest {
     )
     
     static var festivalRequest = URLRequest(
-        url: URL(string: "https://oomiya-fes-sit.net/?utm_source=sitbusapp")!
+        url: URL(string: "https://oomiya-fes-sit.net/")!
     )
 }
