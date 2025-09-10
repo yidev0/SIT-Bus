@@ -12,7 +12,7 @@ import StoreKit
 class TimetableManager {
     
     var data: SBReferenceData? = nil
-    var lastUpdatedDate: Date = .now
+    var lastUpdatedDate: Date
     
     var showAlert = false
     var error: BusDataFetcherError? = .parseError
@@ -22,7 +22,7 @@ class TimetableManager {
             schoolBusIwatsuki = BusTimetable.schoolBusIwatsuki(basedOn: schoolBusOmiya?.calendar ?? [])
         }
     }
-    var schoolBusIwatsuki: BusTimetable = .schoolBusIwatsuki
+    var schoolBusIwatsuki: BusTimetable?
     var shuttleBus: BusTimetable = .shuttleBus
     
     var toCampusState: NextBusState = .loading
@@ -37,6 +37,9 @@ class TimetableManager {
     private var busStateUpdateTask: Task<Void, Never>? = nil
     
     init() {
+        let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
+        lastUpdatedDate = Date(timeIntervalSince1970: lastUpdate)
+        
         Task {
 #if DEBUG
             if ProcessInfo().isSwiftUIPreview {
@@ -100,16 +103,13 @@ class TimetableManager {
         case .schoolBus:
             schoolBusOmiya?.getTable(for: date)
         case .schoolBusIwatsuki:
-            schoolBusIwatsuki.getTable(for: date)
+            schoolBusIwatsuki?.getTable(for: date)
         case .shuttleBus:
             shuttleBus.getTable(for: date)
         }
     }
     
     func loadData(forceFetch: Bool = false) async {
-        let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
-        lastUpdatedDate = Date(timeIntervalSince1970: lastUpdate)
-        
         let dataFetcher = BusDataFetcher()
         Task {
             let fetch = Calendar.current.isDateInToday(lastUpdatedDate) == false || forceFetch
@@ -122,7 +122,7 @@ class TimetableManager {
                     self.schoolBusOmiya = success.toBusTimetable()
                     self.lastUpdatedDate = Date.now
                     
-                    if fetch, lastUpdate != 0 {
+                    if fetch, UserDefaults.shared.value(forKey: UserDefaultsKeys.lastUpdateDate) != nil {
                         await requestReview()
                     }
                     
@@ -212,8 +212,13 @@ class TimetableManager {
         }
         
         // Iwatsuki (always available timetable object)
-        toCampusStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type1, now: now)
-        toStationStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type2, now: now)
+        if let schoolBusIwatsuki {
+            toCampusStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type1, now: now)
+            toStationStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type2, now: now)
+        } else {
+            toCampusStateIwatsuki = .loading
+            toStationStateIwatsuki = .loading
+        }
         
         toToyosuState = computeNextState(timetable: shuttleBus, type: .type1, now: now)
         toOmiyaState = computeNextState(timetable: shuttleBus, type: .type2, now: now)

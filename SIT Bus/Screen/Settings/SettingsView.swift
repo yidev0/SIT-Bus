@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @Environment(TimetableManager.self) private var timetableManager
+    @Environment(TimetableManager.self)
+    private var timetableManager
     
     @AppStorage(UserDefaultsKeys.openLinkInApp)
     var openLinkInApp: Bool = true
@@ -103,13 +104,15 @@ struct SettingsView: View {
                     } label: {
                         Label("Label.Credits", systemImage: "scroll")
                     }
+                }
                 
-                    NavigationLink {
-                        SettingsSourcesView(
-                            lastUpdatedDate: timetableManager.lastUpdatedDate
+                Section("Label.InfoSource") {
+                    LinkButton("http://bus.shibaura-it.ac.jp/db/bus_data.json") {
+                        SettingsSourceLabel(
+                            label: "Label.SchoolBusOmiya",
+                            date: timetableManager.lastUpdatedDate,
+                            format: .dateTime.year().month().day().hour().minute()
                         )
-                    } label: {
-                        Label("Label.InfoSource", systemImage: "chevron.left.forwardslash.chevron.right")
                     }
                     .contextMenu {
                         Button(role: .destructive) {
@@ -119,6 +122,22 @@ struct SettingsView: View {
                         } label: {
                             Text("Label.ForceFetch")
                         }
+                    }
+                    
+                    LinkButton("https://www.shibaura-it.ac.jp/assets/zikokuhyou.pdf") {
+                        SettingsSourceLabel(
+                            label: "Label.SchoolBusIwatsuki",
+                            date: timetableManager.schoolBusIwatsuki?.lastUpdated,
+                            format: .dateTime.year().month().day()
+                        )
+                    }
+                    
+                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
+                        SettingsSourceLabel(
+                            label: "Label.ShuttleBus",
+                            date: BusTimetable.shuttleBus.lastUpdated!,
+                            format: .dateTime.year().month().day()
+                        )
                     }
                 }
             }

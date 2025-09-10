@@ -13,15 +13,18 @@ class BusTimetable {
     let calendar: [Calendar]
     let tables: [Table]
     let lastUpdated: Date?
+    let source: URL
     
     init(
         calendar: [Calendar],
         tables: [Table],
-        lastUpdated: Date?
+        lastUpdated: Date?,
+        source: URL
     ) {
         self.calendar = calendar
         self.tables = tables
         self.lastUpdated = lastUpdated
+        self.source = source
     }
     
     struct Calendar {
@@ -230,18 +233,20 @@ extension BusTimetable {
     static func schoolBusIwatsuki(basedOn calendar: [BusTimetable.Calendar]) -> BusTimetable {
         return .init(
             calendar: calendar.compactMap { calendar in
-                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
-                    return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "Weekday" : "Weekend")
+                if calendar.date < .createDate(year: 2025, month: 9, day: 27)! {
+                    return Calendar(date: calendar.date, tableName: "平日(-9/26)")
+                } else if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
+                    return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "平日(授業日)" : "土曜日")
                 } else if calendar.date.isWeekday {
-                    return Calendar(date: calendar.date, tableName: "Weekday")
+                    return Calendar(date: calendar.date, tableName: "平日(休講期間)")
                 } else if calendar.tableName.contains("大宮祭") {
-                    return Calendar(date: calendar.date, tableName: "Weekend")
+                    return Calendar(date: calendar.date, tableName: "土曜日")
                 }
                 return nil
             },
             tables: [
                 .init(
-                    name: "Weekday",
+                    name: "平日(-9/26)",
                     destination1: [
                         .init(time: .init(hour: 7, minute: 45)),
                         .init(time: .init(hour: 8, minute: 25)),
@@ -268,30 +273,84 @@ extension BusTimetable {
                     ]
                 ),
                 .init(
-                    name: "Weekend",
+                    name: "平日(授業日)",
+                    destination1: [
+                        .init(time: .init(hour: 7, minute: 45)),
+                        .init(time: .init(hour: 8, minute: 25)),
+                        .init(time: .init(hour: 9, minute: 5)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 45)),
+                        .init(time: .init(hour: 13, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 05)),
+                        .init(time: .init(hour: 17, minute: 30)),
+                        .init(time: .init(hour: 19, minute: 5)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 8, minute: 5)),
+                        .init(time: .init(hour: 8, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 5)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 0)),
+                        .init(time: .init(hour: 15, minute: 20)),
+                        .init(time: .init(hour: 15, minute: 50)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                        .init(time: .init(hour: 19, minute: 20)),
+                    ]
+                ),
+                .init(
+                    name: "土曜日",
+                    destination1: [
+                        .init(time: .init(hour: 08, minute: 25)),
+                        .init(time: .init(hour: 09, minute: 05)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 45)),
+                        .init(time: .init(hour: 13, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 05)),
+                        .init(time: .init(hour: 17, minute: 30)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 08, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 00)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 00)),
+                        .init(time: .init(hour: 15, minute: 20)),
+                        .init(time: .init(hour: 15, minute: 50)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                    ]
+                ),
+                .init(
+                    name: "平日(休講期間)",
                     destination1: [
                         .init(time: .init(hour: 8, minute: 25)),
                         .init(time: .init(hour: 9, minute: 5)),
                         .init(time: .init(hour: 10, minute: 20)),
-                        .init(time: .init(hour: 12, minute: 50)),
-                        .init(time: .init(hour: 13, minute: 30)),
+                        .init(time: .init(hour: 12, minute: 45)),
+                        .init(time: .init(hour: 13, minute: 15)),
                         .init(time: .init(hour: 15, minute: 35)),
-                        .init(time: .init(hour: 16, minute: 15)),
-                        .init(time: .init(hour: 17, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 05)),
+                        .init(time: .init(hour: 17, minute: 30)),
+                        .init(time: .init(hour: 19, minute: 5)),
                     ],
                     destination2: [
+                        .init(time: .init(hour: 8, minute: 5)),
                         .init(time: .init(hour: 8, minute: 45)),
-                        .init(time: .init(hour: 10, minute: 0)),
+                        .init(time: .init(hour: 10, minute: 5)),
                         .init(time: .init(hour: 12, minute: 30)),
-                        .init(time: .init(hour: 13, minute: 10)),
-                        .init(time: .init(hour: 15, minute: 15)),
-                        .init(time: .init(hour: 15, minute: 55)),
+                        .init(time: .init(hour: 13, minute: 0)),
+                        .init(time: .init(hour: 15, minute: 20)),
+                        .init(time: .init(hour: 15, minute: 50)),
                         .init(time: .init(hour: 17, minute: 15)),
                         .init(time: .init(hour: 18, minute: 50)),
+                        .init(time: .init(hour: 19, minute: 20)),
                     ]
-                )
+                ),
             ],
-            lastUpdated: .createDate(year: 2025, month: 3, day: 10)!
+            lastUpdated: .createDate(year: 2025, month: 9, day: 2)!,
+            source: .init(string: "https://www.shibaura-it.ac.jp/assets/20250927.pdf")!
         )
     }
     
@@ -321,151 +380,8 @@ extension BusTimetable {
             ],
             destination2: []
         )],
-        lastUpdated: nil
-    )
-    
-    static let schoolBusIwatsuki: BusTimetable = .init(
-        calendar: [
-            // Saturdays
-            .init(date: .createDate(year: 2025, month: 9, day: 27)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 4)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 11)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 18)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 25)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 8)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 15)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 22)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 29)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 6)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 13)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 20)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 10)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 24)!, tableName: "Weekend"),
-            // Weekdays
-            .init(date: .createDate(year: 2025, month: 9, day: 29)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 9, day: 30)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 1)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 2)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 3)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 6)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 7)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 8)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 9)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 10)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 14)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 15)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 16)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 17)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 20)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 21)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 22)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 23)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 24)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 27)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 10, day: 28)!, tableName: "Weekend"),
-            
-            .init(date: .createDate(year: 2025, month: 11, day: 5)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 6)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 7)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 10)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 11)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 12)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 13)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 14)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 17)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 18)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 19)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 20)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 21)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 25)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 26)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 27)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 11, day: 28)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 1)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 2)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 3)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 4)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 5)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 8)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 9)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 10)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 11)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 12)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 15)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 16)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 17)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 18)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 19)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 22)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2025, month: 12, day: 23)!, tableName: "Weekend"),
-            
-            .init(date: .createDate(year: 2026, month: 1, day: 7)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 8)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 9)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 13)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 14)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 15)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 16)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 19)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 20)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 21)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 22)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 23)!, tableName: "Weekend"),
-            .init(date: .createDate(year: 2026, month: 1, day: 26)!, tableName: "Weekend"),
-        ],
-        tables: [
-            .init(
-                name: "Weekday",
-                destination1: [
-                    .init(time: .init(hour: 7, minute: 45)),
-                    .init(time: .init(hour: 8, minute: 25)),
-                    .init(time: .init(hour: 9, minute: 5)),
-                    .init(time: .init(hour: 10, minute: 20)),
-                    .init(time: .init(hour: 12, minute: 50)),
-                    .init(time: .init(hour: 13, minute: 30)),
-                    .init(time: .init(hour: 15, minute: 35)),
-                    .init(time: .init(hour: 16, minute: 15)),
-                    .init(time: .init(hour: 17, minute: 35)),
-                    .init(time: .init(hour: 19, minute: 10)),
-                ],
-                destination2: [
-                    .init(time: .init(hour: 8, minute: 5)),
-                    .init(time: .init(hour: 8, minute: 45)),
-                    .init(time: .init(hour: 10, minute: 0)),
-                    .init(time: .init(hour: 12, minute: 30)),
-                    .init(time: .init(hour: 13, minute: 10)),
-                    .init(time: .init(hour: 15, minute: 15)),
-                    .init(time: .init(hour: 15, minute: 55)),
-                    .init(time: .init(hour: 17, minute: 15)),
-                    .init(time: .init(hour: 18, minute: 50)),
-                    .init(time: .init(hour: 19, minute: 30)),
-                ]
-            ),
-            .init(
-                name: "Weekend",
-                destination1: [
-                    .init(time: .init(hour: 8, minute: 25)),
-                    .init(time: .init(hour: 9, minute: 5)),
-                    .init(time: .init(hour: 10, minute: 20)),
-                    .init(time: .init(hour: 12, minute: 50)),
-                    .init(time: .init(hour: 13, minute: 30)),
-                    .init(time: .init(hour: 15, minute: 35)),
-                    .init(time: .init(hour: 16, minute: 15)),
-                    .init(time: .init(hour: 17, minute: 35)),
-                ],
-                destination2: [
-                    .init(time: .init(hour: 8, minute: 45)),
-                    .init(time: .init(hour: 10, minute: 0)),
-                    .init(time: .init(hour: 12, minute: 30)),
-                    .init(time: .init(hour: 13, minute: 10)),
-                    .init(time: .init(hour: 15, minute: 15)),
-                    .init(time: .init(hour: 15, minute: 55)),
-                    .init(time: .init(hour: 17, minute: 15)),
-                    .init(time: .init(hour: 18, minute: 50)),
-                ]
-            )
-        ],
-        lastUpdated: .createDate(year: 2025, month: 3, day: 10)!
+        lastUpdated: nil,
+        source: .init(string: "https://www.shibaura-it.ac.jp")!
     )
     
     static let shuttleBus: BusTimetable = .init(
@@ -542,7 +458,8 @@ extension BusTimetable {
                 ]
             )
         ],
-        lastUpdated: .createDate(year: 2025, month: 9, day: 1)!
+        lastUpdated: .createDate(year: 2025, month: 9, day: 1)!,
+        source: .init(string: "https://www.shibaura-it.ac.jp/assets/AAA.pdf")!
     )
 }
 

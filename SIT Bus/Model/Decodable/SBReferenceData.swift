@@ -143,7 +143,12 @@ struct SBReferenceData: Decodable, Equatable {
         
         let updateDate = SBReferenceData.dateFormatter.date(from: update)
 
-        return BusTimetable(calendar: calendarEntries, tables: tables, lastUpdated: updateDate)
+        return BusTimetable(
+            calendar: calendarEntries,
+            tables: tables,
+            lastUpdated: updateDate,
+            source: .init(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
+        )
     }
     
 }

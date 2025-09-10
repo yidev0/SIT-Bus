@@ -49,7 +49,7 @@ struct SchoolBusListView: View {
 
 #Preview {
     SchoolBusListView(
-        table: BusTimetable.schoolBusIwatsuki.getTable(for: .createDate(year: 2025, month: 10, day: 1)!),
+        table: BusTimetable.sample.getTable(for: .now),
         for: .type1
     )
 }
