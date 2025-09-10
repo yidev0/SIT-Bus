@@ -58,13 +58,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Sources for other bus may change in a future update, and can be seen in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
+            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Other buses are updated through app updates. The latest source are listed in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "本アプリのバス情報は、以下の情報源に基づいて提供されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスのソースは今後のアップデートで変更される可能性があります。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
+            "state" : "needs_review",
+            "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスはアプリのアップデートを通し更新しています。最新の情報源は設定タブにて確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
           }
         }
       }
@@ -413,6 +413,22 @@
         }
       }
     },
+    "Label.AppIcon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App icon"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリアイコン"
+          }
+        }
+      }
+    },
     "Label.AutoUpdateSource" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -754,6 +770,22 @@
         }
       }
     },
+    "Label.Features" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "機能"
+          }
+        }
+      }
+    },
     "Label.FeatureTimetable" : {
       "localizations" : {
         "en" : {
@@ -930,6 +962,9 @@
           }
         }
       }
+    },
+    "Label.LibraryServices" : {
+
     },
     "Label.Loading" : {
       "localizations" : {

@@ -41,7 +41,7 @@ struct WelcomeView: View {
                     bottomButtom
                         .buttonStyle(.borderedProminent)
                         .padding(.horizontal, 24)
-                        .padding(.top, 16)
+                        .padding(.vertical, 16)
                         .overlay(alignment: .top) {
                             Divider()
                         }
@@ -60,12 +60,13 @@ struct WelcomeView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 120)
+                        .accessibilityLabel("Label.AppIcon")
                     Spacer()
                 }
                 .listRowBackground(Color(.systemGroupedBackground))
             }
             
-            Section {
+            Section("Label.Features") {
                 makeFeatureCell(
                     symbol: "clock",
                     title: "Label.FeatureNextBus",
@@ -145,6 +146,7 @@ struct WelcomeView: View {
                     .font(.subheadline)
             }
         }
+        .accessibilityElement(children: .combine)
     }
     
     func makeSourceCell(
@@ -160,6 +162,7 @@ struct WelcomeView: View {
             }
         }
         .tint(Color.primary)
+        .accessibilityElement(children: .combine)
     }
 }
 
