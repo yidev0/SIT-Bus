@@ -10,25 +10,30 @@ import SwiftUI
 struct BusPickerView: View {
     
     @Binding var selectedBus: BusLineType
+    var glassPadding = false
     
     var body: some View {
-        Menu(selectedBus.localizedShortTitle) {
+        Menu {
             ForEach(BusType.allCases, id: \.rawValue) { bus in
                 Section(bus.localizedTitle) {
                     Picker(bus.localizedTitle, selection: $selectedBus) {
                         ForEach(bus.cases, id: \.self) { type in
                             switch bus {
                             case .schoolOmiya:
-                                Label(type.localizedShortTitle, systemImage: "bus.fill")
+                                Label(type.localizedShortTitle, systemImage: type.symbol)
                             case .schoolIwatsuki:
-                                Label(type.localizedShortTitle, systemImage: "bus")
+                                Label(type.localizedShortTitle, systemImage: type.symbol)
                             case .shuttle:
-                                Label(type.localizedShortTitle, systemImage: "app.connected.to.app.below.fill")
+                                Label(type.localizedShortTitle, systemImage: type.symbol)
                             }
                         }
                     }
                 }
             }
+        } label: {
+            Text(selectedBus.localizedShortTitle)
+                .padding(.horizontal, glassPadding ? 10 : 0)
+                .padding(.vertical, glassPadding ? 4 : 0)
         }
         .labelsVisibility(.visible)
     }

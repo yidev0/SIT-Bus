@@ -11,6 +11,11 @@ import SwiftData
 struct ContentView: View {
 
     @Environment(TimetableManager.self) private var timetableManager
+    @State var showWelcome: Bool
+    
+    init() {
+        showWelcome = !UserDefaults.standard.bool(forKey: UserDefaultsKeys.shownWelcome2)
+    }
     
     var body: some View {
         @Bindable var timetableManager = timetableManager
@@ -33,6 +38,10 @@ struct ContentView: View {
                     Label("Label.Settings", systemImage: "gear")
                         .symbolVariant(.fill)
                 }
+        }
+        .sheet(isPresented: $showWelcome) {
+            WelcomeView()
+                .interactiveDismissDisabled()
         }
         .alert(
             isPresented: $timetableManager.showAlert

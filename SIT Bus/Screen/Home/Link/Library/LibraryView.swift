@@ -56,7 +56,6 @@ struct LibraryView: View {
                 )
             }
             
-#if !targetEnvironment(simulator)
             if hideCalendar {
                 Section {
                     makeLink(
@@ -82,7 +81,6 @@ struct LibraryView: View {
                         .frame(height: 400)
                 }
             }
-#endif
         }
         .listSectionSpacing(16)
     }

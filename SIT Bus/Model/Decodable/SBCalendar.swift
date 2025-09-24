@@ -50,8 +50,8 @@ struct SBCalendar: Decodable {
     }
     
     func getDateComment(for date: Date) -> String? {
-        if month == String(format: "%02d", date.get(component: .month)),
-           let comment = list.first(where: { $0.day == String(date.get(component: .day)) })?.comment {
+        if month == String(format: "%02d", date.get(.month)),
+           let comment = list.first(where: { $0.day == String(date.get(.day)) })?.comment {
             return comment
         } else {
             return nil

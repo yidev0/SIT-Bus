@@ -17,36 +17,16 @@ struct HomeBusCell: View {
     
     var body: some View {
         GroupBox {
-            HStack(alignment: .lastTextBaseline) {
-                switch state {
-                case .nextBus(let date, _):
-                    Text(date, format: .dateTime.hour().minute())
-                        .monospacedDigit()
-                        .font(.system(size: busFontSize, weight: .semibold))
-                case .timely(let start, let end):
-                    Text("Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service")
-                        .font(.title3)
-                case .busServiceEnded:
-                    Text("Label.BusServiceEnded")
-                case .noBusService:
-                    Text("Label.NoBusService")
-                case .loading:
-                    Text("Label.Loading")
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .lastTextBaseline) {
+                    nextBusTime
+                    Spacer()
+                    countDown
                 }
                 
-                Spacer()
-                
-                switch state {
-                case .nextBus(_, let departsIn):
-                    if departsIn <= 0 {
-                        Text("Label.DepartsIn0Minutes")
-                    } else if departsIn >= 60 {
-                        Text("Label.DepartsIn\(departsIn / 60)Hours")
-                    } else  {
-                        Text("Label.DepartsIn\(departsIn)Minutes")
-                    }
-                default:
-                    EmptyView()
+                VStack(alignment: .leading) {
+                    nextBusTime
+                    countDown
                 }
             }
             .contentTransition(.numericText())
@@ -61,6 +41,41 @@ struct HomeBusCell: View {
             }
         }
         .foregroundStyle(Color.primary)
+    }
+    
+    @ViewBuilder
+    var nextBusTime: some View {
+        switch state {
+        case .nextBus(let date, _):
+            Text(date, format: .dateTime.hour().minute())
+                .monospacedDigit()
+                .font(.system(size: busFontSize, weight: .semibold))
+        case .timely(let start, let end):
+            Text("Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service")
+                .font(.title3)
+        case .busServiceEnded:
+            Text("Label.BusServiceEnded")
+        case .noBusService:
+            Text("Label.NoBusService")
+        case .loading:
+            Text("Label.Loading")
+        }
+    }
+    
+    @ViewBuilder
+    var countDown: some View {
+        switch state {
+        case .nextBus(_, let departsIn):
+            if departsIn <= 0 {
+                Text("Label.DepartsIn0Minutes")
+            } else if departsIn >= 60 {
+                Text("Label.DepartsIn\(departsIn / 60)Hours")
+            } else  {
+                Text("Label.DepartsIn\(departsIn)Minutes")
+            }
+        default:
+            EmptyView()
+        }
     }
 }
 

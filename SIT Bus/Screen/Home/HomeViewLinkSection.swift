@@ -14,9 +14,10 @@ fileprivate enum LinkType: Int, CaseIterable {
     case library
     
     static var allCases: [LinkType] {
-        if Date.now <= Date.createDate(year: 2025, month: 5, day: 19)! && Date.now >= Date.createDate(year: 2025, month: 4, day: 1)! {
+        switch Date.now.get(.month) {
+        case 4, 5:
             [.festival, .boardingLocation, .univCoop, .library]
-        } else {
+        default:
             [.boardingLocation, .univCoop, .library]
         }
     }
@@ -49,8 +50,6 @@ fileprivate enum LinkType: Int, CaseIterable {
 }
 
 struct HomeViewLinkSection: View {
-    
-    @Environment(HomeViewModel.self) private var model
     
     var body: some View {
         Section {
@@ -89,12 +88,10 @@ struct HomeViewLinkSection: View {
 }
 
 #Preview {
-    @Previewable @State var model = HomeViewModel()
     
     NavigationStack {
         ScrollView {
             HomeViewLinkSection()
-                .environment(model)
         }
         .backgroundStyle(Color(.systemGroupedBackground))
     }

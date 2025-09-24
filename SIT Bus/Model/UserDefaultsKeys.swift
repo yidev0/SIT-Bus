@@ -17,5 +17,10 @@ struct UserDefaultsKeys {
     /// If the user has reviewed the app in v1
     static let hasReviewedApp = "HasReviewedApp.V1"
     
+    static let timetableBus = "Timetable.Bus"
+    static let timetableBusType = "Timetable.BusType"
+    
     static let debugDate = "DebugDate"
+    
+    static let shownWelcome2 = "ShownWelcome2"
 }

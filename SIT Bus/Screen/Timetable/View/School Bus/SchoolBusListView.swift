@@ -9,54 +9,19 @@ import SwiftUI
 
 struct SchoolBusListView: View {
     
-    @State var scrollPosition: Int?
-    var timetable: SchoolBusTimetable?
+    var timetable: [Int: [BusTimetable.Table.Value]]?
+    
+    init(table: BusTimetable.Table?, for type: BusTimetable.DestinationType) {
+        self.timetable = table?.sectionize(type: type)
+    }
     
     var body: some View {
         if let timetable {
-            ScrollView {
-                LazyVStack(spacing: 8, pinnedViews: .sectionHeaders) {
-                    ForEach(timetable.values, id: \.hour) { sheet in
-                        if sheet.times.isEmpty == false || sheet.note != nil {
-                            Section {
-                                VStack(spacing: 8) {
-                                    if let date1 = sheet.dateRange1, let date2 = sheet.dateRange2 {
-                                        Text("Label.\(Text(date1, format: .dateTime.hour().minute()))to\(Text(date2, format: .dateTime.hour().minute()))Service")
-                                            .padding(.vertical, 2)
-                                    }
-                                    
-                                    ForEach(sheet.times, id: \.self) { time in
-                                        GroupBox {
-                                            HStack {
-                                                Text(time, style: .time)
-                                                    .monospacedDigit()
-                                                Spacer()
-                                            }
-                                        }
-                                    }
-                                }
-                            } header: {
-                                if let hour = formatHour(hour: sheet.hour) {
-                                    HStack {
-                                        Text(hour, format: .dateTime.hour())
-                                            .font(.headline)
-                                            .font(.headline)
-                                            .padding(.vertical, 4)
-                                            .padding(.horizontal, 8)
-                                            .background(.regularMaterial)
-                                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .scrollPosition(id: $scrollPosition, anchor: .top)
-            .contentMargins(16)
-            .onAppear {
-                self.scrollPosition = Date.now.get(component: .hour)
+            if #available(iOS 26.0, *) {
+                makeList(for: timetable)
+                    .listSectionIndexVisibility(.visible)
+            } else {
+                makeList(for: timetable)
             }
         } else {
             ContentUnavailableView(
@@ -66,15 +31,47 @@ struct SchoolBusListView: View {
         }
     }
     
-    private func formatHour(hour: Int) -> Date? {
-        var components = DateComponents()
-        components.hour = hour
-        let calendar = Calendar.current
-        return calendar.date(from: components)
+    func makeList(for timetable: [Int: [BusTimetable.Table.Value]]) -> some View {
+        ScrollViewReader { proxy in
+            List {
+                ForEach(timetable.keys.sorted(), id: \.self) { hour in
+                    if #available(iOS 26.0, *) {
+                        makeSection(for: timetable, hour: hour)
+                            .sectionIndexLabel("\(hour)")
+                    } else {
+                        makeSection(for: timetable, hour: hour)
+                    }
+                }
+            }
+            .onAppear {
+                proxy.scrollTo(Date.now.get(.hour), anchor: .top)
+            }
+        }
     }
     
+    func makeSection(
+        for timetable: [Int: [BusTimetable.Table.Value]],
+        hour: Int
+    ) -> some View {
+        Section {
+            ForEach(timetable[hour] ?? [], id: \.self) { value in
+                if let note = value.note {
+                    note.makeText()
+                        .id(note)
+                }
+                Text(value.time.toDate(), style: .time)
+                    .monospacedDigit()
+                    .id(value)
+            }
+        } header: {
+            Text(hour, format: .number)
+        }
+    }
 }
 
 #Preview {
-    SchoolBusListView()
+    SchoolBusListView(
+        table: BusTimetable.sample.getTable(for: .now),
+        for: .type1
+    )
 }
