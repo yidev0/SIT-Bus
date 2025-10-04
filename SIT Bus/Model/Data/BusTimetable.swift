@@ -72,16 +72,12 @@ class BusTimetable {
             }
             
             struct Note: Hashable {
-                let from: Time?
-                let until: Time?
+                let from: Time
+                let until: Time
                 
                 @ViewBuilder
                 func makeText() -> some View {
-                    if let from = from?.toDate(), let until = until?.toDate() {
-                        Text("Label.\(Text(from, format: .dateTime.hour().minute()))to\(Text(until, format: .dateTime.hour().minute()))Service")
-                    } else {
-                        EmptyView()
-                    }
+                    Text("Label.\(Text(from.toDate(), format: .dateTime.hour().minute()))to\(Text(until.toDate(), format: .dateTime.hour().minute()))Service")
                 }
             }
         }
@@ -192,29 +188,22 @@ class BusTimetable {
         let nextMinutes = (nextComponents.hour ?? 0) * 60 + (nextComponents.minute ?? 0)
         
         if let value = timetable.first(where: { val in
+            guard let note = val.note else { return false }
             let busMinutes = val.time.hour * 60 + val.time.minute
-            return busMinutes > nowMinutes && busMinutes < nextMinutes && val.note != nil
+            let noteMinutes = note.from.hour * 60 + note.from.minute
+            let noteUntilMinutes = note.until.hour * 60 + note.until.minute
+            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes <= busMinutes && nowMinutes <= noteUntilMinutes
         }), let note = value.note {
             var startComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
-            startComponents.hour = value.time.hour
-            startComponents.minute = value.time.minute
+            startComponents.hour = note.from.hour
+            startComponents.minute = note.from.minute
             startComponents.second = 0
             guard let startDate = currentCalendar.date(from: startComponents) else { return nil }
             
             var endComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
             
-            if let until = note.until {
-                endComponents.hour = until.hour
-                endComponents.minute = until.minute
-            } else if let from = note.from {
-                // If until is nil but from is not, use from as end time
-                endComponents.hour = from.hour
-                endComponents.minute = from.minute
-            } else {
-                // If both from and until are nil, use bus time as end time
-                endComponents.hour = value.time.hour
-                endComponents.minute = value.time.minute
-            }
+            endComponents.hour = note.until.hour
+            endComponents.minute = note.until.minute
             endComponents.second = 0
             
             guard let endDate = currentCalendar.date(from: endComponents) else { return nil }
@@ -233,9 +222,7 @@ extension BusTimetable {
     static func schoolBusIwatsuki(basedOn calendar: [BusTimetable.Calendar]) -> BusTimetable {
         return .init(
             calendar: calendar.compactMap { calendar in
-                if calendar.date < .createDate(year: 2025, month: 9, day: 27)! {
-                    return Calendar(date: calendar.date, tableName: "平日(-9/26)")
-                } else if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
+                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
                     return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "平日(授業日)" : "土曜日")
                 } else if calendar.date.isWeekday {
                     return Calendar(date: calendar.date, tableName: "平日(休講期間)")
@@ -245,33 +232,6 @@ extension BusTimetable {
                 return nil
             },
             tables: [
-                .init(
-                    name: "平日(-9/26)",
-                    destination1: [
-                        .init(time: .init(hour: 7, minute: 45)),
-                        .init(time: .init(hour: 8, minute: 25)),
-                        .init(time: .init(hour: 9, minute: 5)),
-                        .init(time: .init(hour: 10, minute: 20)),
-                        .init(time: .init(hour: 12, minute: 50)),
-                        .init(time: .init(hour: 13, minute: 30)),
-                        .init(time: .init(hour: 15, minute: 35)),
-                        .init(time: .init(hour: 16, minute: 15)),
-                        .init(time: .init(hour: 17, minute: 35)),
-                        .init(time: .init(hour: 19, minute: 10)),
-                    ],
-                    destination2: [
-                        .init(time: .init(hour: 8, minute: 5)),
-                        .init(time: .init(hour: 8, minute: 45)),
-                        .init(time: .init(hour: 10, minute: 0)),
-                        .init(time: .init(hour: 12, minute: 30)),
-                        .init(time: .init(hour: 13, minute: 10)),
-                        .init(time: .init(hour: 15, minute: 15)),
-                        .init(time: .init(hour: 15, minute: 55)),
-                        .init(time: .init(hour: 17, minute: 15)),
-                        .init(time: .init(hour: 18, minute: 50)),
-                        .init(time: .init(hour: 19, minute: 30)),
-                    ]
-                ),
                 .init(
                     name: "平日(授業日)",
                     destination1: [
@@ -350,7 +310,7 @@ extension BusTimetable {
                 ),
             ],
             lastUpdated: .createDate(year: 2025, month: 9, day: 2)!,
-            source: .init(string: "https://www.shibaura-it.ac.jp/assets/20250927.pdf")!
+            source: .schoolBusIwatsuki
         )
     }
     
@@ -446,7 +406,7 @@ extension BusTimetable {
             )
         ],
         lastUpdated: .createDate(year: 2025, month: 9, day: 1)!,
-        source: .init(string: "https://www.shibaura-it.ac.jp/assets/AAA.pdf")!
+        source: .shuttleBus
     )
 }
 

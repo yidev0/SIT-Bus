@@ -47,7 +47,7 @@ struct TimetableView: View {
                 }
             }
             .navigationTitle("Label.Timetable")
-            .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
+            .toolbarTitleDisplayMode(.automatic)
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
             .onChange(of: model.busLineType) { _, newValue in

@@ -63,7 +63,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスはアプリのアップデートを通し更新しています。最新の情報源は設定タブにて確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
           }
         }
@@ -441,23 +441,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリアイコン"
-          }
-        }
-      }
-    },
-    "Label.AutoUpdateSource" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auto Updating Source"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動更新ソース"
           }
         }
       }
@@ -938,6 +921,12 @@
             "state" : "translated",
             "value" : "Include Device Info"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス情報を含める"
+          }
         }
       }
     },
@@ -990,7 +979,20 @@
       }
     },
     "Label.LibraryServices" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library Services"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図書館サービス"
+          }
+        }
+      }
     },
     "Label.Loading" : {
       "localizations" : {
@@ -1379,6 +1381,22 @@
         }
       }
     },
+    "Label.ShibauraFestival" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shibaurasai"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "芝浦祭"
+          }
+        }
+      }
+    },
     "Label.Short.CampusToIwatsukiStation" : {
       "localizations" : {
         "en" : {
@@ -1590,7 +1608,7 @@
       }
     },
     "My Library" : {
-
+      "shouldTranslate" : false
     },
     "OPAC" : {
       "shouldTranslate" : false

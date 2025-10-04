@@ -81,6 +81,7 @@
 				"Extension/Color +.swift",
 				"Extension/Date +.swift",
 				"Extension/String +.swift",
+				"Extension/URL +.swift",
 				"Extension/URLRequest +.swift",
 				"Extension/UserDefaults + .swift",
 				"Extension/View +.swift",
@@ -697,7 +698,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Widget-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -725,7 +726,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Widget-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
