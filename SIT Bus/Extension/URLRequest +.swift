@@ -16,7 +16,11 @@ extension URLRequest {
         url: URL(string: "https://calendar.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showTz=0&wkst=2&bgcolor=%23ffffff&ctz=Asia%2FTokyo&src=bGliZXR1cmFuQGdtYWlsLmNvbQ&src=MWU1OWs5bmNwc2JhNXBhbzhpYWwyZGEycDBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%2335c759&color=%23ccf1d6")!
     )
     
-    static var festivalRequest = URLRequest(
+    static var omiyaFestivalRequest = URLRequest(
         url: URL(string: "https://oomiya-fes-sit.net/")!
+    )
+    
+    static var shibauraFestivalRequest = URLRequest(
+        url: URL(string: "https://shibaurasai.jp")!
     )
 }

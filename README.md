@@ -9,7 +9,7 @@ SITのバス時刻表アプリ<br>
 ## 機能・ロードマップ
 #### 時刻表表示
  - [x] スクールバス（大宮）
- - [ ] スクールバス（岩槻）
+ - [x] スクールバス（岩槻）
  - [x] シャトルバス
 #### iOSの機能
  - [x] ダークモード（アプリ・アイコン）
@@ -33,4 +33,4 @@ SITのバス時刻表アプリ<br>
 ## リンク
 - [バス時刻表カレンダー](http://bus.shibaura-it.ac.jp/developer.html)
 - [TestFlight（制限付き）](https://testflight.apple.com/join/Mwt1Huw8)
-- [AppStore（2025.1 配信予定）](https://apps.apple.com/app/id6736679708)
+- [App Store](https://apps.apple.com/app/id6736679708)
