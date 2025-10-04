@@ -15,7 +15,7 @@ fileprivate enum LinkType: Int, CaseIterable {
     
     static var allCases: [LinkType] {
         switch Date.now.get(.month) {
-        case 4, 5:
+        case 4, 5, 10, 11:
             [.festival, .boardingLocation, .univCoop, .library]
         default:
             [.boardingLocation, .univCoop, .library]
@@ -31,7 +31,12 @@ fileprivate enum LinkType: Int, CaseIterable {
         case .library:
             "Label.Library"
         case .festival:
-            "Label.OmiyaFestival"
+            switch Date.now.get(.month) {
+            case 1...6:
+                "Label.OmiyaFestival"
+            default:
+                "Label.ShibauraFestival"
+            }
         }
     }
     

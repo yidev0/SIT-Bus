@@ -1381,6 +1381,22 @@
         }
       }
     },
+    "Label.ShibauraFestival" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shibaurasai"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "芝浦祭"
+          }
+        }
+      }
+    },
     "Label.Short.CampusToIwatsukiStation" : {
       "localizations" : {
         "en" : {
