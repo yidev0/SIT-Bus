@@ -191,7 +191,8 @@ class BusTimetable {
             guard let note = val.note else { return false }
             let busMinutes = val.time.hour * 60 + val.time.minute
             let noteMinutes = note.from.hour * 60 + note.from.minute
-            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes < busMinutes
+            let noteUntilMinutes = note.until.hour * 60 + note.until.minute
+            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes <= busMinutes && nowMinutes <= noteUntilMinutes
         }), let note = value.note {
             var startComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
             startComponents.hour = note.from.hour
