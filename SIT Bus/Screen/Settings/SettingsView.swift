@@ -87,7 +87,7 @@ struct SettingsView: View {
                 
                 Section("Label.AboutApp") {
                     Link(
-                        destination: URL(string: "https://apps.apple.com/app/id6736679708")!
+                        destination: .appStore
                     ) {
                         Label {
                             HStack {
@@ -120,7 +120,7 @@ struct SettingsView: View {
                 }
                 
                 Section("Label.InfoSource") {
-                    LinkButton("http://bus.shibaura-it.ac.jp/db/bus_data.json") {
+                    LinkButton(.schoolBusOmiya) {
                         SettingsSourceLabel(
                             label: "Label.SchoolBusOmiya",
                             date: timetableManager.lastUpdatedDate,
@@ -137,7 +137,7 @@ struct SettingsView: View {
                         }
                     }
                     
-                    LinkButton("https://www.shibaura-it.ac.jp/assets/zikokuhyou.pdf") {
+                    LinkButton(.schoolBusIwatsuki) {
                         SettingsSourceLabel(
                             label: "Label.SchoolBusIwatsuki",
                             date: timetableManager.schoolBusIwatsuki?.lastUpdated,
@@ -145,7 +145,7 @@ struct SettingsView: View {
                         )
                     }
                     
-                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
+                    LinkButton(.shuttleBus) {
                         SettingsSourceLabel(
                             label: "Label.ShuttleBus",
                             date: BusTimetable.shuttleBus.lastUpdated!,

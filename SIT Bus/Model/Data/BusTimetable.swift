@@ -221,9 +221,7 @@ extension BusTimetable {
     static func schoolBusIwatsuki(basedOn calendar: [BusTimetable.Calendar]) -> BusTimetable {
         return .init(
             calendar: calendar.compactMap { calendar in
-                if calendar.date < .createDate(year: 2025, month: 9, day: 27)! {
-                    return Calendar(date: calendar.date, tableName: "平日(-9/26)")
-                } else if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
+                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
                     return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "平日(授業日)" : "土曜日")
                 } else if calendar.date.isWeekday {
                     return Calendar(date: calendar.date, tableName: "平日(休講期間)")
@@ -233,33 +231,6 @@ extension BusTimetable {
                 return nil
             },
             tables: [
-                .init(
-                    name: "平日(-9/26)",
-                    destination1: [
-                        .init(time: .init(hour: 7, minute: 45)),
-                        .init(time: .init(hour: 8, minute: 25)),
-                        .init(time: .init(hour: 9, minute: 5)),
-                        .init(time: .init(hour: 10, minute: 20)),
-                        .init(time: .init(hour: 12, minute: 50)),
-                        .init(time: .init(hour: 13, minute: 30)),
-                        .init(time: .init(hour: 15, minute: 35)),
-                        .init(time: .init(hour: 16, minute: 15)),
-                        .init(time: .init(hour: 17, minute: 35)),
-                        .init(time: .init(hour: 19, minute: 10)),
-                    ],
-                    destination2: [
-                        .init(time: .init(hour: 8, minute: 5)),
-                        .init(time: .init(hour: 8, minute: 45)),
-                        .init(time: .init(hour: 10, minute: 0)),
-                        .init(time: .init(hour: 12, minute: 30)),
-                        .init(time: .init(hour: 13, minute: 10)),
-                        .init(time: .init(hour: 15, minute: 15)),
-                        .init(time: .init(hour: 15, minute: 55)),
-                        .init(time: .init(hour: 17, minute: 15)),
-                        .init(time: .init(hour: 18, minute: 50)),
-                        .init(time: .init(hour: 19, minute: 30)),
-                    ]
-                ),
                 .init(
                     name: "平日(授業日)",
                     destination1: [
@@ -338,7 +309,7 @@ extension BusTimetable {
                 ),
             ],
             lastUpdated: .createDate(year: 2025, month: 9, day: 2)!,
-            source: .init(string: "https://www.shibaura-it.ac.jp/assets/20250927.pdf")!
+            source: .schoolBusIwatsuki
         )
     }
     
@@ -434,7 +405,7 @@ extension BusTimetable {
             )
         ],
         lastUpdated: .createDate(year: 2025, month: 9, day: 1)!,
-        source: .init(string: "https://www.shibaura-it.ac.jp/assets/AAA.pdf")!
+        source: .shuttleBus
     )
 }
 

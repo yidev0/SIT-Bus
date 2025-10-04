@@ -81,6 +81,7 @@
 				"Extension/Color +.swift",
 				"Extension/Date +.swift",
 				"Extension/String +.swift",
+				"Extension/URL +.swift",
 				"Extension/URLRequest +.swift",
 				"Extension/UserDefaults + .swift",
 				"Extension/View +.swift",
