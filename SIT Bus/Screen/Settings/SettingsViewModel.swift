@@ -62,7 +62,7 @@ class SettingsViewModel {
             return url
         }
         
-        let osVersion = UIDevice.current.systemVersion
+        let osVersion = UIDevice.current.systemName + "%20" + UIDevice.current.systemVersion
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             return "\(url)?os=\(osVersion)&app=\(version)"
         } else {
