@@ -32,6 +32,7 @@ struct WelcomeView: View {
                         bottomButtom
                             .buttonStyle(.glassProminent)
                             .padding(.horizontal, 24)
+                            .padding(.bottom)
                     }
             } else {
                 VStack(spacing: 0) {

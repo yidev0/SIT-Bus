@@ -30,7 +30,7 @@ struct HomeView: View {
             .contentMargins(.top, 8, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Label.Home")
-            .navigationBarTitleDisplayMode(horizontalSizeClass == .regular ? .inline : .automatic)
+            .toolbarTitleDisplayMode(.automatic)
             .refreshable {
                 await timetableManager.loadData()
             }

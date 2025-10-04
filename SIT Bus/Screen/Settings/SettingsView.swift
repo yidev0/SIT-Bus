@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
+    
     @Environment(TimetableManager.self)
     private var timetableManager
     
@@ -155,7 +158,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Label.Settings")
-            .navigationBarTitleDisplayMode(UIDevice.current.userInterfaceIdiom == .pad ? .inline : .automatic)
+            .toolbarTitleDisplayMode(.automatic)
             .listSectionSpacing(8)
         }
         .onAppear {
