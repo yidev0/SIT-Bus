@@ -72,16 +72,12 @@ class BusTimetable {
             }
             
             struct Note: Hashable {
-                let from: Time?
-                let until: Time?
+                let from: Time
+                let until: Time
                 
                 @ViewBuilder
                 func makeText() -> some View {
-                    if let from = from?.toDate(), let until = until?.toDate() {
-                        Text("Label.\(Text(from, format: .dateTime.hour().minute()))to\(Text(until, format: .dateTime.hour().minute()))Service")
-                    } else {
-                        EmptyView()
-                    }
+                    Text("Label.\(Text(from.toDate(), format: .dateTime.hour().minute()))to\(Text(until.toDate(), format: .dateTime.hour().minute()))Service")
                 }
             }
         }
@@ -192,29 +188,21 @@ class BusTimetable {
         let nextMinutes = (nextComponents.hour ?? 0) * 60 + (nextComponents.minute ?? 0)
         
         if let value = timetable.first(where: { val in
+            guard let note = val.note else { return false }
             let busMinutes = val.time.hour * 60 + val.time.minute
-            return busMinutes > nowMinutes && busMinutes < nextMinutes && val.note != nil
+            let noteMinutes = note.from.hour * 60 + note.from.minute
+            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes < busMinutes
         }), let note = value.note {
             var startComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
-            startComponents.hour = value.time.hour
-            startComponents.minute = value.time.minute
+            startComponents.hour = note.from.hour
+            startComponents.minute = note.from.minute
             startComponents.second = 0
             guard let startDate = currentCalendar.date(from: startComponents) else { return nil }
             
             var endComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
             
-            if let until = note.until {
-                endComponents.hour = until.hour
-                endComponents.minute = until.minute
-            } else if let from = note.from {
-                // If until is nil but from is not, use from as end time
-                endComponents.hour = from.hour
-                endComponents.minute = from.minute
-            } else {
-                // If both from and until are nil, use bus time as end time
-                endComponents.hour = value.time.hour
-                endComponents.minute = value.time.minute
-            }
+            endComponents.hour = note.until.hour
+            endComponents.minute = note.until.minute
             endComponents.second = 0
             
             guard let endDate = currentCalendar.date(from: endComponents) else { return nil }

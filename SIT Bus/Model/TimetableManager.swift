@@ -231,7 +231,7 @@ class TimetableManager {
     ) -> NextBusState {
         if let nextBusDate = timetable.getNext(from: now, type: type) {
             if let note = timetable.getNextNote(from: now, nextDate: nextBusDate, type: type),
-               now > note.startDate {
+               note.endDate >= now {
                 return .timely(start: note.startDate, end: note.endDate)
             } else {
                 let minutes = max(0, Int(ceil(nextBusDate.timeIntervalSince(now) / 60)))
