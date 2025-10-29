@@ -150,6 +150,8 @@ class TimetableManager {
                     }
                 }
             }
+            
+            await updateBusStates()
         }
     }
     
