@@ -67,9 +67,6 @@
         }
       }
     },
-    "Label.Service" : {
-
-    },
     "Label.ShortMinutes%lld" : {
       "localizations" : {
         "en" : {
@@ -117,9 +114,6 @@
           }
         }
       }
-    },
-    "Label.To" : {
-
     }
   },
   "version" : "1.0"
