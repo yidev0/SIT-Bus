@@ -154,15 +154,9 @@ struct SITBusWidgetEntryView : View {
             case .timely(let start, let end):
                 Text("Label.TimelyOperation", tableName: "Widget")
                     .font(family == .systemSmall ? .footnote : .body)
-                // Avoid dynamically building a localization key:
-                HStack(spacing: 4) {
-                    Text(start, style: .time)
-                    Text("Label.To", tableName: "Widget")
-                    Text(end, style: .time)
-                    Text("Label.Service", tableName: "Widget")
-                }
-                .font(family == .systemSmall ? .body : .title2)
-                .fontWeight(family == .systemSmall ? .regular : .medium)
+                Text("Label.\(Text(start, style: .time))to\(Text(end, style: .time))Service", tableName: "Widget")
+                    .font(family == .systemSmall ? .body : .title2)
+                    .fontWeight(family == .systemSmall ? .regular : .medium)
             case .busServiceEnded:
                 Text("Label.BusServiceEnded")
                     .font(family == .systemSmall ? .body : .title)
