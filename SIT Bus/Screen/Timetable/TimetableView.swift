@@ -51,17 +51,20 @@ struct TimetableView: View {
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
             .onChange(of: model.busLineType) { _, newValue in
-                updateTimesheet(for: newValue.busType)
+                if horizontalSizeClass != .regular {
+                    updateTimesheet(for: newValue.busType)
+                }
             }
             .onChange(of: model.busType) { _, newValue in
-                updateTimesheet(for: newValue)
+                if horizontalSizeClass == .regular {
+                    updateTimesheet(for: newValue)
+                }
             }
             .onChange(of: model.date) { _, _ in
-                if horizontalSizeClass == .regular {
-                    updateTimesheet(for: model.busType)
-                } else {
-                    updateTimesheet(for: model.busLineType.busType)
-                }
+                syncTimetable()
+            }
+            .onChange(of: horizontalSizeClass) { _, _ in
+                syncTimetable()
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -109,12 +112,16 @@ struct TimetableView: View {
         }
         .environment(model)
         .onAppear {
-            if horizontalSizeClass == .regular {
-                updateTimesheet(for: model.busType)
-            } else {
-                updateTimesheet(for: model.busLineType.busType)
-            }
+            syncTimetable()
         }
+    }
+    
+    private func syncTimetable() {
+        updateTimesheet(for: currentBusType)
+    }
+    
+    private var currentBusType: BusType {
+        horizontalSizeClass == .regular ? model.busType : model.busLineType.busType
     }
     
     func updateTimesheet(for type: BusType) {

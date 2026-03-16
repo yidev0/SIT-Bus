@@ -9,9 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @Environment(\.horizontalSizeClass)
-    var horizontalSizeClass
-    
     @Environment(TimetableManager.self)
     private var timetableManager
     
@@ -25,7 +22,6 @@ struct SettingsView: View {
     var saveCoopSchedule: Bool = true
     
     @State var model = SettingsViewModel()
-    @State var debugDate: Date = Date.now
     @State var includeDeviceInfo = true
     
     var body: some View {

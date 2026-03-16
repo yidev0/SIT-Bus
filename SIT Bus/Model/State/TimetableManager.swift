@@ -8,6 +8,7 @@
 import Foundation
 import StoreKit
 
+@MainActor
 @Observable
 class TimetableManager {
     
@@ -34,40 +35,42 @@ class TimetableManager {
     
     // MARK: - Private Properties
     
-    private var busStateUpdateTask: Task<Void, Never>? = nil
+    private var busStateUpdateTask: Task<Void, Never>?
+    private let repository: BusRepository
+    private let settings: AppSettings
+    private let clock: AppClock
     
-    init() {
-        let lastUpdate = UserDefaults.shared.double(forKey: UserDefaultsKeys.lastUpdateDate)
-        lastUpdatedDate = Date(timeIntervalSince1970: lastUpdate)
+    init(
+        repository: BusRepository = BusRepository(),
+        settings: AppSettings = AppSettings(),
+        clock: AppClock = SystemClock()
+    ) {
+        self.repository = repository
+        self.settings = settings
+        self.clock = clock
+        lastUpdatedDate = settings.lastUpdateDate
         
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
 #if DEBUG
             if ProcessInfo().isSwiftUIPreview {
                 do {
-                    let data = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
-                    let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                    self.data = result
-                    print("Preview, local data")
+                    let previewData = try Data(contentsOf: URL(filePath: Bundle.main.path(forResource: "bus_data", ofType: "json")!))
+                    let result = try JSONDecoder().decode(SBReferenceData.self, from: previewData)
+                    data = result
+                    schoolBusOmiya = result.toBusTimetable()
                 } catch {
                     await loadData()
-                    print("Preview, loading data")
                 }
             } else {
-                print("not preview")
                 await loadData()
             }
 #else
             await loadData()
 #endif
             // Start updating bus states in background
-            await startBusStateUpdates()
+            startBusStateUpdates()
         }
-    }
-    
-    deinit {
-        // Cancel ongoing bus state update task on deinit
-        busStateUpdateTask?.cancel()
-        busStateUpdateTask = nil
     }
     
     // MARK: - Public Methods
@@ -110,85 +113,53 @@ class TimetableManager {
     }
     
     func loadData(forceFetch: Bool = false) async {
-        let dataFetcher = BusDataFetcher()
-        Task {
-            let fetch = Calendar.current.isDateInToday(lastUpdatedDate) == false || forceFetch
-            if fetch {
-                let response = await dataFetcher.fetchData()
-                
-                switch response {
-                case .success(let success):
-                    self.data = success
-                    self.schoolBusOmiya = success.toBusTimetable()
-                    self.lastUpdatedDate = Date.now
-                    
-                    if fetch, UserDefaults.shared.value(forKey: UserDefaultsKeys.lastUpdateDate) != nil {
-                        await requestReview()
-                    }
-                    
-                    UserDefaults.shared.set(Date.now.timeIntervalSince1970, forKey: UserDefaultsKeys.lastUpdateDate)
-                    UserDefaults.shared.synchronize()
-                case .failure(let failure):
-                    error = failure
-                    showAlert = true
+        let result = await repository.loadData(forceRefresh: forceFetch)
+        
+        switch result {
+        case .success(let loaded):
+            data = loaded.data
+            schoolBusOmiya = loaded.data.toBusTimetable()
+            
+            if loaded.source == .remote {
+                lastUpdatedDate = clock.now
+                if loaded.hadExistingRemoteUpdateBeforeSync {
+                    await requestReview()
                 }
             }
             
-            if self.data == nil {
-                let response = await dataFetcher.fetchLocalData()
-                switch response {
-                case .success(let success):
-                    self.data = success
-                    self.schoolBusOmiya = success.toBusTimetable()
-                case .failure(let failure):
-                    switch failure {
-                    case .noLocalData:
-                        error = failure
-                        showAlert = true
-                    default:
-                        break
-                    }
-                }
+            if let remoteError = loaded.remoteError {
+                error = remoteError
+                showAlert = true
             }
+        case .failure(let failure):
+            error = failure
+            showAlert = true
         }
+        
+        updateBusStates()
     }
     
     // MARK: - Private Methods
     private func requestReview() async {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasReviewedApp) == true { return }
-        if let window = await UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            await AppStore.requestReview(in: window)
-            UserDefaults.standard.setValue(true, forKey: UserDefaultsKeys.hasReviewedApp)
+        if settings.hasReviewedAppV1 { return }
+        if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            AppStore.requestReview(in: window)
+            settings.hasReviewedAppV1 = true
         }
     }
     
     /// Starts a background task that continuously updates all bus states.
-    @MainActor
-    func startBusStateUpdates() async {
+    func startBusStateUpdates() {
         // Cancel existing task if any
         busStateUpdateTask?.cancel()
         
-        busStateUpdateTask = Task.detached(priority: .background) { [weak self] in
-            guard let self else { return }
-            
+        busStateUpdateTask = Task(priority: .background) { [weak self] in
             while !Task.isCancelled {
-                await self.updateBusStates()
-                
-                // Use NextBusState.makeTimeInterval(currentTime:) to decide the most precise next wake time
-                let now = Date()
-                let intervals: [TimeInterval?] = [
-                    self.toCampusState.makeTimeInterval(currentTime: now),
-                    self.toStationState.makeTimeInterval(currentTime: now),
-                    self.toCampusStateIwatsuki.makeTimeInterval(currentTime: now),
-                    self.toStationStateIwatsuki.makeTimeInterval(currentTime: now),
-                    self.toOmiyaState.makeTimeInterval(currentTime: now),
-                    self.toToyosuState.makeTimeInterval(currentTime: now)
-                ]
-                
-                let nextInterval = intervals.compactMap { $0 }.min() ?? 30
-                let sleepDuration = max(nextInterval, 1)
+                guard let self else { return }
+                self.updateBusStates()
                 
                 do {
+                    let sleepDuration = self.nextRefreshInterval()
                     try await Task.sleep(nanoseconds: UInt64(sleepDuration * 1_000_000_000))
                 } catch {
                     break
@@ -198,8 +169,7 @@ class TimetableManager {
     }
     
     /// Updates all bus state properties based on current timetable data.
-    @MainActor
-    private func updateBusStates() async {
+    private func updateBusStates() {
         let now = Date()
         
         // Omiya
@@ -222,6 +192,21 @@ class TimetableManager {
         
         toToyosuState = computeNextState(timetable: shuttleBus, type: .type1, now: now)
         toOmiyaState = computeNextState(timetable: shuttleBus, type: .type2, now: now)
+    }
+    
+    private func nextRefreshInterval() -> TimeInterval {
+        let now = Date()
+        let intervals: [TimeInterval?] = [
+            toCampusState.makeTimeInterval(currentTime: now),
+            toStationState.makeTimeInterval(currentTime: now),
+            toCampusStateIwatsuki.makeTimeInterval(currentTime: now),
+            toStationStateIwatsuki.makeTimeInterval(currentTime: now),
+            toOmiyaState.makeTimeInterval(currentTime: now),
+            toToyosuState.makeTimeInterval(currentTime: now)
+        ]
+        
+        let nextInterval = intervals.compactMap { $0 }.min() ?? 30
+        return max(nextInterval, 1)
     }
     
     private func computeNextState(
