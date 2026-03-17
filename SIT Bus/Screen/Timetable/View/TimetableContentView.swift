@@ -46,10 +46,12 @@ struct TimetableContentView: View {
                     }
                     
                     ForEach(timetable.keys.sorted(), id: \.self) { key in
-                        makeCell(
-                            text: "\(key)",
-                            values: timetable[key]!
-                        )
+                        if let values = timetable[key] {
+                            makeCell(
+                                text: "\(key)",
+                                values: values
+                            )
+                        }
                     }
                 } header: {
                     Label(busType.localizedTitle, systemImage: busType.symbol)
@@ -57,7 +59,7 @@ struct TimetableContentView: View {
                 }
             }
             .listRowSpacing(12)
-            .listStyle(InsetGroupedListStyle())
+            .listStyle(.insetGrouped)
         } else {
             ContentUnavailableView(
                 "Label.NoBuses",
@@ -76,21 +78,7 @@ struct TimetableContentView: View {
         }
         
         HStack(spacing: 0) {
-            if #available(iOS 26.0, *) {
-                TimetableHeader(
-                    text: text,
-                    radius: 26
-                )
-                .frame(width: 64)
-                .accessibilityLabel("Label.Accessibility.\(text)Time")
-            } else {
-                TimetableHeader(
-                    text: text,
-                    radius: 10
-                )
-                .frame(width: 64)
-                .accessibilityLabel("Label.Accessibility.\(text)Time")
-            }
+            makeTimetableHeader(text: text)
             
             LazyVGrid(
                 columns: [.init(
@@ -116,6 +104,25 @@ struct TimetableContentView: View {
             .padding(4)
         }
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 8))
+    }
+    
+    @ViewBuilder
+    private func makeTimetableHeader(text: String) -> some View {
+        if #available(iOS 26.0, *) {
+            TimetableHeader(
+                text: text,
+                radius: 26
+            )
+            .frame(width: 64)
+            .accessibilityLabel("Label.Accessibility.\(text)Time")
+        } else {
+            TimetableHeader(
+                text: text,
+                radius: 10
+            )
+            .frame(width: 64)
+            .accessibilityLabel("Label.Accessibility.\(text)Time")
+        }
     }
 }
 

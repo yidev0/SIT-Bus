@@ -15,6 +15,10 @@ class BusTimetable {
     let lastUpdated: Date?
     let source: URL
     
+    private let calendarByDay: [Date: Calendar]
+    private let tableByName: [String: Table]
+    private let activeDatesByMonth: [[Date]]
+    
     init(
         calendar: [Calendar],
         tables: [Table],
@@ -25,6 +29,29 @@ class BusTimetable {
         self.tables = tables
         self.lastUpdated = lastUpdated
         self.source = source
+        
+        let currentCalendar = Foundation.Calendar.current
+        self.calendarByDay = Dictionary(
+            calendar.map { (currentCalendar.startOfDay(for: $0.date), $0) },
+            uniquingKeysWith: { first, _ in first }
+        )
+        self.tableByName = Dictionary(
+            tables.map { ($0.name, $0) },
+            uniquingKeysWith: { first, _ in first }
+        )
+        
+        let grouped = Dictionary(grouping: calendar.map(\.date)) {
+            currentCalendar.dateComponents([.year, .month], from: $0)
+        }
+        let sortedKeys = grouped.keys.sorted { lhs, rhs in
+            if lhs.year == rhs.year {
+                return (lhs.month ?? 0) < (rhs.month ?? 0)
+            }
+            return (lhs.year ?? 0) < (rhs.year ?? 0)
+        }
+        self.activeDatesByMonth = sortedKeys.map { key in
+            (grouped[key] ?? []).sorted()
+        }
     }
     
     struct Calendar {
@@ -109,47 +136,23 @@ class BusTimetable {
     }
     
     func getTable(for date: Date) -> Table? {
-        let tableName = calendar.first(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })?.tableName
-        let table = tables.first(where: { $0.name == tableName })
-        return table
+        guard let entry = getCalendar(for: date) else { return nil }
+        return tableByName[entry.tableName]
     }
     
     func getCalendar(for date: Date) -> Calendar? {
-        calendar.first(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })
+        calendarByDay[dayKey(for: date)]
     }
     
     func getActiveDates() -> [[Date]] {
-        let cal = Foundation.Calendar.current
-        // Extract raw dates from the calendar entries
-        let dates = calendar.map { $0.date }
-        
-        // Group by (year, month)
-        let grouped = Dictionary(grouping: dates) { date -> DateComponents in
-            return cal.dateComponents([.year, .month], from: date)
-        }
-        
-        // Sort keys chronologically
-        let sortedKeys = grouped.keys.sorted { lhs, rhs in
-            if lhs.year == rhs.year {
-                return lhs.month! < rhs.month!
-            }
-            return lhs.year! < rhs.year!
-        }
-        
-        let result: [[Date]] = sortedKeys.map { key in
-            let monthDates = grouped[key] ?? []
-            return monthDates.sorted()
-        }
-        
-        return result
+        activeDatesByMonth
     }
     
     /// Returns the Date of the next bus after the given date, or nil if not found.
     func getNext(from date: Date, type: DestinationType) -> Date? {
-        // Find today's calendar
         let currentCalendar = Foundation.Calendar.current
-        guard let calendarEntry = calendar.first(where: { currentCalendar.isDate($0.date, inSameDayAs: date) }) else { return nil }
-        guard let table = tables.first(where: { $0.name == calendarEntry.tableName }) else { return nil }
+        guard let calendarEntry = getCalendar(for: date) else { return nil }
+        guard let table = tableByName[calendarEntry.tableName] else { return nil }
         let timetable: [Table.Value] = switch type {
         case .type1: table.destination1
         case .type2: table.destination2
@@ -176,8 +179,8 @@ class BusTimetable {
         type: DestinationType
     ) -> (startDate: Date, endDate: Date)? {
         let currentCalendar = Foundation.Calendar.current
-        guard let calendarEntry = calendar.first(where: { currentCalendar.isDate($0.date, inSameDayAs: date) }) else { return nil }
-        guard let table = tables.first(where: { $0.name == calendarEntry.tableName }) else { return nil }
+        guard let calendarEntry = getCalendar(for: date) else { return nil }
+        guard let table = tableByName[calendarEntry.tableName] else { return nil }
         let timetable: [Table.Value] = switch type {
         case .type1: table.destination1
         case .type2: table.destination2
@@ -214,7 +217,11 @@ class BusTimetable {
     }
     
     func isActive(for date: Date) -> Bool {
-        calendar.contains(where: { Foundation.Calendar.current.isDate($0.date, inSameDayAs: date) })
+        calendarByDay[dayKey(for: date)] != nil
+    }
+    
+    private func dayKey(for date: Date) -> Date {
+        Foundation.Calendar.current.startOfDay(for: date)
     }
 }
 
@@ -409,4 +416,3 @@ extension BusTimetable {
         source: .shuttleBus
     )
 }
-

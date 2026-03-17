@@ -12,14 +12,7 @@ struct HomeView: View {
     @Environment(TimetableManager.self)
     private var timetableManager
     
-    @Environment(\.horizontalSizeClass)
-    private var horizontalSizeClass
-    
-    @State var model = HomeViewModel()
-    
     var body: some View {
-        @Bindable var model = model
-        
         NavigationStack {
             ScrollView {
                 HomeViewBusSection()
@@ -35,7 +28,6 @@ struct HomeView: View {
                 await timetableManager.loadData()
             }
         }
-        .environment(model)
         .task {
             if Calendar.current.isDateInToday(timetableManager.lastUpdatedDate) == false {
                 await timetableManager.loadData()

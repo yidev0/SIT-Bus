@@ -77,7 +77,7 @@ enum BusLineType: Hashable {
         }
     }
     
-    enum SchoolBus: String, CaseIterable, BusLine, AppEnum {
+    enum SchoolBus: String, CaseIterable, BusLine {
         case stationToCampus = "StationToCampus"
         case campusToStation = "CampusToStation"
         
