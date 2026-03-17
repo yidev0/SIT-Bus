@@ -77,7 +77,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Extension/Bundle +.swift",
-				"Extension/CLLocationCoordinate2D +.swift",
 				"Extension/Color +.swift",
 				"Extension/Date +.swift",
 				"Extension/String +.swift",

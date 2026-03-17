@@ -1027,6 +1027,7 @@
       }
     },
     "Label.Map.FromHigashiOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1043,6 +1044,7 @@
       }
     },
     "Label.Map.FromIwatsuki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1059,6 +1061,7 @@
       }
     },
     "Label.Map.ToHigashiOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1075,6 +1078,7 @@
       }
     },
     "Label.Map.ToIwatsuki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1629,6 +1633,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "https://lib.shibaura-it.ac.jp/usage/information/"
+          }
+        }
+      }
+    },
+    "URL.ShuttleBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期】シャトルバス運行予定_1.pdf"
           }
         }
       }
