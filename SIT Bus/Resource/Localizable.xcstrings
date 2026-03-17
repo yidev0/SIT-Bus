@@ -1632,6 +1632,22 @@
           }
         }
       }
+    },
+    "URL.ShuttleBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期】シャトルバス運行予定_1.pdf"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
