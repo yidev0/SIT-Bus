@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var showWelcome: Bool
     
     init() {
-        showWelcome = !UserDefaults.standard.bool(forKey: UserDefaultsKeys.shownWelcome2)
+        showWelcome = !AppSettings().shownWelcome2
     }
     
     var body: some View {

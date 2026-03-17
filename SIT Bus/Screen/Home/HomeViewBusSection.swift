@@ -35,25 +35,8 @@ struct HomeViewBusSection: View {
                 spacing: 8
             ) {
                 ForEach(BusType.allCases) { type in
-                    switch type {
-                    case .schoolOmiya:
-                        if showSchoolBus {
-                            makeBusSection(for: type)
-                        } else {
-                            EmptyView()
-                        }
-                    case .schoolIwatsuki:
-                        if showSchoolBusIwatsuki {
-                            makeBusSection(for: type)
-                        } else {
-                            EmptyView()
-                        }
-                    case .shuttle:
-                        if showShuttleBus {
-                            makeBusSection(for: type)
-                        } else {
-                            EmptyView()
-                        }
+                    if isVisible(type) {
+                        makeBusSection(for: type)
                     }
                 }
             }
@@ -99,6 +82,17 @@ struct HomeViewBusSection: View {
                 table: timetableManager.getTable(type: type, date: .now),
                 for: type.destinationType
             )
+        }
+    }
+    
+    private func isVisible(_ type: BusType) -> Bool {
+        switch type {
+        case .schoolOmiya:
+            showSchoolBus
+        case .schoolIwatsuki:
+            showSchoolBusIwatsuki
+        case .shuttle:
+            showShuttleBus
         }
     }
     
