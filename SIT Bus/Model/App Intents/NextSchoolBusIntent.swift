@@ -25,7 +25,7 @@ struct NextSchoolBusIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        let schoolBusData = await BusDataFetcher().fetchLocalData()
+        let schoolBusData = await BusRepository().fetchLocal()
         switch schoolBusData {
         case .success(let success):
             let timetable = success.toBusTimetable()

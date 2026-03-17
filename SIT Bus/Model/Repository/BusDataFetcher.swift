@@ -8,13 +8,22 @@
 import Foundation
 
 struct BusDataFetcher {
+    private static let groupID = "group.com.yidev.SIT-Bus"
+    private static let busDataFileName = "bus_data"
+    private static let fetchURL = URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
+    private static let decoder = JSONDecoder()
+    
+    private var dataStoreURL: URL? {
+        FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: Self.groupID)?
+            .appendingPathComponent(Self.busDataFileName, conformingTo: .json)
+    }
     
     func fetchLocalData() async -> Result<SBReferenceData, BusDataFetcherError>  {
-        let dataStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus")?.appendingPathComponent("bus_data", conformingTo: .json)
         if let url = dataStoreURL, FileManager.default.fileExists(atPath: url.path()) {
             do {
                 let data = try Data(contentsOf: url)
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
+                let result = try Self.decoder.decode(SBReferenceData.self, from: data)
                 return .success(result)
             } catch {
                 return .failure(.parseError)
@@ -25,21 +34,17 @@ struct BusDataFetcher {
     }
     
     func fetchData() async -> Result<SBReferenceData, BusDataFetcherError> {
-        print("fetching...")
-        let fetchURL = URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
-        
         do {
-            let (data, response) = try await URLSession.shared.data(from: fetchURL)
+            let (data, response) = try await URLSession.shared.data(from: Self.fetchURL)
             guard let httpURLResponse = response as? HTTPURLResponse else {
-                preconditionFailure()
+                return .failure(.invalidResponse)
             }
             
             switch httpURLResponse.statusCode {
             case 200...299:
-                let result = try JSONDecoder().decode(SBReferenceData.self, from: data)
-                if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.yidev.SIT-Bus") {
-                    try data.write(to: url.appendingPathComponent("bus_data", conformingTo: .json))
-                    UserDefaults.standard.set(Date.now.timeIntervalSince1970, forKey: "LastUpdate")
+                let result = try Self.decoder.decode(SBReferenceData.self, from: data)
+                if let url = dataStoreURL {
+                    try data.write(to: url)
                 }
                 return .success(result)
             case 400...499:

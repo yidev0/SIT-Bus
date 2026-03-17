@@ -9,6 +9,7 @@ import Foundation
 
 @Observable
 class TimetableViewModel {
+    private let settings: AppSettings
     
     var date: Date = .now
     
@@ -25,23 +26,23 @@ class TimetableViewModel {
     /// for iPhone
     var busLineType: BusLineType {
         didSet {
-            UserDefaults.standard.set(busLineType.rawValue, forKey: UserDefaultsKeys.timetableBus)
+            settings.timetableBus = busLineType.rawValue
         }
     }
     /// For iPad
     var busType: BusType {
         didSet {
-            UserDefaults.standard.set(busType.rawValue, forKey: UserDefaultsKeys.timetableBusType)
+            settings.timetableBusType = busType.rawValue
         }
     }
     
-    init() {
-        let userDefaults = UserDefaults.standard
+    init(settings: AppSettings = AppSettings()) {
+        self.settings = settings
         
-        let busKey = userDefaults.string(forKey: UserDefaultsKeys.timetableBus)
+        let busKey = settings.timetableBus
         self.busLineType = .init(name: busKey ?? "") ?? .schoolBus(.stationToCampus)
         
-        let busTypeKey = userDefaults.string(forKey: UserDefaultsKeys.timetableBusType)
+        let busTypeKey = settings.timetableBusType
         self.busType = .init(rawValue: busTypeKey ?? "") ?? .schoolOmiya
     }
 }
