@@ -65,7 +65,7 @@ struct HomeViewLinkSection: View {
                         case .univCoop:
                             CoopServiceView()
                         case .boardingLocation:
-                            BusMapView()
+                            boardingLocations
                         case .library:
                             LibraryView()
                         case .festival:
@@ -89,6 +89,25 @@ struct HomeViewLinkSection: View {
             .padding(.horizontal, 4)
         }
         .buttonStyle(.home)
+    }
+    
+    private var boardingLocations: some View {
+        List {
+            Section {
+                LinkButton("https://www.shibaura-it.ac.jp/access/omiya.html") {
+                    Text("Label.SchoolBusIwatsuki")
+                }
+                
+                LinkButton("https://www.shibaura-it.ac.jp/access/omiya.html") {
+                    Text("Label.SchoolBusOmiya")
+                }
+                
+                LinkButton(.init(localized: "URL.ShuttleBus")) {
+                    Text("Label.ShuttleBus")
+                }
+            }
+        }
+        .navigationTitle("Label.BoardingLocation")
     }
 }
 

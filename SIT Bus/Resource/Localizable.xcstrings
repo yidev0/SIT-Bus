@@ -1027,6 +1027,7 @@
       }
     },
     "Label.Map.FromHigashiOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1043,6 +1044,7 @@
       }
     },
     "Label.Map.FromIwatsuki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1059,6 +1061,7 @@
       }
     },
     "Label.Map.ToHigashiOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1075,6 +1078,7 @@
       }
     },
     "Label.Map.ToIwatsuki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
