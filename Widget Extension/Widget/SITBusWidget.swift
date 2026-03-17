@@ -105,17 +105,17 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
         baseTime: Date
     ) -> NextBusState {
         if let nextBusDate = timetable?.getNext(from: baseTime, type: type.destinationType) {
-            let note = timetable?.getNextNote(from: baseTime, type: type.destinationType)
-            if let note, nextBusDate > note.startDate {
+            if let note = timetable?.getNextNote(from: baseTime, nextDate: nextBusDate, type: type.destinationType) {
                 return .timely(start: note.startDate, end: note.endDate)
             } else {
-                return .nextBus(date: nextBusDate, departsIn: 0)
+                let minutes = max(0, Int(ceil(nextBusDate.timeIntervalSince(baseTime) / 60)))
+                return .nextBus(date: nextBusDate, departsIn: minutes)
             }
         } else {
-            if timetable?.getTable(for: baseTime) == nil {
-                return .noBusService
-            } else {
+            if timetable?.isActive(for: baseTime) == true {
                 return .busServiceEnded
+            } else {
+                return .noBusService
             }
         }
     }
@@ -154,15 +154,9 @@ struct SITBusWidgetEntryView : View {
             case .timely(let start, let end):
                 Text("Label.TimelyOperation", tableName: "Widget")
                     .font(family == .systemSmall ? .footnote : .body)
-                // Avoid dynamically building a localization key:
-                HStack(spacing: 4) {
-                    Text(start, style: .time)
-                    Text("Label.To", tableName: "Widget")
-                    Text(end, style: .time)
-                    Text("Label.Service", tableName: "Widget")
-                }
-                .font(family == .systemSmall ? .body : .title2)
-                .fontWeight(family == .systemSmall ? .regular : .medium)
+                Text("Label.\(Text(start, style: .time))to\(Text(end, style: .time))Service", tableName: "Widget")
+                    .font(family == .systemSmall ? .body : .title2)
+                    .fontWeight(family == .systemSmall ? .regular : .medium)
             case .busServiceEnded:
                 Text("Label.BusServiceEnded")
                     .font(family == .systemSmall ? .body : .title)
