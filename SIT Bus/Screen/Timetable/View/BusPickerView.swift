@@ -15,20 +15,19 @@ struct BusPickerView: View {
     var body: some View {
         Menu {
             ForEach(BusType.allCases, id: \.rawValue) { bus in
-                Section(bus.localizedTitle) {
-                    Picker(bus.localizedTitle, selection: $selectedBus) {
-                        ForEach(bus.cases, id: \.self) { type in
-                            switch bus {
-                            case .schoolOmiya:
-                                Label(type.localizedShortTitle, systemImage: type.symbol)
-                            case .schoolIwatsuki:
-                                Label(type.localizedShortTitle, systemImage: type.symbol)
-                            case .shuttle:
-                                Label(type.localizedShortTitle, systemImage: type.symbol)
-                            }
+                Picker(bus.localizedTitle, selection: $selectedBus) {
+                    ForEach(bus.cases, id: \.self) { type in
+                        switch bus {
+                        case .schoolOmiya:
+                            Label(type.localizedShortTitle, systemImage: type.symbol)
+                        case .schoolIwatsuki:
+                            Label(type.localizedShortTitle, systemImage: type.symbol)
+                        case .shuttle:
+                            Label(type.localizedShortTitle, systemImage: type.symbol)
                         }
                     }
                 }
+                .labelsVisibility(.visible)
             }
         } label: {
             Text(selectedBus.localizedShortTitle)
@@ -47,4 +46,13 @@ struct BusPickerView: View {
             )
         )
     )
+    
+    BusPickerView(
+        selectedBus: .constant(
+            .schoolBus(
+                .campusToStation
+            )
+        )
+    )
+    .environment(\.locale, Locale(identifier: "ja_JP"))
 }
