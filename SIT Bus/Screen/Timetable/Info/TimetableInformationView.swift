@@ -29,7 +29,7 @@ struct TimetableInformationView: View {
                             .foregroundStyle(Color.primary)
                     }
                     
-                    LinkButton("https://www.shibaura-it.ac.jp/assets/jikoku_iwatsuki.pdf") {
+                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html") {
                         Text("Label.SchoolBusIwatsuki")
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
@@ -44,8 +44,14 @@ struct TimetableInformationView: View {
             }
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
-                Button(action: { dismiss.callAsFunction() }) {
-                    Text("Label.Close")
+                if #available(iOS 26.0, *) {
+                    Button(role: .close) {
+                        dismiss.callAsFunction()
+                    }
+                } else {
+                    Button(action: { dismiss.callAsFunction() }) {
+                        Text("Label.Close")
+                    }
                 }
             }
         }

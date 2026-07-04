@@ -1,0 +1,415 @@
+//
+//  BusTimetable.swift
+//  sit-bus
+//
+//  Created by Yuto on 2025/05/27.
+//
+
+import Foundation
+import SwiftUI
+
+class BusTimetable {
+    
+    let calendar: [Calendar]
+    let tables: [Table]
+    let lastUpdated: Date?
+    let source: URL
+    
+    private let calendarByDay: [Date: Calendar]
+    private let tableByName: [String: Table]
+    private let activeDatesByMonth: [[Date]]
+    
+    init(
+        calendar: [Calendar],
+        tables: [Table],
+        lastUpdated: Date?,
+        source: URL
+    ) {
+        self.calendar = calendar
+        self.tables = tables
+        self.lastUpdated = lastUpdated
+        self.source = source
+        
+        let currentCalendar = Foundation.Calendar.current
+        self.calendarByDay = Dictionary(
+            calendar.map { (currentCalendar.startOfDay(for: $0.date), $0) },
+            uniquingKeysWith: { first, _ in first }
+        )
+        self.tableByName = Dictionary(
+            tables.map { ($0.name, $0) },
+            uniquingKeysWith: { first, _ in first }
+        )
+        
+        let grouped = Dictionary(grouping: calendar.map(\.date)) {
+            currentCalendar.dateComponents([.year, .month], from: $0)
+        }
+        let sortedKeys = grouped.keys.sorted { lhs, rhs in
+            if lhs.year == rhs.year {
+                return (lhs.month ?? 0) < (rhs.month ?? 0)
+            }
+            return (lhs.year ?? 0) < (rhs.year ?? 0)
+        }
+        self.activeDatesByMonth = sortedKeys.map { key in
+            (grouped[key] ?? []).sorted()
+        }
+    }
+    
+    struct Calendar {
+        let date: Date
+        let tableName: String
+        let comment: String?
+        
+        init(date: Date, tableName: String, comment: String? = nil) {
+            self.date = date
+            self.tableName = tableName
+            self.comment = comment?.isEmpty == true ? nil : comment
+        }
+    }
+    
+    struct Table {
+        let name: String
+        /// To Campus / To Toyosu
+        let destination1: [Value]
+        /// To Station / To Omiya
+        let destination2: [Value]
+        
+        struct Value: Hashable {
+            let time: Time
+            let note: Note?
+            
+            init(
+                time: Time,
+                note: Note? = nil
+            ) {
+                self.time = time
+                self.note = note
+            }
+            
+            struct Time: Hashable {
+                let hour: Int
+                let minute: Int
+                
+                func getSum() -> Int {
+                    hour * 60 + minute
+                }
+                
+                func toDate() -> Date {
+                    .createTime(hour: hour, minute: minute)!
+                }
+            }
+            
+            struct Note: Hashable {
+                let from: Time
+                let until: Time
+                
+                @ViewBuilder
+                func makeText() -> some View {
+                    Text("Label.\(Text(from.toDate(), format: .dateTime.hour().minute()))to\(Text(until.toDate(), format: .dateTime.hour().minute()))Service")
+                }
+            }
+        }
+        
+        func sectionize(type: DestinationType) -> [Int: [Value]] {
+            let source: [Value] = {
+                switch type {
+                case .type1:
+                    return destination1
+                case .type2:
+                    return destination2
+                }
+            }()
+            
+            var grouped: [Int: [Value]] = [:]
+            for value in source {
+                let hour = value.time.hour
+                grouped[hour, default: []].append(value)
+            }
+            return grouped
+        }
+    }
+    
+    enum DestinationType {
+        /// To Campus or Toyosu
+        case type1
+        /// To Station or Omiya
+        case type2
+    }
+    
+    func getTable(for date: Date) -> Table? {
+        guard let entry = getCalendar(for: date) else { return nil }
+        return tableByName[entry.tableName]
+    }
+    
+    func getCalendar(for date: Date) -> Calendar? {
+        calendarByDay[dayKey(for: date)]
+    }
+    
+    func getActiveDates() -> [[Date]] {
+        activeDatesByMonth
+    }
+    
+    /// Returns the Date of the next bus after the given date, or nil if not found.
+    func getNext(from date: Date, type: DestinationType) -> Date? {
+        let currentCalendar = Foundation.Calendar.current
+        guard let calendarEntry = getCalendar(for: date) else { return nil }
+        guard let table = tableByName[calendarEntry.tableName] else { return nil }
+        let timetable: [Table.Value] = switch type {
+        case .type1: table.destination1
+        case .type2: table.destination2
+        }
+        
+        let nowMinutes = date.get(.hour) * 60 + date.get(.minute)
+        if let next = timetable.first(where: { val in
+            let busMinutes = val.time.hour * 60 + val.time.minute
+            return busMinutes >= nowMinutes
+        }) {
+            var components = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
+            components.hour = next.time.hour
+            components.minute = next.time.minute
+            components.second = 0
+            return currentCalendar.date(from: components)
+        }
+        return nil
+    }
+    
+    /// Returns the start and end Date for the next bus note after 'date' and before 'nextDate', if any.
+    func getNextNote(
+        from date: Date,
+        nextDate: Date = .distantFuture,
+        type: DestinationType
+    ) -> (startDate: Date, endDate: Date)? {
+        let currentCalendar = Foundation.Calendar.current
+        guard let calendarEntry = getCalendar(for: date) else { return nil }
+        guard let table = tableByName[calendarEntry.tableName] else { return nil }
+        let timetable: [Table.Value] = switch type {
+        case .type1: table.destination1
+        case .type2: table.destination2
+        }
+        let nowComponents = currentCalendar.dateComponents([.hour, .minute], from: date)
+        let nowMinutes = (nowComponents.hour ?? 0) * 60 + (nowComponents.minute ?? 0)
+        let nextComponents = currentCalendar.dateComponents([.hour, .minute], from: nextDate)
+        let nextMinutes = (nextComponents.hour ?? 0) * 60 + (nextComponents.minute ?? 0)
+        
+        if let value = timetable.first(where: { val in
+            guard let note = val.note else { return false }
+            let busMinutes = val.time.hour * 60 + val.time.minute
+            let noteMinutes = note.from.hour * 60 + note.from.minute
+            let noteUntilMinutes = note.until.hour * 60 + note.until.minute
+            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes <= busMinutes && nowMinutes <= noteUntilMinutes
+        }), let note = value.note {
+            var startComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
+            startComponents.hour = note.from.hour
+            startComponents.minute = note.from.minute
+            startComponents.second = 0
+            guard let startDate = currentCalendar.date(from: startComponents) else { return nil }
+            
+            var endComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
+            
+            endComponents.hour = note.until.hour
+            endComponents.minute = note.until.minute
+            endComponents.second = 0
+            
+            guard let endDate = currentCalendar.date(from: endComponents) else { return nil }
+            
+            return (startDate, endDate)
+        }
+        return nil
+    }
+    
+    func isActive(for date: Date) -> Bool {
+        calendarByDay[dayKey(for: date)] != nil
+    }
+    
+    private func dayKey(for date: Date) -> Date {
+        Foundation.Calendar.current.startOfDay(for: date)
+    }
+}
+
+extension BusTimetable {
+    static func schoolBusIwatsuki(basedOn calendar: [BusTimetable.Calendar]) -> BusTimetable {
+        return .init(
+            calendar: calendar.compactMap { calendar in
+                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
+                    return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "平日(授業日)" : "土曜日")
+                } else if calendar.date.isWeekday {
+                    return Calendar(date: calendar.date, tableName: "平日(休講期間)")
+                } else if calendar.tableName.contains("大宮祭") {
+                    return Calendar(date: calendar.date, tableName: "土曜日")
+                }
+                return nil
+            },
+            tables: [
+                .init(
+                    name: "平日(授業日)",
+                    destination1: [
+                        .init(time: .init(hour: 7, minute: 45)),
+                        .init(time: .init(hour: 8, minute: 25)),
+                        .init(time: .init(hour: 9, minute: 5)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 45)),
+                        .init(time: .init(hour: 13, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 05)),
+                        .init(time: .init(hour: 17, minute: 30)),
+                        .init(time: .init(hour: 19, minute: 5)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 8, minute: 5)),
+                        .init(time: .init(hour: 8, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 5)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 0)),
+                        .init(time: .init(hour: 15, minute: 20)),
+                        .init(time: .init(hour: 15, minute: 50)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                        .init(time: .init(hour: 19, minute: 20)),
+                    ]
+                ),
+                .init(
+                    name: "土曜日",
+                    destination1: [
+                        .init(time: .init(hour: 08, minute: 25)),
+                        .init(time: .init(hour: 09, minute: 05)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 45)),
+                        .init(time: .init(hour: 13, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 05)),
+                        .init(time: .init(hour: 17, minute: 30)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 08, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 00)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 00)),
+                        .init(time: .init(hour: 15, minute: 20)),
+                        .init(time: .init(hour: 15, minute: 50)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                    ]
+                ),
+                .init(
+                    name: "平日(休講期間)",
+                    destination1: [
+                        .init(time: .init(hour: 8, minute: 25)),
+                        .init(time: .init(hour: 9, minute: 5)),
+                        .init(time: .init(hour: 10, minute: 20)),
+                        .init(time: .init(hour: 12, minute: 45)),
+                        .init(time: .init(hour: 13, minute: 15)),
+                        .init(time: .init(hour: 15, minute: 35)),
+                        .init(time: .init(hour: 16, minute: 05)),
+                        .init(time: .init(hour: 17, minute: 30)),
+                        .init(time: .init(hour: 19, minute: 5)),
+                    ],
+                    destination2: [
+                        .init(time: .init(hour: 8, minute: 5)),
+                        .init(time: .init(hour: 8, minute: 45)),
+                        .init(time: .init(hour: 10, minute: 5)),
+                        .init(time: .init(hour: 12, minute: 30)),
+                        .init(time: .init(hour: 13, minute: 0)),
+                        .init(time: .init(hour: 15, minute: 20)),
+                        .init(time: .init(hour: 15, minute: 50)),
+                        .init(time: .init(hour: 17, minute: 15)),
+                        .init(time: .init(hour: 18, minute: 50)),
+                        .init(time: .init(hour: 19, minute: 20)),
+                    ]
+                ),
+            ],
+            lastUpdated: .createDate(year: 2025, month: 9, day: 2)!,
+            source: .schoolBusIwatsuki
+        )
+    }
+    
+    static let sample: BusTimetable = .init(
+        calendar: [.init(date: .now, tableName: "")],
+        tables: [.init(
+            name: "",
+            destination1: (6...23).flatMap { value in
+                [
+                    .init(time: .init(hour: value, minute: value)),
+                    .init(time: .init(hour: value, minute: value + 10)),
+                    .init(time: .init(hour: value, minute: value + 20))
+                ]
+            },
+            destination2: []
+        )],
+        lastUpdated: nil,
+        source: .init(string: "https://www.shibaura-it.ac.jp")!
+    )
+    
+    static let shuttleBus: BusTimetable = .init(
+        calendar: [
+            // 2026-04
+            .init(date: .createDate(year: 2026, month: 4, day: 15)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 4, day: 17)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 4, day: 20)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 4, day: 22)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 4, day: 24)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 4, day: 27)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 4, day: 29)!, tableName: "Monday and Wednesday"),
+            
+            // 2026-05
+            .init(date: .createDate(year: 2026, month: 5, day: 1)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 8)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 11)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 13)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 20)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 22)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 25)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 27)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 5, day: 29)!, tableName: "Friday"),
+            
+            // 2026-06
+            .init(date: .createDate(year: 2026, month: 6, day: 1)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 3)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 5)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 8)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 10)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 12)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 15)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 17)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 19)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 22)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 24)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 26)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 6, day: 29)!, tableName: "Monday and Wednesday"),
+            
+            // 2026-07
+            .init(date: .createDate(year: 2026, month: 7, day: 1)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 3)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 6)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 8)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 10)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 13)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 15)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 17)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 20)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 22)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 24)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 7, day: 27)!, tableName: "Monday and Wednesday")
+        ],
+        tables: [
+            .init(
+                name: "Monday and Wednesday",
+                destination1: [
+                    .init(time: .init(hour: 13, minute: 0))
+                ],
+                destination2: [
+                    .init(time: .init(hour: 17, minute: 5))
+                ]
+            ),
+            .init(
+                name: "Friday",
+                destination1: [
+                    .init(time: .init(hour: 13, minute: 0))
+                ],
+                destination2: [
+                    .init(time: .init(hour: 15, minute: 15))
+                ]
+            )
+        ],
+        lastUpdated: .createDate(year: 2026, month: 3, day: 6)!,
+        source: .shuttleBus
+    )
+}

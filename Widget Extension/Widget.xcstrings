@@ -35,6 +35,7 @@
       }
     },
     "Label.BusType" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

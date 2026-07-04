@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "Bus-iOS-Default-1024x1024@1x.heic",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Bus-iOS-Dark-1024x1024@1x.heic",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

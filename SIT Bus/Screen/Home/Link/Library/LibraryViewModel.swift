@@ -14,10 +14,9 @@ class LibraryViewModel {
     
     func search() {
         if sitSearch.isEmpty { return }
-        let locale = Locale.current.identifier == "ja_JP" ? "jp" : "en"
-        let urlString = "https://sit.summon.serialssolutions.com/#!/search?pn=1&ho=t&include.ft.matches=f&l=\(locale)&q="
-        let encodedQuery = sitSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        if let encodedQuery, let url = URL(string: urlString + encodedQuery) {
+        guard let encodedQuery = sitSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        let urlString = "https://slib.shibaura-it.ac.jp/sublib/ja/nalis_sl/display_panel?searchTarget=0&kw=\(encodedQuery)&selectedLngOnly=0&selectSubject=1"
+        if let url = URL(string: urlString) {
             UIApplication.shared.open(url)
         }
     }

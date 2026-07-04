@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @Environment(TimetableManager.self) private var timetableManager
+    @Environment(TimetableManager.self)
+    private var timetableManager
     
     @AppStorage(UserDefaultsKeys.openLinkInApp)
     var openLinkInApp: Bool = true
@@ -20,11 +21,8 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKeys.saveCoopSchedule)
     var saveCoopSchedule: Bool = true
     
-    @AppStorage(UserDefaultsKeys.debugDate, store: .shared)
-    var debugDateStore: Double = 0
-    
     @State var model = SettingsViewModel()
-    @State var debugDate: Date = Date.now
+    @State var includeDeviceInfo = true
     
     var body: some View {
         @Bindable var timetableManager = timetableManager
@@ -64,9 +62,31 @@ struct SettingsView: View {
                     .disabled(model.deletingCache)
                 }
                 
-                Section("Label.AboutApp") {
+                Section {
                     LinkButton(
-                        "https://apps.apple.com/app/id6736679708"
+                        model.makeFeedbackURL(include: includeDeviceInfo)
+                    ) {
+                        Label {
+                            Text("Label.Feedback")
+                                .foregroundStyle(Color.primary)
+                        } icon: {
+                            Image(systemName: "list.bullet.clipboard")
+                        }
+                    }
+                    
+                    Toggle(isOn: $includeDeviceInfo) {
+                        VStack(alignment: .leading) {
+                            Text("Label.IncludeDeviceInfo")
+                            Text("Detail.IncludeDeviceInfo")
+                                .foregroundStyle(.secondary)
+                                .font(.subheadline)
+                        }
+                    }
+                }
+                
+                Section("Label.AboutApp") {
+                    Link(
+                        destination: .appStore
                     ) {
                         Label {
                             HStack {
@@ -96,13 +116,15 @@ struct SettingsView: View {
                     } label: {
                         Label("Label.Credits", systemImage: "scroll")
                     }
+                }
                 
-                    NavigationLink {
-                        SettingsSourcesView(
-                            lastUpdatedDate: timetableManager.lastUpdatedDate
+                Section("Label.InfoSource") {
+                    LinkButton(.schoolBusOmiya) {
+                        SettingsSourceLabel(
+                            label: "Label.SchoolBusOmiya",
+                            date: timetableManager.lastUpdatedDate,
+                            format: .dateTime.year().month().day().hour().minute()
                         )
-                    } label: {
-                        Label("Label.InfoSource", systemImage: "chevron.left.forwardslash.chevron.right")
                     }
                     .contextMenu {
                         Button(role: .destructive) {
@@ -113,48 +135,26 @@ struct SettingsView: View {
                             Text("Label.ForceFetch")
                         }
                     }
-                }
-                
-#if DEBUG
-                Section {
-                    Picker(selection: $timetableManager.error) {
-                        ForEach(BusDataFetcherError.allCases, id: \.self) { error in
-                            Text(error.errorDescription!)
-                                .tag(error)
-                        }
-                    } label: {
-                        Text(verbatim: "Error Type")
-                    }
-
-                    Button {
-                        timetableManager.showAlert = true
-                    } label: {
-                        Text(verbatim: "Show Error")
+                    
+                    LinkButton(.schoolBusIwatsuki) {
+                        SettingsSourceLabel(
+                            label: "Label.SchoolBusIwatsuki",
+                            date: timetableManager.schoolBusIwatsuki?.lastUpdated,
+                            format: .dateTime.year().month().day()
+                        )
                     }
                     
-                    DatePicker(selection: $debugDate, displayedComponents: [.date, .hourAndMinute]) {
-                        Text(verbatim: "Date")
+                    LinkButton(.shuttleBus) {
+                        SettingsSourceLabel(
+                            label: "Label.ShuttleBus",
+                            date: BusTimetable.shuttleBus.lastUpdated!,
+                            format: .dateTime.year().month().day()
+                        )
                     }
-                    .datePickerStyle(.graphical)
-                    .listRowInsets(.init(top: 0,leading: 16,bottom: 0,trailing: 16))
-                    .onChange(of: debugDate) { _, newValue in
-                        debugDateStore = newValue.timeIntervalSince1970
-                    }
-                    .contextMenu {
-                        Button(role: .destructive) {
-                            debugDate = Date(timeIntervalSince1970: 0)
-                            debugDateStore = 0
-                        } label: {
-                            Text(verbatim: "Reset")
-                        }
-                    }
-                } header: {
-                    Text(verbatim: "DEBUG")
                 }
-#endif
-                
             }
             .navigationTitle("Label.Settings")
+            .toolbarTitleDisplayMode(.automatic)
             .listSectionSpacing(8)
         }
         .onAppear {

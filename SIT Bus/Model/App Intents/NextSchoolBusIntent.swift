@@ -13,7 +13,7 @@ struct NextSchoolBusIntent: AppIntent {
     static var description: IntentDescription? = .init(.init("GetNextBus.Description", table: "Intents"))
     
     @Parameter(title: "Label.BusType")
-    var busType: BusLineType.SchoolBus
+    var busType: IntentBusLineType
     
     @Parameter(title: "Label.Date", default: .now)
     var date: Date
@@ -25,11 +25,11 @@ struct NextSchoolBusIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        let schoolBusData = await BusDataFetcher().fetchLocalData()
+        let schoolBusData = await BusRepository().fetchLocal()
         switch schoolBusData {
         case .success(let success):
-            let timetable = success.makeTimetable(for: busType, date: date)
-            if let nextBus = timetable?.getNextBus(for: date) {
+            let timetable = success.toBusTimetable()
+            if let nextBus = timetable.getNext(from: date, type: busType.toBusLineType().destinationType) {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeZone = .autoupdatingCurrent
                 dateFormatter.timeStyle = .medium

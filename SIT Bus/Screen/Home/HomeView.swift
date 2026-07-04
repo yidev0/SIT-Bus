@@ -9,12 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Environment(TimetableManager.self) private var timetableManager
-    @State var model = HomeViewModel()
+    @Environment(TimetableManager.self)
+    private var timetableManager
     
     var body: some View {
-        @Bindable var model = model
-        
         NavigationStack {
             ScrollView {
                 HomeViewBusSection()
@@ -25,24 +23,18 @@ struct HomeView: View {
             .contentMargins(.top, 8, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Label.Home")
+            .toolbarTitleDisplayMode(.automatic)
             .refreshable {
                 await timetableManager.loadData()
-                makeTimetable()
             }
         }
-        .environment(model)
         .task {
             if Calendar.current.isDateInToday(timetableManager.lastUpdatedDate) == false {
                 await timetableManager.loadData()
             }
-            makeTimetable()
         }
     }
     
-    func makeTimetable() {
-        model.makeTimetable(from: timetableManager.data)
-        model.startTasks()
-    }
 }
 
 #Preview {

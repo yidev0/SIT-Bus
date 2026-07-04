@@ -9,12 +9,20 @@ import SwiftUI
 
 struct HomeViewBusSection: View {
     
-    @Environment(\.horizontalSizeClass) var sizeClass
-    @Environment(HomeViewModel.self) private var model
-    @Environment(TimetableManager.self) private var timetableManager
+    @Environment(\.horizontalSizeClass)
+    var sizeClass
     
-    @AppStorage("Show.SchoolBus") var showSchoolBus: Bool = true
-    @AppStorage("Show.ShuttleBus") var showShuttleBus: Bool = true
+    @Environment(TimetableManager.self)
+    private var timetableManager
+    
+    @AppStorage("Show.SchoolBus")
+    var showSchoolBus: Bool = true
+    
+    @AppStorage("Show.SchoolBusIwatsuki")
+    var showSchoolBusIwatsuki: Bool = false
+    
+    @AppStorage("Show.ShuttleBus")
+    var showShuttleBus: Bool = true
     
     var body: some View {
         VStack(
@@ -26,27 +34,9 @@ struct HomeViewBusSection: View {
                 alignment: .leading,
                 spacing: 8
             ) {
-                if showSchoolBus {
-                    Section {
-                        ForEach(BusLineType.SchoolBus.allCases, id: \.rawValue) { type in
-                            makeBusCell(for: type)
-                        }
-                    } header: {
-                        Text("Label.SchoolBus")
-                            .font(.headline)
-                            .padding([.top, .leading], 4)
-                    }
-                }
-                
-                if showShuttleBus {
-                    Section {
-                        ForEach(BusLineType.ShuttleBus.allCases, id: \.rawValue) { type in
-                            makeBusCell(for: type)
-                        }
-                    } header: {
-                        Text("Label.ShuttleBus")
-                            .font(.headline)
-                            .padding([.top, .leading], 4)
+                ForEach(BusType.allCases) { type in
+                    if isVisible(type) {
+                        makeBusSection(for: type)
                     }
                 }
             }
@@ -54,15 +44,23 @@ struct HomeViewBusSection: View {
             Menu {
                 Toggle(isOn: $showSchoolBus) {
                     Label(
-                        "Label.SchoolBus",
-                        systemImage: "bus.fill"
+                        BusType.schoolOmiya.localizedTitle,
+                        systemImage: BusType.schoolOmiya.symbol
                     )
+                }
+                
+                Toggle(isOn: $showSchoolBusIwatsuki) {
+                    Label(
+                        BusType.schoolIwatsuki.localizedTitle,
+                        systemImage: BusType.schoolIwatsuki.symbol
+                    )
+                    Text("Detail.SchoolBusIwatsuki")
                 }
                 
                 Toggle(isOn: $showShuttleBus) {
                     Label(
-                        "Label.ShuttleBus",
-                        systemImage: "app.connected.to.app.below.fill"
+                        BusType.shuttle.localizedTitle,
+                        systemImage: BusType.shuttle.symbol
                     )
                 }
             } label: {
@@ -74,33 +72,49 @@ struct HomeViewBusSection: View {
                     .background()
             }
             .buttonStyle(.home)
-            .clipShape(.capsule)
+            .buttonBorderShape(.capsule)
         }
         .animation(.default, value: showSchoolBus)
+        .animation(.default, value: showSchoolBusIwatsuki)
         .animation(.default, value: showShuttleBus)
-        .navigationDestination(for: BusLineType.SchoolBus.self) { type in
+        .navigationDestination(for: BusLineType.self) { type in
             SchoolBusListView(
-                timetable: model.getTimetable(for: type)
+                table: timetableManager.getTable(type: type, date: .now),
+                for: type.destinationType
             )
-            .backgroundStyle(Color(.secondarySystemGroupedBackground))
-            .background(Color(.systemGroupedBackground))
         }
-        .navigationDestination(for: BusLineType.ShuttleBus.self) { type in
-            ShuttleBusTimeTable(
-                listType: .list,
-                shuttleType: type
-            )
-            .backgroundStyle(Color(.secondarySystemGroupedBackground))
-            .background(Color(.systemGroupedBackground))
+    }
+    
+    private func isVisible(_ type: BusType) -> Bool {
+        switch type {
+        case .schoolOmiya:
+            showSchoolBus
+        case .schoolIwatsuki:
+            showSchoolBusIwatsuki
+        case .shuttle:
+            showShuttleBus
         }
     }
     
     @ViewBuilder
-    func makeBusCell<T: BusLine>(for type: T) -> some View {
+    func makeBusSection(for type: BusType) -> some View {
+        Section {
+            ForEach(type.cases, id: \.self) { type in
+                makeBusCell(for: type)
+            }
+        } header: {
+            Text(type.localizedTitle)
+                .font(.headline)
+                .padding([.top, .leading], 4)
+        }
+    }
+    
+    @ViewBuilder
+    func makeBusCell(for type: BusLineType) -> some View {
         NavigationLink(value: type) {
             HomeBusCell(
                 type: type,
-                state: model.getBusState(for: type)
+                state: timetableManager.getBusState(for: type)
             )
         }
         .buttonStyle(.home)

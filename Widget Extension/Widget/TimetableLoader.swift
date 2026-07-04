@@ -14,7 +14,7 @@ class TimetableLoader {
     var loadingState: LoadingState = .notLoaded
     var data: SBReferenceData? = nil
     
-    enum LoadingState {
+    enum LoadingState: Equatable {
         case notLoaded
         case loading
         case notAvailable
@@ -22,6 +22,14 @@ class TimetableLoader {
     }
     
     func loadTimetable() async {
+        if loadingState == .loaded, data != nil {
+            return
+        }
+        
+        if loadingState == .loading {
+            return
+        }
+        
         let dataFetcher = BusDataFetcher()
         loadingState = .loading
         

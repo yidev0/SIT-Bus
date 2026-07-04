@@ -13,7 +13,7 @@ class CoopServiceViewModel {
     var coopSchedule: [(title: String, href: String)] = []
     var quickLookURL: URL?
     
-    public func getCoopSchedule(saveLocal: Bool) {
+    func getCoopSchedule(saveLocal: Bool) {
         Task {
             do {
                 let fetchedHTML = try await fetchHTML(from: "https://www.univcoop.jp/sit/time/")
@@ -29,7 +29,7 @@ class CoopServiceViewModel {
         }
     }
     
-    public func getFileURL(for title: String) -> URL? {
+    func getFileURL(for title: String) -> URL? {
         let fileManager = FileManager.default
         guard let cachesDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("coop") else { return nil }
         return cachesDirectory.appendingPathComponent(title, conformingTo: .pdf)

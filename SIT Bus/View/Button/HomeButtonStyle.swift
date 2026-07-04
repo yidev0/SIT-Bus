@@ -12,9 +12,17 @@ struct HomeButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .backgroundStyle(configuration.isPressed ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
-            .clipShape(.rect(cornerRadius: 8))
-            .contentShape(.rect(cornerRadius: 8))
+            .clipShape(.rect(cornerRadius: radius))
+            .contentShape(.rect(cornerRadius: radius))
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+    }
+    
+    private var radius: CGFloat {
+        if #available(iOS 26, *) {
+            26
+        } else {
+            10
+        }
     }
     
 }

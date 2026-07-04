@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "%.2f MB" : {
       "shouldTranslate" : false
     },
@@ -61,13 +58,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. The app is not liable for any issues or damages resulting from the use of the displayed information."
+            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Other buses are updated through app updates. The latest source are listed in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本アプリのバス情報は、以下の情報源に基づいて提供されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
+            "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスはアプリのアップデートを通し更新しています。最新の情報源は設定タブにて確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
           }
         }
       }
@@ -77,45 +74,125 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \nOne bus, with 100th anniversary design wrapping, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
+            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \n100th anniversary design wrapped bus, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "運行しているほとんどのバスが車椅子対応（スロープ・運転手による補助）をしています。\n創立100周年記念ラッピングしている1台は車椅子で乗車できません。\n運行時間は大宮キャンパスの管理課にお問い合わせください。"
+            "value" : "創立100周年記念ラッピングのバス以外、全てのバスが車椅子対応をしています。乗車時にサポートが必要な方は運転手にお声がけください。\n各車両の運行時間は大宮キャンパスの管理課にお問い合わせください。"
           }
         }
       }
     },
-    "Detail.ShuttleToOmiya" : {
+    "Detail.FeatureNextBus" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Monday & Wednesday 5:05 PM departure\nFriday 3:15 PM departure"
+            "value" : "Check when the next bus departs at a glance."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "月曜・水曜 17:05発\n金曜 15:15発"
+            "value" : "次のバスがいつ出発するか一目で確認することができます"
           }
         }
       }
     },
-    "Detail.ShuttleToToyosu" : {
+    "Detail.FeatureTimetable" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1:00 PM departure "
+            "value" : "See all timetables of buses, and operation dates."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "月曜・水曜・金曜 13:00発"
+            "value" : "すべてのバスの時刻表と運行日の一覧を見ることができます"
+          }
+        }
+      }
+    },
+    "Detail.FeatureWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place widgets on your home screen to check the departure time of the next bus."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム画面から次のバスの発車時刻を確認できます"
+          }
+        }
+      }
+    },
+    "Detail.IncludeDeviceInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device info will be used to identify issues mentioned in your feedback."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス情報はフィードバックの問題を解決または発見することに利用されます"
+          }
+        }
+      }
+    },
+    "Detail.SchoolBusIwatsuki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operation date and time may be inaccurate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "運行日時が不正確な場合があります"
+          }
+        }
+      }
+    },
+    "Detail.SchoolBusIwatsukiSaturday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates only on class days "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授業日のみ運行"
+          }
+        }
+      }
+    },
+    "Detail.SchoolBusIwatsukiWeekday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates every weekday **except** on open campus, parents' meeting, entrance exams, and vacations."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オープンキャンパス、父母懇談会、共通テスト、入試、夏季冬季一斉休暇**以外**運行"
           }
         }
       }
@@ -288,7 +365,7 @@
         }
       }
     },
-    "Label.Accessibility.%lldTime" : {
+    "Label.Accessibility.%@Time" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -352,18 +429,18 @@
         }
       }
     },
-    "Label.AutoUpdateSource" : {
+    "Label.AppIcon" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto Updating Source"
+            "value" : "App icon"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "自動更新ソース"
+            "value" : "アプリアイコン"
           }
         }
       }
@@ -416,6 +493,22 @@
         }
       }
     },
+    "Label.Calendar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カレンダー"
+          }
+        }
+      }
+    },
     "Label.CampusToIwatsukiStation" : {
       "localizations" : {
         "en" : {
@@ -460,6 +553,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "Label.Continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
           }
         }
       }
@@ -612,6 +721,22 @@
         }
       }
     },
+    "Label.Disclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disclaimer "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用にあたり注意事項"
+          }
+        }
+      }
+    },
     "Label.Edit" : {
       "localizations" : {
         "en" : {
@@ -624,6 +749,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "編集"
+          }
+        }
+      }
+    },
+    "Label.FeatureNextBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Bus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のバス"
+          }
+        }
+      }
+    },
+    "Label.Features" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "機能"
+          }
+        }
+      }
+    },
+    "Label.FeatureTimetable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timetable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時刻表"
+          }
+        }
+      }
+    },
+    "Label.FeatureWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウィジェット"
+          }
+        }
+      }
+    },
+    "Label.Feedback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードバック"
           }
         }
       }
@@ -709,6 +914,22 @@
         }
       }
     },
+    "Label.IncludeDeviceInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include Device Info"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス情報を含める"
+          }
+        }
+      }
+    },
     "Label.InfoSource" : {
       "localizations" : {
         "en" : {
@@ -730,13 +951,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Station to Iwatsuki Campus"
+            "value" : "Iwatsuki Station to Campus"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キャンパス行き"
+            "value" : "岩槻駅からキャンパス"
           }
         }
       }
@@ -768,7 +989,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "利用案内"
+            "value" : "図書館サービス"
           }
         }
       }
@@ -806,6 +1027,7 @@
       }
     },
     "Label.Map.FromHigashiOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -822,6 +1044,7 @@
       }
     },
     "Label.Map.FromIwatsuki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -838,6 +1061,7 @@
       }
     },
     "Label.Map.ToHigashiOmiya" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -854,6 +1078,7 @@
       }
     },
     "Label.Map.ToIwatsuki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -902,6 +1127,7 @@
       }
     },
     "Label.Omiya" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -913,6 +1139,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宮"
+          }
+        }
+      }
+    },
+    "Label.OmiyaFestival" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya Festival"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮祭"
           }
         }
       }
@@ -1013,6 +1255,23 @@
         }
       }
     },
+    "Label.Saturday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saturday "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "土曜日"
+          }
+        }
+      }
+    },
     "Label.SaveCoopSchedule" : {
       "localizations" : {
         "en" : {
@@ -1030,6 +1289,7 @@
       }
     },
     "Label.Schedule" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1125,6 +1385,22 @@
         }
       }
     },
+    "Label.ShibauraFestival" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shibaurasai"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "芝浦祭"
+          }
+        }
+      }
+    },
     "Label.Short.CampusToIwatsukiStation" : {
       "localizations" : {
         "en" : {
@@ -1168,7 +1444,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "岩槻駅からキャンパス"
+            "value" : "キャンパス行き"
           }
         }
       }
@@ -1254,6 +1530,7 @@
       }
     },
     "Label.Toyosu" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1301,6 +1578,23 @@
         }
       }
     },
+    "Label.Weekday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekday"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平日"
+          }
+        }
+      }
+    },
     "Label.WheelchairInfo" : {
       "localizations" : {
         "en" : {
@@ -1317,11 +1611,14 @@
         }
       }
     },
+    "My Library" : {
+      "shouldTranslate" : false
+    },
     "OPAC" : {
-
+      "shouldTranslate" : false
     },
     "OSS" : {
-
+      "shouldTranslate" : false
     },
     "URL.LibraryService" : {
       "extractionState" : "manual",
@@ -1336,6 +1633,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "https://lib.shibaura-it.ac.jp/usage/information/"
+          }
+        }
+      }
+    },
+    "URL.ShuttleBus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期】シャトルバス運行予定_1.pdf"
           }
         }
       }
