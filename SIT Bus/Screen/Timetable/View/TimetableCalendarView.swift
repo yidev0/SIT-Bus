@@ -92,11 +92,11 @@ struct TimetableCalendarView: View {
         .buttonStyle(.plain)
         .accessibilityLabel(Text(date, format: .dateTime.weekday(.wide).month().day()))
         .accessibilityValue(
-            Text("Label.Accessibility.NoBusService"),
+            Text(.noService),
             isEnabled: !isActive
         )
         .accessibilityValue(
-            Text("Label.Accessibility.Today"),
+            Text(.today),
             isEnabled: calendar.isDateInToday(date)
         )
         .addAccessiblityTraits(for: calendar.isDate(date, inSameDayAs: self.date))

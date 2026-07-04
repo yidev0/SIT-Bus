@@ -1,5 +1,5 @@
 //
-//  DateLabel.swift
+//  Dateswift
 //  School Bus
 //
 //  Created by Yuto on 2024/08/16.
@@ -23,7 +23,7 @@ struct DateLabel: View {
                 selection: $date,
                 displayedComponents: .date
             ) {
-                Text("Date Picker")
+                Text(.datePicker)
             }
             .datePickerStyle(.graphical)
             .presentationCompactAdaptation(.popover)

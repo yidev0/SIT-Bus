@@ -61,47 +61,47 @@ struct WelcomeView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 120)
-                        .accessibilityLabel("Label.AppIcon")
+                        .accessibilityLabel(.appIcon)
                     Spacer()
                 }
                 .listRowBackground(Color(.systemGroupedBackground))
             }
             
-            Section("Label.Features") {
+            Section(.features) {
                 makeFeatureCell(
                     symbol: "clock",
-                    title: "Label.FeatureNextBus",
-                    detail: "Detail.FeatureNextBus"
+                    title: .featureNextBus,
+                    detail: .featureNextBusDetail
                 )
                 
                 makeFeatureCell(
                     symbol: "table",
-                    title: "Label.FeatureTimetable",
-                    detail: "Detail.FeatureTimetable"
+                    title: .featureTimetable,
+                    detail: .featureTimetableDetail
                 )
                 
                 makeFeatureCell(
                     symbol: "widget.small",
-                    title: "Label.FeatureWidget",
-                    detail: "Detail.FeatureWidget"
+                    title: .featureWidget,
+                    detail: .featureWidgetDetail
                 )
             }
             
-            Section("Label.Disclaimer") {
-                Text("Detail.BusInfo")
+            Section(.disclaimer) {
+                Text(.busInfoDetail)
                 
                 makeSourceCell(
-                    title: "Label.SchoolBusOmiya",
+                    title: .schoolBusOmiya,
                     url: "http://bus.shibaura-it.ac.jp/db/bus_data.json"
                 )
                 
                 makeSourceCell(
-                    title: "Label.SchoolBusIwatsuki",
+                    title: .schoolBusIwatsuki,
                     url: "https://www.shibaura-it.ac.jp/assets/20250927.pdf"
                 )
                 
                 makeSourceCell(
-                    title: "Label.ShuttleBus",
+                    title: .shuttleBus,
                     url: "https://www.shibaura-it.ac.jp/assets/AAA.pdf"
                 )
             }
@@ -113,7 +113,7 @@ struct WelcomeView: View {
             welcome = true
             dismiss.callAsFunction()
         } label: {
-            Text("Label.Continue")
+            Text(.continue)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
                 .fontWeight(.bold)
@@ -122,8 +122,8 @@ struct WelcomeView: View {
     
     private func makeFeatureCell(
         symbol: String,
-        title: LocalizedStringKey,
-        detail: LocalizedStringKey
+        title: LocalizedStringResource,
+        detail: LocalizedStringResource
     ) -> some View {
         HStack {
             if dynamicTypeSize > .accessibility2 {
@@ -151,7 +151,7 @@ struct WelcomeView: View {
     }
     
     func makeSourceCell(
-        title: LocalizedStringKey,
+        title: LocalizedStringResource,
         url: String
     ) -> some View {
         Link(destination: .init(string: url)!) {

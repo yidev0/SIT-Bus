@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SettingsSourceLabel: View {
     
-    let label: LocalizedStringKey
+    let label: LocalizedStringResource
     let date: Date?
     let format: Date.FormatStyle
     
-    init(label: LocalizedStringKey, date: Date?, format: Date.FormatStyle) {
+    init(label: LocalizedStringResource, date: Date?, format: Date.FormatStyle) {
         self.label = label
         self.date = date
         self.format = format

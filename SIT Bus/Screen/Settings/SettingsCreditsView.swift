@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsCreditsView: View {
     var body: some View {
         List {
-            Section("OSS") {
+            Section(.openSourceSoftware) {
                 LinkButton("https://github.com/cybozu/WebUI/blob/main/LICENSE") {
                     Text(verbatim: "cybozu/WebUI")
                 }
@@ -20,7 +20,7 @@ struct SettingsCreditsView: View {
                 }
             }
             
-            Section("Label.Localization") {
+            Section(.localization) {
                 
             }
         }

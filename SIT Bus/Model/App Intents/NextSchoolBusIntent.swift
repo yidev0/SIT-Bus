@@ -12,10 +12,10 @@ struct NextSchoolBusIntent: AppIntent {
     static var title: LocalizedStringResource = .init("GetNextBus.Title", table: "Intents")
     static var description: IntentDescription? = .init(.init("GetNextBus.Description", table: "Intents"))
     
-    @Parameter(title: "Label.BusType")
+    @Parameter(title: LocalizedStringResource("BusType"))
     var busType: IntentBusLineType
     
-    @Parameter(title: "Label.Date", default: .now)
+    @Parameter(title: LocalizedStringResource("Date"), default: .now)
     var date: Date
     
     static var parameterSummary: some ParameterSummary {
@@ -36,7 +36,7 @@ struct NextSchoolBusIntent: AppIntent {
                 dateFormatter.dateStyle = .medium
                 return .result(value: dateFormatter.string(from: nextBus))
             } else {
-                return .result(value: "Label.BusServiceEnded".localize)
+                return .result(value: String(localized: .busServiceEnded))
             }
         case .failure(let failure):
             throw failure

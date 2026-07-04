@@ -10,10 +10,10 @@ import AppIntents
 import SwiftUI
 
 struct SITBusWidgetIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = "Label.Timetable"
+    static var title: LocalizedStringResource = "Timetable"
 
     @Parameter(
-        title: "Label.Timetable",
+        title: LocalizedStringResource("Timetable"),
         default: .schoolStationToCampus
     )
     var busType: IntentBusLineType
@@ -145,23 +145,23 @@ struct SITBusWidgetEntryView : View {
 
             switch entry.nextBusState {
             case .nextBus(let date, _):
-                Text("Label.NextBus", tableName: "Widget")
+                Text(.widgetNextBus)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Text(date, style: .time)
                     .font(family == .systemSmall ? .title2 : .largeTitle)
                     .fontWeight(.medium)
             case .timely(let start, let end):
-                Text("Label.TimelyOperation", tableName: "Widget")
+                Text(.widgetTimelyOperation)
                     .font(family == .systemSmall ? .footnote : .body)
-                Text("Label.\(Text(start, style: .time))to\(Text(end, style: .time))Service", tableName: "Widget")
+                Text(.widgetTimelyOperation(Text(start, style: .time), Text(end, style: .time)))
                     .font(family == .systemSmall ? .body : .title2)
                     .fontWeight(family == .systemSmall ? .regular : .medium)
             case .busServiceEnded:
-                Text("Label.BusServiceEnded")
+                Text(.busServiceEnded)
                     .font(family == .systemSmall ? .body : .title)
             case .noBusService:
-                Text("Label.NoBusService")
+                Text(.noBusService)
                     .font(family == .systemSmall ? .body : .title)
             case .loading:
                 EmptyView()
@@ -192,8 +192,8 @@ struct SITBusWidget: Widget {
         ) { entry in
             SITBusWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName(Text("Label.SITBusWidget", tableName: "Widget"))
-        .description(Text("Detail.SITBusWidget", tableName: "Widget"))
+        .configurationDisplayName(Text(.widgetSITBusWidget))
+        .description(Text(.widgetSITBusWidgetDetail))
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

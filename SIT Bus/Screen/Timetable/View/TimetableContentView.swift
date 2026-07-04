@@ -37,9 +37,9 @@ struct TimetableContentView: View {
                     case .schoolBusIwatsuki:
                         switch date.isWeekday {
                         case true:
-                            Text("Detail.SchoolBusIwatsukiWeekday")
+                            Text(.schoolBusIwatsukiWeekdayDetail)
                         case false:
-                            Text("Detail.SchoolBusIwatsukiSaturday")
+                            Text(.schoolBusIwatsukiSaturdayDetail)
                         }
                     case .shuttleBus:
                         EmptyView()
@@ -62,7 +62,7 @@ struct TimetableContentView: View {
             .listStyle(.insetGrouped)
         } else {
             ContentUnavailableView(
-                "Label.NoBuses",
+                .noBuses,
                 systemImage: "exclamationmark.triangle.fill"
             )
         }
@@ -95,7 +95,7 @@ struct TimetableContentView: View {
                             .hidden()
                         
                         Text(value.time.minute, format: .number)
-                            .accessibilityLabel(Text("\(value.time.hour):\(value.time.minute)"))
+                            .accessibilityLabel(Text(value.time.toDate(), format: .dateTime.hour().minute()))
                             .aspectRatio(contentMode: .fill)
                     }
                     .frame(maxWidth: .infinity)
@@ -114,14 +114,14 @@ struct TimetableContentView: View {
                 radius: 26
             )
             .frame(width: 64)
-            .accessibilityLabel("Label.Accessibility.\(text)Time")
+            .accessibilityLabel(Text(.hour(Int(text) ?? 0)))
         } else {
             TimetableHeader(
                 text: text,
                 radius: 10
             )
             .frame(width: 64)
-            .accessibilityLabel("Label.Accessibility.\(text)Time")
+            .accessibilityLabel(Text(.hour(Int(text) ?? 0)))
         }
     }
 }

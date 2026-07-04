@@ -31,21 +31,21 @@ enum BusDataFetcherError: Error, LocalizedError, Hashable, CaseIterable {
     var errorDescription: String? {
         switch self {
         case .clientError:
-            "Error.ClientError".localize
+            String(localized: .errorClientError)
         case .invalidResponse:
-            "Error.InvalidResponse".localize
+            String(localized: .errorInvalidResponse)
         case .invalidURL:
-            "Error.InvalidURL".localize
+            String(localized: .errorInvalidURL)
         case .networkError:
-            "Error.NetworkError".localize
+            String(localized: .errorNetworkError)
         case .noLocalData:
-            "Error.NoLocalData".localize
+            String(localized: .errorNoLocalData)
         case .parseError:
-            "Error.ParseError".localize
+            String(localized: .errorParseError)
         case .serverError:
-            "Error.ServerError".localize
+            String(localized: .errorServerError)
         case .undefined(let statusCode):
-            "Error.Undefined(\(statusCode))".localize
+            String(localized: .errorUndefined(statusCode))
         }
     }
 }
