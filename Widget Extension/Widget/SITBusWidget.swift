@@ -145,16 +145,16 @@ struct SITBusWidgetEntryView : View {
 
             switch entry.nextBusState {
             case .nextBus(let date, _):
-                Text(.widgetNextBus)
+                Text(.Widget.nextBus)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Text(date, style: .time)
                     .font(family == .systemSmall ? .title2 : .largeTitle)
                     .fontWeight(.medium)
             case .timely(let start, let end):
-                Text(.widgetTimelyOperation)
+                Text(.Widget.timelyOperation)
                     .font(family == .systemSmall ? .footnote : .body)
-                Text(.widgetTimelyOperation(Text(start, style: .time), Text(end, style: .time)))
+                Text(.Widget.timelyOperation(start.formatted(date: .omitted, time: .shortened), end.formatted(date: .omitted, time: .shortened)))
                     .font(family == .systemSmall ? .body : .title2)
                     .fontWeight(family == .systemSmall ? .regular : .medium)
             case .busServiceEnded:
@@ -192,8 +192,8 @@ struct SITBusWidget: Widget {
         ) { entry in
             SITBusWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName(Text(.widgetSITBusWidget))
-        .description(Text(.widgetSITBusWidgetDetail))
+        .configurationDisplayName(.Widget.displayName)
+        .description(.Widget.description)
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

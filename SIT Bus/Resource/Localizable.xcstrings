@@ -15,6 +15,12 @@
             "value" : "About App"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25,12 +31,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关于 App"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de la app"
           }
         }
       }
@@ -45,6 +45,12 @@
             "value" : "App icon"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono de la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55,12 +61,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App 图标"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icono de la app"
           }
         }
       }
@@ -75,6 +75,12 @@
             "value" : "Boarding Location "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lugar de embarque"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -85,12 +91,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "巴士乘车地点"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lugar de embarque"
           }
         }
       }
@@ -105,6 +105,12 @@
             "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Other buses are updated through app updates. The latest source are listed in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La información de los autobuses se basa en las fuentes indicadas abajo. La información de la app puede no reflejar los datos más recientes o puede mostrar información incorrecta. \nSolo el horario del autobús escolar (Higashi-Omiya) se actualiza automáticamente. Los demás autobuses se actualizan mediante actualizaciones de la app. Las fuentes más recientes se indican en la pestaña Ajustes.\nLa app no se hace responsable de ningún problema o daño derivado del uso de la información mostrada."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -115,12 +121,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "本 App 的巴士信息基于以下资料制作。App 内的信息不一定始终为最新，也可能显示不准确的信息。\n仅校车（东大宫）的信息会自动更新。其他巴士会通过 App 更新进行更新。最新信息来源可在设置标签页中确认。\n对于因使用所显示信息而导致的任何问题或损失，本 App 概不负责。"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La información de los autobuses se basa en las fuentes indicadas abajo. La información de la app puede no reflejar los datos más recientes o puede mostrar información incorrecta. \nSolo el horario del autobús escolar (Higashi-Omiya) se actualiza automáticamente. Los demás autobuses se actualizan mediante actualizaciones de la app. Las fuentes más recientes se indican en la pestaña Ajustes.\nLa app no se hace responsable de ningún problema o daño derivado del uso de la información mostrada."
           }
         }
       }
@@ -135,6 +135,12 @@
             "value" : "Today’s service has ended."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El servicio de hoy ha finalizado."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,12 +151,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今天的巴士运行已经结束"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El servicio de hoy ha finalizado."
           }
         }
       }
@@ -165,6 +165,12 @@
             "value" : "Bus type"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de autobús"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,12 +181,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "巴士类型"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tipo de autobús"
           }
         }
       }
@@ -195,6 +195,12 @@
             "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \n100th anniversary design wrapped bus, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excepto el autobús rotulado con el diseño del 100.º aniversario, todos los autobuses son accesibles para sillas de ruedas. Si necesitas asistencia al subir, avisa al conductor.\nPara consultar los horarios de servicio de cada vehículo, contacta con la oficina de administración del campus de Omiya."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -205,12 +211,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "除创立100周年纪念涂装巴士外，所有巴士均支持轮椅乘车。乘车时需要协助的乘客，请告知驾驶员。\n各车辆的运行时间请咨询大宫校区管理课。"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Excepto el autobús rotulado con el diseño del 100.º aniversario, todos los autobuses son accesibles para sillas de ruedas. Si necesitas asistencia al subir, avisa al conductor.\nPara consultar los horarios de servicio de cada vehículo, contacta con la oficina de administración del campus de Omiya."
           }
         }
       }
@@ -225,6 +225,12 @@
             "value" : "Calendar "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -235,12 +241,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日历"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calendario"
           }
         }
       }
@@ -255,6 +255,12 @@
             "value" : "Campus to Iwatsuki Station"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Del campus a la estación de Iwatsuki"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -265,12 +271,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校区到岩槻站"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Del campus a la estación de Iwatsuki"
           }
         }
       }
@@ -285,6 +285,12 @@
             "value" : "To Station"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A la estación"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -295,12 +301,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开往岩槻站"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A la estación"
           }
         }
       }
@@ -315,6 +315,12 @@
             "value" : "Campus to Higashi-Omiya Station"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Del campus a la estación de Higashi-Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -325,12 +331,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校区到东大宫站"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Del campus a la estación de Higashi-Omiya"
           }
         }
       }
@@ -345,6 +345,12 @@
             "value" : "To Station"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A la estación"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -355,12 +361,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开往东大宫站"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A la estación"
           }
         }
       }
@@ -375,6 +375,12 @@
             "value" : "Close"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -385,12 +391,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关闭"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cerrar"
           }
         }
       }
@@ -405,6 +405,12 @@
             "value" : "Continue"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -415,12 +421,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "继续"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuar"
           }
         }
       }
@@ -435,6 +435,12 @@
             "value" : "Business Hours"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario de atención"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -445,12 +451,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "营业时间"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horario de atención"
           }
         }
       }
@@ -465,6 +465,12 @@
             "value" : "Credits"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créditos"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -475,12 +481,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "鸣谢"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créditos"
           }
         }
       }
@@ -495,6 +495,12 @@
             "value" : "Date"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -505,12 +511,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日期"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fecha"
           }
         }
       }
@@ -525,6 +525,12 @@
             "value" : "Date Picker"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selector de fecha"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -535,12 +541,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日期选择"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selector de fecha"
           }
         }
       }
@@ -555,6 +555,12 @@
             "value" : "Delete cache"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar caché"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -565,12 +571,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除缓存"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar caché"
           }
         }
       }
@@ -597,6 +597,24 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld hora"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld horas"
+                }
+              }
+            }
+          }
+        },
         "ja" : {
           "variations" : {
             "plural" : {
@@ -616,24 +634,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld小时后发车"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "En %lld hora"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "En %lld horas"
                 }
               }
             }
@@ -663,6 +663,24 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld minuto"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld minutos"
+                }
+              }
+            }
+          }
+        },
         "ja" : {
           "variations" : {
             "plural" : {
@@ -686,24 +704,6 @@
               }
             }
           }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "En %lld minuto"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "En %lld minutos"
-                }
-              }
-            }
-          }
         }
       }
     },
@@ -717,6 +717,12 @@
             "value" : "In <1 minute"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En <1 minuto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -727,12 +733,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "不到1分钟后发车"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En <1 minuto"
           }
         }
       }
@@ -747,6 +747,12 @@
             "value" : "Disclaimer "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso legal"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -757,12 +763,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用注意事项"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aviso legal"
           }
         }
       }
@@ -777,6 +777,12 @@
             "value" : "Done"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -787,12 +793,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完成"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Listo"
           }
         }
       }
@@ -807,6 +807,12 @@
             "value" : "Edit"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -817,12 +823,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "编辑"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
           }
         }
       }
@@ -837,6 +837,12 @@
             "value" : "Client Error"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error del cliente"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -847,12 +853,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "客户端错误"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error del cliente"
           }
         }
       }
@@ -867,6 +867,12 @@
             "value" : "Invalid Response"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respuesta no válida"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -877,12 +883,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无效响应"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Respuesta no válida"
           }
         }
       }
@@ -897,6 +897,12 @@
             "value" : "Invalid URL"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -907,12 +913,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无效 URL"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL no válida"
           }
         }
       }
@@ -927,6 +927,12 @@
             "value" : "Network Error"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de red"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -937,12 +943,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "网络错误"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error de red"
           }
         }
       }
@@ -957,6 +957,12 @@
             "value" : "No Data"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin datos"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -967,12 +973,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有数据"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin datos"
           }
         }
       }
@@ -987,6 +987,12 @@
             "value" : "Parse Error"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de análisis"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -997,12 +1003,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "解析错误"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error de análisis"
           }
         }
       }
@@ -1017,6 +1017,12 @@
             "value" : "Server Error"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error del servidor"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1027,12 +1033,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "服务器错误"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error del servidor"
           }
         }
       }
@@ -1047,6 +1047,12 @@
             "value" : "Error(%lld)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error (%lld)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1057,12 +1063,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "错误（%lld）"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error (%lld)"
           }
         }
       }
@@ -1077,6 +1077,12 @@
             "value" : "Next Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo autobús"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1087,12 +1093,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下一班巴士"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Próximo autobús"
           }
         }
       }
@@ -1107,6 +1107,12 @@
             "value" : "Check when the next bus departs at a glance."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta de un vistazo cuándo sale el próximo autobús."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1117,12 +1123,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "可一目了然地确认下一班巴士的发车时间"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consulta de un vistazo cuándo sale el próximo autobús."
           }
         }
       }
@@ -1137,6 +1137,12 @@
             "value" : "Features"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1147,12 +1153,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "功能"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Funciones"
           }
         }
       }
@@ -1167,6 +1167,12 @@
             "value" : "Timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1177,12 +1183,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "时刻表"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horario"
           }
         }
       }
@@ -1197,6 +1197,12 @@
             "value" : "See all timetables of buses, and operation dates."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta todos los horarios y fechas de operación de los autobuses."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1208,12 +1214,6 @@
             "state" : "translated",
             "value" : "可以查看所有巴士的时刻表和运行日期列表"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consulta todos los horarios y fechas de operación de los autobuses."
-          }
         }
       }
     },
@@ -1222,6 +1222,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widget"
@@ -1238,12 +1244,6 @@
             "state" : "translated",
             "value" : "小组件"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Widget"
-          }
         }
       }
     },
@@ -1257,6 +1257,12 @@
             "value" : "Place widgets on your home screen to check the departure time of the next bus."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coloca widgets en la pantalla de inicio para consultar la hora de salida del próximo autobús."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1267,12 +1273,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在主屏幕放置小组件，即可确认下一班巴士的发车时间"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coloca widgets en la pantalla de inicio para consultar la hora de salida del próximo autobús."
           }
         }
       }
@@ -1287,6 +1287,12 @@
             "value" : "Feedback"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comentarios"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1297,12 +1303,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "反馈"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comentarios"
           }
         }
       }
@@ -1317,6 +1317,12 @@
             "value" : "Failed to update timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo actualizar el horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1327,12 +1333,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "时刻表获取失败"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se pudo actualizar el horario"
           }
         }
       }
@@ -1347,6 +1347,12 @@
             "value" : "Final Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último autobús"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1357,12 +1363,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "末班巴士"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Último autobús"
           }
         }
       }
@@ -1377,6 +1377,12 @@
             "value" : "Force Fetch"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forzar actualización"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1387,12 +1393,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "强制更新"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forzar actualización"
           }
         }
       }
@@ -1407,6 +1407,12 @@
             "value" : "Hide Google Calendar"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar Google Calendar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1417,12 +1423,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隐藏 Google 日历"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ocultar Google Calendar"
           }
         }
       }
@@ -1437,6 +1437,12 @@
             "value" : "Home"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1447,12 +1453,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "首页"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inicio"
           }
         }
       }
@@ -1467,6 +1467,12 @@
             "value" : "%lld o’clock"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld h"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1477,12 +1483,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld点"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld h"
           }
         }
       }
@@ -1497,6 +1497,12 @@
             "value" : "Include Device Info"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incluir información del dispositivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1507,12 +1513,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "包含设备信息"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Incluir información del dispositivo"
           }
         }
       }
@@ -1527,6 +1527,12 @@
             "value" : "Device info will be used to identify issues mentioned in your feedback."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La información del dispositivo se usará para identificar los problemas mencionados en tus comentarios."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1537,12 +1543,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设备信息将用于解决或发现反馈中提到的问题"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La información del dispositivo se usará para identificar los problemas mencionados en tus comentarios."
           }
         }
       }
@@ -1557,6 +1557,12 @@
             "value" : "Source"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuente"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1567,12 +1573,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "来源"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fuente"
           }
         }
       }
@@ -1587,6 +1587,12 @@
             "value" : "Iwatsuki Station to Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la estación de Iwatsuki al campus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1597,12 +1603,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "岩槻站到校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De la estación de Iwatsuki al campus"
           }
         }
       }
@@ -1617,6 +1617,12 @@
             "value" : "To Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al campus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1627,12 +1633,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开往校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al campus"
           }
         }
       }
@@ -1647,6 +1647,12 @@
             "value" : "Library"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteca"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1657,12 +1663,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "图书馆"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Biblioteca"
           }
         }
       }
@@ -1677,6 +1677,12 @@
             "value" : "OPAC"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPAC"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1684,12 +1690,6 @@
           }
         },
         "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OPAC"
-          }
-        },
-        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OPAC"
@@ -1707,6 +1707,12 @@
             "value" : "Library Services"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servicios de la biblioteca"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1717,12 +1723,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "图书馆服务"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Servicios de la biblioteca"
           }
         }
       }
@@ -1737,6 +1737,12 @@
             "value" : "Loading"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargando"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1747,12 +1753,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "加载中"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cargando"
           }
         }
       }
@@ -1767,6 +1767,12 @@
             "value" : "Localization"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localización"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1777,12 +1783,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "本地化"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Localización"
           }
         }
       }
@@ -1797,6 +1797,12 @@
             "value" : "Higashi-Omiya Stop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de Higashi-Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1807,12 +1813,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "东大宫站乘降地点"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parada de Higashi-Omiya"
           }
         }
       }
@@ -1827,6 +1827,12 @@
             "value" : "Iwatsuki Stop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de Iwatsuki"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1837,12 +1843,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "岩槻站乘降地点"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parada de Iwatsuki"
           }
         }
       }
@@ -1857,6 +1857,12 @@
             "value" : "University Stop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de la universidad"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1867,12 +1873,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大学侧乘降地点"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parada de la universidad"
           }
         }
       }
@@ -1887,6 +1887,12 @@
             "value" : "University Stop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de la universidad"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1897,12 +1903,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大学侧乘降地点"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parada de la universidad"
           }
         }
       }
@@ -1917,6 +1917,12 @@
             "value" : "My Library"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mi biblioteca"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1927,12 +1933,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "我的图书馆"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mi biblioteca"
           }
         }
       }
@@ -1947,6 +1947,12 @@
             "value" : "No Buses"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin autobuses"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1957,12 +1963,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有巴士"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin autobuses"
           }
         }
       }
@@ -1977,6 +1977,12 @@
             "value" : "No bus service today."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay servicio de autobús hoy."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1987,12 +1993,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今天没有巴士运行。"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay servicio de autobús hoy."
           }
         }
       }
@@ -2007,6 +2007,12 @@
             "value" : "No Service"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin servicio"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2018,12 +2024,6 @@
             "state" : "translated",
             "value" : "停运"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin servicio"
-          }
         }
       }
     },
@@ -2032,6 +2032,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omiya"
@@ -2048,12 +2054,6 @@
             "state" : "translated",
             "value" : "大宫"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Omiya"
-          }
         }
       }
     },
@@ -2067,6 +2067,12 @@
             "value" : "Omiya Festival"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festival de Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2077,12 +2083,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宫祭"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Festival de Omiya"
           }
         }
       }
@@ -2097,6 +2097,12 @@
             "value" : "Station to Omiya Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la estación al campus de Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2107,12 +2113,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "车站到大宫校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De la estación al campus de Omiya"
           }
         }
       }
@@ -2127,6 +2127,12 @@
             "value" : "To Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al campus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2137,12 +2143,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开往校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al campus"
           }
         }
       }
@@ -2157,6 +2157,12 @@
             "value" : "Omiya to Toyosu Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De Omiya al campus de Toyosu"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2167,12 +2173,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宫到丰洲校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De Omiya al campus de Toyosu"
           }
         }
       }
@@ -2187,6 +2187,12 @@
             "value" : "To Toyosu"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Toyosu"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2197,12 +2203,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开往丰洲校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A Toyosu"
           }
         }
       }
@@ -2217,6 +2217,12 @@
             "value" : "Open Link In-App"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir enlace en la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2227,12 +2233,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在 App 内打开链接"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abrir enlace en la app"
           }
         }
       }
@@ -2247,6 +2247,12 @@
             "value" : "Open Source Software"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Software de código abierto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2257,12 +2263,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开源软件"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Software de código abierto"
           }
         }
       }
@@ -2277,6 +2277,12 @@
             "value" : "Options"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2287,12 +2293,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选项"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opciones"
           }
         }
       }
@@ -2307,6 +2307,12 @@
             "value" : "Other"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otros"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2317,12 +2323,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "其他"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otros"
           }
         }
       }
@@ -2337,6 +2337,12 @@
             "value" : "Information"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2347,12 +2353,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "信息"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Información"
           }
         }
       }
@@ -2367,6 +2367,12 @@
             "value" : "Saturday "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sábado"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2377,12 +2383,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "星期六"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sábado"
           }
         }
       }
@@ -2397,6 +2397,12 @@
             "value" : "Save Co-op Schedule"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar horario de la cooperativa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2407,12 +2413,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存生协日程"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar horario de la cooperativa"
           }
         }
       }
@@ -2427,6 +2427,12 @@
             "value" : "Schedule "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2437,12 +2443,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日程"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horario"
           }
         }
       }
@@ -2457,6 +2457,12 @@
             "value" : "School Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús escolar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2467,12 +2473,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校车"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autobús escolar"
           }
         }
       }
@@ -2487,6 +2487,12 @@
             "value" : "School Bus (Iwatsuki)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús escolar (Iwatsuki)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2497,12 +2503,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校车（岩槻站）"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autobús escolar (Iwatsuki)"
           }
         }
       }
@@ -2517,6 +2517,12 @@
             "value" : "Operation date and time may be inaccurate"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fecha y hora del servicio pueden no ser exactas"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2527,12 +2533,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "运行日期和时间可能不准确"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La fecha y hora del servicio pueden no ser exactas"
           }
         }
       }
@@ -2547,6 +2547,12 @@
             "value" : "Operates only on class days "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opera solo en días de clase"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2557,12 +2563,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "仅上课日运行"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opera solo en días de clase"
           }
         }
       }
@@ -2577,6 +2577,12 @@
             "value" : "Operates every weekday **except** on open campus, parents' meeting, entrance exams, and vacations."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opera todos los días laborables, **excepto** durante jornadas de puertas abiertas, reuniones de padres, el examen común de ingreso a la universidad, exámenes de ingreso y cierres de verano e invierno."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2587,12 +2593,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每个工作日运行，**但不包括**校园开放日、家长会、大学入学共通考试、入学考试以及暑假和寒假统一休假期间。"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opera todos los días laborables, **excepto** durante jornadas de puertas abiertas, reuniones de padres, el examen común de ingreso a la universidad, exámenes de ingreso y cierres de verano e invierno."
           }
         }
       }
@@ -2607,6 +2607,12 @@
             "value" : "School Bus (Higashi-Omiya)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús escolar (Higashi-Omiya)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2617,12 +2623,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校车（东大宫站）"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autobús escolar (Higashi-Omiya)"
           }
         }
       }
@@ -2637,6 +2637,12 @@
             "value" : "Search"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2647,12 +2653,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "搜索"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar"
           }
         }
       }
@@ -2667,6 +2667,12 @@
             "value" : "Settings"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2677,12 +2683,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设置"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajustes"
           }
         }
       }
@@ -2697,6 +2697,12 @@
             "value" : "Shibaurasai"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shibaurasai"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2707,12 +2713,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "芝浦祭"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shibaurasai"
           }
         }
       }
@@ -2727,6 +2727,12 @@
             "value" : "Shuttle Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús lanzadera"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2737,12 +2743,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校区间巴士"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autobús lanzadera"
           }
         }
       }
@@ -2757,6 +2757,12 @@
             "value" : "Timely Operation: %1$@ to %2$@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operación flexible: de %1$@ a %2$@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2767,12 +2773,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "适时运行：%1$@到%2$@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Operación flexible: de %1$@ a %2$@"
           }
         }
       }
@@ -2787,6 +2787,12 @@
             "value" : "Timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2797,12 +2803,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "时刻表"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horario"
           }
         }
       }
@@ -2817,6 +2817,12 @@
             "value" : "Information "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2827,12 +2833,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关于时刻表"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Información"
           }
         }
       }
@@ -2847,6 +2847,12 @@
             "value" : "Today"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2858,12 +2864,6 @@
             "state" : "translated",
             "value" : "今天"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hoy"
-          }
         }
       }
     },
@@ -2872,6 +2872,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toyosu"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toyosu"
@@ -2888,12 +2894,6 @@
             "state" : "translated",
             "value" : "丰洲"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toyosu"
-          }
         }
       }
     },
@@ -2907,6 +2907,12 @@
             "value" : "Toyosu to Omiya Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De Toyosu al campus de Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2917,12 +2923,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "丰洲到大宫校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De Toyosu al campus de Omiya"
           }
         }
       }
@@ -2937,6 +2937,12 @@
             "value" : "To Omiya"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2947,12 +2953,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开往大宫校区"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A Omiya"
           }
         }
       }
@@ -2967,6 +2967,12 @@
             "value" : "NFUCA(University Co-op)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFUCA (cooperativa universitaria)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2977,12 +2983,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大学生协"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NFUCA (cooperativa universitaria)"
           }
         }
       }
@@ -2997,6 +2997,12 @@
             "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3004,12 +3010,6 @@
           }
         },
         "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
-          }
-        },
-        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
@@ -3027,6 +3027,12 @@
             "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3034,12 +3040,6 @@
           }
         },
         "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
-          }
-        },
-        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
@@ -3057,6 +3057,12 @@
             "value" : "Weekday"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día laborable"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3067,12 +3073,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "工作日"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Día laborable"
           }
         }
       }
@@ -3087,6 +3087,12 @@
             "value" : "Wheelchair Support"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistencia para sillas de ruedas"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3097,12 +3103,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关于轮椅支持"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Asistencia para sillas de ruedas"
           }
         }
       }

@@ -83,7 +83,7 @@ struct SITBusLiveActivity: Widget {
             } compactLeading: {
                 Image(systemName: "bus.fill")
             } compactTrailing: {
-                Text(.widgetMinutesShort(context.state.remainingMinutes))
+                Text(.Widget.minutesShort(context.state.remainingMinutes))
             } minimal: {
                 Text(verbatim: "\(context.state.remainingMinutes)")
             }
