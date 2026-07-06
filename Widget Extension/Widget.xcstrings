@@ -2,6 +2,7 @@
   "sourceLanguage": "en",
   "strings": {
     "BusType": {
+      "comment": "Widget configuration parameter title for choosing the bus route.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -21,11 +22,17 @@
             "state": "translated",
             "value": "巴士类型"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipo de autobús"
+          }
         }
-      },
-      "comment": "Widget configuration parameter title for choosing the bus route."
+      }
     },
     "Minutes.short%lld": {
+      "comment": "Compact live activity or widget label for remaining minutes. Keep the %lld placeholder.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -45,11 +52,17 @@
             "state": "translated",
             "value": "%lld分钟"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
+          }
         }
-      },
-      "comment": "Compact live activity or widget label for remaining minutes. Keep the %lld placeholder."
+      }
     },
     "NextBus": {
+      "comment": "Widget label displayed above the next departure time.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -69,11 +82,17 @@
             "state": "translated",
             "value": "下一班巴士"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo autobús"
+          }
         }
-      },
-      "comment": "Widget label displayed above the next departure time."
+      }
     },
     "SITBusWidget": {
+      "comment": "Widget gallery display name for the SIT Bus timetable widget.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -93,11 +112,17 @@
             "state": "translated",
             "value": "发车时间"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de salida"
+          }
         }
-      },
-      "comment": "Widget gallery display name for the SIT Bus timetable widget."
+      }
     },
     "SITBusWidget.detail": {
+      "comment": "Widget gallery description explaining that the widget shows the next selected school bus departure.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -117,11 +142,17 @@
             "state": "translated",
             "value": "显示所选校车的下一班发车时间"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muestra la próxima hora de salida del autobús escolar seleccionado."
+          }
         }
-      },
-      "comment": "Widget gallery description explaining that the widget shows the next selected school bus departure."
+      }
     },
     "TimelyOperation": {
+      "comment": "Widget status label for a route that runs during a time window instead of fixed departures.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -141,11 +172,17 @@
             "state": "translated",
             "value": "适时运行"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operación flexible"
+          }
         }
-      },
-      "comment": "Widget status label for a route that runs during a time window instead of fixed departures."
+      }
     },
     "TimelyOperation(%@,%@)": {
+      "comment": "Widget time range for timely operation. Keep the %1$@ and %2$@ placeholders for start and end times.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -165,9 +202,14 @@
             "state": "translated",
             "value": "%1$@到%2$@"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De %1$@ a %2$@"
+          }
         }
-      },
-      "comment": "Widget time range for timely operation. Keep the %1$@ and %2$@ placeholders for start and end times."
+      }
     }
   },
   "version": "1.0"

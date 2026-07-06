@@ -16,6 +16,12 @@
             "state": "translated",
             "value": "小组件扩展"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extensión de widget"
+          }
         }
       }
     },
@@ -34,6 +40,12 @@
             "state": "translated",
             "value": "小组件扩展"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extensión de widget"
+          }
         }
       }
     },
@@ -48,6 +60,12 @@
           }
         },
         "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ""
+          }
+        },
+        "es": {
           "stringUnit": {
             "state": "translated",
             "value": ""

@@ -2,6 +2,7 @@
   "sourceLanguage": "en",
   "strings": {
     "GetNextBus.Description": {
+      "comment": "App Intent description for finding the next school bus departure from a selected bus type and date.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -21,11 +22,17 @@
             "state": "translated",
             "value": "根据指定的巴士类型和日期查找下一班校车的发车时间。"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Busca la próxima hora de salida del autobús escolar según el tipo de autobús y la fecha especificados."
+          }
         }
-      },
-      "comment": "App Intent description for finding the next school bus departure from a selected bus type and date."
+      }
     },
     "GetNextBus.Title": {
+      "comment": "App Intent title shown in Shortcuts for finding the next school bus departure time.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -45,11 +52,17 @@
             "state": "translated",
             "value": "查找下一班校车时间"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar la próxima hora del autobús escolar"
+          }
         }
-      },
-      "comment": "App Intent title shown in Shortcuts for finding the next school bus departure time."
+      }
     },
     "NextSchoolBusFrom${date}.Summary": {
+      "comment": "App Intent parameter summary. Keep the ${date} placeholder for the selected date parameter.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -69,9 +82,14 @@
             "state": "translated",
             "value": "查找${date}之后的下一班校车发车时间"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar el próximo autobús escolar desde ${date}"
+          }
         }
-      },
-      "comment": "App Intent parameter summary. Keep the ${date} placeholder for the selected date parameter."
+      }
     }
   },
   "version": "1.0"
