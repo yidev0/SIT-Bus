@@ -15,10 +15,17 @@
             "state": "translated",
             "value": "バスの種類"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "巴士类型"
+          }
         }
       }
     },
     "Minutes.short%lld": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -31,11 +38,17 @@
             "state": "translated",
             "value": "%lld分"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld分钟"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "NextBus": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -48,11 +61,17 @@
             "state": "translated",
             "value": "次のバス"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一班巴士"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "SITBusWidget": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -65,11 +84,17 @@
             "state": "translated",
             "value": "発車時刻"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发车时间"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "SITBusWidget.detail": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -82,11 +107,17 @@
             "state": "translated",
             "value": "指定したスクールバスの次の発車時間を表示"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示所选校车的下一班发车时间"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "TimelyOperation": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -99,9 +130,14 @@
             "state": "needs_review",
             "value": "適時運行"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "适时运行"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "TimelyOperation(%@,%@)": {
       "extractionState": "manual",
@@ -116,6 +152,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%1$@から%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@到%2$@"
           }
         }
       }

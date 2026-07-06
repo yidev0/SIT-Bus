@@ -16,6 +16,12 @@
             "state": "translated",
             "value": "SITバス時刻表"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIT巴士时刻表"
+          }
         }
       }
     },
@@ -34,6 +40,12 @@
             "state": "translated",
             "value": "SITバス時刻表"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIT巴士时刻表"
+          }
         }
       }
     },
@@ -51,6 +63,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "SIT,Shibaura,シバウラ,芝浦工業大学,Bus,バス,Timetable,時刻表"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIT,Shibaura,芝浦,芝浦工业大学,Bus,巴士,校车,Timetable,时刻表"
           }
         }
       }

@@ -2,6 +2,7 @@
   "sourceLanguage": "en",
   "strings": {
     "GetNextBus.Description": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -14,11 +15,17 @@
             "state": "translated",
             "value": "指定されたバスの種類と日付から次のスクールバスの出発時間を探す。"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "根据指定的巴士类型和日期查找下一班校车的发车时间。"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "GetNextBus.Title": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -31,11 +38,17 @@
             "state": "translated",
             "value": "次のスクールバスの発車時刻"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查找下一班校车时间"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "NextSchoolBusFrom${date}.Summary": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -48,9 +61,14 @@
             "state": "translated",
             "value": "${date}から次のスクールバスの発車時刻"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查找${date}之后的下一班校车发车时间"
+          }
         }
-      },
-      "extractionState": "manual"
+      }
     }
   },
   "version": "1.0"
