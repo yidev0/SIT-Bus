@@ -1,5 +1,5 @@
 //
-//  Dateswift
+//  DateLabel.swift
 //  School Bus
 //
 //  Created by Yuto on 2024/08/16.
