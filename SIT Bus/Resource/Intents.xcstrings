@@ -22,7 +22,8 @@
             "value": "根据指定的巴士类型和日期查找下一班校车的发车时间。"
           }
         }
-      }
+      },
+      "comment": "App Intent description for finding the next school bus departure from a selected bus type and date."
     },
     "GetNextBus.Title": {
       "extractionState": "manual",
@@ -45,7 +46,8 @@
             "value": "查找下一班校车时间"
           }
         }
-      }
+      },
+      "comment": "App Intent title shown in Shortcuts for finding the next school bus departure time."
     },
     "NextSchoolBusFrom${date}.Summary": {
       "extractionState": "manual",
@@ -68,7 +70,8 @@
             "value": "查找${date}之后的下一班校车发车时间"
           }
         }
-      }
+      },
+      "comment": "App Intent parameter summary. Keep the ${date} placeholder for the selected date parameter."
     }
   },
   "version": "1.0"
