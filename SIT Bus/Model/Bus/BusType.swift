@@ -16,14 +16,14 @@ enum BusType: String, CaseIterable, Hashable, Identifiable {
     case schoolIwatsuki
     case shuttle
     
-    var localizedTitle: LocalizedStringKey {
+    var localizedTitle: LocalizedStringResource {
         switch self {
         case .schoolOmiya:
-            "Label.SchoolBusOmiya"
+            .schoolBusOmiya
         case .schoolIwatsuki:
-            "Label.SchoolBusIwatsuki"
+            .schoolBusIwatsuki
         case .shuttle:
-            "Label.ShuttleBus"
+            .shuttleBus
         }
     }
     

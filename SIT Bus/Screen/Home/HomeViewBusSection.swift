@@ -54,7 +54,7 @@ struct HomeViewBusSection: View {
                         BusType.schoolIwatsuki.localizedTitle,
                         systemImage: BusType.schoolIwatsuki.symbol
                     )
-                    Text("Detail.SchoolBusIwatsuki")
+                    Text(.schoolBusIwatsukiDetail)
                 }
                 
                 Toggle(isOn: $showShuttleBus) {
@@ -64,7 +64,7 @@ struct HomeViewBusSection: View {
                     )
                 }
             } label: {
-                Text("Label.Edit")
+                Text(.edit)
                     .foregroundStyle(.accent)
                     .fontWeight(.semibold)
                     .padding(.horizontal, 16)

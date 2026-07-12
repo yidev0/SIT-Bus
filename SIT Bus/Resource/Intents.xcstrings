@@ -2,6 +2,8 @@
   "sourceLanguage" : "en",
   "strings" : {
     "GetNextBus.Description" : {
+      "comment" : "App Intent description for finding the next school bus departure from a selected bus type and date.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -9,15 +11,29 @@
             "value" : "Find the next school bus departure time from specified bus type and date."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca la próxima hora de salida del autobús escolar según el tipo de autobús y la fecha especificados."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "指定されたバスの種類と日付から次のスクールバスの出発時間を探す。"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "根据指定的巴士类型和日期查找下一班校车的发车时间。"
+          }
         }
       }
     },
     "GetNextBus.Title" : {
+      "comment" : "App Intent title shown in Shortcuts for finding the next school bus departure time.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -25,15 +41,29 @@
             "value" : "Find Next School Bus Time"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar la próxima hora del autobús escolar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "次のスクールバスの発車時刻"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查找下一班校车时间"
+          }
         }
       }
     },
     "NextSchoolBusFrom${date}.Summary" : {
+      "comment" : "App Intent parameter summary. Keep the ${date} placeholder for the selected date parameter.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -41,10 +71,22 @@
             "value" : "Find the next school bus from ${date}"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar el próximo autobús escolar desde ${date}"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "${date}から次のスクールバスの発車時刻"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查找${date}之后的下一班校车发车时间"
           }
         }
       }

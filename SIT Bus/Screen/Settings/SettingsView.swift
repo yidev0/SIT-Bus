@@ -28,19 +28,19 @@ struct SettingsView: View {
         @Bindable var timetableManager = timetableManager
         NavigationStack {
             List {
-                Section("Label.Options") {
+                Section(.options) {
                     Toggle(isOn: $openLinkInApp) {
-                        Text("Label.OpenLinkInApp")
+                        Text(.openLinkInApp)
                     }
                 }
                 
-                Section("Label.Other") {
+                Section(.other) {
                     Toggle(isOn: $hideCalendar) {
-                        Text("Label.HideGoogleCalendar")
+                        Text(.hideGoogleCalendar)
                     }
                     
                     Toggle(isOn: $saveCoopSchedule) {
-                        Text("Label.SaveCoopSchedule")
+                        Text(.saveCoopSchedule)
                     }
                     
                     Button {
@@ -55,7 +55,7 @@ struct SettingsView: View {
                                     .font(.subheadline)
                             }
                         } label: {
-                            Text("Label.DeleteCache")
+                            Text(.deleteCache)
                                 .foregroundStyle(Color.primary)
                         }
                     }
@@ -67,7 +67,7 @@ struct SettingsView: View {
                         model.makeFeedbackURL(include: includeDeviceInfo)
                     ) {
                         Label {
-                            Text("Label.Feedback")
+                            Text(.feedback)
                                 .foregroundStyle(Color.primary)
                         } icon: {
                             Image(systemName: "list.bullet.clipboard")
@@ -76,15 +76,15 @@ struct SettingsView: View {
                     
                     Toggle(isOn: $includeDeviceInfo) {
                         VStack(alignment: .leading) {
-                            Text("Label.IncludeDeviceInfo")
-                            Text("Detail.IncludeDeviceInfo")
+                            Text(.includeDeviceInfo)
+                            Text(.includeDeviceInfoDetail)
                                 .foregroundStyle(.secondary)
                                 .font(.subheadline)
                         }
                     }
                 }
                 
-                Section("Label.AboutApp") {
+                Section(.aboutApp) {
                     Link(
                         destination: .appStore
                     ) {
@@ -114,14 +114,14 @@ struct SettingsView: View {
                     NavigationLink {
                         SettingsCreditsView()
                     } label: {
-                        Label("Label.Credits", systemImage: "scroll")
+                        Label(.credits, systemImage: "scroll")
                     }
                 }
                 
-                Section("Label.InfoSource") {
+                Section(.infoSource) {
                     LinkButton(.schoolBusOmiya) {
                         SettingsSourceLabel(
-                            label: "Label.SchoolBusOmiya",
+                            label: .schoolBusOmiya,
                             date: timetableManager.lastUpdatedDate,
                             format: .dateTime.year().month().day().hour().minute()
                         )
@@ -132,13 +132,13 @@ struct SettingsView: View {
                                 await timetableManager.loadData(forceFetch: true)
                             }
                         } label: {
-                            Text("Label.ForceFetch")
+                            Text(.forceFetch)
                         }
                     }
                     
                     LinkButton(.schoolBusIwatsuki) {
                         SettingsSourceLabel(
-                            label: "Label.SchoolBusIwatsuki",
+                            label: .schoolBusIwatsuki,
                             date: timetableManager.schoolBusIwatsuki?.lastUpdated,
                             format: .dateTime.year().month().day()
                         )
@@ -146,14 +146,14 @@ struct SettingsView: View {
                     
                     LinkButton(.shuttleBus) {
                         SettingsSourceLabel(
-                            label: "Label.ShuttleBus",
+                            label: .shuttleBus,
                             date: BusTimetable.shuttleBus.lastUpdated!,
                             format: .dateTime.year().month().day()
                         )
                     }
                 }
             }
-            .navigationTitle("Label.Settings")
+            .navigationTitle(.settings)
             .toolbarTitleDisplayMode(.automatic)
             .listSectionSpacing(8)
         }

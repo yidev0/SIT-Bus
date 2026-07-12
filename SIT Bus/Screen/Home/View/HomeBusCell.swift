@@ -51,14 +51,14 @@ struct HomeBusCell: View {
                 .monospacedDigit()
                 .font(.system(size: busFontSize, weight: .semibold))
         case .timely(let start, let end):
-            Text("Label.\(Text(start, format: .dateTime.hour().minute()))to\(Text(end, format: .dateTime.hour().minute()))Service")
+            Text(LocalizedStringResource.timelyOperation(start.formatted(date: .omitted, time: .shortened), end.formatted(date: .omitted, time: .shortened)))
                 .font(.title3)
         case .busServiceEnded:
-            Text("Label.BusServiceEnded")
+            Text(.busServiceEnded)
         case .noBusService:
-            Text("Label.NoBusService")
+            Text(.noBusService)
         case .loading:
-            Text("Label.Loading")
+            Text(.loading)
         }
     }
     
@@ -67,11 +67,11 @@ struct HomeBusCell: View {
         switch state {
         case .nextBus(_, let departsIn):
             if departsIn <= 0 {
-                Text("Label.DepartsIn0Minutes")
+                Text(.departsIn0Minutes)
             } else if departsIn >= 60 {
-                Text("Label.DepartsIn\(departsIn / 60)Hours")
+                Text(.departsInHours(departsIn / 60))
             } else  {
-                Text("Label.DepartsIn\(departsIn)Minutes")
+                Text(.departsInMinutes(departsIn))
             }
         default:
             EmptyView()

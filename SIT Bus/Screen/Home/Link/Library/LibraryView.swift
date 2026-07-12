@@ -23,7 +23,7 @@ struct LibraryView: View {
                     Button {
                         model.search()
                     } label: {
-                        Text("Label.Search")
+                        Text(.search)
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(model.sitSearch.isEmpty)
@@ -47,35 +47,35 @@ struct LibraryView: View {
             Section {
                 makeLink(
                     url: "https://library.shibaura-it.ac.jp/portal/portal/selectLogin/",
-                    title: "My Library"
+                    title: .myLibrary
                 )
                 
                 makeLink(
                     url: "https://library.shibaura-it.ac.jp/opc/",
-                    title: "OPAC"
+                    title: .libraryOPAC
                 )
             }
             
             if hideCalendar {
                 Section {
                     makeLink(
-                        url: "URL.LibraryService".localize,
-                        title: "Label.LibraryServices"
+                        url: String(localized: .urlLibraryService),
+                        title: .libraryServices
                     )
                     
                     makeLink(
                         url: "https://lib.shibaura-it.ac.jp/usage/schedule",
-                        title: "Label.Schedule"
+                        title: .schedule
                     )
                 }
             } else {
-                Section("Label.Omiya") {
+                Section(.omiya) {
                     WebView(request: .omiyaCalendarRequest)
                         .listRowInsets(.init())
                         .frame(height: 400)
                 }
                 
-                Section("Label.Toyosu") {
+                Section(.toyosu) {
                     WebView(request: .toyosuCalendarRequest)
                         .listRowInsets(.init())
                         .frame(height: 400)
@@ -85,7 +85,7 @@ struct LibraryView: View {
         .listSectionSpacing(16)
     }
     
-    func makeLink(url: String, title: LocalizedStringKey) -> some View {
+    func makeLink(url: String, title: LocalizedStringResource) -> some View {
         LinkButton(url) {
             Text(title)
         }

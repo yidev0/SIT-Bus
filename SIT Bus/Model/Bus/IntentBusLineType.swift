@@ -16,17 +16,17 @@ enum IntentBusLineType: String, CaseIterable, AppEnum {
     case shuttleToOmiya
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation {
-        .init(name: "Label.Timetable")
+        .init(name: "Timetable")
     }
 
     static var caseDisplayRepresentations: [IntentBusLineType : DisplayRepresentation] {
         [
-            .schoolStationToCampus: .init(title: .init("Label.OmiyaStationToCampus")),
-            .schoolCampusToStation: .init(title: .init("Label.CampusToOmiyaStation")),
-            .iwatsukiStationToCampus: .init(title: .init("Label.IwatsukiStationToCampus")),
-            .iwatsukiCampusToStation: .init(title: .init("Label.CampusToIwatsukiStation")),
-            .shuttleToToyosu: .init(title: .init("Label.OmiyaToToyosu")),
-            .shuttleToOmiya: .init(title: .init("Label.ToyosuToOmiya")),
+            .schoolStationToCampus: .init(title: .init("OmiyaStationToCampus")),
+            .schoolCampusToStation: .init(title: .init("CampusToOmiyaStation")),
+            .iwatsukiStationToCampus: .init(title: .init("IwatsukiStationToCampus")),
+            .iwatsukiCampusToStation: .init(title: .init("CampusToIwatsukiStation")),
+            .shuttleToToyosu: .init(title: .init("OmiyaToToyosu")),
+            .shuttleToOmiya: .init(title: .init("ToyosuToOmiya")),
         ]
     }
 

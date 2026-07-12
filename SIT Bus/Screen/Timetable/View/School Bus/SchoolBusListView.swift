@@ -25,7 +25,7 @@ struct SchoolBusListView: View {
             }
         } else {
             ContentUnavailableView(
-                "Label.NoBuses",
+                .noBuses,
                 systemImage: "exclamationmark.triangle.fill"
             )
         }

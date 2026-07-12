@@ -9,8 +9,8 @@ import SwiftUI
 import AppIntents
 
 protocol BusLine: Codable, Hashable {
-    var localizedTitle: LocalizedStringKey { get }
-    var localizedShortTitle: LocalizedStringKey { get }
+    var localizedTitle: LocalizedStringResource { get }
+    var localizedShortTitle: LocalizedStringResource { get }
     var symbol: String { get }
     var rawValue: String { get }
 }
@@ -85,21 +85,21 @@ enum BusLineType: Hashable {
             .stationToCampus, .campusToStation,
         ]
         
-        var localizedTitle: LocalizedStringKey {
+        var localizedTitle: LocalizedStringResource {
             switch self {
             case .campusToStation:
-                "Label.CampusToOmiyaStation"
+                .campusToOmiyaStation
             case .stationToCampus:
-                "Label.OmiyaStationToCampus"
+                .omiyaStationToCampus
             }
         }
         
-        var localizedShortTitle: LocalizedStringKey {
+        var localizedShortTitle: LocalizedStringResource {
             switch self {
             case .campusToStation:
-                "Label.Short.CampusToOmiyaStation"
+                .campusToOmiyaStationShort
             case .stationToCampus:
-                "Label.Short.OmiyaStationToCampus"
+                .omiyaStationToCampusShort
             }
         }
         
@@ -113,12 +113,12 @@ enum BusLineType: Hashable {
         }
         
         static var typeDisplayRepresentation: TypeDisplayRepresentation = .init(
-            name: .init("Label.BusType")
+            name: .init("BusType")
         )
         
         static var caseDisplayRepresentations: [SchoolBus : DisplayRepresentation] = [
-            .stationToCampus: .init(title: .init("Label.Short.OmiyaStationToCampus")),
-            .campusToStation: .init(title: .init("Label.Short.CampusToOmiyaStation")),
+            .stationToCampus: .init(title: .omiyaStationToCampusShort),
+            .campusToStation: .init(title: .campusToOmiyaStationShort),
         ]
     }
     
@@ -130,21 +130,21 @@ enum BusLineType: Hashable {
             .stationToCampus, .campusToStation,
         ]
         
-        var localizedTitle: LocalizedStringKey {
+        var localizedTitle: LocalizedStringResource {
             switch self {
             case .campusToStation:
-                "Label.CampusToIwatsukiStation"
+                .campusToIwatsukiStation
             case .stationToCampus:
-                "Label.IwatsukiStationToCampus"
+                .iwatsukiStationToCampus
             }
         }
         
-        var localizedShortTitle: LocalizedStringKey {
+        var localizedShortTitle: LocalizedStringResource {
             switch self {
             case .campusToStation:
-                "Label.Short.CampusToIwatsukiStation"
+                .campusToIwatsukiStationShort
             case .stationToCampus:
-                "Label.Short.IwatsukiStationToCampus"
+                .iwatsukiStationToCampusShort
             }
         }
         
@@ -166,21 +166,21 @@ enum BusLineType: Hashable {
             .toToyosu, .toOmiya
         ]
         
-        var localizedTitle: LocalizedStringKey {
+        var localizedTitle: LocalizedStringResource {
             switch self {
             case .toToyosu:
-                "Label.OmiyaToToyosu"
+                .omiyaToToyosu
             case .toOmiya:
-                "Label.ToyosuToOmiya"
+                .toyosuToOmiya
             }
         }
         
-        var localizedShortTitle: LocalizedStringKey {
+        var localizedShortTitle: LocalizedStringResource {
             switch self {
                 case .toToyosu:
-                    "Label.Short.OmiyaToToyosu"
+                    .omiyaToToyosuShort
                 case .toOmiya:
-                    "Label.Short.ToyosuToOmiya"
+                    .toyosuToOmiyaShort
             }
         }
         
@@ -194,7 +194,7 @@ enum BusLineType: Hashable {
         }
     }
     
-    var localizedTitle: LocalizedStringKey {
+    var localizedTitle: LocalizedStringResource {
         switch self {
         case .schoolBus(let schoolBus):
             schoolBus.localizedTitle
@@ -205,7 +205,7 @@ enum BusLineType: Hashable {
         }
     }
     
-    var localizedShortTitle: LocalizedStringKey {
+    var localizedShortTitle: LocalizedStringResource {
         switch self {
         case .schoolBus(let schoolBus):
             schoolBus.localizedShortTitle

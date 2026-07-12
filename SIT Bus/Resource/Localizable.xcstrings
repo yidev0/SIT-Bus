@@ -2,354 +2,12 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%.2f MB" : {
+      "comment" : "Do not translate. Format used to display the cache size in megabytes in Settings.",
       "shouldTranslate" : false
     },
-    "%lld:%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld:%2$lld"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld時%2$lld分"
-          }
-        }
-      }
-    },
-    "Button.Done" : {
+    "AboutApp" : {
+      "comment" : "Settings section header for app information, version, repository, and credits.",
       "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        }
-      }
-    },
-    "Date Picker" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        }
-      }
-    },
-    "Detail.BusInfo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Other buses are updated through app updates. The latest source are listed in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスはアプリのアップデートを通し更新しています。最新の情報源は設定タブにて確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
-          }
-        }
-      }
-    },
-    "Detail.BusWheelchairInfo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \n100th anniversary design wrapped bus, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "創立100周年記念ラッピングのバス以外、全てのバスが車椅子対応をしています。乗車時にサポートが必要な方は運転手にお声がけください。\n各車両の運行時間は大宮キャンパスの管理課にお問い合わせください。"
-          }
-        }
-      }
-    },
-    "Detail.FeatureNextBus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check when the next bus departs at a glance."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "次のバスがいつ出発するか一目で確認することができます"
-          }
-        }
-      }
-    },
-    "Detail.FeatureTimetable" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "See all timetables of buses, and operation dates."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "すべてのバスの時刻表と運行日の一覧を見ることができます"
-          }
-        }
-      }
-    },
-    "Detail.FeatureWidget" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Place widgets on your home screen to check the departure time of the next bus."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ホーム画面から次のバスの発車時刻を確認できます"
-          }
-        }
-      }
-    },
-    "Detail.IncludeDeviceInfo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Device info will be used to identify issues mentioned in your feedback."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイス情報はフィードバックの問題を解決または発見することに利用されます"
-          }
-        }
-      }
-    },
-    "Detail.SchoolBusIwatsuki" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Operation date and time may be inaccurate"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "運行日時が不正確な場合があります"
-          }
-        }
-      }
-    },
-    "Detail.SchoolBusIwatsukiSaturday" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Operates only on class days "
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "授業日のみ運行"
-          }
-        }
-      }
-    },
-    "Detail.SchoolBusIwatsukiWeekday" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Operates every weekday **except** on open campus, parents' meeting, entrance exams, and vacations."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "オープンキャンパス、父母懇談会、共通テスト、入試、夏季冬季一斉休暇**以外**運行"
-          }
-        }
-      }
-    },
-    "Error.ClientError" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Client Error"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "クライアントエラー"
-          }
-        }
-      }
-    },
-    "Error.InvalidResponse" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid Response"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無効な応答"
-          }
-        }
-      }
-    },
-    "Error.InvalidURL" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid URL"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無効なURL"
-          }
-        }
-      }
-    },
-    "Error.NetworkError" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Network Error"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ネットワークエラー"
-          }
-        }
-      }
-    },
-    "Error.NoLocalData" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No Data"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "データがありません"
-          }
-        }
-      }
-    },
-    "Error.ParseError" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parse Error"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "パースエラー"
-          }
-        }
-      }
-    },
-    "Error.ServerError" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Server Error"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サーバーエラー"
-          }
-        }
-      }
-    },
-    "Error.Undefined(%lld)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error(%lld)"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "エラー（%lld）"
-          }
-        }
-      }
-    },
-    "Label.%@to%@Service" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Timely Operation: %1$@ to %2$@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "適時運行：%1$@から%2$@"
-          }
-        }
-      }
-    },
-    "Label.AboutApp" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -357,79 +15,29 @@
             "value" : "About App"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリについて"
           }
-        }
-      }
-    },
-    "Label.Accessibility.%@Time" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld o’clock"
-          }
         },
-        "ja" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld時"
+            "value" : "关于 App"
           }
         }
       }
     },
-    "Label.Accessibility.NoBusService" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No Service"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "運行なし"
-          }
-        }
-      }
-    },
-    "Label.Accessibility.Today" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今日"
-          }
-        }
-      }
-    },
-    "Label.Accessiblity.Information" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Information "
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "時刻表について"
-          }
-        }
-      }
-    },
-    "Label.AppIcon" : {
+    "AppIcon" : {
+      "comment" : "Accessibility label for the app icon shown on the welcome screen.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -437,20 +45,40 @@
             "value" : "App icon"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono de la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリアイコン"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 图标"
+          }
         }
       }
     },
-    "Label.BoardingLocation" : {
+    "BoardingLocation" : {
+      "comment" : "Home link and navigation title for pages showing where to board each bus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Boarding Location "
+            "value" : "Boarding Location"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lugar de embarque"
           }
         },
         "ja" : {
@@ -458,10 +86,48 @@
             "state" : "translated",
             "value" : "バス乗車場所"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴士乘车地点"
+          }
         }
       }
     },
-    "Label.BusServiceEnded" : {
+    "BusInfo.detail" : {
+      "comment" : "Long disclaimer shown in the welcome flow and timetable information sheet explaining bus data sources and liability.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Other buses are updated through app updates. The latest source are listed in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La información de los autobuses se basa en las fuentes indicadas abajo. La información de la app puede no reflejar los datos más recientes o puede mostrar información incorrecta. \nSolo el horario del autobús escolar (Higashi-Omiya) se actualiza automáticamente. Los demás autobuses se actualizan mediante actualizaciones de la app. Las fuentes más recientes se indican en la pestaña Ajustes.\nLa app no se hace responsable de ningún problema o daño derivado del uso de la información mostrada."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスはアプリのアップデートを通し更新しています。最新の情報源は設定タブにて確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本 App 的巴士信息基于以下资料制作。App 内的信息不一定始终为最新，也可能显示不准确的信息。\n仅校车（东大宫）的信息会自动更新。其他巴士会通过 App 更新进行更新。最新信息来源可在设置标签页中确认。\n对于因使用所显示信息而导致的任何问题或损失，本 App 概不负责。"
+          }
+        }
+      }
+    },
+    "BusServiceEnded" : {
+      "comment" : "Status shown when today has service for the route, but there are no more departures.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -469,15 +135,29 @@
             "value" : "Today’s service has ended."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El servicio de hoy ha finalizado."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "本日のバスの運行は終了しました"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天的巴士运行已经结束"
+          }
         }
       }
     },
-    "Label.BusType" : {
+    "BusType" : {
+      "comment" : "Display name for the bus type parameter in App Intents and bus pickers.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -485,20 +165,70 @@
             "value" : "Bus type"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de autobús"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "バスの種類"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴士类型"
+          }
         }
       }
     },
-    "Label.Calendar" : {
+    "BusWheelchairInfo.detail" : {
+      "comment" : "Wheelchair accessibility note shown in the timetable information sheet.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calendar "
+            "value" : "Most buses operating are wheelchair-accessible, with support for ramps and assistance by the driver. \n100th anniversary design wrapped bus, is not wheelchair-accessible. Please contact Section of Campus Facility for details on operating hours."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excepto el autobús rotulado con el diseño del 100.º aniversario, todos los autobuses son accesibles para sillas de ruedas. Si necesitas asistencia al subir, avisa al conductor.\nPara consultar los horarios de servicio de cada vehículo, contacta con la oficina de administración del campus de Omiya."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "創立100周年記念ラッピングのバス以外、全てのバスが車椅子対応をしています。乗車時にサポートが必要な方は運転手にお声がけください。\n各車両の運行時間は大宮キャンパスの管理課にお問い合わせください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "除创立100周年纪念涂装巴士外，所有巴士均支持轮椅乘车。乘车时需要协助的乘客，请告知驾驶员。\n各车辆的运行时间请咨询大宫校区管理课。"
+          }
+        }
+      }
+    },
+    "Calendar" : {
+      "comment" : "Label for calendar-related UI.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendario"
           }
         },
         "ja" : {
@@ -506,10 +236,18 @@
             "state" : "translated",
             "value" : "カレンダー"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日历"
+          }
         }
       }
     },
-    "Label.CampusToIwatsukiStation" : {
+    "CampusToIwatsukiStation" : {
+      "comment" : "Full route title for the school bus from campus to Iwatsuki Station.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -517,15 +255,59 @@
             "value" : "Campus to Iwatsuki Station"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Del campus a la estación de Iwatsuki"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャンパスから岩槻駅"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "校区到岩槻站"
+          }
         }
       }
     },
-    "Label.CampusToOmiyaStation" : {
+    "CampusToIwatsukiStation.short" : {
+      "comment" : "Short route label for the school bus from campus to Iwatsuki Station, used in compact bus cells and widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Station"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A la estación"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻駅行き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开往岩槻站"
+          }
+        }
+      }
+    },
+    "CampusToOmiyaStation" : {
+      "comment" : "Full route title for the school bus from campus to Higashi-Omiya Station.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -533,15 +315,59 @@
             "value" : "Campus to Higashi-Omiya Station"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Del campus a la estación de Higashi-Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャンパスから東大宮駅"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "校区到东大宫站"
+          }
         }
       }
     },
-    "Label.Close" : {
+    "CampusToOmiyaStation.short" : {
+      "comment" : "Short route label for the school bus from campus to Higashi-Omiya Station, used in compact bus cells and widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Station"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A la estación"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "東大宮駅行き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开往东大宫站"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "comment" : "Button title used to dismiss alerts and sheets.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -549,15 +375,29 @@
             "value" : "Close"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "閉じる"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
+          }
         }
       }
     },
-    "Label.Continue" : {
+    "Continue" : {
+      "comment" : "Primary button title at the bottom of the welcome flow.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -565,15 +405,29 @@
             "value" : "Continue"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "続ける"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
         }
       }
     },
-    "Label.CoopBusinessHours" : {
+    "CoopBusinessHours" : {
+      "comment" : "Heading for business hours in the university co-op service page.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -581,15 +435,29 @@
             "value" : "Business Hours"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario de atención"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "営業時間"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "营业时间"
+          }
         }
       }
     },
-    "Label.Credits" : {
+    "Credits" : {
+      "comment" : "Settings row title that opens the open source credits page.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -597,15 +465,29 @@
             "value" : "Credits"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créditos"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クレジット"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鸣谢"
+          }
         }
       }
     },
-    "Label.Date" : {
+    "Date" : {
+      "comment" : "Title for date parameters and date selection UI.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -613,15 +495,59 @@
             "value" : "Date"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "日付"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期"
+          }
         }
       }
     },
-    "Label.DeleteCache" : {
+    "DatePicker" : {
+      "comment" : "Accessibility label for the date picker button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Picker"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selector de fecha"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日付選択"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期选择"
+          }
+        }
+      }
+    },
+    "DeleteCache" : {
+      "comment" : "Settings button title for deleting cached timetable data.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -629,15 +555,29 @@
             "value" : "Delete cache"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar caché"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャッシュを削除"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除缓存"
+          }
         }
       }
     },
-    "Label.DepartsIn%lldHours" : {
+    "DepartsIn%lldHours" : {
+      "comment" : "Relative departure status shown in home cells and live activities when the next bus departs in whole hours. Keep the %lld placeholder.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -657,6 +597,24 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld hora"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld horas"
+                }
+              }
+            }
+          }
+        },
         "ja" : {
           "variations" : {
             "plural" : {
@@ -668,10 +626,24 @@
               }
             }
           }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld小时后发车"
+                }
+              }
+            }
+          }
         }
       }
     },
-    "Label.DepartsIn%lldMinutes" : {
+    "DepartsIn%lldMinutes" : {
+      "comment" : "Relative departure status shown in home cells, widgets, and live activities when the next bus departs in minutes. Keep the %lld placeholder.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -691,6 +663,24 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld minuto"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "En %lld minutos"
+                }
+              }
+            }
+          }
+        },
         "ja" : {
           "variations" : {
             "plural" : {
@@ -702,10 +692,24 @@
               }
             }
           }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld分钟后发车"
+                }
+              }
+            }
+          }
         }
       }
     },
-    "Label.DepartsIn0Minutes" : {
+    "DepartsIn0Minutes" : {
+      "comment" : "Relative departure status shown when the next bus departs in less than one minute.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -713,15 +717,29 @@
             "value" : "In <1 minute"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En <1 minuto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "発車まで1分未満"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不到1分钟后发车"
+          }
         }
       }
     },
-    "Label.Disclaimer" : {
+    "Disclaimer" : {
+      "comment" : "Welcome screen section header for app disclaimer and data source information.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -729,15 +747,59 @@
             "value" : "Disclaimer "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso legal"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "利用にあたり注意事項"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用注意事项"
+          }
         }
       }
     },
-    "Label.Edit" : {
+    "Done.button" : {
+      "comment" : "Button title used to finish date/calendar selection sheets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "comment" : "Menu button title on the home bus section for choosing which bus groups are visible.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -745,15 +807,269 @@
             "value" : "Edit"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "編集"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
         }
       }
     },
-    "Label.FeatureNextBus" : {
+    "Error.ClientError" : {
+      "comment" : "Error description for HTTP client-side failures.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Client Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error del cliente"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クライアントエラー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "客户端错误"
+          }
+        }
+      }
+    },
+    "Error.InvalidResponse" : {
+      "comment" : "Error description when the bus data response cannot be used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Response"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respuesta no válida"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無効な応答"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无效响应"
+          }
+        }
+      }
+    },
+    "Error.InvalidURL" : {
+      "comment" : "Error description when a bus data source URL is invalid.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無効なURL"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无效 URL"
+          }
+        }
+      }
+    },
+    "Error.NetworkError" : {
+      "comment" : "Error description for network connectivity or request failures.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de red"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワークエラー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网络错误"
+          }
+        }
+      }
+    },
+    "Error.NoLocalData" : {
+      "comment" : "Error description when no bundled or cached bus data is available.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin datos"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データがありません"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有数据"
+          }
+        }
+      }
+    },
+    "Error.ParseError" : {
+      "comment" : "Error description when bus data cannot be parsed.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parse Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de análisis"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パースエラー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解析错误"
+          }
+        }
+      }
+    },
+    "Error.ServerError" : {
+      "comment" : "Error description for HTTP server-side failures.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error del servidor"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーエラー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器错误"
+          }
+        }
+      }
+    },
+    "Error.Undefined(%lld)" : {
+      "comment" : "Fallback error description for an unexpected HTTP status code. Keep the %lld placeholder.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error(%lld)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error (%lld)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー（%lld）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误（%lld）"
+          }
+        }
+      }
+    },
+    "FeatureNextBus" : {
+      "comment" : "Welcome screen feature title for checking the next bus departure.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -761,15 +1077,59 @@
             "value" : "Next Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo autobús"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "次のバス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一班巴士"
+          }
         }
       }
     },
-    "Label.Features" : {
+    "FeatureNextBus.detail" : {
+      "comment" : "Welcome screen feature description for checking the next bus departure at a glance.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check when the next bus departs at a glance."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta de un vistazo cuándo sale el próximo autobús."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のバスがいつ出発するか一目で確認することができます"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可一目了然地确认下一班巴士的发车时间"
+          }
+        }
+      }
+    },
+    "Features" : {
+      "comment" : "Welcome screen section header listing major app features.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -777,15 +1137,29 @@
             "value" : "Features"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "機能"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "功能"
+          }
         }
       }
     },
-    "Label.FeatureTimetable" : {
+    "FeatureTimetable" : {
+      "comment" : "Welcome screen feature title for timetable browsing.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -793,17 +1167,67 @@
             "value" : "Timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "時刻表"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时刻表"
+          }
         }
       }
     },
-    "Label.FeatureWidget" : {
+    "FeatureTimetable.detail" : {
+      "comment" : "Welcome screen feature description for viewing timetables and operation dates.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See all timetables of buses, and operation dates."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta todos los horarios y fechas de operación de los autobuses."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのバスの時刻表と運行日の一覧を見ることができます"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可以查看所有巴士的时刻表和运行日期列表"
+          }
+        }
+      }
+    },
+    "FeatureWidget" : {
+      "comment" : "Welcome screen feature title for home screen widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widget"
@@ -814,10 +1238,48 @@
             "state" : "translated",
             "value" : "ウィジェット"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小组件"
+          }
         }
       }
     },
-    "Label.Feedback" : {
+    "FeatureWidget.detail" : {
+      "comment" : "Welcome screen feature description for using widgets to check the next departure.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place widgets on your home screen to check the departure time of the next bus."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coloca widgets en la pantalla de inicio para consultar la hora de salida del próximo autobús."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム画面から次のバスの発車時刻を確認できます"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在主屏幕放置小组件，即可确认下一班巴士的发车时间"
+          }
+        }
+      }
+    },
+    "Feedback" : {
+      "comment" : "Settings row title for opening the feedback link.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -825,15 +1287,29 @@
             "value" : "Feedback"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comentarios"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "フィードバック"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反馈"
+          }
         }
       }
     },
-    "Label.FetchError" : {
+    "FetchError" : {
+      "comment" : "Alert title shown when timetable data update fails.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -841,15 +1317,28 @@
             "value" : "Failed to update timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo actualizar el horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "時刻表の取得に失敗しました"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时刻表获取失败"
+          }
         }
       }
     },
-    "Label.FinalBus" : {
+    "FinalBus" : {
+      "comment" : "Label for the final bus of the day.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -858,15 +1347,29 @@
             "value" : "Final Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último autobús"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "最終バス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "末班巴士"
+          }
         }
       }
     },
-    "Label.ForceFetch" : {
+    "ForceFetch" : {
+      "comment" : "Destructive context menu action in Settings that forces the school bus data source to refresh.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -874,15 +1377,29 @@
             "value" : "Force Fetch"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forzar actualización"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "強制的に更新"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "强制更新"
+          }
         }
       }
     },
-    "Label.HideGoogleCalendar" : {
+    "HideGoogleCalendar" : {
+      "comment" : "Settings toggle title for hiding the Google Calendar section in co-op schedules.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -890,15 +1407,29 @@
             "value" : "Hide Google Calendar"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar Google Calendar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Googleカレンダーを非表示"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐藏 Google 日历"
+          }
         }
       }
     },
-    "Label.Home" : {
+    "Home" : {
+      "comment" : "Tab or navigation title for the home screen.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -906,15 +1437,59 @@
             "value" : "Home"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ホーム"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首页"
+          }
         }
       }
     },
-    "Label.IncludeDeviceInfo" : {
+    "Hour%lld" : {
+      "comment" : "Accessibility label for timetable hour headers. Keep the %lld placeholder.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld o’clock"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld h"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld時"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld点"
+          }
+        }
+      }
+    },
+    "IncludeDeviceInfo" : {
+      "comment" : "Feedback section toggle title for including device information in feedback.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -922,15 +1497,59 @@
             "value" : "Include Device Info"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incluir información del dispositivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイス情報を含める"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "包含设备信息"
+          }
         }
       }
     },
-    "Label.InfoSource" : {
+    "IncludeDeviceInfo.detail" : {
+      "comment" : "Helper text under the feedback device information toggle.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device info will be used to identify issues mentioned in your feedback."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La información del dispositivo se usará para identificar los problemas mencionados en tus comentarios."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス情報はフィードバックの問題を解決または発見することに利用されます"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设备信息将用于解决或发现反馈中提到的问题"
+          }
+        }
+      }
+    },
+    "InfoSource" : {
+      "comment" : "Settings section header listing timetable data sources and last update dates.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -938,15 +1557,29 @@
             "value" : "Source"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuente"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ソース"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "来源"
+          }
         }
       }
     },
-    "Label.IwatsukiStationToCampus" : {
+    "IwatsukiStationToCampus" : {
+      "comment" : "Full route title for the school bus from Iwatsuki Station to campus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -954,15 +1587,59 @@
             "value" : "Iwatsuki Station to Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la estación de Iwatsuki al campus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "岩槻駅からキャンパス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻站到校区"
+          }
         }
       }
     },
-    "Label.Library" : {
+    "IwatsukiStationToCampus.short" : {
+      "comment" : "Short route label for the school bus from Iwatsuki Station to campus, used in compact bus cells and widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパス行き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开往校区"
+          }
+        }
+      }
+    },
+    "Library" : {
+      "comment" : "Home link title for the university library page.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -970,15 +1647,59 @@
             "value" : "Library"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteca"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "図書館"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图书馆"
+          }
         }
       }
     },
-    "Label.LibraryServices" : {
+    "LibraryOPAC" : {
+      "comment" : "Link title for the library OPAC service.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPAC"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPAC"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPAC"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPAC"
+          }
+        }
+      }
+    },
+    "LibraryServices" : {
+      "comment" : "Link title for the library services page.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -986,15 +1707,29 @@
             "value" : "Library Services"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servicios de la biblioteca"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "図書館サービス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图书馆服务"
+          }
         }
       }
     },
-    "Label.Loading" : {
+    "Loading" : {
+      "comment" : "Status shown in next-bus cells while timetable data is loading.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1002,15 +1737,29 @@
             "value" : "Loading"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargando"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "読み込み中"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加载中"
+          }
         }
       }
     },
-    "Label.Localization" : {
+    "Localization" : {
+      "comment" : "Settings or diagnostics label for localization information.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1018,16 +1767,29 @@
             "value" : "Localization"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localización"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ローカリゼーション"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地化"
+          }
         }
       }
     },
-    "Label.Map.FromHigashiOmiya" : {
-      "extractionState" : "stale",
+    "Map.FromHigashiOmiya" : {
+      "comment" : "Boarding-location map label for the Higashi-Omiya Station stop.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1035,16 +1797,29 @@
             "value" : "Higashi-Omiya Stop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de Higashi-Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "東大宮駅発着場所"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "东大宫站乘降地点"
+          }
         }
       }
     },
-    "Label.Map.FromIwatsuki" : {
-      "extractionState" : "stale",
+    "Map.FromIwatsuki" : {
+      "comment" : "Boarding-location map label for the Iwatsuki Station stop.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1052,16 +1827,29 @@
             "value" : "Iwatsuki Stop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de Iwatsuki"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "岩槻駅発着場所"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岩槻站乘降地点"
+          }
         }
       }
     },
-    "Label.Map.ToHigashiOmiya" : {
-      "extractionState" : "stale",
+    "Map.ToHigashiOmiya" : {
+      "comment" : "Boarding-location map label for the university-side stop on the Higashi-Omiya route.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1069,21 +1857,10 @@
             "value" : "University Stop"
           }
         },
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "大学側発着場所"
-          }
-        }
-      }
-    },
-    "Label.Map.ToIwatsuki" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "University Stop"
+            "value" : "Parada de la universidad"
           }
         },
         "ja" : {
@@ -1091,10 +1868,78 @@
             "state" : "translated",
             "value" : "大学側発着場所"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大学侧乘降地点"
+          }
         }
       }
     },
-    "Label.NoBuses" : {
+    "Map.ToIwatsuki" : {
+      "comment" : "Boarding-location map label for the university-side stop on the Iwatsuki route.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "University Stop"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada de la universidad"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大学側発着場所"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大学侧乘降地点"
+          }
+        }
+      }
+    },
+    "MyLibrary" : {
+      "comment" : "Link title for the library personal account page.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Library"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mi biblioteca"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マイライブラリ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我的图书馆"
+          }
+        }
+      }
+    },
+    "NoBuses" : {
+      "comment" : "Empty-state title shown when no timetable entries are available for the selected date or route.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1102,15 +1947,29 @@
             "value" : "No Buses"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin autobuses"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "バスがありません"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有巴士"
+          }
         }
       }
     },
-    "Label.NoBusService" : {
+    "NoBusService" : {
+      "comment" : "Status shown when there is no service for the selected route today.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1118,18 +1977,67 @@
             "value" : "No bus service today."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay servicio de autobús hoy."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "本日のバスの運行はありません"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天没有巴士运行。"
+          }
         }
       }
     },
-    "Label.Omiya" : {
+    "NoService" : {
+      "comment" : "Calendar legend or badge for dates without bus service.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Service"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin servicio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "運行なし"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停运"
+          }
+        }
+      }
+    },
+    "Omiya" : {
+      "comment" : "Campus or area name for Omiya.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omiya"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omiya"
@@ -1140,10 +2048,18 @@
             "state" : "translated",
             "value" : "大宮"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宫"
+          }
         }
       }
     },
-    "Label.OmiyaFestival" : {
+    "OmiyaFestival" : {
+      "comment" : "Home seasonal link title for the Omiya campus festival.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1151,15 +2067,29 @@
             "value" : "Omiya Festival"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festival de Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宮祭"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宫祭"
+          }
         }
       }
     },
-    "Label.OmiyaStationToCampus" : {
+    "OmiyaStationToCampus" : {
+      "comment" : "Full route title for the school bus from Higashi-Omiya Station to campus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1167,15 +2097,59 @@
             "value" : "Station to Omiya Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la estación al campus de Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "東大宮駅からキャンパス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车站到大宫校区"
+          }
         }
       }
     },
-    "Label.OmiyaToToyosu" : {
+    "OmiyaStationToCampus.short" : {
+      "comment" : "Short route label for the school bus from Higashi-Omiya Station to campus, used in compact bus cells and widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Campus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al campus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンパス行き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开往校区"
+          }
+        }
+      }
+    },
+    "OmiyaToToyosu" : {
+      "comment" : "Full route title for the shuttle bus from Omiya Campus to Toyosu Campus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1183,15 +2157,59 @@
             "value" : "Omiya to Toyosu Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De Omiya al campus de Toyosu"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "大宮から豊洲キャンパス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宫到丰洲校区"
+          }
         }
       }
     },
-    "Label.OpenLinkInApp" : {
+    "OmiyaToToyosu.short" : {
+      "comment" : "Short route label for the shuttle bus from Omiya Campus to Toyosu Campus, used in compact bus cells and widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Toyosu"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Toyosu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "豊洲校舎行き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开往丰洲校区"
+          }
+        }
+      }
+    },
+    "OpenLinkInApp" : {
+      "comment" : "Settings toggle title for opening links inside the app instead of an external browser.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1199,15 +2217,59 @@
             "value" : "Open Link In-App"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir enlace en la app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "リンクをアプリ内で開く"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 App 内打开链接"
+          }
         }
       }
     },
-    "Label.Options" : {
+    "OpenSourceSoftware" : {
+      "comment" : "Credits page section title for open source software acknowledgements.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Source Software"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Software de código abierto"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オープンソースソフトウェア"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开源软件"
+          }
+        }
+      }
+    },
+    "Options" : {
+      "comment" : "Settings section header for general options.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1215,15 +2277,29 @@
             "value" : "Options"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "オプション"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选项"
+          }
         }
       }
     },
-    "Label.Other" : {
+    "Other" : {
+      "comment" : "Settings section header for miscellaneous options.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1231,20 +2307,10 @@
             "value" : "Other"
           }
         },
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "その他"
-          }
-        }
-      }
-    },
-    "Label.RelatedSites" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Information"
+            "value" : "Otros"
           }
         },
         "ja" : {
@@ -1252,10 +2318,47 @@
             "state" : "translated",
             "value" : "その他"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他"
+          }
         }
       }
     },
-    "Label.Saturday" : {
+    "RelatedSites" : {
+      "comment" : "Home section header for related campus service links.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "信息"
+          }
+        }
+      }
+    },
+    "Saturday" : {
+      "comment" : "Day type label used for Saturday timetables.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1264,15 +2367,29 @@
             "value" : "Saturday "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sábado"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "土曜日"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "星期六"
+          }
         }
       }
     },
-    "Label.SaveCoopSchedule" : {
+    "SaveCoopSchedule" : {
+      "comment" : "Settings toggle title for saving university co-op schedule data.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1280,15 +2397,28 @@
             "value" : "Save Co-op Schedule"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar horario de la cooperativa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "生協のスケジュールを保存"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存生协日程"
+          }
         }
       }
     },
-    "Label.Schedule" : {
+    "Schedule" : {
+      "comment" : "Label for schedule content, especially co-op schedules.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1297,15 +2427,29 @@
             "value" : "Schedule "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日程"
+          }
         }
       }
     },
-    "Label.SchoolBus" : {
+    "SchoolBus" : {
+      "comment" : "Generic title for school bus information links.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1313,15 +2457,29 @@
             "value" : "School Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús escolar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "校车"
+          }
         }
       }
     },
-    "Label.SchoolBusIwatsuki" : {
+    "SchoolBusIwatsuki" : {
+      "comment" : "Bus group title for the Iwatsuki Station school bus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1329,15 +2487,119 @@
             "value" : "School Bus (Iwatsuki)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús escolar (Iwatsuki)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス（岩槻駅）"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "校车（岩槻站）"
+          }
         }
       }
     },
-    "Label.SchoolBusOmiya" : {
+    "SchoolBusIwatsuki.detail" : {
+      "comment" : "Footnote shown in the home bus visibility menu for the Iwatsuki school bus.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operation date and time may be inaccurate"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fecha y hora del servicio pueden no ser exactas"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "運行日時が不正確な場合があります"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "运行日期和时间可能不准确"
+          }
+        }
+      }
+    },
+    "SchoolBusIwatsukiSaturday.detail" : {
+      "comment" : "Notice shown above Iwatsuki school bus Saturday timetables.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates only on class days "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opera solo en días de clase"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授業日のみ運行"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仅上课日运行"
+          }
+        }
+      }
+    },
+    "SchoolBusIwatsukiWeekday.detail" : {
+      "comment" : "Notice shown above Iwatsuki school bus weekday timetables, with emphasis around the exception phrase.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operates every weekday **except** on open campus, parents' meeting, entrance exams, and vacations."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opera todos los días laborables, **excepto** durante jornadas de puertas abiertas, reuniones de padres, el examen común de ingreso a la universidad, exámenes de ingreso y cierres de verano e invierno."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オープンキャンパス、父母懇談会、共通テスト、入試、夏季冬季一斉休暇**以外**運行"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每个工作日运行，**但不包括**校园开放日、家长会、大学入学共通考试、入学考试以及暑假和寒假统一休假期间。"
+          }
+        }
+      }
+    },
+    "SchoolBusOmiya" : {
+      "comment" : "Bus group title for the Higashi-Omiya Station school bus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1345,15 +2607,29 @@
             "value" : "School Bus (Higashi-Omiya)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús escolar (Higashi-Omiya)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スクールバス（東大宮駅）"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "校车（东大宫站）"
+          }
         }
       }
     },
-    "Label.Search" : {
+    "Search" : {
+      "comment" : "Button or link title for searching the library catalog.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1361,15 +2637,29 @@
             "value" : "Search"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "検索"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索"
+          }
         }
       }
     },
-    "Label.Settings" : {
+    "Settings" : {
+      "comment" : "Navigation title for the Settings tab.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1377,17 +2667,37 @@
             "value" : "Settings"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
         }
       }
     },
-    "Label.ShibauraFestival" : {
+    "ShibauraFestival" : {
+      "comment" : "Home seasonal link title for Shibaurasai.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shibaurasai"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shibaurasai"
@@ -1398,106 +2708,18 @@
             "state" : "translated",
             "value" : "芝浦祭"
           }
-        }
-      }
-    },
-    "Label.Short.CampusToIwatsukiStation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Station"
-          }
         },
-        "ja" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "岩槻駅行き"
+            "value" : "芝浦祭"
           }
         }
       }
     },
-    "Label.Short.CampusToOmiyaStation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Station"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "東大宮駅行き"
-          }
-        }
-      }
-    },
-    "Label.Short.IwatsukiStationToCampus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Campus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャンパス行き"
-          }
-        }
-      }
-    },
-    "Label.Short.OmiyaStationToCampus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Campus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャンパス行き"
-          }
-        }
-      }
-    },
-    "Label.Short.OmiyaToToyosu" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Toyosu"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "豊洲校舎行き"
-          }
-        }
-      }
-    },
-    "Label.Short.ToyosuToOmiya" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To Omiya"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "大宮校舎行き"
-          }
-        }
-      }
-    },
-    "Label.ShuttleBus" : {
+    "ShuttleBus" : {
+      "comment" : "Bus group title for the shuttle bus between Omiya and Toyosu campuses.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1505,15 +2727,59 @@
             "value" : "Shuttle Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús lanzadera"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "シャトルバス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "校区间巴士"
+          }
         }
       }
     },
-    "Label.Timetable" : {
+    "TimelyOperation(%@,%@)" : {
+      "comment" : "Status for a route that runs during a time window instead of fixed departures. Keep the %1$@ and %2$@ placeholders for start and end times.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timely Operation: %1$@ to %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operación flexible: de %1$@ a %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "適時運行：%1$@から%2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "适时运行：%1$@到%2$@"
+          }
+        }
+      }
+    },
+    "Timetable" : {
+      "comment" : "Navigation title and widget configuration title for timetable views.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1521,18 +2787,97 @@
             "value" : "Timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "時刻表"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时刻表"
+          }
         }
       }
     },
-    "Label.Toyosu" : {
+    "TimetableInformation" : {
+      "comment" : "Accessibility label for the timetable information button.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時刻表について"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于时刻表"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "comment" : "Calendar badge or accessibility label for today.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天"
+          }
+        }
+      }
+    },
+    "Toyosu" : {
+      "comment" : "Campus or area name for Toyosu.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toyosu"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toyosu"
@@ -1543,10 +2888,18 @@
             "state" : "translated",
             "value" : "豊洲"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丰洲"
+          }
         }
       }
     },
-    "Label.ToyosuToOmiya" : {
+    "ToyosuToOmiya" : {
+      "comment" : "Full route title for the shuttle bus from Toyosu Campus to Omiya Campus.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1554,15 +2907,59 @@
             "value" : "Toyosu to Omiya Campus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De Toyosu al campus de Omiya"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "豊洲から大宮キャンパス"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丰洲到大宫校区"
+          }
         }
       }
     },
-    "Label.UnivCoop" : {
+    "ToyosuToOmiya.short" : {
+      "comment" : "Short route label for the shuttle bus from Toyosu Campus to Omiya Campus, used in compact bus cells and widgets.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Omiya"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Omiya"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大宮校舎行き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开往大宫校区"
+          }
+        }
+      }
+    },
+    "UnivCoop" : {
+      "comment" : "Home link title for the university co-op services page.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1570,60 +2967,37 @@
             "value" : "NFUCA(University Co-op)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFUCA (cooperativa universitaria)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "消費生活協同組合（生協）"
           }
-        }
-      }
-    },
-    "Label.Weekday" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Weekday"
-          }
         },
-        "ja" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "平日"
+            "value" : "大学生协"
           }
         }
       }
-    },
-    "Label.WheelchairInfo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wheelchair Support"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "車椅子対応について"
-          }
-        }
-      }
-    },
-    "My Library" : {
-      "shouldTranslate" : false
-    },
-    "OPAC" : {
-      "shouldTranslate" : false
-    },
-    "OSS" : {
-      "shouldTranslate" : false
     },
     "URL.LibraryService" : {
+      "comment" : "Localized URL used for the library services link. Translate only if a locale-specific page exists.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
@@ -1634,10 +3008,18 @@
             "state" : "translated",
             "value" : "https://lib.shibaura-it.ac.jp/usage/information/"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://lib.shibaura-it.ac.jp/english/usage/"
+          }
         }
       }
     },
     "URL.ShuttleBus" : {
+      "comment" : "Localized URL used for the shuttle bus schedule PDF. Translate only if a locale-specific PDF exists.",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1645,10 +3027,82 @@
             "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
+          }
+        },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期】シャトルバス運行予定_1.pdf"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.shibaura-it.ac.jp/assets/2026【春学期：英語】シャトルバス運行予定_1.pdf"
+          }
+        }
+      }
+    },
+    "Weekday" : {
+      "comment" : "Day type label used for weekday timetables.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekday"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día laborable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平日"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工作日"
+          }
+        }
+      }
+    },
+    "WheelchairInfo" : {
+      "comment" : "Section header for wheelchair support information in the timetable information sheet.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheelchair Support"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistencia para sillas de ruedas"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "車椅子対応について"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于轮椅支持"
           }
         }
       }

@@ -12,7 +12,7 @@ struct HomeLinkCell: View {
     @ScaledMetric var iconSize = 17
     @ScaledMetric var padding = 4
     
-    var title: LocalizedStringKey
+    var title: LocalizedStringResource
     var symbol: String
     var trailingSymbol: String
     
@@ -39,7 +39,7 @@ struct HomeLinkCell: View {
 
 #Preview {
     HomeLinkCell(
-        title: "Label.Loading",
+        title: .loading,
         symbol: "camera",
         trailingSymbol: "chevron.right"
     )
