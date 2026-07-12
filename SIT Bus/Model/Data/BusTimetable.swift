@@ -233,8 +233,6 @@ extension BusTimetable {
                     return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "平日(授業日)" : "土曜日")
                 } else if calendar.date.isWeekday {
                     return Calendar(date: calendar.date, tableName: "平日(休講期間)")
-                } else if calendar.tableName.contains("大宮祭") {
-                    return Calendar(date: calendar.date, tableName: "土曜日")
                 }
                 return nil
             },
