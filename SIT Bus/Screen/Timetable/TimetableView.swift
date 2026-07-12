@@ -26,7 +26,7 @@ struct TimetableView: View {
                         horizontalTimetable
                     } else {
                         ContentUnavailableView(
-                            "Label.NoBuses",
+                            .noBuses,
                             systemImage: "exclamationmark.triangle.fill"
                         )
                     }
@@ -46,7 +46,7 @@ struct TimetableView: View {
                     EmptyView()
                 }
             }
-            .navigationTitle("Label.Timetable")
+            .navigationTitle(.timetable)
             .toolbarTitleDisplayMode(.automatic)
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
@@ -73,7 +73,7 @@ struct TimetableView: View {
                     } label: {
                         Image(systemName: "info.circle")
                     }
-                    .accessibilityLabel("Label.Accessiblity.Information")
+                    .accessibilityLabel(.timetableInformation)
                     .matchedTransitionSource(id: "Information", in: namespace)
                 }
                 

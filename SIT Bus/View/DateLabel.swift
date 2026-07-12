@@ -23,7 +23,7 @@ struct DateLabel: View {
                 selection: $date,
                 displayedComponents: .date
             ) {
-                Text("Date Picker")
+                Text(.datePicker)
             }
             .datePickerStyle(.graphical)
             .presentationCompactAdaptation(.popover)

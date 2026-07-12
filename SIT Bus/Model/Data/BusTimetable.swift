@@ -104,7 +104,7 @@ class BusTimetable {
                 
                 @ViewBuilder
                 func makeText() -> some View {
-                    Text("Label.\(Text(from.toDate(), format: .dateTime.hour().minute()))to\(Text(until.toDate(), format: .dateTime.hour().minute()))Service")
+                    Text(LocalizedStringResource.timelyOperation(from.toDate().formatted(date: .omitted, time: .shortened), until.toDate().formatted(date: .omitted, time: .shortened)))
                 }
             }
         }

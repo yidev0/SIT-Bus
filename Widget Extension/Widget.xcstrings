@@ -1,120 +1,216 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Detail.SITBusWidget" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Displays the next departure time of the selected school bus."
+  "sourceLanguage": "en",
+  "strings": {
+    "BusType": {
+      "comment": "Widget configuration parameter title for choosing the bus route.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bus Type"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "指定したスクールバスの次の発車時間を表示"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipo de autobús"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バスの種類"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "巴士类型"
           }
         }
       }
     },
-    "Label.%@to%@Service" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ to %2$@"
+    "Description": {
+      "comment": "Widget gallery description explaining that the widget shows the next selected school bus departure.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Displays the next departure time of the selected school bus."
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@から%2$@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muestra la próxima hora de salida del autobús escolar seleccionado."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "指定したスクールバスの次の発車時間を表示"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示所选校车的下一班发车时间"
           }
         }
       }
     },
-    "Label.BusType" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bus Type"
+    "DisplayName": {
+      "comment": "Widget gallery display name for the SIT Bus timetable widget.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Departure Time"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "バスの種類"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de salida"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "発車時刻"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发车时间"
           }
         }
       }
     },
-    "Label.NextBus" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next Bus"
+    "Minutes.short%lld": {
+      "comment": "Compact live activity or widget label for remaining minutes. Keep the %lld placeholder.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "次のバス"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld分"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld分钟"
           }
         }
       }
     },
-    "Label.ShortMinutes%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld min"
+    "NextBus": {
+      "comment": "Widget label displayed above the next departure time.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next Bus"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld分"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo autobús"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次のバス"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一班巴士"
           }
         }
       }
     },
-    "Label.SITBusWidget" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Departure Time"
+    "TimelyOperation": {
+      "comment": "Widget status label for a route that runs during a time window instead of fixed departures.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timely Operation"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "発車時刻"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operación flexible"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "適時運行"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "适时运行"
           }
         }
       }
     },
-    "Label.TimelyOperation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Timely Operation"
+    "TimelyOperation(%@,%@)": {
+      "comment": "Widget time range for timely operation. Keep the %1$@ and %2$@ placeholders for start and end times.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ to %2$@"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "適時運行"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De %1$@ a %2$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@から%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@到%2$@"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

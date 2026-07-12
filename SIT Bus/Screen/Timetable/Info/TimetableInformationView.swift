@@ -15,31 +15,31 @@ struct TimetableInformationView: View {
         NavigationStack {
             Form {
                 Section {
-                    Text("Detail.BusInfo")
+                    Text(.busInfoDetail)
 
                     LinkButton("http://bus.shibaura-it.ac.jp/developer.html") {
-                        Text("Label.SchoolBus")
+                        Text(.schoolBus)
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
                     }
                     
                     LinkButton("https://www.shibaura-it.ac.jp/access/index.html#bus") {
-                        Text("Label.ShuttleBus")
+                        Text(.shuttleBus)
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
                     }
                     
                     LinkButton("https://www.shibaura-it.ac.jp/access/index.html") {
-                        Text("Label.SchoolBusIwatsuki")
+                        Text(.schoolBusIwatsuki)
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
                     }
                 }
                 
                 Section {
-                    Text("Detail.BusWheelchairInfo")
+                    Text(.busWheelchairInfoDetail)
                 } header: {
-                    Label("Label.WheelchairInfo", systemImage: "wheelchair")
+                    Label(.wheelchairInfo, systemImage: "wheelchair")
                 }
             }
             .toolbarTitleDisplayMode(.inline)
@@ -50,7 +50,7 @@ struct TimetableInformationView: View {
                     }
                 } else {
                     Button(action: { dismiss.callAsFunction() }) {
-                        Text("Label.Close")
+                        Text(.close)
                     }
                 }
             }

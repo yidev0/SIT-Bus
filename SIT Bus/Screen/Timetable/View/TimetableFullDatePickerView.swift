@@ -20,7 +20,7 @@ struct TimetableFullDatePickerView: View {
             HStack {
                 List {
                     DatePicker(
-                        "Label.Calendar",
+                        .calendar,
                         selection: $date,
                         in: range,
                         displayedComponents: .date
@@ -37,7 +37,7 @@ struct TimetableFullDatePickerView: View {
                         Text(calendar.tableName)
                         Text(comment)
                     } else {
-                        Text("Label.NoBuses")
+                        Text(.noBuses)
                     }
                 }
             }
@@ -45,7 +45,7 @@ struct TimetableFullDatePickerView: View {
                 Button {
                     dismiss.callAsFunction()
                 } label: {
-                    Text("Button.Done")
+                    Text(.doneButton)
                 }
             }
             .toolbarTitleDisplayMode(.inline)

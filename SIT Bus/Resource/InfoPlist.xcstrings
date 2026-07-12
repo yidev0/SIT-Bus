@@ -3,7 +3,7 @@
   "strings" : {
     "CFBundleDisplayName" : {
       "comment" : "Bundle display name",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -11,17 +11,29 @@
             "value" : "SIT Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT Bus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SITバス時刻表"
+            "value" : "SITバス"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT巴士"
           }
         }
       }
     },
     "CFBundleName" : {
       "comment" : "Bundle name",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -29,17 +41,29 @@
             "value" : "SIT Bus"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT Bus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SITバス時刻表"
+            "value" : "SITバス"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT巴士"
           }
         }
       }
     },
     "kMDItemKeywords" : {
       "comment" : "Keywords associated with this file.",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -47,10 +71,22 @@
             "value" : "SIT,Shibaura,Bus,Timetable"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT,Shibaura,Shibaura Institute of Technology,Autobús,Bus,Horario,Timetable"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "SIT,Shibaura,シバウラ,芝浦工業大学,Bus,バス,Timetable,時刻表"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIT,Shibaura,芝浦,芝浦工业大学,Bus,巴士,校车,Timetable,时刻表"
           }
         }
       }

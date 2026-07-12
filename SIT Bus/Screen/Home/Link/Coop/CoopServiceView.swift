@@ -37,7 +37,7 @@ struct CoopServiceView: View {
                     )
                 }
             } header: {
-                Text("Label.CoopBusinessHours")
+                Text(.coopBusinessHours)
             }
         }
         .tint(Color.primary)

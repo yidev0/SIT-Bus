@@ -23,19 +23,19 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Label.Home", systemImage: "house")
+                    Label(.home, systemImage: "house")
                         .symbolVariant(.fill)
                 }
             
             TimetableView()
                 .tabItem {
-                    Label("Label.Timetable", systemImage: "tablecells")
+                    Label(.timetable, systemImage: "tablecells")
                         .symbolVariant(.fill)
                 }
             
             SettingsView()
                 .tabItem {
-                    Label("Label.Settings", systemImage: "gear")
+                    Label(.settings, systemImage: "gear")
                         .symbolVariant(.fill)
                 }
         }
@@ -48,14 +48,14 @@ struct ContentView: View {
         ) {
             if let error = timetableManager.error {
                 Alert(
-                    title: Text("Label.FetchError"),
+                    title: Text(.fetchError),
                     message: Text(error.errorDescription!) ,
-                    dismissButton: .default(Text("Label.Close"))
+                    dismissButton: .default(Text(.close))
                 )
             } else {
                 Alert(
-                    title: Text("Label.FetchError"),
-                    dismissButton: .default(Text("Label.Close"))
+                    title: Text(.fetchError),
+                    dismissButton: .default(Text(.close))
                 )
             }
         }

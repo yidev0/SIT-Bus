@@ -28,9 +28,9 @@ struct SITBusLiveActivity: Widget {
                             .font(.title)
                             .fontWeight(.semibold)
                         Spacer()
-                        Text("Label.DepartsIn\(context.state.remainingMinutes)Minutes")
+                        Text(.departsInMinutes(context.state.remainingMinutes))
                     } else {
-                        Text("Label.BusServiceEnded")
+                        Text(.busServiceEnded)
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
@@ -62,12 +62,12 @@ struct SITBusLiveActivity: Widget {
                         if let nextBusTime = context.state.nextBusTime {
                             VStack {
 //                                Text(nextBusTime, style: .time)
-                                Text("Label.DepartsIn\(context.state.remainingMinutes)Minutes")
+                                Text(.departsInMinutes(context.state.remainingMinutes))
                                     .foregroundStyle(.secondary)
                                     .font(.subheadline)
                             }
                         } else {
-                            Text("Label.BusServiceEnded")
+                            Text(.busServiceEnded)
                                 .font(.body)
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.trailing)
@@ -83,7 +83,7 @@ struct SITBusLiveActivity: Widget {
             } compactLeading: {
                 Image(systemName: "bus.fill")
             } compactTrailing: {
-                Text("Label.ShortMinutes\(context.state.remainingMinutes)", tableName: "Widget")
+                Text(.Widget.minutesShort(context.state.remainingMinutes))
             } minimal: {
                 Text(verbatim: "\(context.state.remainingMinutes)")
             }

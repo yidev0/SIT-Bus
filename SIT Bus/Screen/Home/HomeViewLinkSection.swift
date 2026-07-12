@@ -22,20 +22,20 @@ fileprivate enum LinkType: Int, CaseIterable {
         }
     }
     
-    var title: LocalizedStringKey {
+    var title: LocalizedStringResource {
         switch self {
         case .univCoop:
-            "Label.UnivCoop"
+            .univCoop
         case .boardingLocation:
-            "Label.BoardingLocation"
+            .boardingLocation
         case .library:
-            "Label.Library"
+            .library
         case .festival:
             switch Date.now.get(.month) {
             case 1...6:
-                "Label.OmiyaFestival"
+                .omiyaFestival
             default:
-                "Label.ShibauraFestival"
+                .shibauraFestival
             }
         }
     }
@@ -82,7 +82,7 @@ struct HomeViewLinkSection: View {
             }
         } header: {
             HStack {
-                Text("Label.RelatedSites")
+                Text(.relatedSites)
                 Spacer()
             }
             .font(.headline)
@@ -95,19 +95,19 @@ struct HomeViewLinkSection: View {
         List {
             Section {
                 LinkButton("https://www.shibaura-it.ac.jp/access/omiya.html") {
-                    Text("Label.SchoolBusIwatsuki")
+                    Text(.schoolBusIwatsuki)
                 }
                 
                 LinkButton("https://www.shibaura-it.ac.jp/access/omiya.html") {
-                    Text("Label.SchoolBusOmiya")
+                    Text(.schoolBusOmiya)
                 }
                 
                 LinkButton(.init(localized: "URL.ShuttleBus")) {
-                    Text("Label.ShuttleBus")
+                    Text(.shuttleBus)
                 }
             }
         }
-        .navigationTitle("Label.BoardingLocation")
+        .navigationTitle(.boardingLocation)
     }
 }
 
