@@ -148,7 +148,7 @@ class BusTimetable {
         activeDatesByMonth
     }
     
-    /// Returns the Date of the next bus after the given date, or nil if not found.
+    /// Returns the Date of the next bus at or after the given instant, or nil if not found.
     func getNext(from date: Date, type: DestinationType) -> Date? {
         let currentCalendar = Foundation.Calendar.current
         guard let calendarEntry = getCalendar(for: date) else { return nil }
@@ -158,16 +158,14 @@ class BusTimetable {
         case .type2: table.destination2
         }
         
-        let nowMinutes = date.get(.hour) * 60 + date.get(.minute)
-        if let next = timetable.first(where: { val in
-            let busMinutes = val.time.hour * 60 + val.time.minute
-            return busMinutes >= nowMinutes
-        }) {
+        if let nextDate = timetable.lazy.compactMap({ value -> Date? in
             var components = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
-            components.hour = next.time.hour
-            components.minute = next.time.minute
+            components.hour = value.time.hour
+            components.minute = value.time.minute
             components.second = 0
             return currentCalendar.date(from: components)
+        }).first(where: { $0 >= date }) {
+            return nextDate
         }
         return nil
     }
@@ -195,7 +193,7 @@ class BusTimetable {
             let busMinutes = val.time.hour * 60 + val.time.minute
             let noteMinutes = note.from.hour * 60 + note.from.minute
             let noteUntilMinutes = note.until.hour * 60 + note.until.minute
-            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes <= busMinutes && nowMinutes <= noteUntilMinutes
+            return busMinutes > nowMinutes && busMinutes <= nextMinutes && noteMinutes <= nowMinutes && nowMinutes <= noteUntilMinutes
         }), let note = value.note {
             var startComponents = currentCalendar.dateComponents([.year, .month, .day], from: calendarEntry.date)
             startComponents.hour = note.from.hour

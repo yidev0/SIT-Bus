@@ -14,6 +14,7 @@ struct TimetableView: View {
     
     @State private var model = TimetableViewModel()
     @Environment(TimetableManager.self) private var timetableManager
+    var navigationRequest: TimetableNavigationRequest?
     
     var body: some View {
         @Bindable var model = model
@@ -112,12 +113,24 @@ struct TimetableView: View {
         }
         .environment(model)
         .onAppear {
+            applyNavigationRequest()
             syncTimetable()
+        }
+        .onChange(of: navigationRequest) { _, _ in
+            applyNavigationRequest()
         }
     }
     
     private func syncTimetable() {
         updateTimesheet(for: currentBusType)
+    }
+
+    private func applyNavigationRequest() {
+        guard let navigationRequest else { return }
+        model.busLineType = navigationRequest.line
+        model.busType = navigationRequest.line.busType
+        model.date = navigationRequest.date
+        syncTimetable()
     }
     
     private var currentBusType: BusType {
@@ -193,7 +206,7 @@ private struct TimetableCalendarSheet: View {
     @Previewable @State var timetableManager = TimetableManager()
     @Previewable @State var model = TimetableViewModel()
     
-    TimetableView()
+    TimetableView(navigationRequest: nil)
         .environment(timetableManager)
         .environment(model)
 }

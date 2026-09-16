@@ -16,7 +16,7 @@ enum IntentBusLineType: String, CaseIterable, AppEnum {
     case shuttleToOmiya
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation {
-        .init(name: "Timetable")
+        .init(name: "Bus Route")
     }
 
     static var caseDisplayRepresentations: [IntentBusLineType : DisplayRepresentation] {
