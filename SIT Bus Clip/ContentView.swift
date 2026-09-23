@@ -132,7 +132,7 @@ private struct ClipNextBusCard: View {
                     .font(.headline)
                     .foregroundStyle(.secondary)
             } else if minutes >= 60 {
-                Text("in \(minutes / 60) hr")
+                Text("in \(minutes / 60) hr \(minutes % 60) min")
                     .font(.headline)
                     .foregroundStyle(.secondary)
             } else {
@@ -279,6 +279,9 @@ private final class ClipTimetableStore {
 
     func unavailableMessage(for date: Date) -> String {
         if calendarEntry(for: date)?.tsID == "none" {
+            if let comment = comment(for: date), comment.isEmpty == false {
+                return "No bus service is scheduled for this date. \(comment)"
+            }
             return "No bus service is scheduled for this date."
         }
         return "The schedule for this date is unavailable."
