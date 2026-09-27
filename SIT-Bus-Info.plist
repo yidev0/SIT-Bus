@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kMDItemKeywords</key>
-	<string>SIT,Shibaura,Bus,Timetable</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -18,5 +14,7 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>kMDItemKeywords</key>
+	<string>SIT,Shibaura,Bus,Timetable</string>
 </dict>
 </plist>
