@@ -57,7 +57,6 @@ struct HomeViewBusSection: View {
                             BusType.schoolIwatsuki.localizedTitle,
                             systemImage: BusType.schoolIwatsuki.symbol
                         )
-                        Text(.schoolBusIwatsukiDetail)
                     }
 
                     Toggle(isOn: $showShuttleBus) {

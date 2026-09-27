@@ -25,21 +25,27 @@ struct NextSchoolBusIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        let schoolBusData = await BusRepository().fetchLocal()
-        switch schoolBusData {
-        case .success(let success):
-            let timetable = success.toBusTimetable()
-            if let nextBus = timetable.getNext(from: date, type: busType.toBusLineType().destinationType) {
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeZone = .autoupdatingCurrent
-                dateFormatter.timeStyle = .medium
-                dateFormatter.dateStyle = .medium
-                return .result(value: dateFormatter.string(from: nextBus))
-            } else {
-                return .result(value: String(localized: .busServiceEnded))
-            }
-        case .failure(let failure):
-            throw failure
+        let line = busType.toBusLineType()
+        let timetable: BusTimetable
+        switch line {
+        case .schoolBus:
+            let data = try await BusRepository().fetchLocal().get()
+            timetable = data.toBusTimetable()
+        case .schoolBusIwatsuki:
+            let data = try await BusRepository(route: .iwatsuki).fetchLocal().get()
+            timetable = data.toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
+        case .shuttleBus:
+            timetable = .shuttleBus
+        }
+
+        if let nextBus = timetable.getNext(from: date, type: line.destinationType) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = .autoupdatingCurrent
+            dateFormatter.timeStyle = .medium
+            dateFormatter.dateStyle = .medium
+            return .result(value: dateFormatter.string(from: nextBus))
+        } else {
+            return .result(value: String(localized: .busServiceEnded))
         }
     }
     

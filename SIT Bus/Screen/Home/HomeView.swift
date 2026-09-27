@@ -25,11 +25,11 @@ struct HomeView: View {
             .navigationTitle(.home)
             .toolbarTitleDisplayMode(.automatic)
             .refreshable {
-                await timetableManager.loadData()
+                await timetableManager.loadData(forceFetch: true)
             }
         }
         .task {
-            if Calendar.current.isDateInToday(timetableManager.lastUpdatedDate) == false {
+            if timetableManager.needsRefresh {
                 await timetableManager.loadData()
             }
         }

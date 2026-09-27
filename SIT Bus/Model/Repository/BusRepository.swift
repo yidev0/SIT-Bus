@@ -21,21 +21,29 @@ struct BusRepository {
     }
     
     let dataSource: BusDataSource
+    let route: BusDataFetcher.Route
     let settings: AppSettings
     let clock: AppClock
     
     init(
-        dataSource: BusDataSource = BusDataFetcher(),
+        route: BusDataFetcher.Route = .omiya,
+        dataSource: BusDataSource? = nil,
         settings: AppSettings = AppSettings(),
         clock: AppClock = SystemClock()
     ) {
-        self.dataSource = dataSource
+        self.dataSource = dataSource ?? BusDataFetcher(route: route)
+        self.route = route
         self.settings = settings
         self.clock = clock
     }
+
+    var lastSuccessfulFetchDate: Date? {
+        guard settings.hasExistingLastUpdateDate(for: route) else { return nil }
+        return settings.lastUpdateDate(for: route)
+    }
     
     func shouldRefresh(force: Bool) -> Bool {
-        force || !Calendar.current.isDateInToday(settings.lastUpdateDate)
+        force || !Calendar.current.isDateInToday(settings.lastUpdateDate(for: route))
     }
     
     func fetchRemote() async -> Result<SBReferenceData, BusDataFetcherError> {
@@ -47,12 +55,12 @@ struct BusRepository {
     }
     
     func markUpdatedNow() {
-        settings.lastUpdateDate = clock.now
+        settings.setLastUpdateDate(clock.now, for: route)
     }
     
     func loadData(forceRefresh: Bool) async -> Result<LoadResult, BusDataFetcherError> {
         let shouldFetchRemote = shouldRefresh(force: forceRefresh)
-        let hadExistingRemoteUpdate = settings.hasExistingLastUpdateDate
+        let hadExistingRemoteUpdate = settings.hasExistingLastUpdateDate(for: route)
         var remoteError: BusDataFetcherError?
         
         if shouldFetchRemote {

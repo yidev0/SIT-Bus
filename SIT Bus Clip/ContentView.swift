@@ -273,12 +273,12 @@ private final class ClipTimetableStore {
     func timetable(for date: Date) -> ClipTimesheet? {
         guard let referenceData,
               let entry = calendarEntry(for: date),
-              entry.tsID != "none" else { return nil }
+              !entry.isNoService else { return nil }
         return referenceData.timesheet.first { $0.tsID == entry.tsID }
     }
 
     func unavailableMessage(for date: Date) -> String {
-        if calendarEntry(for: date)?.tsID == "none" {
+        if calendarEntry(for: date)?.isNoService == true {
             if let comment = comment(for: date), comment.isEmpty == false {
                 return "No bus service is scheduled for this date. \(comment)"
             }
@@ -398,6 +398,8 @@ private struct ClipCalendarEntry: Decodable {
     let day: String
     let tsID: String
     let comment: String
+
+    var isNoService: Bool { tsID.isEmpty || tsID == "none" }
 
     enum CodingKeys: String, CodingKey {
         case day

@@ -11,10 +11,6 @@ import Foundation
 struct SBCalendar: Decodable {
     /// ステータス（publicのみ）
     let status: String
-    /// 該当カレンダー作成日時
-    let edit_time: String
-    /// 該当カレンダー更新日時
-    let up_time: String
     /// 該当カレンダータイトル
     let title: String
     /// 該当カレンダーの年

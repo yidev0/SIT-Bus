@@ -125,6 +125,8 @@
 				Model/Repository/BusDataFetcherError.swift,
 				Model/State/ListType.swift,
 				Model/State/NextBusState.swift,
+				Resource/fallback_bus_data.json,
+				Resource/fallback_iwatsuki_bus_data.json,
 				Resource/Localizable.xcstrings,
 			);
 			target = D1E1202B2D059826003F9548 /* Widget Extension */;
