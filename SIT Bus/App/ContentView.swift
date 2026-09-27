@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
 
     @Environment(TimetableManager.self) private var timetableManager
+    @State private var navigation = AppNavigation.shared
     @State var showWelcome: Bool
     
     init() {
@@ -19,21 +20,25 @@ struct ContentView: View {
     
     var body: some View {
         @Bindable var timetableManager = timetableManager
+        @Bindable var navigation = navigation
         
-        TabView {
+        TabView(selection: $navigation.selectedTab) {
             HomeView()
+                .tag(AppTab.home)
                 .tabItem {
                     Label(.home, systemImage: "house")
                         .symbolVariant(.fill)
                 }
             
-            TimetableView()
+            TimetableView(navigationRequest: navigation.timetableRequest)
+                .tag(AppTab.timetable)
                 .tabItem {
                     Label(.timetable, systemImage: "tablecells")
                         .symbolVariant(.fill)
                 }
             
             SettingsView()
+                .tag(AppTab.settings)
                 .tabItem {
                     Label(.settings, systemImage: "gear")
                         .symbolVariant(.fill)
@@ -61,6 +66,31 @@ struct ContentView: View {
         }
     }
 
+}
+
+enum AppTab: Hashable {
+    case home
+    case timetable
+    case settings
+}
+
+struct TimetableNavigationRequest: Equatable {
+    let line: BusLineType
+    let date: Date
+}
+
+@MainActor
+@Observable
+final class AppNavigation {
+    static let shared = AppNavigation()
+
+    var selectedTab = AppTab.home
+    var timetableRequest: TimetableNavigationRequest?
+
+    func openTimetable(line: BusLineType, date: Date) {
+        timetableRequest = TimetableNavigationRequest(line: line, date: date)
+        selectedTab = .timetable
+    }
 }
 
 #Preview {
