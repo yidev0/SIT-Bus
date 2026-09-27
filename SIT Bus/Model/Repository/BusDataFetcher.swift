@@ -10,9 +10,10 @@ import Foundation
 struct BusDataFetcher {
     private static let groupID = "group.com.yidev.SIT-Bus"
     private static let busDataFileName = "bus_data"
+    private static let fallbackBusDataFileName = "fallback_bus_data"
     private static let fetchURL = URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
     private static let decoder = JSONDecoder()
-    
+
     private var dataStoreURL: URL? {
         FileManager.default
             .containerURL(forSecurityApplicationGroupIdentifier: Self.groupID)?
@@ -26,10 +27,23 @@ struct BusDataFetcher {
                 let result = try Self.decoder.decode(SBReferenceData.self, from: data)
                 return .success(result)
             } catch {
-                return .failure(.parseError)
+                return fetchBundledFallbackData()
             }
         } else {
+            return fetchBundledFallbackData()
+        }
+    }
+    private func fetchBundledFallbackData() -> Result<SBReferenceData, BusDataFetcherError> {
+        guard let url = Bundle.main.url(forResource: Self.fallbackBusDataFileName, withExtension: "json") else {
             return .failure(.noLocalData)
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let result = try Self.decoder.decode(SBReferenceData.self, from: data)
+            return .success(result)
+        } catch {
+            return .failure(.parseError)
         }
     }
     
