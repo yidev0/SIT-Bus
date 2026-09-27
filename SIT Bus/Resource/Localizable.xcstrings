@@ -102,25 +102,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nTimetable for School bus (higashi-omiya) is only updated automatically. Other buses are updated through app updates. The latest source are listed in the settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
+            "value" : "Bus information is sourced from the references listed below. Information in the app may not reflect the latest information, or display incorrect information. \nThe Higashi-Omiya and Iwatsuki school bus timetables update automatically. The shuttle bus timetable is updated with app releases. The latest sources are listed in the Settings tab.\nThe app is not liable for any issues or damages resulting from the use of the displayed information."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La información de los autobuses se basa en las fuentes indicadas abajo. La información de la app puede no reflejar los datos más recientes o puede mostrar información incorrecta. \nSolo el horario del autobús escolar (Higashi-Omiya) se actualiza automáticamente. Los demás autobuses se actualizan mediante actualizaciones de la app. Las fuentes más recientes se indican en la pestaña Ajustes.\nLa app no se hace responsable de ningún problema o daño derivado del uso de la información mostrada."
+            "value" : "La información de los autobuses se basa en las fuentes indicadas abajo. La información de la app puede no reflejar los datos más recientes o puede mostrar información incorrecta. \nLos horarios de los autobuses escolares de Higashi-Omiya e Iwatsuki se actualizan automáticamente. El horario del autobús lanzadera se actualiza con las nuevas versiones de la app. Las fuentes más recientes se indican en la pestaña Ajustes.\nLa app no se hace responsable de ningún problema o daño derivado del uso de la información mostrada."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮）のみ情報が自動で更新されます。他のバスはアプリのアップデートを通し更新しています。最新の情報源は設定タブにて確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
+            "value" : "本アプリのバス情報は、以下の情報に基づいて作成されています。アプリ内の情報が常に最新であるとは限らず、不正確なデータが表示される可能性があります。\nスクールバス（東大宮・岩槻）の時刻表は自動で更新されます。シャトルバスの時刻表はアプリのアップデートで更新されます。最新の情報源は設定タブで確認できます。\n本アプリは、表示された情報の利用に起因する問題や損害について、一切の責任を負いません。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本 App 的巴士信息基于以下资料制作。App 内的信息不一定始终为最新，也可能显示不准确的信息。\n仅校车（东大宫）的信息会自动更新。其他巴士会通过 App 更新进行更新。最新信息来源可在设置标签页中确认。\n对于因使用所显示信息而导致的任何问题或损失，本 App 概不负责。"
+            "value" : "本 App 的巴士信息基于以下资料制作。App 内的信息不一定始终为最新，也可能显示不准确的信息。\n东大宫和岩槻校车时刻表会自动更新。接驳巴士时刻表随 App 更新。最新信息来源可在设置标签页中确认。\n对于因使用所显示信息而导致的任何问题或损失，本 App 概不负责。"
           }
         }
       }
@@ -2503,36 +2503,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "校车（岩槻站）"
-          }
-        }
-      }
-    },
-    "SchoolBusIwatsuki.detail" : {
-      "comment" : "Footnote shown in the home bus visibility menu for the Iwatsuki school bus.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Operation date and time may be inaccurate"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La fecha y hora del servicio pueden no ser exactas"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "運行日時が不正確な場合があります"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "运行日期和时间可能不准确"
           }
         }
       }

@@ -97,7 +97,7 @@ struct WelcomeView: View {
                 
                 makeSourceCell(
                     title: .schoolBusIwatsuki,
-                    url: "https://www.shibaura-it.ac.jp/assets/20250927.pdf"
+                    url: "http://bus.shibaura-it.ac.jp/iwatsuki/db/bus_data.json"
                 )
                 
                 makeSourceCell(

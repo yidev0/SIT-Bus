@@ -13,16 +13,13 @@ import StoreKit
 class TimetableManager {
     
     var data: SBReferenceData? = nil
-    var lastUpdatedDate: Date
+    var lastOmiyaFetchDate: Date?
+    var lastIwatsukiFetchDate: Date?
     
     var showAlert = false
     var error: BusDataFetcherError? = .parseError
     
-    var schoolBusOmiya: BusTimetable? = nil {
-        didSet {
-            schoolBusIwatsuki = BusTimetable.schoolBusIwatsuki(basedOn: schoolBusOmiya?.calendar ?? [])
-        }
-    }
+    var schoolBusOmiya: BusTimetable? = nil
     var schoolBusIwatsuki: BusTimetable?
     var shuttleBus: BusTimetable = .shuttleBus
     
@@ -32,23 +29,28 @@ class TimetableManager {
     var toStationStateIwatsuki: NextBusState = .loading
     var toOmiyaState: NextBusState = .loading
     var toToyosuState: NextBusState = .loading
+
+    var needsRefresh: Bool {
+        repository.shouldRefresh(force: false) || iwatsukiRepository.shouldRefresh(force: false)
+    }
     
     // MARK: - Private Properties
     
     private var busStateUpdateTask: Task<Void, Never>?
     private let repository: BusRepository
+    private let iwatsukiRepository: BusRepository
     private let settings: AppSettings
-    private let clock: AppClock
     
     init(
         repository: BusRepository = BusRepository(),
-        settings: AppSettings = AppSettings(),
-        clock: AppClock = SystemClock()
+        iwatsukiRepository: BusRepository = BusRepository(route: .iwatsuki),
+        settings: AppSettings = AppSettings()
     ) {
         self.repository = repository
+        self.iwatsukiRepository = iwatsukiRepository
         self.settings = settings
-        self.clock = clock
-        lastUpdatedDate = settings.lastUpdateDate
+        lastOmiyaFetchDate = repository.lastSuccessfulFetchDate
+        lastIwatsukiFetchDate = iwatsukiRepository.lastSuccessfulFetchDate
         
         Task { [weak self] in
             guard let self else { return }
@@ -59,6 +61,10 @@ class TimetableManager {
                     let result = try JSONDecoder().decode(SBReferenceData.self, from: previewData)
                     data = result
                     schoolBusOmiya = result.toBusTimetable()
+                    let iwatsukiURL = Bundle.main.url(forResource: "fallback_iwatsuki_bus_data", withExtension: "json")!
+                    let iwatsukiData = try Data(contentsOf: iwatsukiURL)
+                    let iwatsukiResult = try JSONDecoder().decode(SBReferenceData.self, from: iwatsukiData)
+                    schoolBusIwatsuki = iwatsukiResult.toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
                 } catch {
                     await loadData()
                 }
@@ -113,20 +119,36 @@ class TimetableManager {
     }
     
     func loadData(forceFetch: Bool = false) async {
-        let result = await repository.loadData(forceRefresh: forceFetch)
+        let omiyaResult = await repository.loadData(forceRefresh: forceFetch)
         
-        switch result {
+        switch omiyaResult {
         case .success(let loaded):
             data = loaded.data
             schoolBusOmiya = loaded.data.toBusTimetable()
             
             if loaded.source == .remote {
-                lastUpdatedDate = clock.now
+                lastOmiyaFetchDate = repository.lastSuccessfulFetchDate
                 if loaded.hadExistingRemoteUpdateBeforeSync {
                     await requestReview()
                 }
             }
             
+            if let remoteError = loaded.remoteError {
+                error = remoteError
+                showAlert = true
+            }
+        case .failure(let failure):
+            error = failure
+            showAlert = true
+        }
+
+        let iwatsukiResult = await iwatsukiRepository.loadData(forceRefresh: forceFetch)
+        switch iwatsukiResult {
+        case .success(let loaded):
+            schoolBusIwatsuki = loaded.data.toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
+            if loaded.source == .remote {
+                lastIwatsukiFetchDate = iwatsukiRepository.lastSuccessfulFetchDate
+            }
             if let remoteError = loaded.remoteError {
                 error = remoteError
                 showAlert = true
@@ -181,7 +203,7 @@ class TimetableManager {
             toStationState = .loading
         }
         
-        // Iwatsuki (always available timetable object)
+        // Iwatsuki
         if let schoolBusIwatsuki {
             toCampusStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type1, now: now)
             toStationStateIwatsuki = computeNextState(timetable: schoolBusIwatsuki, type: .type2, now: now)

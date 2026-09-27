@@ -122,7 +122,7 @@ struct SettingsView: View {
                     LinkButton(.schoolBusOmiya) {
                         SettingsSourceLabel(
                             label: .schoolBusOmiya,
-                            date: timetableManager.lastUpdatedDate,
+                            date: timetableManager.lastOmiyaFetchDate,
                             format: .dateTime.year().month().day().hour().minute()
                         )
                     }
@@ -139,9 +139,18 @@ struct SettingsView: View {
                     LinkButton(.schoolBusIwatsuki) {
                         SettingsSourceLabel(
                             label: .schoolBusIwatsuki,
-                            date: timetableManager.schoolBusIwatsuki?.lastUpdated,
-                            format: .dateTime.year().month().day()
+                            date: timetableManager.lastIwatsukiFetchDate,
+                            format: .dateTime.year().month().day().hour().minute()
                         )
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            Task {
+                                await timetableManager.loadData(forceFetch: true)
+                            }
+                        } label: {
+                            Text(.forceFetch)
+                        }
                     }
                     
                     LinkButton(.shuttleBus) {

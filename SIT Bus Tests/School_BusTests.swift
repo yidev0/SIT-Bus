@@ -44,7 +44,22 @@ final class SIT_BusTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
+    func testIwatsukiPublishedResponse() throws {
+        let testBundle = Bundle(for: SIT_BusTests.self)
+        let url = try XCTUnwrap(testBundle.url(forResource: "iwatsuki_bus_data", withExtension: "json"))
+        let data = try JSONDecoder().decode(SBReferenceData.self, from: Data(contentsOf: url))
+        let timetable = data.toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
+        let serviceDate = try XCTUnwrap(Date.createDate(year: 2026, month: 9, day: 24))
+        let closedDate = try XCTUnwrap(Date.createDate(year: 2026, month: 9, day: 23))
+
+        XCTAssertEqual(timetable.source, BusDataFetcher.Route.iwatsuki.url)
+        XCTAssertNotNil(timetable.getTable(for: serviceDate))
+        XCTAssertNil(timetable.getTable(for: closedDate))
+        XCTAssertEqual(timetable.getTable(for: serviceDate)?.destination1.first?.time.hour, 7)
+        XCTAssertEqual(timetable.getTable(for: serviceDate)?.destination1.first?.time.minute, 45)
+    }
+
     func testFetchForOperationDate() {
         let testBundle = Bundle(for: SIT_BusTests.self)
         do {

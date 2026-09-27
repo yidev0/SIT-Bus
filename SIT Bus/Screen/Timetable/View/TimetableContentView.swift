@@ -31,20 +31,6 @@ struct TimetableContentView: View {
         if let timetable {
             List {
                 Section {
-                    switch busType {
-                    case .schoolBus:
-                        EmptyView()
-                    case .schoolBusIwatsuki:
-                        switch date.isWeekday {
-                        case true:
-                            Text(.schoolBusIwatsukiWeekdayDetail)
-                        case false:
-                            Text(.schoolBusIwatsukiSaturdayDetail)
-                        }
-                    case .shuttleBus:
-                        EmptyView()
-                    }
-                    
                     ForEach(timetable.keys.sorted(), id: \.self) { key in
                         if let values = timetable[key] {
                             makeCell(

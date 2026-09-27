@@ -8,15 +8,47 @@
 import Foundation
 
 struct BusDataFetcher {
+    enum Route: Hashable {
+        case omiya
+        case iwatsuki
+
+        var url: URL {
+            switch self {
+            case .omiya:
+                URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
+            case .iwatsuki:
+                URL(string: "http://bus.shibaura-it.ac.jp/iwatsuki/db/bus_data.json")!
+            }
+        }
+
+        var cacheFileName: String {
+            switch self {
+            case .omiya: "bus_data"
+            case .iwatsuki: "iwatsuki_bus_data"
+            }
+        }
+
+        var fallbackFileName: String {
+            switch self {
+            case .omiya: "fallback_bus_data"
+            case .iwatsuki: "fallback_iwatsuki_bus_data"
+            }
+        }
+    }
+
     private static let groupID = "group.com.yidev.SIT-Bus"
-    private static let busDataFileName = "bus_data"
-    private static let fetchURL = URL(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
     private static let decoder = JSONDecoder()
-    
+
+    let route: Route
+
+    init(route: Route = .omiya) {
+        self.route = route
+    }
+
     private var dataStoreURL: URL? {
         FileManager.default
             .containerURL(forSecurityApplicationGroupIdentifier: Self.groupID)?
-            .appendingPathComponent(Self.busDataFileName, conformingTo: .json)
+            .appendingPathComponent(route.cacheFileName, conformingTo: .json)
     }
     
     func fetchLocalData() async -> Result<SBReferenceData, BusDataFetcherError>  {
@@ -26,16 +58,29 @@ struct BusDataFetcher {
                 let result = try Self.decoder.decode(SBReferenceData.self, from: data)
                 return .success(result)
             } catch {
-                return .failure(.parseError)
+                return fetchBundledFallbackData()
             }
         } else {
+            return fetchBundledFallbackData()
+        }
+    }
+    private func fetchBundledFallbackData() -> Result<SBReferenceData, BusDataFetcherError> {
+        guard let url = Bundle.main.url(forResource: route.fallbackFileName, withExtension: "json") else {
             return .failure(.noLocalData)
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let result = try Self.decoder.decode(SBReferenceData.self, from: data)
+            return .success(result)
+        } catch {
+            return .failure(.parseError)
         }
     }
     
     func fetchData() async -> Result<SBReferenceData, BusDataFetcherError> {
         do {
-            let (data, response) = try await URLSession.shared.data(from: Self.fetchURL)
+            let (data, response) = try await URLSession.shared.data(from: route.url)
             guard let httpURLResponse = response as? HTTPURLResponse else {
                 return .failure(.invalidResponse)
             }

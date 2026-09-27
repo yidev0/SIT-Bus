@@ -7,10 +7,6 @@
 
 
 struct SBSiteInfo: Decodable {
-    ///  ステータス（editのみ）
-    let status: String
-    ///  サイト設定更新日時
-    let up_time: String
     ///  公開ページのタイトル（大宮スクールバス時刻表カレンダー）
     let title: String
     ///  お知らせ欄表示非表示（on または off）
