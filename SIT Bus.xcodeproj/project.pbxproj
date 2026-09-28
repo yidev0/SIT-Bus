@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D17BCD87301DEF8200287CFB /* SIT Bus Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = D17BCD79301DEF8000287CFB /* SIT Bus Clip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D19CBF312D16A989001D9B17 /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = D19CBF302D16A989001D9B17 /* WebUI */; };
 		D1C5D8872D06D3FD009DAB6B /* Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D1E17C032DD1E50D00F4686E /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = D1E17C022DD1E50D00F4686E /* WebUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D17BCD85301DEF8200287CFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D17BCD78301DEF8000287CFB;
+			remoteInfo = "SIT Bus Clip";
+		};
 		D1AF68E22C6A0F1700630B5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1AF68C72C6A0F1500630B5A /* Project object */;
@@ -51,6 +59,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D17BCD88301DEF8200287CFB /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				D17BCD87301DEF8200287CFB /* SIT Bus Clip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1E1203F2D059827003F9548 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D17BCD79301DEF8000287CFB /* SIT Bus Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AF69032C6A1BA400630B5A /* SIT-Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SIT-Bus-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D1C5D7DC2D06D38B009DAB6B /* Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C5D7DD2D06D38B009DAB6B /* SIT Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIT Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +93,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D17BCD8B301DEF8200287CFB /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D17BCD78301DEF8000287CFB /* SIT Bus Clip */;
+		};
 		D1DA62722D06BCD1000FB5BD /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -114,6 +141,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D17BCD7A301DEF8000287CFB /* SIT Bus Clip */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D17BCD8B301DEF8200287CFB /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus Clip"; sourceTree = "<group>"; };
 		D1BEDD862CBFCB5F0012EF65 /* SIT Bus UITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus UITests"; sourceTree = "<group>"; };
 		D1BEDD8C2CBFCB5F0012EF65 /* SIT Bus Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SIT Bus Tests"; sourceTree = "<group>"; };
 		D1DA62672D06B807000FB5BD /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
@@ -122,6 +150,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D17BCD76301DEF8000287CFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1AF68CC2C6A0F1500630B5A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,7 +203,9 @@
 				D1C5D7DD2D06D38B009DAB6B /* SIT Bus.app */,
 				D1C5D7DE2D06D38B009DAB6B /* SIT BusTests.xctest */,
 				D1C5D7DF2D06D38B009DAB6B /* SIT BusUITests.xctest */,
+				D17BCD7A301DEF8000287CFB /* SIT Bus Clip */,
 				D1C5D8862D06D3FD009DAB6B /* Frameworks */,
+				D17BCD79301DEF8000287CFB /* SIT Bus Clip.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +219,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D17BCD78301DEF8000287CFB /* SIT Bus Clip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D17BCD8C301DEF8200287CFB /* Build configuration list for PBXNativeTarget "SIT Bus Clip" */;
+			buildPhases = (
+				D17BCD75301DEF8000287CFB /* Sources */,
+				D17BCD76301DEF8000287CFB /* Frameworks */,
+				D17BCD77301DEF8000287CFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D17BCD7A301DEF8000287CFB /* SIT Bus Clip */,
+			);
+			name = "SIT Bus Clip";
+			packageProductDependencies = (
+			);
+			productName = "SIT Bus Clip";
+			productReference = D17BCD79301DEF8000287CFB /* SIT Bus Clip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		D1AF68CE2C6A0F1500630B5A /* SIT Bus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1AF68F52C6A0F1700630B5A /* Build configuration list for PBXNativeTarget "SIT Bus" */;
@@ -190,6 +249,7 @@
 				D1AF68CC2C6A0F1500630B5A /* Frameworks */,
 				D1AF68CD2C6A0F1500630B5A /* Resources */,
 				D1E1203F2D059827003F9548 /* Embed Foundation Extensions */,
+				D17BCD88301DEF8200287CFB /* Embed App Clips */,
 			);
 			buildRules = (
 			);
@@ -197,6 +257,7 @@
 				D1E1203D2D059827003F9548 /* PBXTargetDependency */,
 				D1E17F7F2D06CB9300DBFB45 /* PBXTargetDependency */,
 				D1C5D8892D06D3FD009DAB6B /* PBXTargetDependency */,
+				D17BCD86301DEF8200287CFB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D1DF34E92CB7C16500627AE1 /* SIT Bus */,
@@ -277,9 +338,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					D17BCD78301DEF8000287CFB = {
+						CreatedOnToolsVersion = 27.0;
+					};
 					D1AF68CE2C6A0F1500630B5A = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -319,11 +383,19 @@
 				D1AF68CE2C6A0F1500630B5A /* SIT Bus */,
 				D1AF68E02C6A0F1700630B5A /* SIT BusTests */,
 				D1AF68EA2C6A0F1700630B5A /* SIT BusUITests */,
+				D17BCD78301DEF8000287CFB /* SIT Bus Clip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D17BCD77301DEF8000287CFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1AF68CD2C6A0F1500630B5A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +427,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D17BCD75301DEF8000287CFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1AF68CB2C6A0F1500630B5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,6 +465,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D17BCD86301DEF8200287CFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D17BCD78301DEF8000287CFB /* SIT Bus Clip */;
+			targetProxy = D17BCD85301DEF8200287CFB /* PBXContainerItemProxy */;
+		};
 		D1AF68E32C6A0F1700630B5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D1AF68CE2C6A0F1500630B5A /* SIT Bus */;
@@ -414,6 +498,76 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D17BCD89301DEF8200287CFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SIT Bus Clip/SIT_Bus_Clip.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SIT Bus Clip/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Clip";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D17BCD8A301DEF8200287CFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SIT Bus Clip/SIT_Bus_Clip.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SIT Bus Clip/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SIT Bus";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yidev.SIT-Bus.Clip";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D1AF68F32C6A0F1700630B5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -744,6 +898,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D17BCD8C301DEF8200287CFB /* Build configuration list for PBXNativeTarget "SIT Bus Clip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D17BCD89301DEF8200287CFB /* Debug */,
+				D17BCD8A301DEF8200287CFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D1AF68CA2C6A0F1500630B5A /* Build configuration list for PBXProject "SIT Bus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
