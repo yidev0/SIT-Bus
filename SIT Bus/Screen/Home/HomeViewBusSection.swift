@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeViewBusSection: View {
+
+    var showsEditMenu = true
     
     @Environment(\.horizontalSizeClass)
     var sizeClass
@@ -41,37 +43,39 @@ struct HomeViewBusSection: View {
                 }
             }
             
-            Menu {
-                Toggle(isOn: $showSchoolBus) {
-                    Label(
-                        BusType.schoolOmiya.localizedTitle,
-                        systemImage: BusType.schoolOmiya.symbol
-                    )
+            if showsEditMenu {
+                Menu {
+                    Toggle(isOn: $showSchoolBus) {
+                        Label(
+                            BusType.schoolOmiya.localizedTitle,
+                            systemImage: BusType.schoolOmiya.symbol
+                        )
+                    }
+
+                    Toggle(isOn: $showSchoolBusIwatsuki) {
+                        Label(
+                            BusType.schoolIwatsuki.localizedTitle,
+                            systemImage: BusType.schoolIwatsuki.symbol
+                        )
+                    }
+
+                    Toggle(isOn: $showShuttleBus) {
+                        Label(
+                            BusType.shuttle.localizedTitle,
+                            systemImage: BusType.shuttle.symbol
+                        )
+                    }
+                } label: {
+                    Text(.edit)
+                        .foregroundStyle(.accent)
+                        .fontWeight(.semibold)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 6)
+                        .background()
                 }
-                
-                Toggle(isOn: $showSchoolBusIwatsuki) {
-                    Label(
-                        BusType.schoolIwatsuki.localizedTitle,
-                        systemImage: BusType.schoolIwatsuki.symbol
-                    )
-                }
-                
-                Toggle(isOn: $showShuttleBus) {
-                    Label(
-                        BusType.shuttle.localizedTitle,
-                        systemImage: BusType.shuttle.symbol
-                    )
-                }
-            } label: {
-                Text(.edit)
-                    .foregroundStyle(.accent)
-                    .fontWeight(.semibold)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 6)
-                    .background()
+                .buttonStyle(.home)
+                .buttonBorderShape(.capsule)
             }
-            .buttonStyle(.home)
-            .buttonBorderShape(.capsule)
         }
         .animation(.default, value: showSchoolBus)
         .animation(.default, value: showSchoolBusIwatsuki)
