@@ -78,9 +78,13 @@ struct BusDataFetcher {
         }
     }
     
-    func fetchData() async -> Result<SBReferenceData, BusDataFetcherError> {
+    func fetchData(timeout: TimeInterval? = nil) async -> Result<SBReferenceData, BusDataFetcherError> {
         do {
-            let (data, response) = try await URLSession.shared.data(from: route.url)
+            var request = URLRequest(url: route.url)
+            if let timeout {
+                request.timeoutInterval = max(timeout, 0.1)
+            }
+            let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpURLResponse = response as? HTTPURLResponse else {
                 return .failure(.invalidResponse)
             }
@@ -103,6 +107,23 @@ struct BusDataFetcher {
             return .failure(.networkError)
         } catch {
             return .failure(.invalidResponse)
+        }
+    }
+
+    /// Attempts a short remote refresh, then falls back to the local snapshot captured first.
+    func fetchFreshData(remoteTimeout: TimeInterval) async -> Result<SBReferenceData, BusDataFetcherError> {
+        let localResult = await fetchLocalData()
+
+        switch await fetchData(timeout: remoteTimeout) {
+        case .success(let data):
+            return .success(data)
+        case .failure(let remoteError):
+            switch localResult {
+            case .success(let data):
+                return .success(data)
+            case .failure:
+                return .failure(remoteError)
+            }
         }
     }
     

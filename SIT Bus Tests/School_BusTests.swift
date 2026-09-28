@@ -100,4 +100,36 @@ final class SIT_BusTests: XCTestCase {
         }
     }
 
+    func testNextBusUsesTheFullCurrentTimestamp() throws {
+        let serviceDate = try XCTUnwrap(Date.createDate(year: 2026, month: 4, day: 15))
+        let timetable = makeTimetable(
+            serviceDate: serviceDate,
+            destination1: [
+                .init(time: .init(hour: 10, minute: 0)),
+                .init(time: .init(hour: 11, minute: 0)),
+            ]
+        )
+        let tenOClock = try XCTUnwrap(
+            Calendar.current.date(bySettingHour: 10, minute: 0, second: 0, of: serviceDate)
+        )
+
+        XCTAssertEqual(timetable.getNext(from: tenOClock, type: .type1), tenOClock)
+        XCTAssertEqual(
+            timetable.getNext(from: tenOClock.addingTimeInterval(1), type: .type1),
+            Calendar.current.date(byAdding: .hour, value: 1, to: tenOClock)
+        )
+    }
+
+    private func makeTimetable(
+        serviceDate: Date,
+        destination1: [BusTimetable.Table.Value]
+    ) -> BusTimetable {
+        BusTimetable(
+            calendar: [.init(date: serviceDate, tableName: "Test")],
+            tables: [.init(name: "Test", destination1: destination1, destination2: [])],
+            lastUpdated: nil,
+            source: URL(string: "https://example.com/timetable")!
+        )
+    }
+
 }

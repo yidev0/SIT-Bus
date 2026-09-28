@@ -8,25 +8,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Find the next school bus departure time from specified bus type and date."
+            "value" : "Find the next exact bus departure for a selected route and date."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Busca la próxima hora de salida del autobús escolar según el tipo de autobús y la fecha especificados."
+            "value" : "Busca la próxima salida exacta para una ruta y fecha seleccionadas."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "指定されたバスの種類と日付から次のスクールバスの出発時間を探す。"
+            "value" : "指定したバス路線と日付から、次の定刻出発を探します。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "根据指定的巴士类型和日期查找下一班校车的发车时间。"
+            "value" : "查找所选巴士路线和日期的下一班定时发车。"
           }
         }
       }
@@ -38,27 +38,97 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Find Next School Bus Time"
+            "value" : "Get Next Bus"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscar la próxima hora del autobús escolar"
+            "value" : "Obtener próximo autobús"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "次のスクールバスの発車時刻"
+            "value" : "次のバスを取得"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "查找下一班校车时间"
+            "value" : "获取下一班巴士"
           }
         }
+      }
+    },
+    "AppShortcut.GetNextBus.ShortTitle" : {
+      "comment" : "Short title for the Get Next Bus App Shortcut.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Get Next Bus" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Próximo autobús" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "次のバス" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下一班巴士" } }
+      }
+    },
+    "AppShortcut.OpenTimetable.ShortTitle" : {
+      "comment" : "Short title for the Open Timetable App Shortcut.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Timetable" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abrir horario" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "時刻表を開く" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开时刻表" } }
+      }
+    },
+    "BusRoute" : {
+      "comment" : "Title for a bus route parameter.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bus Route" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ruta de autobús" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バス路線" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "巴士路线" } }
+      }
+    },
+    "BusRoute.Disambiguation" : {
+      "comment" : "Prompt asking the user to choose a bus route.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Which bus route?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Qué ruta de autobús?" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "どのバス路線ですか？" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "请选择巴士路线。" } }
+      }
+    },
+    "GetNextBus.Error.TimelyOperation" : {
+      "comment" : "Intent error shown when the route is operating continuously and has no exact departure time.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This route is operating continuously, so there is no exact departure time." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esta ruta funciona de forma continua, por lo que no hay una hora de salida exacta." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "この路線は適時運行中のため、正確な発車時刻はありません。" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "该路线正在连续运行，因此没有确切的发车时间。" } }
+      }
+    },
+    "GetNextBus.Success.Dialog" : {
+      "comment" : "Dialog shown when an exact next departure is found. Keep the %@ placeholder for the formatted departure date.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The next bus departs at %@." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "El próximo autobús sale a las %@." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "次のバスは%@に発車します。" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下一班巴士于%@发车。" } }
+      }
+    },
+    "NextBusFor${busType}From${date}.Summary" : {
+      "comment" : "Parameter summary for Get Next Bus. Keep the route and date placeholders.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Get the next bus for ${busType} from ${date}" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Obtener el próximo autobús de ${busType} desde ${date}" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "${date}から${busType}の次のバスを取得" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获取${busType}在${date}之后的下一班巴士" } }
       }
     },
     "NextSchoolBusFrom${date}.Summary" : {
@@ -89,6 +159,36 @@
             "value" : "查找${date}之后的下一班校车发车时间"
           }
         }
+      }
+    },
+    "OpenTimetable.Description" : {
+      "comment" : "App Intent description for opening a selected bus route and date.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open the timetable for a selected bus route and date." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abre el horario de una ruta y fecha seleccionadas." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "指定したバス路線と日付の時刻表を開きます。" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开所选巴士路线和日期的时刻表。" } }
+      }
+    },
+    "OpenTimetable.Title" : {
+      "comment" : "App Intent title for opening a bus timetable.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Timetable" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abrir horario" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "時刻表を開く" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开时刻表" } }
+      }
+    },
+    "OpenTimetableFor${target}On${date}.Summary" : {
+      "comment" : "Parameter summary for Open Timetable. Keep the route and date placeholders.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open ${target} for ${date}" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abrir ${target} para ${date}" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "${date}の${target}を開く" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开${date}的${target}" } }
       }
     }
   },
