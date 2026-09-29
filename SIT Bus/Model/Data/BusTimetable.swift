@@ -9,6 +9,11 @@ import Foundation
 import SwiftUI
 
 class BusTimetable {
+    private static let serviceCalendar: Foundation.Calendar = {
+        var calendar = Foundation.Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Asia/Tokyo")!
+        return calendar
+    }()
     
     let calendar: [Calendar]
     let tables: [Table]
@@ -30,7 +35,7 @@ class BusTimetable {
         self.lastUpdated = lastUpdated
         self.source = source
         
-        let currentCalendar = Foundation.Calendar.current
+        let currentCalendar = Self.serviceCalendar
         self.calendarByDay = Dictionary(
             calendar.map { (currentCalendar.startOfDay(for: $0.date), $0) },
             uniquingKeysWith: { first, _ in first }
@@ -150,7 +155,7 @@ class BusTimetable {
     
     /// Returns the Date of the next bus at or after the given instant, or nil if not found.
     func getNext(from date: Date, type: DestinationType) -> Date? {
-        let currentCalendar = Foundation.Calendar.current
+        let currentCalendar = Self.serviceCalendar
         guard let calendarEntry = getCalendar(for: date) else { return nil }
         guard let table = tableByName[calendarEntry.tableName] else { return nil }
         let timetable: [Table.Value] = switch type {
@@ -176,7 +181,7 @@ class BusTimetable {
         nextDate: Date = .distantFuture,
         type: DestinationType
     ) -> (startDate: Date, endDate: Date)? {
-        let currentCalendar = Foundation.Calendar.current
+        let currentCalendar = Self.serviceCalendar
         guard let calendarEntry = getCalendar(for: date) else { return nil }
         guard let table = tableByName[calendarEntry.tableName] else { return nil }
         let timetable: [Table.Value] = switch type {
@@ -219,7 +224,7 @@ class BusTimetable {
     }
     
     private func dayKey(for date: Date) -> Date {
-        Foundation.Calendar.current.startOfDay(for: date)
+        Self.serviceCalendar.startOfDay(for: date)
     }
 }
 

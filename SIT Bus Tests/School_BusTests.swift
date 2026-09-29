@@ -52,10 +52,12 @@ final class SIT_BusTests: XCTestCase {
         let timetable = data.toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
         let serviceDate = try XCTUnwrap(Date.createDate(year: 2026, month: 9, day: 24))
         let closedDate = try XCTUnwrap(Date.createDate(year: 2026, month: 9, day: 23))
+        let closedDateAtNoon = try XCTUnwrap(Date.createDate(year: 2026, month: 9, day: 23, hour: 12))
 
         XCTAssertEqual(timetable.source, BusDataFetcher.Route.iwatsuki.url)
         XCTAssertNotNil(timetable.getTable(for: serviceDate))
         XCTAssertNil(timetable.getTable(for: closedDate))
+        XCTAssertNil(timetable.getTable(for: closedDateAtNoon))
         XCTAssertEqual(timetable.getTable(for: serviceDate)?.destination1.first?.time.hour, 7)
         XCTAssertEqual(timetable.getTable(for: serviceDate)?.destination1.first?.time.minute, 45)
     }
@@ -109,14 +111,12 @@ final class SIT_BusTests: XCTestCase {
                 .init(time: .init(hour: 11, minute: 0)),
             ]
         )
-        let tenOClock = try XCTUnwrap(
-            Calendar.current.date(bySettingHour: 10, minute: 0, second: 0, of: serviceDate)
-        )
+        let tenOClock = try XCTUnwrap(Date.createDate(year: 2026, month: 4, day: 15, hour: 10))
 
         XCTAssertEqual(timetable.getNext(from: tenOClock, type: .type1), tenOClock)
         XCTAssertEqual(
             timetable.getNext(from: tenOClock.addingTimeInterval(1), type: .type1),
-            Calendar.current.date(byAdding: .hour, value: 1, to: tenOClock)
+            tenOClock.addingTimeInterval(60 * 60)
         )
     }
 
