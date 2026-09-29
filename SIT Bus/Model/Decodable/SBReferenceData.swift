@@ -51,7 +51,7 @@ struct SBReferenceData: Decodable, Equatable {
         return dates
     }
     
-    func toBusTimetable() -> BusTimetable {
+    func toBusTimetable(source: URL = BusDataFetcher.Route.omiya.url) -> BusTimetable {
         var calendarEntries: [BusTimetable.Calendar] = []
         for monthCalendar in self.calendar {
             let year = Int(monthCalendar.year) ?? 0
@@ -147,7 +147,7 @@ struct SBReferenceData: Decodable, Equatable {
             calendar: calendarEntries,
             tables: tables,
             lastUpdated: updateDate,
-            source: .init(string: "http://bus.shibaura-it.ac.jp/db/bus_data.json")!
+            source: source
         )
     }
     

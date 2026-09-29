@@ -58,13 +58,20 @@ struct SITBusTimelineProvider: AppIntentTimelineProvider {
     func makeTimeline(
         busType: BusLineType
     ) async -> Timeline<SITBusWidgetEntry> {
-        let timetableloader = TimetableLoader.shared
-        await timetableloader.loadTimetable()
-
         var entries: [SITBusWidgetEntry] = []
         var baseTime: Date = .now
 
-        let timetable = timetableloader.data?.toBusTimetable()
+        let timetable: BusTimetable?
+        switch busType {
+        case .schoolBus:
+            let response = await BusDataFetcher(route: .omiya).fetchLocalData()
+            timetable = try? response.get().toBusTimetable()
+        case .schoolBusIwatsuki:
+            let response = await BusDataFetcher(route: .iwatsuki).fetchLocalData()
+            timetable = try? response.get().toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
+        case .shuttleBus:
+            timetable = .shuttleBus
+        }
 
         while entries.count < 20 {
             let state = loadNextState(timetable: timetable, type: busType, baseTime: baseTime)

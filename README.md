@@ -31,6 +31,6 @@ SITのバス時刻表アプリ<br>
  
 
 ## リンク
-- [バス時刻表カレンダー](http://bus.shibaura-it.ac.jp/developer.html)
+- [バス時刻表カレンダー](http://bus.shibaura-it.ac.jp/developer)
 - [TestFlight（制限付き）](https://testflight.apple.com/join/Mwt1Huw8)
 - [App Store](https://apps.apple.com/app/id6736679708)

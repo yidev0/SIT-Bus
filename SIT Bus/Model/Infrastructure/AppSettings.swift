@@ -31,6 +31,21 @@ final class AppSettings {
     var hasExistingLastUpdateDate: Bool {
         sharedDefaults.value(forKey: UserDefaultsKeys.lastUpdateDate) != nil
     }
+
+    func lastUpdateDate(for route: BusDataFetcher.Route) -> Date {
+        let key = route == .omiya ? UserDefaultsKeys.lastUpdateDate : UserDefaultsKeys.lastIwatsukiUpdateDate
+        return Date(timeIntervalSince1970: sharedDefaults.double(forKey: key))
+    }
+
+    func hasExistingLastUpdateDate(for route: BusDataFetcher.Route) -> Bool {
+        let key = route == .omiya ? UserDefaultsKeys.lastUpdateDate : UserDefaultsKeys.lastIwatsukiUpdateDate
+        return sharedDefaults.value(forKey: key) != nil
+    }
+
+    func setLastUpdateDate(_ date: Date, for route: BusDataFetcher.Route) {
+        let key = route == .omiya ? UserDefaultsKeys.lastUpdateDate : UserDefaultsKeys.lastIwatsukiUpdateDate
+        sharedDefaults.set(date.timeIntervalSince1970, forKey: key)
+    }
     
     var hasReviewedAppV1: Bool {
         get {

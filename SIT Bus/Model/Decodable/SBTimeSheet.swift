@@ -11,10 +11,6 @@ import Foundation
 struct SBTimeSheet: Decodable {
     ///  ステータス（publicのみ）
     let status: String
-    ///  該当時刻表作成日時
-    let edit_time: String
-    ///  該当時刻表更新日時
-    let up_time: String
     ///  該当時刻表タイトル
     let title: String
     ///  時刻表の個別ID

@@ -9,6 +9,13 @@ import Foundation
 import SwiftUI
 
 class BusTimetable {
+    static let serviceTimeZone = TimeZone(identifier: "Asia/Tokyo")!
+
+    static let serviceCalendar: Foundation.Calendar = {
+        var calendar = Foundation.Calendar(identifier: .gregorian)
+        calendar.timeZone = serviceTimeZone
+        return calendar
+    }()
     
     let calendar: [Calendar]
     let tables: [Table]
@@ -30,7 +37,7 @@ class BusTimetable {
         self.lastUpdated = lastUpdated
         self.source = source
         
-        let currentCalendar = Foundation.Calendar.current
+        let currentCalendar = Self.serviceCalendar
         self.calendarByDay = Dictionary(
             calendar.map { (currentCalendar.startOfDay(for: $0.date), $0) },
             uniquingKeysWith: { first, _ in first }
@@ -102,9 +109,10 @@ class BusTimetable {
                 let from: Time
                 let until: Time
                 
-                @ViewBuilder
-                func makeText() -> some View {
-                    Text(LocalizedStringResource.timelyOperation(from.toDate().formatted(date: .omitted, time: .shortened), until.toDate().formatted(date: .omitted, time: .shortened)))
+                func makeText(timeZone: TimeZone = .current) -> some View {
+                    var format = Date.FormatStyle(date: .omitted, time: .shortened)
+                    format.timeZone = timeZone
+                    return Text(LocalizedStringResource.timelyOperation(from.toDate().formatted(format), until.toDate().formatted(format)))
                 }
             }
         }
@@ -150,7 +158,7 @@ class BusTimetable {
     
     /// Returns the Date of the next bus at or after the given instant, or nil if not found.
     func getNext(from date: Date, type: DestinationType) -> Date? {
-        let currentCalendar = Foundation.Calendar.current
+        let currentCalendar = Self.serviceCalendar
         guard let calendarEntry = getCalendar(for: date) else { return nil }
         guard let table = tableByName[calendarEntry.tableName] else { return nil }
         let timetable: [Table.Value] = switch type {
@@ -176,7 +184,7 @@ class BusTimetable {
         nextDate: Date = .distantFuture,
         type: DestinationType
     ) -> (startDate: Date, endDate: Date)? {
-        let currentCalendar = Foundation.Calendar.current
+        let currentCalendar = Self.serviceCalendar
         guard let calendarEntry = getCalendar(for: date) else { return nil }
         guard let table = tableByName[calendarEntry.tableName] else { return nil }
         let timetable: [Table.Value] = switch type {
@@ -219,104 +227,11 @@ class BusTimetable {
     }
     
     private func dayKey(for date: Date) -> Date {
-        Foundation.Calendar.current.startOfDay(for: date)
+        Self.serviceCalendar.startOfDay(for: date)
     }
 }
 
 extension BusTimetable {
-    static func schoolBusIwatsuki(basedOn calendar: [BusTimetable.Calendar]) -> BusTimetable {
-        return .init(
-            calendar: calendar.compactMap { calendar in
-                if calendar.tableName.contains("大宮キャンパス　学バス時刻表") && !calendar.tableName.contains("休業期間") {
-                    return Calendar(date: calendar.date, tableName: calendar.date.isWeekday ? "平日(授業日)" : "土曜日")
-                } else if calendar.date.isWeekday {
-                    return Calendar(date: calendar.date, tableName: "平日(休講期間)")
-                }
-                return nil
-            },
-            tables: [
-                .init(
-                    name: "平日(授業日)",
-                    destination1: [
-                        .init(time: .init(hour: 7, minute: 45)),
-                        .init(time: .init(hour: 8, minute: 25)),
-                        .init(time: .init(hour: 9, minute: 5)),
-                        .init(time: .init(hour: 10, minute: 20)),
-                        .init(time: .init(hour: 12, minute: 45)),
-                        .init(time: .init(hour: 13, minute: 15)),
-                        .init(time: .init(hour: 15, minute: 35)),
-                        .init(time: .init(hour: 16, minute: 05)),
-                        .init(time: .init(hour: 17, minute: 30)),
-                        .init(time: .init(hour: 19, minute: 5)),
-                    ],
-                    destination2: [
-                        .init(time: .init(hour: 8, minute: 5)),
-                        .init(time: .init(hour: 8, minute: 45)),
-                        .init(time: .init(hour: 10, minute: 5)),
-                        .init(time: .init(hour: 12, minute: 30)),
-                        .init(time: .init(hour: 13, minute: 0)),
-                        .init(time: .init(hour: 15, minute: 20)),
-                        .init(time: .init(hour: 15, minute: 50)),
-                        .init(time: .init(hour: 17, minute: 15)),
-                        .init(time: .init(hour: 18, minute: 50)),
-                        .init(time: .init(hour: 19, minute: 20)),
-                    ]
-                ),
-                .init(
-                    name: "土曜日",
-                    destination1: [
-                        .init(time: .init(hour: 08, minute: 25)),
-                        .init(time: .init(hour: 09, minute: 05)),
-                        .init(time: .init(hour: 10, minute: 20)),
-                        .init(time: .init(hour: 12, minute: 45)),
-                        .init(time: .init(hour: 13, minute: 15)),
-                        .init(time: .init(hour: 15, minute: 35)),
-                        .init(time: .init(hour: 16, minute: 05)),
-                        .init(time: .init(hour: 17, minute: 30)),
-                    ],
-                    destination2: [
-                        .init(time: .init(hour: 08, minute: 45)),
-                        .init(time: .init(hour: 10, minute: 00)),
-                        .init(time: .init(hour: 12, minute: 30)),
-                        .init(time: .init(hour: 13, minute: 00)),
-                        .init(time: .init(hour: 15, minute: 20)),
-                        .init(time: .init(hour: 15, minute: 50)),
-                        .init(time: .init(hour: 17, minute: 15)),
-                        .init(time: .init(hour: 18, minute: 50)),
-                    ]
-                ),
-                .init(
-                    name: "平日(休講期間)",
-                    destination1: [
-                        .init(time: .init(hour: 8, minute: 25)),
-                        .init(time: .init(hour: 9, minute: 5)),
-                        .init(time: .init(hour: 10, minute: 20)),
-                        .init(time: .init(hour: 12, minute: 45)),
-                        .init(time: .init(hour: 13, minute: 15)),
-                        .init(time: .init(hour: 15, minute: 35)),
-                        .init(time: .init(hour: 16, minute: 05)),
-                        .init(time: .init(hour: 17, minute: 30)),
-                        .init(time: .init(hour: 19, minute: 5)),
-                    ],
-                    destination2: [
-                        .init(time: .init(hour: 8, minute: 5)),
-                        .init(time: .init(hour: 8, minute: 45)),
-                        .init(time: .init(hour: 10, minute: 5)),
-                        .init(time: .init(hour: 12, minute: 30)),
-                        .init(time: .init(hour: 13, minute: 0)),
-                        .init(time: .init(hour: 15, minute: 20)),
-                        .init(time: .init(hour: 15, minute: 50)),
-                        .init(time: .init(hour: 17, minute: 15)),
-                        .init(time: .init(hour: 18, minute: 50)),
-                        .init(time: .init(hour: 19, minute: 20)),
-                    ]
-                ),
-            ],
-            lastUpdated: .createDate(year: 2025, month: 9, day: 2)!,
-            source: .schoolBusIwatsuki
-        )
-    }
-    
     static let sample: BusTimetable = .init(
         calendar: [.init(date: .now, tableName: "")],
         tables: [.init(
@@ -336,54 +251,58 @@ extension BusTimetable {
     
     static let shuttleBus: BusTimetable = .init(
         calendar: [
-            // 2026-04
-            .init(date: .createDate(year: 2026, month: 4, day: 15)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 4, day: 17)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 4, day: 20)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 4, day: 22)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 4, day: 24)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 4, day: 27)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 4, day: 29)!, tableName: "Monday and Wednesday"),
-            
-            // 2026-05
-            .init(date: .createDate(year: 2026, month: 5, day: 1)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 8)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 11)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 13)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 20)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 22)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 25)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 27)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 5, day: 29)!, tableName: "Friday"),
-            
-            // 2026-06
-            .init(date: .createDate(year: 2026, month: 6, day: 1)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 3)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 5)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 8)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 10)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 12)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 15)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 17)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 19)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 22)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 24)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 26)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 6, day: 29)!, tableName: "Monday and Wednesday"),
-            
-            // 2026-07
-            .init(date: .createDate(year: 2026, month: 7, day: 1)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 3)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 6)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 8)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 10)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 13)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 15)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 17)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 20)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 22)!, tableName: "Monday and Wednesday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 24)!, tableName: "Friday"),
-            .init(date: .createDate(year: 2026, month: 7, day: 27)!, tableName: "Monday and Wednesday")
+            // Holiday class days are included; 10/30, 11/2, and 11/4 do not operate.
+            // 2026-09
+            .init(date: .createDate(year: 2026, month: 9, day: 28)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 9, day: 30)!, tableName: "Monday and Wednesday"),
+
+            // 2026-10
+            .init(date: .createDate(year: 2026, month: 10, day: 2)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 5)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 7)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 9)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 12)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 14)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 16)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 19)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 21)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 23)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 26)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 10, day: 28)!, tableName: "Monday and Wednesday"),
+
+            // 2026-11
+            .init(date: .createDate(year: 2026, month: 11, day: 6)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 9)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 11)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 13)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 16)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 18)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 20)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 23)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 25)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 27)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 11, day: 30)!, tableName: "Monday and Wednesday"),
+
+            // 2026-12
+            .init(date: .createDate(year: 2026, month: 12, day: 2)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 4)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 7)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 9)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 11)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 14)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 16)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 18)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 21)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2026, month: 12, day: 23)!, tableName: "Monday and Wednesday"),
+
+            // 2027-01
+            .init(date: .createDate(year: 2027, month: 1, day: 8)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2027, month: 1, day: 13)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2027, month: 1, day: 15)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2027, month: 1, day: 18)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2027, month: 1, day: 20)!, tableName: "Monday and Wednesday"),
+            .init(date: .createDate(year: 2027, month: 1, day: 22)!, tableName: "Friday"),
+            .init(date: .createDate(year: 2027, month: 1, day: 25)!, tableName: "Monday and Wednesday")
         ],
         tables: [
             .init(
@@ -405,7 +324,7 @@ extension BusTimetable {
                 ]
             )
         ],
-        lastUpdated: .createDate(year: 2026, month: 3, day: 6)!,
+        lastUpdated: .createDate(year: 2026, month: 9, day: 2)!,
         source: .shuttleBus
     )
 }

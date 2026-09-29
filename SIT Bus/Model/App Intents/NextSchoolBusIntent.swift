@@ -30,15 +30,17 @@ struct NextSchoolBusIntent: AppIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<Date> & ProvidesDialog {
         let line = busType.toBusLineType()
         let referenceData: SBReferenceData?
-        if line.busType == .shuttle {
-            referenceData = nil
-        } else {
-            switch await BusDataFetcher().fetchFreshData(remoteTimeout: 1.5) {
+        switch line.busType {
+        case .schoolOmiya, .schoolIwatsuki:
+            let route: BusDataFetcher.Route = line.busType == .schoolOmiya ? .omiya : .iwatsuki
+            switch await BusDataFetcher(route: route).fetchFreshData(remoteTimeout: 1.5) {
             case .success(let data):
                 referenceData = data
             case .failure:
                 throw NextBusIntentError.dataUnavailable
             }
+        case .shuttle:
+            referenceData = nil
         }
         let timetable: BusTimetable
         switch line.busType {
@@ -47,7 +49,7 @@ struct NextSchoolBusIntent: AppIntent {
             timetable = referenceData.toBusTimetable()
         case .schoolIwatsuki:
             guard let referenceData else { throw NextBusIntentError.dataUnavailable }
-            timetable = .schoolBusIwatsuki(basedOn: referenceData.toBusTimetable().calendar)
+            timetable = referenceData.toBusTimetable(source: BusDataFetcher.Route.iwatsuki.url)
         case .shuttle:
             timetable = .shuttleBus
         }

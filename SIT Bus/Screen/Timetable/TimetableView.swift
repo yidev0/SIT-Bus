@@ -67,6 +67,12 @@ struct TimetableView: View {
             .onChange(of: horizontalSizeClass) { _, _ in
                 syncTimetable()
             }
+            .onChange(of: timetableManager.schoolBusOmiya.map { ObjectIdentifier($0) }) { _, _ in
+                syncTimetable()
+            }
+            .onChange(of: timetableManager.schoolBusIwatsuki.map { ObjectIdentifier($0) }) { _, _ in
+                syncTimetable()
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -112,6 +118,8 @@ struct TimetableView: View {
             }
         }
         .environment(model)
+        .environment(\.calendar, BusTimetable.serviceCalendar)
+        .environment(\.timeZone, BusTimetable.serviceTimeZone)
         .onAppear {
             applyNavigationRequest()
             syncTimetable()

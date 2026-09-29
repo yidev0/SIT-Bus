@@ -17,7 +17,7 @@ struct TimetableInformationView: View {
                 Section {
                     Text(.busInfoDetail)
 
-                    LinkButton("http://bus.shibaura-it.ac.jp/developer.html") {
+                    LinkButton("http://bus.shibaura-it.ac.jp/developer") {
                         Text(.schoolBus)
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
@@ -29,7 +29,7 @@ struct TimetableInformationView: View {
                             .foregroundStyle(Color.primary)
                     }
                     
-                    LinkButton("https://www.shibaura-it.ac.jp/access/index.html") {
+                    LinkButton("http://bus.shibaura-it.ac.jp/iwatsuki/db/bus_data.json") {
                         Text(.schoolBusIwatsuki)
                             .font(.subheadline)
                             .foregroundStyle(Color.primary)
