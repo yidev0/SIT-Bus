@@ -26,6 +26,7 @@ struct CalendarView<DateView: View>: View {
     init(
         selectedDate: Binding<Date>,
         activeMonths: [Date],
+        calendar: Calendar = .current,
         content: @escaping (Date) -> DateView
     ) {
         self._selectedDate = selectedDate
@@ -33,7 +34,7 @@ struct CalendarView<DateView: View>: View {
         
         self.content = content
         
-        self.selectedMonth = selectedDate.wrappedValue.get(.month)
+        self.selectedMonth = calendar.component(.month, from: selectedDate.wrappedValue)
     }
     
     var body: some View {
@@ -61,7 +62,7 @@ struct CalendarView<DateView: View>: View {
             
             TabView(selection: $selectedMonth) {
                 ForEach(activeMonths, id: \.self) { month in
-                    Tab(value: month.get(.month)) {
+                    Tab(value: calendar.component(.month, from: month)) {
                         VStack {
                             LazyVGrid(
                                 columns: .init(

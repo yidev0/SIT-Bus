@@ -40,7 +40,7 @@ struct TimetableCompactMenu: View {
             Button {
                 model.showDatePicker = true
             } label: {
-                Text(model.date, format: dynamicTypeSize > .xxxLarge ? .dateTime.day().month() :  .dateTime.day().month().weekday())
+                Text(model.date, format: (dynamicTypeSize > .xxxLarge ? Date.FormatStyle.dateTime.day().month() : Date.FormatStyle.dateTime.day().month().weekday()).inTimeZone(BusTimetable.serviceTimeZone))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
                     .matchedTransitionSource(id: "DatePicker", in: namespace)

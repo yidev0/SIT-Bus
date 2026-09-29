@@ -36,13 +36,14 @@ struct TimetableCalendarView: View {
     var body: some View {
         CalendarView(
             selectedDate: $date,
-            activeMonths: activeMonths
+            activeMonths: activeMonths,
+            calendar: calendar
         ) { date in
             makeCalendarCell(for: date)
         }
         .frame(
             minWidth: 328,
-            minHeight: CGFloat(header) + ((activeMonths.map { CGFloat($0.calendarRows()) }.max() ?? 5) + 1) * (min(circleSize, 34) + 4 + 8 + 8) + 16
+            minHeight: CGFloat(header) + ((activeMonths.map { CGFloat(calendarRows(for: $0)) }.max() ?? 5) + 1) * (min(circleSize, 34) + 4 + 8 + 8) + 16
         )
     }
     
@@ -56,7 +57,7 @@ struct TimetableCalendarView: View {
             }
         } label: {
             VStack(spacing: 4) {
-                Text(date.get(.day), format: .number)
+                Text(calendar.component(.day, from: date), format: .number)
                     .font(.body)
                     .fontWeight(textWeight(date: date))
                     .foregroundStyle(isActive ? .primary : .secondary)
@@ -90,7 +91,7 @@ struct TimetableCalendarView: View {
             }
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(Text(date, format: .dateTime.weekday(.wide).month().day()))
+        .accessibilityLabel(Text(date, format: .dateTime.weekday(.wide).month().day().inTimeZone(BusTimetable.serviceTimeZone)))
         .accessibilityValue(
             Text(.noService),
             isEnabled: !isActive
@@ -110,6 +111,14 @@ struct TimetableCalendarView: View {
         default:
             isSameDay ? .semibold : .regular
         }
+    }
+
+    private func calendarRows(for month: Date) -> Int {
+        guard let days = calendar.range(of: .day, in: .month, for: month),
+              let lastDay = calendar.date(bySetting: .day, value: days.count, of: month) else {
+            return 0
+        }
+        return calendar.component(.weekOfMonth, from: lastDay)
     }
     
 }

@@ -36,7 +36,7 @@ struct DatePickerButton: View {
                 showPicker = true
             }
         } label: {
-            Text(selectedDate, format: .dateTime.day().month().weekday())
+            Text(selectedDate, format: .dateTime.day().month().weekday().inTimeZone(BusTimetable.serviceTimeZone))
         }
         .popover(isPresented: $showPicker, arrowEdge: .bottom) {
             TimetableCalendarView(
@@ -58,7 +58,7 @@ struct DatePickerButton: View {
     }
     
     func makeRangeForSheet(activeMonths: [[Date]]) -> ClosedRange<Date> {
-        let calendar = Calendar.current
+        let calendar = BusTimetable.serviceCalendar
         if activeMonths.isEmpty {
             let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: .now))!
             let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!

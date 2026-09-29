@@ -30,9 +30,9 @@ struct TimetableFullDatePickerView: View {
                 }
                 
                 List {
-                    Text(date, format: .dateTime.year().month().day().weekday())
+                    Text(date, format: .dateTime.year().month().day().weekday().inTimeZone(BusTimetable.serviceTimeZone))
                     
-                    if let calendar = calendar?.first(where: { $0.date == date }),
+                    if let calendar = calendar?.first(where: { BusTimetable.serviceCalendar.isDate($0.date, inSameDayAs: date) }),
                        let comment = calendar.comment {
                         Text(calendar.tableName)
                         Text(comment)

@@ -68,3 +68,11 @@ extension Date {
         return date
     }
 }
+
+extension Date.FormatStyle {
+    func inTimeZone(_ timeZone: TimeZone) -> Self {
+        var format = self
+        format.timeZone = timeZone
+        return format
+    }
+}

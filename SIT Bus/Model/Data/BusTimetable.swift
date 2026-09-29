@@ -9,9 +9,11 @@ import Foundation
 import SwiftUI
 
 class BusTimetable {
-    private static let serviceCalendar: Foundation.Calendar = {
+    static let serviceTimeZone = TimeZone(identifier: "Asia/Tokyo")!
+
+    static let serviceCalendar: Foundation.Calendar = {
         var calendar = Foundation.Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: "Asia/Tokyo")!
+        calendar.timeZone = serviceTimeZone
         return calendar
     }()
     
@@ -107,9 +109,10 @@ class BusTimetable {
                 let from: Time
                 let until: Time
                 
-                @ViewBuilder
-                func makeText() -> some View {
-                    Text(LocalizedStringResource.timelyOperation(from.toDate().formatted(date: .omitted, time: .shortened), until.toDate().formatted(date: .omitted, time: .shortened)))
+                func makeText(timeZone: TimeZone = .current) -> some View {
+                    var format = Date.FormatStyle(date: .omitted, time: .shortened)
+                    format.timeZone = timeZone
+                    return Text(LocalizedStringResource.timelyOperation(from.toDate().formatted(format), until.toDate().formatted(format)))
                 }
             }
         }

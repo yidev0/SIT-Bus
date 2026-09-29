@@ -60,7 +60,7 @@ struct TimetableContentView: View {
         values: [BusTimetable.Table.Value]
     ) -> some View {
         if let note = values.first(where: { $0.note != nil })?.note {
-            note.makeText()
+            note.makeText(timeZone: BusTimetable.serviceTimeZone)
         }
         
         HStack(spacing: 0) {
@@ -81,7 +81,7 @@ struct TimetableContentView: View {
                             .hidden()
                         
                         Text(value.time.minute, format: .number)
-                            .accessibilityLabel(Text(value.time.toDate(), format: .dateTime.hour().minute()))
+                            .accessibilityLabel(Text(value.time.toDate(), format: .dateTime.hour().minute().inTimeZone(BusTimetable.serviceTimeZone)))
                             .aspectRatio(contentMode: .fill)
                     }
                     .frame(maxWidth: .infinity)

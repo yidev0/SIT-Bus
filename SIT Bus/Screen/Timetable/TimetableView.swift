@@ -118,6 +118,8 @@ struct TimetableView: View {
             }
         }
         .environment(model)
+        .environment(\.calendar, BusTimetable.serviceCalendar)
+        .environment(\.timeZone, BusTimetable.serviceTimeZone)
         .onAppear {
             applyNavigationRequest()
             syncTimetable()
