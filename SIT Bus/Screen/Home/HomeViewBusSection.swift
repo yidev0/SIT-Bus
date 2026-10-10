@@ -19,7 +19,7 @@ struct HomeViewBusSection: View {
     var showSchoolBus: Bool = true
     
     @AppStorage("Show.SchoolBusIwatsuki")
-    var showSchoolBusIwatsuki: Bool = false
+    var showSchoolBusIwatsuki: Bool = true
     
     @AppStorage("Show.ShuttleBus")
     var showShuttleBus: Bool = true
