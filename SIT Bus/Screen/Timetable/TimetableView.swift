@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimetableView: View {
-    
+    @Environment(\.tabBarPlacement) var tabPlacement
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Namespace var namespace
     
@@ -48,18 +48,11 @@ struct TimetableView: View {
                 }
             }
             .navigationTitle(.timetable)
-            .toolbarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.inline)
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
-            .onChange(of: model.busLineType) { _, newValue in
-                if horizontalSizeClass != .regular {
-                    updateTimesheet(for: newValue.busType)
-                }
-            }
-            .onChange(of: model.busType) { _, newValue in
-                if horizontalSizeClass == .regular {
-                    updateTimesheet(for: newValue)
-                }
+            .onChange(of: model.busType) { _, _ in
+                syncTimetable()
             }
             .onChange(of: model.date) { _, _ in
                 syncTimetable()
@@ -101,10 +94,12 @@ struct TimetableView: View {
                     }
                     
                     ToolbarItem(placement: .topBarLeading) {
-                        DatePickerButton(
-                            selectedDate: $model.date,
-                            activeDates: model.timetable?.getActiveDates() ?? []
-                        )
+                        Button {
+                            model.showDatePicker = true
+                        } label: {
+                            Text(model.date, format: .dateTime.day().month().weekday().inTimeZone(BusTimetable.serviceTimeZone))
+                        }
+                        .matchedTransitionSource(id: "DatePicker", in: namespace)
                     }
                 }
             }
@@ -130,19 +125,14 @@ struct TimetableView: View {
     }
     
     private func syncTimetable() {
-        updateTimesheet(for: currentBusType)
+        updateTimesheet(for: model.busType)
     }
 
     private func applyNavigationRequest() {
         guard let navigationRequest else { return }
         model.busLineType = navigationRequest.line
-        model.busType = navigationRequest.line.busType
         model.date = navigationRequest.date
         syncTimetable()
-    }
-    
-    private var currentBusType: BusType {
-        horizontalSizeClass == .regular ? model.busType : model.busLineType.busType
     }
     
     func updateTimesheet(for type: BusType) {
@@ -177,34 +167,43 @@ struct TimetableView: View {
 }
 
 private struct TimetableCalendarSheet: View {
+    @AppStorage(UserDefaultsKeys.showTimetableTypes) private var showsTimetableTypes = false
+    @Environment(TimetableViewModel.self) private var model
 
-    @Environment(TimetableViewModel.self)
-    var model
-    
-    @State
-    var detent: PresentationDetent = .medium
-    
     var body: some View {
         @Bindable var model = model
+        let indicators = TimetableCalendarIndicators(entries: model.timetable?.calendar ?? [])
 
-        List {
-            TimetableCalendarView(
-                date: $model.date,
-                activeDates: model.timetable?.getActiveDates() ?? []
-            )
-            
+        Form {
             Section {
-                if let name = model.timetable?.getCalendar(for: model.date)?.tableName {
-                    Text(verbatim: name)
+                TimetableCalendarView(
+                    date: $model.date,
+                    activeDates: model.timetable?.getActiveDates() ?? [],
+                    indicators: indicators,
+                    showsTimetableTypes: showsTimetableTypes
+                )
+
+                Toggle("Calendar.showTimetableTypes", isOn: $showsTimetableTypes)
+
+                if showsTimetableTypes {
+                    TimetableCalendarLegend(types: indicators.types)
                 }
-                
-                if let comment = model.timetable?.getCalendar(for: model.date)?.comment {
-                    Text(verbatim: comment)
+            }
+
+            Section {
+                Text(model.date, format: .dateTime.year().month().day().weekday().inTimeZone(BusTimetable.serviceTimeZone))
+                    .font(.headline)
+                if let entry = model.timetable?.getCalendar(for: model.date) {
+                    Text(verbatim: TimetableCalendarName.displayName(for: entry.tableName))
+                    if let comment = entry.comment {
+                        Text(verbatim: comment)
+                    }
+                } else {
+                    Text(.noBuses)
                 }
             }
         }
-        .listSectionSpacing(.compact)
-        .presentationDetents([.large, .medium], selection: $detent)
+        .presentationDetents([.medium, .large])
         .presentationCompactAdaptation(.sheet)
         .presentationBackground(.thinMaterial)
     }

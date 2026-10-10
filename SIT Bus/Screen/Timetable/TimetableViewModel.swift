@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 @Observable
 class TimetableViewModel {
     private let settings: AppSettings
@@ -23,26 +24,31 @@ class TimetableViewModel {
     }
     var isActive = false
     
-    /// for iPhone
+    /// The selected route is shared by compact and regular layouts.
     var busLineType: BusLineType {
         didSet {
             settings.timetableBus = busLineType.rawValue
+            settings.timetableBusType = busLineType.busType.rawValue
         }
     }
-    /// For iPad
+    /// Selecting a different category chooses its first route.
     var busType: BusType {
-        didSet {
-            settings.timetableBusType = busType.rawValue
+        get { busLineType.busType }
+        set {
+            if busLineType.busType != newValue, let route = newValue.cases.first {
+                busLineType = route
+            }
         }
     }
     
     init(settings: AppSettings = AppSettings()) {
         self.settings = settings
         
-        let busKey = settings.timetableBus
-        self.busLineType = .init(name: busKey ?? "") ?? .schoolBus(.stationToCampus)
-        
-        let busTypeKey = settings.timetableBusType
-        self.busType = .init(rawValue: busTypeKey ?? "") ?? .schoolOmiya
+        let savedRoute = settings.timetableBus.flatMap(BusLineType.init(name:))
+        let savedCategory = settings.timetableBusType.flatMap(BusType.init(rawValue:))
+        let route = savedRoute ?? savedCategory?.cases.first ?? .schoolBus(.stationToCampus)
+        self.busLineType = route
+        settings.timetableBus = route.rawValue
+        settings.timetableBusType = route.busType.rawValue
     }
 }

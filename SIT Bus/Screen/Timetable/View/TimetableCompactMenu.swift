@@ -48,12 +48,13 @@ struct TimetableCompactMenu: View {
             .buttonBorderShape(.capsule)
             .contentShape(.capsule)
             .buttonStyle(.glass)
-            
         } else {
-            DatePickerButton(
-                selectedDate: $model.date,
-                activeDates: model.timetable?.getActiveDates() ?? []
-            )
+            Button {
+                model.showDatePicker = true
+            } label: {
+                Text(model.date, format: .dateTime.day().month().weekday().inTimeZone(BusTimetable.serviceTimeZone))
+            }
+            .matchedTransitionSource(id: "DatePicker", in: namespace)
             .buttonStyle(.filter)
         }
     }

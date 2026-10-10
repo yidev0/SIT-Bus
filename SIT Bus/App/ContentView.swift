@@ -7,10 +7,13 @@
 
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct ContentView: View {
 
     @Environment(TimetableManager.self) private var timetableManager
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
     @State private var navigation = AppNavigation.shared
     @State var showWelcome: Bool
     
@@ -64,6 +67,15 @@ struct ContentView: View {
                 )
             }
         }
+        .onChange(of: canRequestReview, initial: true) { _, canRequest in
+            if canRequest, timetableManager.consumeReviewRequest(isSceneActive: scenePhase == .active) {
+                requestReview()
+            }
+        }
+    }
+
+    private var canRequestReview: Bool {
+        timetableManager.reviewRequestPending && scenePhase == .active && !showWelcome && !timetableManager.showAlert
     }
 
 }

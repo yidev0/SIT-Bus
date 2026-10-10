@@ -20,6 +20,7 @@ struct UserDefaultsKeys {
     
     static let timetableBus = "Timetable.Bus"
     static let timetableBusType = "Timetable.BusType"
+    static let showTimetableTypes = "Timetable.ShowTypes"
     
     static let debugDate = "DebugDate"
     

@@ -95,6 +95,9 @@
         }
       }
     },
+    "Bus Route" : {
+
+    },
     "BusInfo.detail" : {
       "comment" : "Long disclaimer shown in the welcome flow and timetable information sheet explaining bus data sources and liability.",
       "extractionState" : "manual",
@@ -241,6 +244,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日历"
+          }
+        }
+      }
+    },
+    "Calendar.showTimetableTypes" : {
+      "comment" : "Calendar option to show shape and color markers identifying each timetable type.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show timetable types"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar tipos de horario"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時刻表の種類を表示"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示时刻表类型"
           }
         }
       }
