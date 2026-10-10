@@ -48,7 +48,7 @@ struct TimetableView: View {
                 }
             }
             .navigationTitle(.timetable)
-            .toolbarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.inline)
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
             .onChange(of: model.busLineType) { _, newValue in

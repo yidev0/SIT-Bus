@@ -23,7 +23,7 @@ struct HomeView: View {
             .contentMargins(.top, 8, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .navigationTitle(.home)
-            .toolbarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.inline)
             .refreshable {
                 await timetableManager.loadData(forceFetch: true)
             }
