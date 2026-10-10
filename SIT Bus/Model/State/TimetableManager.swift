@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import StoreKit
 
 @MainActor
 @Observable
@@ -18,6 +17,7 @@ class TimetableManager {
     
     var showAlert = false
     var error: BusDataFetcherError? = .parseError
+    private(set) var reviewRequestPending = false
     
     var schoolBusOmiya: BusTimetable? = nil
     var schoolBusIwatsuki: BusTimetable?
@@ -129,7 +129,7 @@ class TimetableManager {
             if loaded.source == .remote {
                 lastOmiyaFetchDate = repository.lastSuccessfulFetchDate
                 if loaded.hadExistingRemoteUpdateBeforeSync {
-                    await requestReview()
+                    queueReviewRequest()
                 }
             }
             
@@ -161,13 +161,19 @@ class TimetableManager {
         updateBusStates()
     }
     
+    /// Claims a pending request only when its presenting scene is active.
+    func consumeReviewRequest(isSceneActive: Bool) -> Bool {
+        guard isSceneActive, reviewRequestPending else { return false }
+        reviewRequestPending = false
+        guard !settings.hasReviewedAppV1 else { return false }
+        settings.hasReviewedAppV1 = true
+        return true
+    }
+
     // MARK: - Private Methods
-    private func requestReview() async {
-        if settings.hasReviewedAppV1 { return }
-        if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            AppStore.requestReview(in: window)
-            settings.hasReviewedAppV1 = true
-        }
+    private func queueReviewRequest() {
+        guard !settings.hasReviewedAppV1 else { return }
+        reviewRequestPending = true
     }
     
     /// Starts a background task that continuously updates all bus states.
