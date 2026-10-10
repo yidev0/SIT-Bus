@@ -206,7 +206,7 @@ private struct TimetableCalendarSheet: View {
                 Text(model.date, format: .dateTime.year().month().day().weekday().inTimeZone(BusTimetable.serviceTimeZone))
                     .font(.headline)
                 if let entry = model.timetable?.getCalendar(for: model.date) {
-                    Text(verbatim: entry.tableName)
+                    Text(verbatim: TimetableCalendarName.displayName(for: entry.tableName))
                     if let comment = entry.comment {
                         Text(verbatim: comment)
                     }

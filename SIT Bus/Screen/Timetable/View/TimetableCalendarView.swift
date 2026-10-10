@@ -133,13 +133,22 @@ struct TimetableCalendarIndicators: Equatable {
     }
 }
 
+enum TimetableCalendarName {
+    static func displayName(for name: String) -> String {
+        for suffix in ["スクールバス時刻表", "学バス時刻表"] where name.hasSuffix(suffix) {
+            return String(name.dropLast(suffix.count)).trimmingCharacters(in: .whitespaces)
+        }
+        return name
+    }
+}
+
 struct TimetableCalendarLegend: View {
     let types: [TimetableCalendarIndicators.TimetableType]
 
     var body: some View {
         ForEach(types) { type in
             Label {
-                Text(verbatim: type.name)
+                Text(verbatim: TimetableCalendarName.displayName(for: type.name))
                     .foregroundStyle(Color.primary)
             } icon: {
                 Image(systemName: type.marker.symbol)
