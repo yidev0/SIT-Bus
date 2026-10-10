@@ -163,7 +163,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle(.settings)
-            .toolbarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.inline)
             .listSectionSpacing(8)
         }
         .onAppear {
