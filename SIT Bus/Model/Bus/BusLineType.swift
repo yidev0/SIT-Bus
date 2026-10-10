@@ -23,9 +23,9 @@ enum BusLineType: Hashable {
     
     init?(name: String) {
         switch name {
-        case "CampusToOmiyaStation":
+        case "CampusToOmiyaStation", "CampusToStation":
             self = .schoolBus(.campusToStation)
-        case "OmiyaStationToCampus":
+        case "OmiyaStationToCampus", "StationToCampus":
             self = .schoolBus(.stationToCampus)
         case "OmiyaToToyosu":
             self = .shuttleBus(.toToyosu)

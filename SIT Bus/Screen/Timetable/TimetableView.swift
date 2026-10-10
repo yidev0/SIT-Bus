@@ -51,15 +51,8 @@ struct TimetableView: View {
             .navigationBarTitleDisplayMode(.inline)
             .background(Color(.systemGroupedBackground))
             .animation(.default, value: model.busLineType)
-            .onChange(of: model.busLineType) { _, newValue in
-                if horizontalSizeClass != .regular {
-                    updateTimesheet(for: newValue.busType)
-                }
-            }
-            .onChange(of: model.busType) { _, newValue in
-                if horizontalSizeClass == .regular {
-                    updateTimesheet(for: newValue)
-                }
+            .onChange(of: model.busType) { _, _ in
+                syncTimetable()
             }
             .onChange(of: model.date) { _, _ in
                 syncTimetable()
@@ -132,19 +125,14 @@ struct TimetableView: View {
     }
     
     private func syncTimetable() {
-        updateTimesheet(for: currentBusType)
+        updateTimesheet(for: model.busType)
     }
 
     private func applyNavigationRequest() {
         guard let navigationRequest else { return }
         model.busLineType = navigationRequest.line
-        model.busType = navigationRequest.line.busType
         model.date = navigationRequest.date
         syncTimetable()
-    }
-    
-    private var currentBusType: BusType {
-        horizontalSizeClass == .regular ? model.busType : model.busLineType.busType
     }
     
     func updateTimesheet(for type: BusType) {
